@@ -9,3 +9,4 @@ FOUNDATION_EXPORT double MeetingDoctorsSDKVersionNumber;
 FOUNDATION_EXPORT const unsigned char MeetingDoctorsSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <MeetingDoctors/PublicHeader.h>
+#import "MeetingDoctorsSDK-Swift.h"
