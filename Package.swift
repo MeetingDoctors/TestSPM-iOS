@@ -14,13 +14,7 @@ let package = Package(
             name: "TestSPM",
             targets: [
                 "TestSPM",
-                "MeetingDoctorsSchema",
-                "MeetingDoctorsCore",
-                "MeetingDoctorsSocket",
-                "MeetingDoctorsRemote",
-                "MeetingDoctorsStorage",
-                "MeetingDoctorsController",
-                "MeetingDoctorsSDK"
+                "MeetingDoctorsEmmaSDK"
             ]),
     ],
     dependencies: [
@@ -36,32 +30,8 @@ let package = Package(
             name: "TestSPM"
         ),
         .binaryTarget(
-            name: "MeetingDoctorsSchema",
-            path: "Frameworks/MeetingDoctorsSchema.xcframework"
-        ),
-        .binaryTarget(
-            name: "MeetingDoctorsCore",
-            path: "Frameworks/MeetingDoctorsCore.xcframework"
-        ),
-        .binaryTarget(
-            name: "MeetingDoctorsSocket",
-            path: "Frameworks/MeetingDoctorsSocket.xcframework"
-        ),
-        .binaryTarget(
-            name: "MeetingDoctorsRemote",
-            path: "Frameworks/MeetingDoctorsRemote.xcframework"
-        ),
-        .binaryTarget(
-            name: "MeetingDoctorsStorage",
-            path: "Frameworks/MeetingDoctorsStorage.xcframework"
-        ),
-        .binaryTarget(
-            name: "MeetingDoctorsController",
-            path: "Frameworks/MeetingDoctorsController.xcframework"
-        ),
-        .binaryTarget(
-            name: "MeetingDoctorsSDK",
-            path: "Frameworks/MeetingDoctorsSDK.xcframework"
+            name: "MeetingDoctorsEmmaSDK",
+            path: "Frameworks/MeetingDoctorsEmmaSDK.xcframework"
         )
     ]
 )

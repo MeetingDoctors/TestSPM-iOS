@@ -1,0 +1,11 @@
+framework module MeetingDoctorsEmmaSDK {
+  umbrella header "MeetingDoctorsEmmaSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module MeetingDoctorsEmmaSDK.Swift {
+  header "MeetingDoctorsEmmaSDK-Swift.h"
+  requires objc
+}
