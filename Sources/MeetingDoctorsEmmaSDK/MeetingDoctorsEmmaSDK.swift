@@ -1,2 +1,2 @@
-struct TestSPM {
+struct MeetingDoctorsEmmaSDK {
 }
