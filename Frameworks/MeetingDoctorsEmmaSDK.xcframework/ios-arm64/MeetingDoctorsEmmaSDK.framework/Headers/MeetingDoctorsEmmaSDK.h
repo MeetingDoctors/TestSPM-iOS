@@ -6,9 +6,7 @@
 //  Copyright © 2019 Edgar Paz Moreno. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <EMMA_iOS/EMMA_iOS.h>
 
 //! Project version number for MeetingDoctorsEmma.
 FOUNDATION_EXPORT double MeetingDoctorsEmmaSDKVersionNumber;
