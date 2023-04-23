@@ -1127,20 +1127,13 @@
       },
       {
         "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
+        "name": "EMMA_iOS",
+        "printedName": "EMMA_iOS",
         "declKind": "Import",
         "moduleName": "MeetingDoctorsEmmaSDK",
         "declAttributes": [
           "RawDocComment"
         ]
-      },
-      {
-        "kind": "Import",
-        "name": "EMMA_iOS",
-        "printedName": "EMMA_iOS",
-        "declKind": "Import",
-        "moduleName": "MeetingDoctorsEmmaSDK"
       },
       {
         "kind": "TypeDecl",
@@ -2198,14 +2191,14 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-emma-ios\/MeetingDoctorsEmma\/Source\/MeetingDoctorsEmma\/MeetingDoctorsEmma.swift",
       "kind": "BooleanLiteral",
-      "offset": 476,
+      "offset": 463,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-emma-ios\/MeetingDoctorsEmma\/Source\/MeetingDoctorsEmma\/MeetingDoctorsEmma.swift",
       "kind": "Dictionary",
-      "offset": 2658,
+      "offset": 2645,
       "length": 3,
       "value": "[]"
     },

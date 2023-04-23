@@ -5,7 +5,6 @@
 import EMMA_iOS
 @_exported import MeetingDoctorsEmmaSDK
 import Swift
-import UIKit
 import _Concurrency
 import _StringProcessing
 public enum TrackParam : Swift.String {
