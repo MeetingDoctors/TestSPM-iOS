@@ -13,17 +13,24 @@ let package = Package(
         .library(
             name: "MeetingDoctorsEmmaSDK",
             targets: [
-                "MeetingDoctorsEmmaSDK",
+                "MeetingDoctorsEmmaSDKTargets",
             ]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/EMMADevelopment/eMMa-iOS-SDK.git", from: "4.11.4")
     ],
     targets: [
         .binaryTarget(
             name: "MeetingDoctorsEmmaSDK",
             path: "Frameworks/MeetingDoctorsEmmaSDK.xcframework"
+        ),
+        .target(name: "MeetingDoctorsEmmaSDKTargets",
+                dependencies: [
+                    .target(name: "MeetingDoctorsEmmaSDK"),
+                    .product(name: "EMMA_iOS",
+                             package: "eMMa-iOS-SDK")
+                ],
+                path: "Sources"
         )
     ]
 )

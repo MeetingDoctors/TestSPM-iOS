@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "emma-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EMMADevelopment/eMMa-iOS-SDK.git",
+      "state" : {
+        "revision" : "3761e48e71a3acc8b98fc9557506668d044942d6",
+        "version" : "4.11.4"
+      }
+    }
+  ],
+  "version" : 2
+}
