@@ -4,9 +4,13 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Headers/MeetingDoctorsEmmaSDK-Swift.h</key>
+		<data>
+		8L9AbVI4XSoQ+dqZ1hmGkRE4hgM=
+		</data>
 		<key>Headers/MeetingDoctorsEmmaSDK.h</key>
 		<data>
-		3TegTIJewiAFBgtdVLZaoN7EvGw=
+		DMbV+dxNurF4b+ldF9G5kYbPBDk=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -34,16 +38,23 @@
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		wtIbkv1XprhnLKIwvZVlI0TcwQ0=
+		ys5c2eqYwZH8zk4GZIMDkdwUhtc=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Headers/MeetingDoctorsEmmaSDK-Swift.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oK3glwEt0jn6l6cZV4MdHiPC3hRHNKKU7/IXrMVEYjA=
+			</data>
+		</dict>
 		<key>Headers/MeetingDoctorsEmmaSDK.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			q01Q69UstwVDkLLWF6mIVbv19/64+6cSmDv8VWb8fBE=
+			vd4YwLfarXZs5/S3OfDBQJI3J8pIrlu0fShzeaBMrms=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsEmmaSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -85,7 +96,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			RbE0CoTNvxSPBWq6V1abc0BFLhqWzIMQmkzlK6o7wB8=
+			+jzFAwP/s6wVZN0G00DQP/HPPpdGdTSSdoc3DUbsvz4=
 			</data>
 		</dict>
 	</dict>

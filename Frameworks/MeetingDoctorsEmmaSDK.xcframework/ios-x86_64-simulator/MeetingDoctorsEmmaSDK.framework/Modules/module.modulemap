@@ -4,3 +4,8 @@ framework module MeetingDoctorsEmmaSDK {
   export *
   module * { export * }
 }
+
+module MeetingDoctorsEmmaSDK.Swift {
+  header "MeetingDoctorsEmmaSDK-Swift.h"
+  requires objc
+}
