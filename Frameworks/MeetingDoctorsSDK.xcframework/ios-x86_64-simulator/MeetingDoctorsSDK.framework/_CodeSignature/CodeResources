@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		xPfFy8nXtWVsEApm9fiZEZHd9uA=
+		MwkNMIMl8GRbJMu4L70vd7TO+90=
 		</data>
 		<key>AvatarStatusView.nib</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>ChatViewController.nib</key>
 		<data>
-		+ZwYgmWC53p4dz1uH/r+sax9DpU=
+		uS3M0xLq5THr9Bq8CRdudPxAdBY=
 		</data>
 		<key>Derivations.storyboardc/DerivationsListViewController.nib</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Derivations.storyboardc/oqR-LI-ddj-view-UBg-Qr-5a9.nib</key>
 		<data>
-		tWkcXjA1TcOS4b/DPqEM1F38o6A=
+		u+LoKlAdQ9sAfsGH9yN537jVjHs=
 		</data>
 		<key>DigitalPrescriptionDisclaimerView.nib</key>
 		<data>
-		C9i9fvtISVHIEuc7HoRyt51zAk4=
+		t74Nd781mc8ykDyMZAqnTXNHZO4=
 		</data>
 		<key>DisconnectedMessageView.nib</key>
 		<data>
@@ -38,23 +38,23 @@
 		</data>
 		<key>Environment-Debug.plist</key>
 		<data>
-		OhbUrxpXTcqchU5KEhG6aIabZD4=
+		BZIc9aY0N0U7viO4x6K6/K18J4U=
 		</data>
 		<key>Environment-Release.plist</key>
 		<data>
-		4i3+n4qJcH/eT0G/AlUq3b3z5Pg=
+		/gEfBa/YszaaMHR1TBjKexiDGLo=
 		</data>
 		<key>Environment-Staging.plist</key>
 		<data>
-		Qps4pAimbJ/cSOoM610pSYUvRdA=
+		TsD+MOSOs29ouAyocn1NL9ubzAc=
 		</data>
 		<key>FileMessageTableViewCell.nib</key>
 		<data>
-		9jy2MoeH79xvQlQJnHSXSpLsURA=
+		UPRtDOHhGJB8ZpLX7Q+vju7an9c=
 		</data>
 		<key>Headers/MeetingDoctorsSDK-Swift.h</key>
 		<data>
-		EmMC9i3HzF4BzGOGv2lV/R48AOQ=
+		mkdOJhO0i5Z/fwQgOvl9w01+9RQ=
 		</data>
 		<key>Headers/MeetingDoctorsSDK.h</key>
 		<data>
@@ -62,11 +62,11 @@
 		</data>
 		<key>ImageMessageTableViewCell.nib</key>
 		<data>
-		NaCr9vaI5Y0naFSysXkVxHL9Rgk=
+		eVUQVvxtQI/t/8tQhLqZoMN/1M4=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		vAzJxlnsI8qI2BnzepZhbzldZSA=
+		mAI4W+j3+H9JWrKpBXI+eAMoDE0=
 		</data>
 		<key>MedicalHistory.storyboardc/7tD-65-aGd-view-In8-82-SN0.nib</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>MedicalHistory.storyboardc/ESf-aQ-paF-view-cJh-QF-HOn.nib</key>
 		<data>
-		9dZUBXLvGnF407abiYWv1ZovKFQ=
+		E6Tw/LkH7cROJXjiEEgZQdfotdE=
 		</data>
 		<key>MedicalHistory.storyboardc/FeQ-BV-2fx-view-GWI-JA-SuV.nib</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>MedicalHistory.storyboardc/GzW-ba-Cbu-view-AOr-zS-J59.nib</key>
 		<data>
-		K+kV0LYQfY7g7BShziPZRjD3IC8=
+		y/Q2xs5HSOJTcoKqRYVVKTAqkr0=
 		</data>
 		<key>MedicalHistory.storyboardc/Info.plist</key>
 		<data>
@@ -106,11 +106,11 @@
 		</data>
 		<key>MedicalHistory.storyboardc/MedicalHistoryEditNavigationController.nib</key>
 		<data>
-		rrnV98czS+FOYseDMjsiCWP1vgo=
+		tbZ/QqF/pXS5SWJPEtMeX/8uHR0=
 		</data>
 		<key>MedicalHistory.storyboardc/MedicalHistoryEditViewController.nib</key>
 		<data>
-		y6kxs/HaPYRhnIbpTVaeKCsqJlg=
+		Eu9Rujfmc1ASdXtG51RBy3UZOms=
 		</data>
 		<key>MedicalHistory.storyboardc/MedicalHistoryRemoveViewController.nib</key>
 		<data>
@@ -122,7 +122,7 @@
 		</data>
 		<key>MedicalHistory.storyboardc/MedicalHistoryViewController.nib</key>
 		<data>
-		W+rWWaS3PtUDW5RqIkoLJgo8Aq8=
+		2vXyr8j1WJk/pe4q7fDn+AsG3+U=
 		</data>
 		<key>MedicalHistory.storyboardc/ORU-tV-wqe-view-QPc-Vj-eey.nib</key>
 		<data>
@@ -130,19 +130,19 @@
 		</data>
 		<key>MedicalHistory.storyboardc/Rfq-Q2-kfm-view-vDv-RI-WRQ.nib</key>
 		<data>
-		KIVPStnuvi/ZEqq1W+6a0nxO1bQ=
+		qamaoIjtFvYOjzbbH55hXI2DAjk=
 		</data>
 		<key>MedicalHistory.storyboardc/UINavigationController-6uG-Nb-RSQ.nib</key>
 		<data>
-		rlz+kpttUjesHm5fB3MAfc/6HMU=
+		fy09KkGAMQD8Iauw6J8sDHDFL5E=
 		</data>
 		<key>MedicalHistory.storyboardc/aKa-wW-xjh-view-2Q9-R2-bwc.nib</key>
 		<data>
-		ilfpnUlkF3DK9uWVPRp3+KKGW5A=
+		43c69Rgjc/T36SztaO9UXScnSLg=
 		</data>
 		<key>MedicalHistory.storyboardc/x6D-Bw-Fw4-view-9Ay-Xc-nKr.nib</key>
 		<data>
-		OVIhzeI//bzGaJGCz1ajYLygEJE=
+		8GLxFC4T1Es5E8Cxkp67dDt7XdQ=
 		</data>
 		<key>MeetingDoctors.der</key>
 		<data>
@@ -150,11 +150,11 @@
 		</data>
 		<key>MessagesTitleView.nib</key>
 		<data>
-		S7rdHoDpZsZclrMWttevOVAMA44=
+		uVbUXGP9ORH+VIZ9Qmytcm+tfnA=
 		</data>
 		<key>MessengerScene.storyboardc/InboxViewController.nib</key>
 		<data>
-		tf0Yd9JgM3Y+j71WphDjBpRF/ho=
+		SjOdAf3Y5dzyvGXgfR/n/WGpCzw=
 		</data>
 		<key>MessengerScene.storyboardc/Info.plist</key>
 		<data>
@@ -162,43 +162,51 @@
 		</data>
 		<key>MessengerScene.storyboardc/Ljq-8x-xUG-view-tFX-7W-JqX.nib</key>
 		<data>
-		r1dKNoAmNz+XJT/uuHvcfMBGVaE=
+		m7aqccLgaRdHcL9CW1V58GSBXA0=
 		</data>
 		<key>MessengerScene.storyboardc/ProfessionalListViewController.nib</key>
 		<data>
-		cDVm5rmlxtKdCKWFHggDNdHErWc=
+		ISUItUZMWBYd0UbxN9oQ4K3Fc8s=
 		</data>
 		<key>MessengerScene.storyboardc/ProfileViewController.nib</key>
 		<data>
-		C/PZ+Tl6vG2VdneW5EkEbdt5fcQ=
+		m2Q51uk+ryfXNh0Mjshn6PJNhn4=
 		</data>
 		<key>MessengerScene.storyboardc/QjO-wL-Hsb-view-svH-Pt-449.nib</key>
 		<data>
-		ZmhszN0Dx/kNiOZjjrbfm34ZYy4=
+		Poubh1JtSSzpmUKQ9dXfAFL+F98=
 		</data>
 		<key>MessengerScene.storyboardc/wbU-yY-0Ud-view-p5a-69-thf.nib</key>
 		<data>
-		U5wo6saUAefYENaj25LhoTu20lE=
+		gT/5f36kq2baiMlOTWVEul3UU/M=
+		</data>
+		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<data>
+		wzDquAwGBFOl/jv8OVxQjEt3wWw=
+		</data>
+		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<data>
+		IMuQZBGeO4H2n0Cpb0GxJEvLAqk=
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		Wh6lVclFK6DsYxM/qQEvcRA16EI=
+		B4IeWT5hPNZvqKI1zz3zASGXsa0=
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		YIygAROqlLnEL3oN7BbzASc7Mvc=
+		IMuQZBGeO4H2n0Cpb0GxJEvLAqk=
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		AWk5scYyOk7MkYs12tWvvpwXiNA=
+		gC5qvAiRGXkax0QgSFj2k+yC/VQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		SuG8pPvmEZIa8hGVo/RFRr0DflM=
+		lQtfeGqV8jzSggsl1jmBTa5LaOI=
 		</data>
 		<key>MyDocuments.storyboardc/BYG-bO-9EL-view-ECC-wJ-04i.nib</key>
 		<data>
-		2etyKZB8IYWQOQbUyNyZa1LphGY=
+		Fon8BuwzKGXWWVltKxT2bbLMg+I=
 		</data>
 		<key>MyDocuments.storyboardc/Info.plist</key>
 		<data>
@@ -214,59 +222,59 @@
 		</data>
 		<key>MyDocuments.storyboardc/wlU-W0-TGZ-view-XSW-I2-Sc3.nib</key>
 		<data>
-		WHCUQiuzuEazwDowoLIzqlWfn1M=
+		SWWqzrS/At7iqLOnacwe59NcLDA=
 		</data>
 		<key>MyHealthBarSliderTableViewCell.nib</key>
 		<data>
-		NQqi7exd1DqwuVwrFNgB642Ct/0=
+		YjAIiWZEXOYKmcTsUUsgswaJ8YI=
 		</data>
 		<key>MyHealthBottomDescriptionSubview.nib</key>
 		<data>
-		yQDmbbTZOpXJWwd2fAf1aVHcrQ4=
+		jqzHQ/DpKOC5fcspLHfcO8wg9HU=
 		</data>
 		<key>MyHealthCustomPickerTableViewCell.nib</key>
 		<data>
-		VMU6ji9mDgBm/folvKoWffHL+XM=
+		UWBTbyYLDgp72JCnw4UWXMu5L3I=
 		</data>
 		<key>MyHealthCustomTextFieldTableViewCell.nib</key>
 		<data>
-		u80XGGnf7OS/D4ZGTQUerSj0jmM=
+		ZcMyIlXfC36snU8tp5v/mBkcHcM=
 		</data>
 		<key>MyHealthCustomTextViewTableViewCell.nib</key>
 		<data>
-		ldxch4JnbU5TAD375x9Gl8l5r9I=
+		2Yj1oMt01Q9R5LSfBH8nBSlfTaA=
 		</data>
 		<key>MyHealthDoubleButtonTableViewCell.nib</key>
 		<data>
-		4TxYfgJsUtCSiUx6JIwe6WbCyco=
+		K/ZELRhA/yZRA3bp3cXXISj0BeU=
 		</data>
 		<key>MyHealthElectronicPrescriptionDetailTableViewCell.nib</key>
 		<data>
-		W1K4Gjmh2HwIJChzNlri+TqB360=
+		budTVl9M51mTShtvI3FQqBnBoBI=
 		</data>
 		<key>MyHealthHeaderListTableViewCell.nib</key>
 		<data>
-		Eys7B3etYRvWDXbF5+GUrN2NiBo=
+		shVpQZiMFY/Y6jFbS2WjWxtj4Rw=
 		</data>
 		<key>MyHealthIconAndDescriptionSubview.nib</key>
 		<data>
-		DNst2dqaFcHP+Ur+GBcCd17EKlw=
+		lsM6oUJZvmCoTHV+H/MgdVxhj64=
 		</data>
 		<key>MyHealthReportDetailTableViewCell.nib</key>
 		<data>
-		N2oVnZswjfGXm7Gng0K80hYV6GE=
+		s5KwdBTZApdwMfS0qiHH300yJHA=
 		</data>
 		<key>MyHealthSectionItemDetailTableViewCell.nib</key>
 		<data>
-		EumDCTnZnwl8aeBdVfwWLjGDQpE=
+		xBTPqKRoUPIxpXrUbkyHgKZCwSc=
 		</data>
 		<key>MyHealthSectionListHeaderView.nib</key>
 		<data>
-		g/0KCCndmiD5XanBm87Zr45EM/g=
+		L4Zcg9PdKbygRtdoYaAs6CrhhGM=
 		</data>
 		<key>MyHealthSectionTableViewCell.nib</key>
 		<data>
-		AVpq1gW0Zeys8WxdHkxoyEJoe0Y=
+		aMBX4g739FoD+2eR8Uc42CMxiFI=
 		</data>
 		<key>MyHealthStoryboard.storyboardc/Info.plist</key>
 		<data>
@@ -286,23 +294,23 @@
 		</data>
 		<key>MyHealthStoryboard.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<data>
-		1vnebBprfRrDY/NZrVzsAY5jDaA=
+		zok0qz3OyM5ffLGoKxcPV4qMJWs=
 		</data>
 		<key>MyHealthStoryboard.storyboardc/fYa-bI-t0e-view-MLc-3i-X5g.nib</key>
 		<data>
-		aWxrAubjdIYgM3/5LZnu9qpbDQ0=
+		dLOYUoCtZgprOLo9JhGACAg64d0=
 		</data>
 		<key>MyHealthStoryboard.storyboardc/ySB-P6-piZ-view-Jzj-QM-Xub.nib</key>
 		<data>
-		PBR7cjQi+ZafyU/xaSFDiqqZVAg=
+		qrF2c5X4OuiZVZIhIWXti6O1bWA=
 		</data>
 		<key>NPSBannerView.nib</key>
 		<data>
-		HTe8km9AhjUH0gqeQ9kgMSNaIjY=
+		KB5dAUN6SolTm6kDHkAkfx6TGns=
 		</data>
 		<key>NPSFormViewController.nib</key>
 		<data>
-		hlaP/yHqvcQ5rCrND7E5E/IT4Ek=
+		TA26KgfBHbs8ICFS+g49LdGwR6s=
 		</data>
 		<key>PhotoViewController.nib</key>
 		<data>
@@ -310,35 +318,35 @@
 		</data>
 		<key>ProfessionalProfileButtonTableViewCell.nib</key>
 		<data>
-		hz+ztroN8juCEDyI8+2ox0ka2po=
+		+5idjVWeiLP7U0Ibnahem1BF3V8=
 		</data>
 		<key>ProfessionalProfileCVDescriptionTableViewCell.nib</key>
 		<data>
-		gK6jmQXq/G/ELg+7sNU0Ad7CpLQ=
+		jEDYoeUVaYyCf/g6io9ZxpRz4tg=
 		</data>
 		<key>ProfessionalProfileHeaderTableViewCell.nib</key>
 		<data>
-		50+GjLMmdj4pTEJOQFFKRDDwagY=
+		Rno/uBsl6KmZ8q2m4nseyE4yxBs=
 		</data>
 		<key>ProfessionalProfileScheduleTableViewCell.nib</key>
 		<data>
-		bUuJ2OWkxPkciaquP6BY5PwSIAA=
+		UjaLC+8yBmLVGnk8kMSuDDYTREE=
 		</data>
 		<key>ProfessionalProfileSectionTitleTableViewCell.nib</key>
 		<data>
-		draPmkn6HjHufAiPaftVgrDhBnE=
+		tMi+P/aEXZBVNKr9mNK4x0gNHRA=
 		</data>
 		<key>ProfessionalProfileViewController.nib</key>
 		<data>
-		iuPOGlfA3ziOZQxxDZ6IohQ20vU=
+		lhaT6348E+ep1chSmYKdmz5BQAo=
 		</data>
 		<key>TermsAndConditionsViewController.nib</key>
 		<data>
-		n/Kr/YTNuWwPZ9nNcQvafDX1ghU=
+		SIpQBLv5amqHfKpriHAYAATwj7U=
 		</data>
 		<key>TextMessageTableViewCell.nib</key>
 		<data>
-		k08tlFcUcpLScxD52IUagZELfgw=
+		fRvx6fTgf6v9r0mMfp4ozqpzFLo=
 		</data>
 		<key>VideoCallCall.storyboardc/BLO-dO-BLG-view-61M-AI-Jj5.nib</key>
 		<data>
@@ -368,7 +376,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			pnzlXr47y1yal/d1jeJhIP6zzPE=
+			lBYPurentdzgE2EMZvn9DO1yXm4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -377,7 +385,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nbFJGLUdj6lJ75uYAG+95v9mZlQ=
+			2MFoz+qbRGIXLrVeidaiD5b5weo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -390,7 +398,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			15EnWdyIoJ/y741jTGwae4Y0Xbk=
+			21GQo97Ibw5P69VIx5dScVTgVFs=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -399,7 +407,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AC8s2eAfz1BMV8d6KDe5kPfzWyU=
+			cDxChTHFhdI6EhYlCXwqe3yQdIc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -412,7 +420,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gLmO6Yc+taTXrFauOSyioGZN+Pg=
+			lc+XjZ6XDfeNhtDLJQddWwtYhj8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -421,7 +429,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6aY0utlHT7ngOAIYDFAuhzPE8QU=
+			tr5Wr2iM90mFC1MGyqH6v1HYmdQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -430,7 +438,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CKtJAiu1L2+0eifmzlmlY7Int/0=
+			6JSQbsXUH9IEjkQ2pYuMatdyfIQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -439,7 +447,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jXPeMF27rky7fL2SDgGKPyrirU4=
+			QEfCk/z2Dke/Teaq2tHuDhOk+m4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -448,7 +456,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CKtJAiu1L2+0eifmzlmlY7Int/0=
+			6JSQbsXUH9IEjkQ2pYuMatdyfIQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -457,16 +465,24 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			TaFSK3Apst7LqfMvC/BCAbMQJao=
+			mMk8tnqPnRz6d8RKSGldF9Job10=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>onQueueAnimation.json</key>
+		<data>
+		XPx49+CSJoEeHrdRmKZJkKVq3m0=
+		</data>
+		<key>preparingAnimation.json</key>
+		<data>
+		hk9cUM16pnOiEKhokZSsPUhDWLw=
+		</data>
 		<key>pt.lproj/InfoPlist.strings</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			l1MnDRT7svXW38bchkDilPdYYn0=
+			MkLgRMqmsczW5qYJdLUVaF1pYFc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -475,14 +491,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0VoeJkz5XA28E4cw2GdoJo0pG9E=
+			7QhY0g5HyPx26EiL26JFV9/jZh0=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>searchingAnimation.json</key>
+		<data>
+		fY0SXA/J2VptoQ/l37tZ1kl6B8Q=
+		</data>
 		<key>staging-meetingdoctors-com2023.der</key>
 		<data>
 		RGp8wJe7wft5NHvYcbt5zlbLsME=
+		</data>
+		<key>video-call-staging-meetingdoctors-com.der</key>
+		<data>
+		R3BKG1uIc0wAXEtpaTAeHpXmvBI=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -491,7 +515,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yJBUFSs3TrTBxSbzC9FMXee8ykQUNVCWBIFRZgfnCF0=
+			5wCSAlXC+FxemLVZlHC2ENoDazlSHStiAw5U3izIunQ=
 			</data>
 		</dict>
 		<key>AvatarStatusView.nib</key>
@@ -505,7 +529,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1fKBWcwdbEn9Jam8Fa9aKMRED0mhg1w6M9Ez0latRaQ=
+			ucl2j8l7FJB9mI/bPbNwgKHelac7irI3wE4kCB5XnLA=
 			</data>
 		</dict>
 		<key>Derivations.storyboardc/DerivationsListViewController.nib</key>
@@ -526,14 +550,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6vY8A0W13jU+h1P74yxraloT0Etda8iCCAJEjdjsxPw=
+			MawHb7ZI50bYR3lpPHejSqNczhU7dYCzO2FQYMr7C8Y=
 			</data>
 		</dict>
 		<key>DigitalPrescriptionDisclaimerView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YqQKYNMp3Dfv3+N1dj+gmffy/BX3Ehhi+LQZaQ8SLrg=
+			Df6tZrhXPMbDjDpIVHPze51V9dO/vcT/cPpdLn2gmes=
 			</data>
 		</dict>
 		<key>DisconnectedMessageView.nib</key>
@@ -547,35 +571,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			y17p0O/5cXsdMvyST7xDUKbbYrOteCkjt6uHQFqDIoQ=
+			b4XbeHGgbPVWYw3VBf3Ism4d6oNwszJDNDlHFHaQU7I=
 			</data>
 		</dict>
 		<key>Environment-Release.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UN3L1G1qntHg80W6YwG6vsCTe/I7REHzxvgSJdQZyRk=
+			oYssNZYWT3G3J2LbtQ/BP9Gd+bBJhtZPamwzBs3m6nA=
 			</data>
 		</dict>
 		<key>Environment-Staging.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			j7BMj1elh4QrFvvRQsy8y7vzin2Ym1mvUpZDrE5ecPo=
+			x6VUajZTFPvNR3oSjLJFW3Hm3+uNKiwKTUWVRZ9XTbM=
 			</data>
 		</dict>
 		<key>FileMessageTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HfroKZdErK5URu7O54p1kk04pXEl444Y3Z3gePBv7z8=
+			PtZldm6to0A12OBSoZYh757vuGGYglN/b8FWCK7lf7s=
 			</data>
 		</dict>
 		<key>Headers/MeetingDoctorsSDK-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lsJPierl0UOGb79EJDsOj6PQ3VBPq3dJpxGxdLRCD2A=
+			YLqIjSZ/ktiw8WOV7zoDzbwWalXPaBRaRPiKpOykP/w=
 			</data>
 		</dict>
 		<key>Headers/MeetingDoctorsSDK.h</key>
@@ -589,7 +613,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			lZnD3Vptp5wAPqib1SHwuolOG8ov0snD/F+02y4CskQ=
+			BW9Eu5+DttGBmnvOF1mjZpIkAqeeNr2Sx/RHpZx6wLU=
 			</data>
 		</dict>
 		<key>MedicalHistory.storyboardc/7tD-65-aGd-view-In8-82-SN0.nib</key>
@@ -603,7 +627,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YB7SI4lw53199Ltvtq74CS424ZX8HIeCiQFOnGwXPcY=
+			8TzeeM1ZCi6g4SUPildaXGolMszRduqKZI/E1AiZKfw=
 			</data>
 		</dict>
 		<key>MedicalHistory.storyboardc/FeQ-BV-2fx-view-GWI-JA-SuV.nib</key>
@@ -617,7 +641,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			kd3u+GIfqsX88zdJf0daSjK+gTgTCyg2mZIVgGtBgww=
+			m6+qqy2IDL1jsEyr/6L6owVtLIHtGtrt2gO9YVrTjxE=
 			</data>
 		</dict>
 		<key>MedicalHistory.storyboardc/Info.plist</key>
@@ -659,14 +683,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yzxcGQxExhAef5Et/UCI6uf/dPd+GGuZD6cWCvW3fIg=
+			PT8nwIkB+t3Talionwpq3fRoFDcJEAOduUvk72nWl+c=
 			</data>
 		</dict>
 		<key>MedicalHistory.storyboardc/MedicalHistoryEditViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eth0N2joHhIStoQNrJ3+rKkeoaNGHVld1ffhylHOGe4=
+			jwmzjnhEmVgwSiPr9r0j4v+Y3GvuPof3rhTj4riZvoo=
 			</data>
 		</dict>
 		<key>MedicalHistory.storyboardc/MedicalHistoryRemoveViewController.nib</key>
@@ -687,7 +711,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			kPYDHyciDlqnRrYCdA3o1kQauDAFFQJlvRq2GDl4rtQ=
+			7FvWGYPxoYqtqJwl6etE8pMhrDUAKB8fTCP75zaSt6M=
 			</data>
 		</dict>
 		<key>MedicalHistory.storyboardc/ORU-tV-wqe-view-QPc-Vj-eey.nib</key>
@@ -701,28 +725,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			py1JOAnBi7BRrMNHhkN2KTjo/KkOWEc5A8nJbXcgn6Y=
+			FOUB137y1V3qKv4yYaqHwihZEF9GgnT395YeHkMbeRY=
 			</data>
 		</dict>
 		<key>MedicalHistory.storyboardc/UINavigationController-6uG-Nb-RSQ.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qZbwppGFhsGatKPWmguTXdChgjapFytXEb8/voUycuQ=
+			0RveMfzDTSUUh0cTgxeige+RFCBEI0LD/BRmffZpjwM=
 			</data>
 		</dict>
 		<key>MedicalHistory.storyboardc/aKa-wW-xjh-view-2Q9-R2-bwc.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/uwt7A1WsJ+YipdrXnSGqg+T5TsNyvqZjFIQfOyTGeY=
+			a4DwVu6r5UQpqnuWwfUBfd8ZnMDRbb/n2kiPa5A1qK8=
 			</data>
 		</dict>
 		<key>MedicalHistory.storyboardc/x6D-Bw-Fw4-view-9Ay-Xc-nKr.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			IAw0McShWxsuYi6gyR4xBokBDgGnynHiml2W61BsHvU=
+			DIg6PV+yo0uTc/pxtTsH0Nkti1WMEFzJBfTyQaxwSV0=
 			</data>
 		</dict>
 		<key>MeetingDoctors.der</key>
@@ -736,14 +760,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			dYgnXMfbpxCImZ1PhWktER2OWP5k4Q2XHUkLH4TamcA=
+			mhhx/JqFCPVXZ3fXtQp+9gcUxUqWIW8/2jxz2TMZfWw=
 			</data>
 		</dict>
 		<key>MessengerScene.storyboardc/InboxViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DLOydAmJpmQOx2rdoaK7qK7Exrwj6hqn+F3EnokVCgQ=
+			H86NVIVZrm70zfYv5NlcWwBkf8Znf5QFOPik9Gq0JYQ=
 			</data>
 		</dict>
 		<key>MessengerScene.storyboardc/Info.plist</key>
@@ -757,70 +781,84 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yz1UHjldXVdiRAnnNrfBG3I1b2HaIudNMuMyiDdx6nA=
+			+av7p2kf5TFhEezEzAQKj4p4LSYo/4vG1K2sRYPDVYM=
 			</data>
 		</dict>
 		<key>MessengerScene.storyboardc/ProfessionalListViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			v+3PC3ZGN2Kil5CNzKfyvcSohmTZ5/oMEDYeUBmUtm4=
+			td+LZfG12OkKCQSd3lfxM7d+kbIAanK3cNg4TRb4fsg=
 			</data>
 		</dict>
 		<key>MessengerScene.storyboardc/ProfileViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Azga9B/mWQQ36t5OhCHIr4xe5tKFEEN/TUazJiihbXc=
+			LKJ9sIkeJV0xFdsca1/YWFGoag+QZ0xwFBJP6QY6ceI=
 			</data>
 		</dict>
 		<key>MessengerScene.storyboardc/QjO-wL-Hsb-view-svH-Pt-449.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sXmGJ+H4xL06vWSn2/Boz3pmrVQ5Nbtc8a8pMnVVx44=
+			E1K3xKvEJXkJ9LsVrqRWifbFEQqnQygFh0Rhqkvz2Lo=
 			</data>
 		</dict>
 		<key>MessengerScene.storyboardc/wbU-yY-0Ud-view-p5a-69-thf.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yUnGmKDkuC61SgKqqtupI01GNQgB5rBES0SOc0IEIio=
+			esn2Modc9px8uPW6HFsHrETV6qLURqbMEu2QyVXCM7c=
+			</data>
+		</dict>
+		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			TniDhke5HHCc5tY7+i99Rjrq6G7bI8UGMFYvSFAW/Io=
+			</data>
+		</dict>
+		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6+680bAS7elkN52pNypnH6zoz/j37IeWIXs79lXkEck=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			220i/5WRQDJyAaqwBWYhp5IZ7h/gwNsSoLsDkdthuuw=
+			j/+cIlBVi9+yPUDMNK3SOL/Ac86moaQDkyOmS6OjyPg=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jZbyH7oLXIEN/0WVtDJsAAGiP6cJ6X/vcYMe/AbVfLE=
+			6+680bAS7elkN52pNypnH6zoz/j37IeWIXs79lXkEck=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KZkQIVwmx+ijsE/UBxTcWwyaAcVpvB40gFaOFX86wY8=
+			OLkqioeVoPNEYmVj2dRWgRDUfzXbUKy8G8DWMB8iKJ4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			IcnHz6ugJklKV9Zts62egwDvGyIjt9wErUMl9K9yJzQ=
+			lPsLlFnsoA1thFhw0SQBURd0zzXZhCBS7OP2A9NNdd4=
 			</data>
 		</dict>
 		<key>MyDocuments.storyboardc/BYG-bO-9EL-view-ECC-wJ-04i.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			36w0x2MEEsi0ziyeO3YsZfsotz+qzvSXs59GCmt0V+Q=
+			3abGdL84qWdm8FFGz0iohbjb8Wckzs1lee4Euc9a7xE=
 			</data>
 		</dict>
 		<key>MyDocuments.storyboardc/Info.plist</key>
@@ -848,98 +886,98 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yZ07pg97sFUkc//hYvOQbj4o5rzKdSQKjkwRwTqDaqw=
+			17tcz/fkeYjMghAnLdULTwKfiVCsIoH1qDAu0g+odlA=
 			</data>
 		</dict>
 		<key>MyHealthBarSliderTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zMgUsLAdUftc+rmPKthWXgds8Uy4FG38jXU0dpFLH9c=
+			E/K3Db/qayCOUZYZ+ohabPvJoO36/nPnLtA4/HjK0+A=
 			</data>
 		</dict>
 		<key>MyHealthBottomDescriptionSubview.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			uMWz0n9dG+HF+dMRLA7vXxTgEVdATiLqqb7aVKDq0zo=
+			Cnwt+bu8vPbbTlUzC28MF6xAsXUBXznaxnOBTu8PlEY=
 			</data>
 		</dict>
 		<key>MyHealthCustomPickerTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DDLqAlzsOBa+A79pRI5MIWXgu19bni/uoaZ4KZnnqaE=
+			XA4AAgEpmq7WRnoMCmHTGCifzRHCcaW99JJarJ714q8=
 			</data>
 		</dict>
 		<key>MyHealthCustomTextFieldTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			PWCV5uCTrjHnJtJ0E/PlE/Dvc7+J6NTLz6LhonOgB7A=
+			9O0XZCsqA3zkJA4Q5tdK50P2uryu9rYqM25I9V+1yfw=
 			</data>
 		</dict>
 		<key>MyHealthCustomTextViewTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Pu0lFVvhn9ZV8COQr4uLyvi9S2IIAJyn8UjIYwD59Ss=
+			VlRb5U6n9ftLI/Fp9vKPSIzqisHh3JrCv96QPn0d2Aw=
 			</data>
 		</dict>
 		<key>MyHealthDoubleButtonTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			oseh2DWAieJe+TZ7YL4SbPhS3Pv2Tl1UWOgOMIAx2D8=
+			+bPO5RIMP4pLfLlxceG8jJTpjBselP5zw3W3rUwmicc=
 			</data>
 		</dict>
 		<key>MyHealthElectronicPrescriptionDetailTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SWV5Wa5f+5sDk72Ec+iO9E2dH/VPv0ADphPdAptIsrk=
+			HNcF846rhEryHVfWu8g6IwdSjeawMxB/BWOF3cBALhs=
 			</data>
 		</dict>
 		<key>MyHealthHeaderListTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+BaUu57G8GDSxnp0pPqzZ+e6HYL1lcUrlFEwqHp7qdI=
+			gKqbxzPv2lCSnaKK9PA2oBVh+/YEC/v8ohCjHkf7pEo=
 			</data>
 		</dict>
 		<key>MyHealthIconAndDescriptionSubview.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nRey6XDM2hR3871S+3pinrt57gcJT4CN/BhBN91Oe+M=
+			/ybTlF+MoT7xGwMtyzuJjmHuC/d/hHW4GTR7r7YXwpg=
 			</data>
 		</dict>
 		<key>MyHealthReportDetailTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CBveMF3MpzeU9iviD74BvwuPoBNUkILEMNDmCJwPk8U=
+			GKxJROhulq0twqClOWNi+tS7Roz+WHw/Qkbhsjd5AoY=
 			</data>
 		</dict>
 		<key>MyHealthSectionItemDetailTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			n8wDvbXsW9hbbUjR9PYMs59fb2d6CWMJg/oWTjimZTg=
+			zgDjrIbTG1kaIXtHbGIduCs1U60IN3Y44eUI0gk4dAc=
 			</data>
 		</dict>
 		<key>MyHealthSectionListHeaderView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TEsuJUW1LZFDU2vzEoIycI31H7wz4D1fFujERQs/B+c=
+			RgGfmnOba7WrzZC61kuJoLDlwoPJ6p0Ii36v6wz1VKQ=
 			</data>
 		</dict>
 		<key>MyHealthSectionTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			8TLzBSEY89V/LziLT6FR9e9urIi8f3ssjx1NVGgwZ8E=
+			sQ8aC0TXcTijnnkNM6fT+UYzc/FaFHCGylgH+nhmacA=
 			</data>
 		</dict>
 		<key>MyHealthStoryboard.storyboardc/Info.plist</key>
@@ -974,35 +1012,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KMlt4SmZmJhFq7WjBCKt9sRyHuiPmLUkEpUdXeY1zjA=
+			rkFoG1VTgyxYjyqdc4yHWziPKlkoshicK7BD2l0pAr0=
 			</data>
 		</dict>
 		<key>MyHealthStoryboard.storyboardc/fYa-bI-t0e-view-MLc-3i-X5g.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			dKJwhr6UlCMUXR+VyesPXkQYS7Is54bZV3+kprncqW8=
+			1II4S8sd4VwpobVmgA48NfLE4wJGL+jC290DOpahynY=
 			</data>
 		</dict>
 		<key>MyHealthStoryboard.storyboardc/ySB-P6-piZ-view-Jzj-QM-Xub.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/v9yYMiklIzZnpdLUcW2yMGItRT4+6RU9mNUyvpw3U0=
+			MkFxORyADrZ06EndaLQ/AXX5j9eGE+3FXkWwjCjE9Uk=
 			</data>
 		</dict>
 		<key>NPSBannerView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			X1/uk1Qceaxy4sBRpYkbX3q/Zk9vJWM1Tyth0SQ51uQ=
+			dEbQJBfiF0O0qtzkWYQJBc8kV7SE5wCLKoWieTvh/1Y=
 			</data>
 		</dict>
 		<key>NPSFormViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			tX/HskMQ6zxuOfh48/zswr7YIA8LLfD+3LFCLONqx/E=
+			uewAc55sEokdUjxCgCUXmH28jEwAADA7nk6z4VqT4NY=
 			</data>
 		</dict>
 		<key>PhotoViewController.nib</key>
@@ -1016,56 +1054,56 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			s4U+WgkoJMPrBq/J03hOQnQvub3mKPanaSlx5ajE+xw=
+			MPVig7FQIhma0Snyp+RND8XIubt6AEehB3p/bndsZ0Y=
 			</data>
 		</dict>
 		<key>ProfessionalProfileCVDescriptionTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			53RdiV8h4rdgUB+XysyuqJs/KG/2N94fg1FygWUouLw=
+			uishKtMBzAp5mqED8szPKjh1wV17heTblkFXKolHvYs=
 			</data>
 		</dict>
 		<key>ProfessionalProfileHeaderTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FciCKD6E/x8Qo5yX7CUNnFqyil6EbAE93i/xT/rLvKc=
+			BFDg9u/arACsXT44y6HeksVPcIXv2A3o3uVBLvnoEEQ=
 			</data>
 		</dict>
 		<key>ProfessionalProfileScheduleTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			g9NSxuQHQbdyr7DSMIEQYB9bEsdyweCUVto4rhIxjaQ=
+			PEJmL/g45vcyJf9zqoRiPvSGm3afrlgmcNMx6IQeCKA=
 			</data>
 		</dict>
 		<key>ProfessionalProfileSectionTitleTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XuuI149PF1q3ajlT3pdwMPUZ7hsjf09cXJK62KJebWQ=
+			Cye9v7CzWy18Z0sIc/AX5HZDxDpF2ss/4U7X8LOYK8g=
 			</data>
 		</dict>
 		<key>ProfessionalProfileViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wjFJ18E+oBjv4KZ9SLZtezuCPyfqU53/TnKmfCLAb7g=
+			9xwt2uVcsJnIJGjqPy3EJX8wTZvnEACxzi2ZK9SmdNw=
 			</data>
 		</dict>
 		<key>TermsAndConditionsViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bR7Ql8/4Z34XeVZQ+RhSMqdn25lO2ZXUyWE7gRJDhGs=
+			lZTT4h8KqQFa/X2chYF+ecHDM/OmKd7rpHv0zm5+4bI=
 			</data>
 		</dict>
 		<key>TextMessageTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zt5yGd3b23vsYOfv2hjfpGo1fL5t/3XpYz/KdG0yVlI=
+			K3GMggTRoP7/PcLkHy929KbtJ3/1LS2h99JY6671EUU=
 			</data>
 		</dict>
 		<key>VideoCallCall.storyboardc/BLO-dO-BLG-view-61M-AI-Jj5.nib</key>
@@ -1114,7 +1152,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AW3Q+rMkeyzZQlHYx5VdB2I8QLt1a4a1w+CNZkfoysc=
+			fAwsQ00fD3uP5uVMNK0uO1MtnxuJTBPUsJ6NDGaJPMg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1123,7 +1161,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rkNlcPavIHQcTqv5iZciF61q/FP5w+pCc5BwiBDNWTY=
+			H1/S9J0jU2gGpi6zYqIETvD1ztqHPYW/0Lbc8xxsFss=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1139,7 +1177,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sOb6bzRFqiTcy06G39eKCIMuo5YD4wINqEfPgjrOhf4=
+			NvadRGDFTYHw0O1+Ztlw+IUkzDvvAtWBI8Ctmy3GCHc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1148,7 +1186,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3wim5yGidSoZ8yKR2YXZhqGA1+FdVEEfux9gPoVYlUU=
+			uUD4eoM0epf1sXjv2mTDzVeoM1iIiavCqpZxM/o3u6g=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1164,7 +1202,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Hq1PDIIpY+bgXWG3nZwAMznaz5QUGJGZSxkrNIdvywc=
+			Ua2bOQeglLYX88x8e28TR/hLEuXIssu4SirrT4Px/gs=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1173,7 +1211,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			n9BQHCUf76p3ha3mWyrP4+vyw3Z1Zi81nRMPmdh/cp8=
+			xcGKnBHpvT+0fgchlRTkV8dB6bJ5QX7kHAkevFbQXZk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1182,7 +1220,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			eAqHY8/GjJKbTsYlf7Z77A6zRZ+sQPvi2G9yBFRluHc=
+			agED4F+5ZqD+nordY4AirKmhqzlY8enYeQOKGeN5TAM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1191,7 +1229,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ceT0APsnqPYfMjaNhy6IV2KScWhB+2LPULKPcF+74IU=
+			Z5X4lj+zHrGxcPs0+S7vHXioL5khw+gkENvDqCqm6gg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1200,7 +1238,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			eAqHY8/GjJKbTsYlf7Z77A6zRZ+sQPvi2G9yBFRluHc=
+			agED4F+5ZqD+nordY4AirKmhqzlY8enYeQOKGeN5TAM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1209,16 +1247,30 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sQwpK5lZDGDNKVv7cQRP8SSpq167Y0BY5eag+BxbH9k=
+			2uKf+tW1UDwnqeupyrgXAaj9+CVHk/9Mtte+IeIYoOo=
 			</data>
 			<key>optional</key>
 			<true/>
+		</dict>
+		<key>onQueueAnimation.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9DwJZpJ3sRcF2Ug40yz//LTifCD0HI2Hr8UQ3NPEpiU=
+			</data>
+		</dict>
+		<key>preparingAnimation.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KduyTLwVElJUK2KEJSNRTEYaLu3KimJuM6S4InGWFis=
+			</data>
 		</dict>
 		<key>pt.lproj/InfoPlist.strings</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			83YXkHX7BhEMqCZf6FF3pjY1gge/RflnjjJqAfX+ncg=
+			zBLv1u8TalhKX38qh+7/55bi7+V7eYyFWtgsKejnGsE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1227,16 +1279,30 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xb5Z1GL3UzhcbDV0nRqCphJ3rrEwGiaKwy8ZoQUcm30=
+			ckEu8YP9IcoSQ5h5BB55zFIU0ksq/mGMTUP+inlf5BM=
 			</data>
 			<key>optional</key>
 			<true/>
+		</dict>
+		<key>searchingAnimation.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qB0l4M0Hw2NIDjbultd5+50VTv+pRlJ92pJDzhv8pr4=
+			</data>
 		</dict>
 		<key>staging-meetingdoctors-com2023.der</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			4hnPUSrsh0cRVcgE8PmPyYtJX0h1tyqiuxIIqYA5xpM=
+			</data>
+		</dict>
+		<key>video-call-staging-meetingdoctors-com.der</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			W3t5cZuSalynE6ee8XhsMDde6sUEAdIqqVVhKhQfvEo=
 			</data>
 		</dict>
 	</dict>

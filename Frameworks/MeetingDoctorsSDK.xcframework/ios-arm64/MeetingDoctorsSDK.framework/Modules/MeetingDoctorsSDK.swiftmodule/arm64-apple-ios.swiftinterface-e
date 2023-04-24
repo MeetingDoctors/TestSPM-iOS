@@ -1,12 +1,16 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MeetingDoctorsSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
 import Alamofire
 import AudioToolbox
+import Combine
 import CoreData
 import CoreLocation
 import Foundation
+import ImageIO
+import Lottie
 import MeetingDoctorsController
 import MeetingDoctorsCore
 import MeetingDoctorsRemote
@@ -18,25 +22,31 @@ import MobileCoreServices
 import OpenTok
 import Photos
 import RealmSwift
-import Rswift
 import RxSwift
 import SocketIO
 import StoreKit
 import Swift
-import SwiftUI
 import Swinject
 import SwinjectStoryboard
 import UIKit
 import UserNotifications
 import WebKit
 import _Concurrency
-extension Rswift.StringResource {
-  public func localized(_ language: Swift.String = Locale.autoupdatingCurrent.languageCode ?? "es") -> Swift.String
-  public func localizedFormat(values: Swift.CVarArg...) -> Swift.String
-}
+import _StringProcessing
 extension MeetingDoctorsSDK.MeetingDoctors {
   final public class func handleCurrentVideoCall(origin: UIKit.UIViewController? = nil, animated: Swift.Bool = true, completion: @escaping ((MeetingDoctorsSDK.MeetingDoctorsResult<Swift.Void>) -> Swift.Void))
   final public class func checkCurrentVideoCallStatus(completion: @escaping ((MeetingDoctorsSDK.MeetingDoctorsResult<MeetingDoctorsSDK.MeetingDoctorsVideoCallStatus>) -> Swift.Void))
+}
+extension MeetingDoctorsSDK.MeetingDoctors {
+  final public class func startVideocall(from presenterViewController: UIKit.UIViewController)
+  final public class func getVideocallInitialViewController() -> UIKit.UIViewController
+  final public class func hasAnyVideocallStarted(completion: @escaping (Swift.Bool) -> Swift.Void)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MDVideocallBaseViewController : MeetingDoctorsSDK.BaseViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
 }
 public protocol MeetingDoctorsMessageType {
   var id: Swift.String { get }
@@ -72,7 +82,7 @@ public enum MeetingDoctorsMessageContentType {
     @objc get
     @objc set
   }
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var borderWidth: CoreGraphics.CGFloat {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var borderWidth: CoreFoundation.CGFloat {
     @objc get
     @objc set
   }
@@ -80,15 +90,15 @@ public enum MeetingDoctorsMessageContentType {
     @objc get
     @objc set
   }
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var insets: CoreGraphics.CGSize {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var insets: CoreFoundation.CGSize {
     @objc get
     @objc set
   }
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowOpacityBadge: CoreGraphics.CGFloat {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowOpacityBadge: CoreFoundation.CGFloat {
     @objc get
     @objc set
   }
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowRadiusBadge: CoreGraphics.CGFloat {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowRadiusBadge: CoreFoundation.CGFloat {
     @objc get
     @objc set
   }
@@ -96,21 +106,21 @@ public enum MeetingDoctorsMessageContentType {
     @objc get
     @objc set
   }
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowOffsetBadge: CoreGraphics.CGSize {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowOffsetBadge: CoreFoundation.CGSize {
     @objc get
     @objc set
   }
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var cornerRadius: CoreGraphics.CGFloat {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var cornerRadius: CoreFoundation.CGFloat {
     @objc get
     @objc set
   }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func textRect(forBounds bounds: CoreGraphics.CGRect, limitedToNumberOfLines numberOfLines: Swift.Int) -> CoreGraphics.CGRect
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func drawText(in rect: CoreGraphics.CGRect)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func draw(_ rect: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func textRect(forBounds bounds: CoreFoundation.CGRect, limitedToNumberOfLines numberOfLines: Swift.Int) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func drawText(in rect: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func draw(_ rect: CoreFoundation.CGRect)
   @available(iOS 8.0, *)
-  @objc override dynamic public func prepareForInterfaceBuilder()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepareForInterfaceBuilder()
   @objc deinit
 }
 extension MeetingDoctorsController.MessengerRemoteNotificationModel {
@@ -160,6 +170,16 @@ extension MeetingDoctorsSDK.FetchedResultsDelegateProvider where CellConfig.View
     get
   }
 }
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MDVideocallInformationViewController : MeetingDoctorsSDK.MDVideocallProcessBaseViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override public func closeProcess()
+  @_Concurrency.MainActor(unsafe) override public func numberOfRowsInSection(section _: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) override public func cellForRowAt(indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
 extension SwinjectStoryboard.SwinjectStoryboard {
   @_Concurrency.MainActor(unsafe) public static func getDefaultMDContainer() -> Swinject.Container
 }
@@ -185,13 +205,39 @@ public struct MeetingDoctorsChatColors : MeetingDoctorsSDK.MeetingDoctorsChatCol
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
+final public class MDVideocallInformationAssembler {
+  public init(moderator: MeetingDoctorsController.MDVideocallParticipantRequestModel? = nil, specialityCode: Swift.String? = nil)
+  final public func viewController(permission: MeetingDoctorsController.MDVideocallPermission? = nil) -> UIKit.UIViewController
+  @objc deinit
+}
 public protocol InboxBaseCellViewModelType {
 }
 extension UIKit.UITextField {
-  @objc override dynamic open func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
+}
+extension QuartzCore.CALayer {
+  public func fade()
 }
 extension UIKit.UIColor {
   public func isLight(_ threshold: Swift.Float = 0.7) -> Swift.Bool?
+}
+extension CoreFoundation.CGPoint {
+  public enum Point {
+    case topLeft
+    case centerLeft
+    case bottomLeft
+    case topCenter
+    case center
+    case bottomCenter
+    case topRight
+    case centerRight
+    case bottomRight
+    public static func == (a: CoreFoundation.CGPoint.Point, b: CoreFoundation.CGPoint.Point) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
 }
 public enum MedicalHistoryDetailViewModelType : MeetingDoctorsSDK.MedicalHistoryDetailViewModelProtocol {
   case allergy(MeetingDoctorsSDK.MedicalHistoryAllergyDetailViewModel)
@@ -247,7 +293,7 @@ public enum MedicalHistoryDetailViewModelType : MeetingDoctorsSDK.MedicalHistory
 }
 @objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) open class Floaty : UIKit.UIView {
   @objc @_Concurrency.MainActor(unsafe) open var items: [MeetingDoctorsSDK.FloatyItem]
-  @objc @_Concurrency.MainActor(unsafe) open var size: CoreGraphics.CGFloat {
+  @objc @_Concurrency.MainActor(unsafe) open var size: CoreFoundation.CGFloat {
     @objc get
     @objc set
   }
@@ -259,11 +305,11 @@ public enum MedicalHistoryDetailViewModelType : MeetingDoctorsSDK.MedicalHistory
     @objc get
     @objc set
   }
-  @objc @_Concurrency.MainActor(unsafe) open var paddingX: CoreGraphics.CGFloat {
+  @objc @_Concurrency.MainActor(unsafe) open var paddingX: CoreFoundation.CGFloat {
     @objc get
     @objc set
   }
-  @objc @_Concurrency.MainActor(unsafe) open var paddingY: CoreGraphics.CGFloat {
+  @objc @_Concurrency.MainActor(unsafe) open var paddingY: CoreFoundation.CGFloat {
     @objc get
     @objc set
   }
@@ -271,7 +317,7 @@ public enum MedicalHistoryDetailViewModelType : MeetingDoctorsSDK.MedicalHistory
   @IBInspectable @objc @_Concurrency.MainActor(unsafe) open var autoCloseOnOverlayTap: Swift.Bool
   @IBInspectable @objc @_Concurrency.MainActor(unsafe) open var handleFirstItemDirectly: Swift.Bool
   @IBInspectable @objc @_Concurrency.MainActor(unsafe) open var relativeToSafeArea: Swift.Bool
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var rotationDegrees: CoreGraphics.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var rotationDegrees: CoreFoundation.CGFloat
   @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var animationSpeed: Swift.Double
   @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonColor: UIKit.UIColor?
   @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonHighlightedColor: UIKit.UIColor?
@@ -282,8 +328,8 @@ public enum MedicalHistoryDetailViewModelType : MeetingDoctorsSDK.MedicalHistory
   }
   @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var plusColor: UIKit.UIColor
   @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var overlayColor: UIKit.UIColor
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var itemSpace: CoreGraphics.CGFloat
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var itemSize: CoreGraphics.CGFloat {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var itemSpace: CoreFoundation.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var itemSize: CoreFoundation.CGFloat {
     @objc get
     @objc set
   }
@@ -315,11 +361,11 @@ public enum MedicalHistoryDetailViewModelType : MeetingDoctorsSDK.MedicalHistory
     @objc get
     @objc set
   }
-  @objc dynamic public init()
-  @_Concurrency.MainActor(unsafe) public init(size: CoreGraphics.CGFloat)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) public init(size: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open func draw(_ rect: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func draw(_ rect: CoreFoundation.CGRect)
   @objc @_Concurrency.MainActor(unsafe) open func open()
   @objc @_Concurrency.MainActor(unsafe) open func close()
   @objc @_Concurrency.MainActor(unsafe) open func toggle()
@@ -346,30 +392,38 @@ public enum MedicalHistoryDetailViewModelType : MeetingDoctorsSDK.MedicalHistory
   @objc @_Concurrency.MainActor(unsafe) open func addItem(icon: UIKit.UIImage?, handler: @escaping ((MeetingDoctorsSDK.FloatyItem) -> Swift.Void)) -> MeetingDoctorsSDK.FloatyItem
   @objc @_Concurrency.MainActor(unsafe) open func removeItem(item: MeetingDoctorsSDK.FloatyItem)
   @objc @_Concurrency.MainActor(unsafe) open func removeItem(index: Swift.Int)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open func hitTest(_ point: CoreGraphics.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func hitTest(_ point: CoreFoundation.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
   @objc deinit
-  @objc override dynamic open func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change _: [Foundation.NSKeyValueChangeKey : Any]?, context _: Swift.UnsafeMutableRawPointer?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change _: [Foundation.NSKeyValueChangeKey : Any]?, context _: Swift.UnsafeMutableRawPointer?)
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func willMove(toSuperview newSuperview: UIKit.UIView?)
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func didMoveToSuperview()
 }
 extension MeetingDoctorsSDK.Floaty {
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
-  @objc override dynamic open var accessibilityLabel: Swift.String? {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var accessibilityLabel: Swift.String? {
     @objc get
     @objc set(newLabel)
   }
-  @objc override dynamic open var accessibilityHint: Swift.String? {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var accessibilityHint: Swift.String? {
     @objc get
     @objc set(newHint)
   }
-  @objc override dynamic open var accessibilityValue: Swift.String? {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var accessibilityValue: Swift.String? {
     @objc get
     @objc set(newHint)
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open var accessibilityElements: [Any]? {
-    @_Concurrency.MainActor(unsafe) @objc get
-    @_Concurrency.MainActor(unsafe) @objc set
+    @objc get
+    @objc set
   }
+}
+extension Foundation.URL {
+  public static func lottieAnimationWithURL(_ bundleURL: Foundation.URL?) -> [Swift.String : Any]?
+}
+extension UIKit.UIImage {
+  public class func gifImageWithData(_ data: Foundation.Data) -> UIKit.UIImage?
+  public class func gifImageWithURL(_ gifUrl: Foundation.URL?) -> UIKit.UIImage?
+  public class func gifImageWithName(_ name: Swift.String) -> UIKit.UIImage?
 }
 public enum MedicalHistoryType {
   case unknown
@@ -479,8 +533,11 @@ extension MeetingDoctorsSDK.MedicalHistoryDetailViewModel : MeetingDoctorsSDK.Me
 }
 public struct InboxHeaderStyle {
   public let headerView: UIKit.UIView
-  public let frame: CoreGraphics.CGRect?
-  public init(headerView: UIKit.UIView, frame: CoreGraphics.CGRect? = nil)
+  public let frame: CoreFoundation.CGRect?
+  public init(headerView: UIKit.UIView, frame: CoreFoundation.CGRect? = nil)
+}
+extension UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public func removeAllConstraints()
 }
 public protocol MeetingDoctorsDividerType : MeetingDoctorsSDK.InboxBaseCellViewModelType {
   var contentView: UIKit.UIView { get }
@@ -704,7 +761,7 @@ public protocol ChatMediaItemProtocol {
   var url: Foundation.URL? { get }
   var image: UIKit.UIImage? { get }
   var placeholderImage: UIKit.UIImage { get }
-  var size: CoreGraphics.CGSize { get }
+  var size: CoreFoundation.CGSize { get }
 }
 public protocol ChatFileItemProtocol {
   var data: Foundation.Data? { get }
@@ -949,8 +1006,11 @@ extension MeetingDoctorsSDK.MedicalHistoryAllergyViewCellType {
 extension MeetingDoctorsSDK.MedicalHistoryAllergyViewCell : MeetingDoctorsSDK.MedicalHistoryAllergyViewCellType {
 }
 extension MeetingDoctorsSDK.MeetingDoctors {
-  final public class func messengerViewController(with filter: MeetingDoctorsSDK.MeetingDoctorsFilterType = MeetingDoctorsFilter.default, withTitle titleText: Swift.String? = nil, showHeader: Swift.Bool = false, showDivider: Swift.Bool = true, showTopDividers: Swift.Bool = true, onUpdateLayout listener: ((CoreGraphics.CGSize) -> Swift.Void)? = nil) -> MeetingDoctorsSDK.MeetingDoctorsResult<UIKit.UINavigationController>
+  final public class func messengerViewController(with filter: MeetingDoctorsSDK.MeetingDoctorsFilterType = MeetingDoctorsFilter.default, withTitle titleText: Swift.String? = nil, showHeader: Swift.Bool = false, showDivider: Swift.Bool = true, showTopDividers: Swift.Bool = true, onUpdateLayout listener: ((CoreFoundation.CGSize) -> Swift.Void)? = nil) -> MeetingDoctorsSDK.MeetingDoctorsResult<UIKit.UINavigationController>
   final public class func messengerChatViewController(searchOption: MeetingDoctorsSDK.MeetingDoctorsSearchOption, actionMessage: MeetingDoctorsSDK.MeetingDoctorsActionMessage, completion: @escaping (MeetingDoctorsSDK.MeetingDoctorsResult<UIKit.UIViewController>) -> Swift.Void)
+}
+extension QuartzCore.CALayer {
+  public func rotate()
 }
 public struct UIImageViewAlignmentMask : Swift.OptionSet {
   public let rawValue: Swift.Int
@@ -974,12 +1034,12 @@ public struct UIImageViewAlignmentMask : Swift.OptionSet {
     set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open var image: UIKit.UIImage? {
-    @_Concurrency.MainActor(unsafe) @objc get
-    @_Concurrency.MainActor(unsafe) @objc set
+    @objc get
+    @objc set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open var highlightedImage: UIKit.UIImage? {
-    @_Concurrency.MainActor(unsafe) @objc get
-    @_Concurrency.MainActor(unsafe) @objc set
+    @objc get
+    @objc set
   }
   @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var alignTop: Swift.Bool {
     @objc get
@@ -998,10 +1058,10 @@ public struct UIImageViewAlignmentMask : Swift.OptionSet {
     @objc set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open var isHighlighted: Swift.Bool {
-    @_Concurrency.MainActor(unsafe) @objc get
-    @_Concurrency.MainActor(unsafe) @objc set
+    @objc get
+    @objc set
   }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(image: UIKit.UIImage?)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(image: UIKit.UIImage?, highlightedImage: UIKit.UIImage?)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
@@ -1079,7 +1139,6 @@ public enum MeetingDoctorsInboxCellStyle {
 }
 public protocol MeetingDoctorsStyleType {
   var dataTextColor: UIKit.UIColor? { get set }
-  var titleFont: UIKit.UIFont? { get set }
   var titleColor: UIKit.UIColor? { get set }
   var titleView: UIKit.UIView? { get set }
   var preferredStatusBarStyle: UIKit.UIStatusBarStyle { get set }
@@ -1088,7 +1147,6 @@ public protocol MeetingDoctorsStyleType {
   var navigationBarTintColor: UIKit.UIColor? { get set }
   var navigationBarBackIndicatorImage: UIKit.UIImage? { get set }
   var inboxTitle: Swift.String? { get set }
-  var inboxBackgroundColor: UIKit.UIColor? { get set }
   @available(*, deprecated, renamed: "rootLeftBarButtonItem", message: "Use rootLeftBarButtonItem instead")
   var inboxLeftBarButtonItem: UIKit.UIBarButtonItem? { get set }
   var rootLeftBarButtonItem: UIKit.UIBarButtonItem? { get set }
@@ -1113,19 +1171,6 @@ public protocol MeetingDoctorsStyleType {
   var chatBackgroundView: UIKit.UIView? { get set }
   var supportMailBanned: Swift.String? { get set }
   var showCollegiateNumber: Swift.Bool { get set }
-  var videoCallIconDoctorNotAssignedImage: UIKit.UIImage? { get set }
-  var videoCallIconDoctorBackgroundColor: UIKit.UIColor { get set }
-  var videoCallTopBackgroundColor: UIKit.UIColor? { get set }
-  var videoCallBottomBackgroundColor: UIKit.UIColor? { get set }
-  var videoCallTitleTextColor: UIKit.UIColor? { get set }
-  var videoCallNextAppointmentTextColor: UIKit.UIColor? { get set }
-  var videoCallProfessionalNameTextColor: UIKit.UIColor? { get set }
-  var videoCallProfessionalSpecialityTextColor: UIKit.UIColor? { get set }
-  var videoCallCancelButtonBackgroundColor: UIKit.UIColor? { get set }
-  var videoCallAcceptButtonBackgroundColor: UIKit.UIColor? { get set }
-  var videoCallCancelButtonTextColor: UIKit.UIColor? { get set }
-  var videoCallAcceptButtonTextColor: UIKit.UIColor? { get set }
-  var videoCallIconDoctorNotAssignedImageTintColor: UIKit.UIColor? { get set }
   var conditionsDismiss: () -> Swift.Void { get set }
   var emptyView: UIKit.UIView? { get set }
   func style(view: UIKit.UINavigationBar)
@@ -1140,16 +1185,14 @@ extension MeetingDoctorsSDK.MeetingDoctorsStyleType {
 }
 public struct MeetingDoctorsStyle : MeetingDoctorsSDK.MeetingDoctorsStyleType {
   public var dataTextColor: UIKit.UIColor?
-  public var titleFont: UIKit.UIFont?
-  public var titleColor: UIKit.UIColor?
   public var titleView: UIKit.UIView?
+  public var titleColor: UIKit.UIColor?
   public var preferredStatusBarStyle: UIKit.UIStatusBarStyle
   public var navigationBarColor: UIKit.UIColor?
   public var navigationBarTintColor: UIKit.UIColor?
   public var navigationBarBackIndicatorImage: UIKit.UIImage?
   public var navigationBarOpaque: Swift.Bool
   public var inboxTitle: Swift.String?
-  public var inboxBackgroundColor: UIKit.UIColor?
   public var inboxLeftBarButtonItem: UIKit.UIBarButtonItem? {
     get
     set
@@ -1180,22 +1223,6 @@ public struct MeetingDoctorsStyle : MeetingDoctorsSDK.MeetingDoctorsStyleType {
   public var chatBackgroundView: UIKit.UIView?
   public var showCollegiateNumber: Swift.Bool
   public var supportMailBanned: Swift.String?
-  public var videoCallIconDoctorNotAssignedImage: UIKit.UIImage?
-  public var videoCallIconDoctorBackgroundColor: UIKit.UIColor
-  public var videoCallBackgroundImage: UIKit.UIImage?
-  public var videoCallTopBackgroundImageTintColor: UIKit.UIColor?
-  public var videoCallBottomBackgroundImageTintColor: UIKit.UIColor?
-  public var videoCallTopBackgroundColor: UIKit.UIColor?
-  public var videoCallBottomBackgroundColor: UIKit.UIColor?
-  public var videoCallTitleTextColor: UIKit.UIColor?
-  public var videoCallNextAppointmentTextColor: UIKit.UIColor?
-  public var videoCallProfessionalNameTextColor: UIKit.UIColor?
-  public var videoCallProfessionalSpecialityTextColor: UIKit.UIColor?
-  public var videoCallCancelButtonBackgroundColor: UIKit.UIColor?
-  public var videoCallAcceptButtonBackgroundColor: UIKit.UIColor?
-  public var videoCallCancelButtonTextColor: UIKit.UIColor?
-  public var videoCallAcceptButtonTextColor: UIKit.UIColor?
-  public var videoCallIconDoctorNotAssignedImageTintColor: UIKit.UIColor?
   public var conditionsDismiss: () -> Swift.Void
   public var emptyView: UIKit.UIView?
   public var medicalHistoryOptions: [MeetingDoctorsController.MedicalHistoryModel]
@@ -1221,22 +1248,22 @@ extension MeetingDoctorsSDK.MeetingDoctorsStyle {
   @_Concurrency.MainActor(unsafe) final public var label: UIKit.UILabel {
     get
   }
-  @_Concurrency.MainActor(unsafe) final public var verticalInset: CoreGraphics.CGFloat {
+  @_Concurrency.MainActor(unsafe) final public var verticalInset: CoreFoundation.CGFloat {
     get
     set
   }
-  @_Concurrency.MainActor(unsafe) final public var horizontalInset: CoreGraphics.CGFloat {
+  @_Concurrency.MainActor(unsafe) final public var horizontalInset: CoreFoundation.CGFloat {
     get
     set
   }
   @_Concurrency.MainActor(unsafe) @objc override final public var backgroundColor: UIKit.UIColor? {
-    @_Concurrency.MainActor(unsafe) @objc get
-    @_Concurrency.MainActor(unsafe) @objc set
+    @objc get
+    @objc set
   }
   @_Concurrency.MainActor(unsafe) final public class var identifier: Swift.String {
     get
   }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @_Concurrency.MainActor(unsafe) @objc override final public func prepareForReuse()
   @_Concurrency.MainActor(unsafe) @objc override final public func layoutSubviews()
@@ -1564,6 +1591,11 @@ extension MeetingDoctorsController.MessageStatusModel {
 extension UIKit.UITextView : UIKit.NSTextStorageDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func textStorage(_: UIKit.NSTextStorage, didProcessEditing editedMask: UIKit.NSTextStorage.EditActions, range _: Foundation.NSRange, changeInLength _: Swift.Int)
 }
+extension UIKit.UIFont {
+  public var weight: UIKit.UIFont.Weight {
+    get
+  }
+}
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class StatusView : UIKit.UIView {
   public enum Status {
     case online
@@ -1579,14 +1611,14 @@ extension UIKit.UITextView : UIKit.NSTextStorageDelegate {
     get
     set
   }
-  @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
 extension UIKit.UILabel {
-  @objc override dynamic open func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
 }
 final public class DataSourceProvider<DataSource, CellConfig, SupplementaryConfig> where DataSource : MeetingDoctorsSDK.DataSourceProtocol, CellConfig : MeetingDoctorsSDK.ReusableViewConfigProtocol, SupplementaryConfig : MeetingDoctorsSDK.ReusableViewConfigProtocol, DataSource.Item == CellConfig.Item, CellConfig.Item == SupplementaryConfig.Item {
   final public var dataSource: DataSource
@@ -1607,37 +1639,21 @@ extension MeetingDoctorsSDK.DataSourceProvider where CellConfig.View : UIKit.UIC
   }
 }
 public enum MeetingDoctorsVideoCallStatus {
-  case pending(MeetingDoctorsController.VideoCallModel?)
-  case assigned(MeetingDoctorsController.VideoCallModel?, MeetingDoctorsController.VideoCallProfessionalModel)
-  case calling(MeetingDoctorsController.VideoCallModel?, MeetingDoctorsController.VideoCallProfessionalModel, MeetingDoctorsController.VideoCallConsultationModel)
-  case cancelled
+  case assigned(MeetingDoctorsController.VideoCallProfessionalModel)
   case unknown
 }
 extension MeetingDoctorsSDK.MeetingDoctorsVideoCallStatus : Swift.Equatable {
   public static func == (a: MeetingDoctorsSDK.MeetingDoctorsVideoCallStatus, b: MeetingDoctorsSDK.MeetingDoctorsVideoCallStatus) -> Swift.Bool
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class AvatarView : UIKit.UIImageView {
-  @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(image: UIKit.UIImage?)
   @available(iOS 3.0, *)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(image: UIKit.UIImage?, highlightedImage: UIKit.UIImage?)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
-}
-public protocol ReusableCell : AnyObject {
-  static var reuseIdentifier: Swift.String { get }
-}
-extension MeetingDoctorsSDK.ReusableCell where Self : UIKit.UITableViewCell {
-  public static var reuseIdentifier: Swift.String {
-    get
-  }
-}
-extension MeetingDoctorsSDK.ReusableCell where Self : UIKit.UICollectionViewCell {
-  public static var reuseIdentifier: Swift.String {
-    get
-  }
 }
 public protocol NibLoadable : AnyObject {
   static var nibName: Swift.String { get }
@@ -1648,6 +1664,11 @@ extension MeetingDoctorsSDK.NibLoadable where Self : UIKit.UIView {
     get
   }
   public static func instantiate() -> Self
+}
+extension UIKit.UIFont.Weight {
+  public var toInt: Swift.Int {
+    get
+  }
 }
 @objc public enum FloatyItemLabelPositionType : Swift.Int {
   case left
@@ -1661,7 +1682,7 @@ extension MeetingDoctorsSDK.NibLoadable where Self : UIKit.UIView {
   }
 }
 @objc @_Concurrency.MainActor(unsafe) open class FloatyItem : UIKit.UIView {
-  @objc @_Concurrency.MainActor(unsafe) open var size: CoreGraphics.CGFloat {
+  @objc @_Concurrency.MainActor(unsafe) open var size: CoreFoundation.CGFloat {
     @objc get
     @objc set
   }
@@ -1674,8 +1695,8 @@ extension MeetingDoctorsSDK.NibLoadable where Self : UIKit.UIView {
   @objc @_Concurrency.MainActor(unsafe) open var circleShadowColor: UIKit.UIColor
   @objc @_Concurrency.MainActor(unsafe) open var titleShadowColor: UIKit.UIColor
   @objc @_Concurrency.MainActor(unsafe) open var handler: ((MeetingDoctorsSDK.FloatyItem) -> Swift.Void)?
-  @objc @_Concurrency.MainActor(unsafe) open var imageOffset: CoreGraphics.CGPoint
-  @objc @_Concurrency.MainActor(unsafe) open var imageSize: CoreGraphics.CGSize {
+  @objc @_Concurrency.MainActor(unsafe) open var imageOffset: CoreFoundation.CGPoint
+  @objc @_Concurrency.MainActor(unsafe) open var imageSize: CoreFoundation.CGSize {
     @objc get
     @objc set
   }
@@ -1706,9 +1727,9 @@ extension MeetingDoctorsSDK.NibLoadable where Self : UIKit.UIView {
     get
     set
   }
-  @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc dynamic public init()
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open func draw(_ rect: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func draw(_ rect: CoreFoundation.CGRect)
   @objc deinit
 }
 public protocol TModel {
@@ -1733,8 +1754,118 @@ extension MeetingDoctorsSDK.MeetingDoctorsResult {
   public func map<T>(_ transform: (Value) -> T) -> MeetingDoctorsSDK.MeetingDoctorsResult<T>
   public func compactMap<T>(_ transform: (Value) throws -> T) -> MeetingDoctorsSDK.MeetingDoctorsResult<T>
 }
+extension UIKit.UIFont {
+  public enum S11 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S12 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S14 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S16 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S18 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S20 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S22 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S24 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S25 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S30 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+}
 extension UIKit.UITextView {
-  @objc override dynamic open func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
 }
 public protocol MeetingDoctorsFilterType {
   var profiles: [MeetingDoctorsSDK.MeetingDoctorsRole] { get }
@@ -2081,7 +2212,7 @@ extension MeetingDoctorsSDK.MessengerDeeplinkOption : Swift.Equatable {
   @_Concurrency.MainActor(unsafe) final public let floaty: MeetingDoctorsSDK.Floaty
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
-    @_Concurrency.MainActor(unsafe) @objc get
+    @objc get
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -2089,21 +2220,21 @@ extension MeetingDoctorsSDK.MessengerDeeplinkOption : Swift.Equatable {
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class MessageView : UIKit.UICollectionReusableView {
   @_Concurrency.MainActor(unsafe) open class func reuseIdentifier() -> Swift.String
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder _: Foundation.NSCoder)
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class MessageDateHeaderView : MeetingDoctorsSDK.MessageView {
   @_Concurrency.MainActor(unsafe) override open class func reuseIdentifier() -> Swift.String
   @_Concurrency.MainActor(unsafe) final public let dateLabel: UIKit.UILabel
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder _: Foundation.NSCoder)
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class MessageDateFooterView : MeetingDoctorsSDK.MessageView {
   @_Concurrency.MainActor(unsafe) override open class func reuseIdentifier() -> Swift.String
   @_Concurrency.MainActor(unsafe) final public let dateLabel: UIKit.UILabel
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder _: Foundation.NSCoder)
   @_Concurrency.MainActor(unsafe) public func labelPosition(isFromCurrentSender: Swift.Bool)
   @objc deinit
@@ -2112,23 +2243,23 @@ public protocol MediaItem {
   var url: Foundation.URL? { get }
   var image: UIKit.UIImage? { get }
   var placeholderImage: UIKit.UIImage { get }
-  var size: CoreGraphics.CGSize { get }
+  var size: CoreFoundation.CGSize { get }
 }
 public protocol LocationItem {
   var location: CoreLocation.CLLocation { get }
-  var size: CoreGraphics.CGSize { get }
+  var size: CoreFoundation.CGSize { get }
 }
 public struct MessagePhotoModel : MeetingDoctorsSDK.MediaItem {
   public var url: Foundation.URL?
   public var image: UIKit.UIImage?
   public var placeholderImage: UIKit.UIImage
-  public var size: CoreGraphics.CGSize
+  public var size: CoreFoundation.CGSize
 }
 public struct MessageImageModel : MeetingDoctorsSDK.ChatMediaItemProtocol {
   public var url: Foundation.URL?
   public var image: UIKit.UIImage?
   public var placeholderImage: UIKit.UIImage
-  public var size: CoreGraphics.CGSize
+  public var size: CoreFoundation.CGSize
 }
 public struct ChatFileItemModel : MeetingDoctorsSDK.ChatFileItemProtocol {
   public var data: Foundation.Data?
@@ -2165,8 +2296,8 @@ public protocol SectionModelType {
   init(original: Self, items: [Self.Item])
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class NPSBannerView : UIKit.UIView {
-  @objc override dynamic public func awakeFromNib()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers open class FloatyManager : ObjectiveC.NSObject {
@@ -2192,7 +2323,7 @@ public protocol SectionModelType {
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class PhotoViewController : MeetingDoctorsSDK.BaseViewController {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
-    @_Concurrency.MainActor(unsafe) @objc get
+    @objc get
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
@@ -2316,9 +2447,11 @@ public struct MeetingDoctorsChatImages : MeetingDoctorsSDK.MeetingDoctorsChatIma
 }
 public protocol MeetingDoctorsProfileImagesType {
   var profileHeaderImage: UIKit.UIImage? { get set }
+  var profileNavBarIcon: UIKit.UIImage? { get set }
 }
 public struct MeetingDoctorsProfileImages : MeetingDoctorsSDK.MeetingDoctorsProfileImagesType {
   public var profileHeaderImage: UIKit.UIImage?
+  public var profileNavBarIcon: UIKit.UIImage?
 }
 public protocol MedicalHistoryEditViewModelProtocol {
   var navigationTitle: Swift.String? { get }
@@ -2414,6 +2547,29 @@ extension MeetingDoctorsSDK.MedicalHistoryGenericViewCellType {
 }
 extension MeetingDoctorsSDK.MedicalHistoryGenericViewCell : MeetingDoctorsSDK.MedicalHistoryGenericViewCellType {
 }
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDGradientView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public class var layerClass: Swift.AnyClass {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) public var cornerRadius: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var colors: [UIKit.UIColor] {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var gradientStart: CoreFoundation.CGPoint.Point {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var gradientEnd: CoreFoundation.CGPoint.Point {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect = .zero)
+  @objc deinit
+}
 public typealias MedicalHistoryViewControl = MeetingDoctorsSDK.BaseViewController & MeetingDoctorsSDK.MedicalHistoryControl
 public protocol MedicalHistoryControl {
   func value<Root, Value>(for keyPath: Swift.KeyPath<Root, Value>) -> Value?
@@ -2424,6 +2580,17 @@ extension MeetingDoctorsSDK.MedicalHistoryControl {
   public func value<Root, Value>(for _: Swift.KeyPath<Root, Value>) -> Value?
   public func update<Root, Value>(_: Value, for _: Swift.KeyPath<Root, Value>)
   public func validate() -> Swift.Bool
+}
+extension UIKit.UIFont.Weight {
+  public static let w100: UIKit.UIFont.Weight
+  public static let w200: UIKit.UIFont.Weight
+  public static let w300: UIKit.UIFont.Weight
+  public static let w400: UIKit.UIFont.Weight
+  public static let w500: UIKit.UIFont.Weight
+  public static let w600: UIKit.UIFont.Weight
+  public static let w700: UIKit.UIFont.Weight
+  public static let w800: UIKit.UIFont.Weight
+  public static let w900: UIKit.UIFont.Weight
 }
 public typealias MedicalHistoryVideoCallReportViewCellFactory = MeetingDoctorsSDK.ReusableViewConfig<MeetingDoctorsSDK.MedicalHistoryVideoCallReportCellViewModel, MeetingDoctorsSDK.MedicalHistoryVideoCallReportViewCell>
 public protocol MedicalHistoryVideoCallReportViewCellType {
@@ -2504,26 +2671,63 @@ public enum MeetingDoctorsError : Swift.Error {
     }
   }
 }
+public protocol ReusableCell : AnyObject {
+  static var reuseIdentifier: Swift.String { get }
+}
+extension MeetingDoctorsSDK.ReusableCell where Self : UIKit.UITableViewCell {
+  public static var reuseIdentifier: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsSDK.ReusableCell where Self : UIKit.UICollectionViewCell {
+  public static var reuseIdentifier: Swift.String {
+    get
+  }
+}
 extension UIKit.UITableView {
   @_Concurrency.MainActor(unsafe) public func register<T>(_: T.Type) where T : UIKit.UITableViewCell, T : MeetingDoctorsSDK.NibLoadable, T : MeetingDoctorsSDK.ReusableCell
+  @_Concurrency.MainActor(unsafe) public func register<T>(_: T.Type) where T : UIKit.UITableViewCell, T : MeetingDoctorsSDK.ReusableCell
   @_Concurrency.MainActor(unsafe) public func dequeueReusableCell<T>(_: T.Type) -> T where T : UIKit.UITableViewCell, T : MeetingDoctorsSDK.ReusableCell
   @_Concurrency.MainActor(unsafe) public func dequeueReusableCell<T>(_: T.Type, for indexPath: Foundation.IndexPath) -> T where T : UIKit.UITableViewCell, T : MeetingDoctorsSDK.ReusableCell
 }
 extension UIKit.UINavigationBar {
-  @objc override dynamic open func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MDVideocallProcessBaseViewController : MeetingDoctorsSDK.MDVideocallBaseViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) open var tableView: UIKit.UITableView
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) open func setNavigationTitle()
+  @objc @_Concurrency.MainActor(unsafe) open func closeProcess()
+  @_Concurrency.MainActor(unsafe) open func didSelectRowAt(indexPath: Foundation.IndexPath)
+  @_Concurrency.MainActor(unsafe) open func numberOfRowsInSection(section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) open func cellForRowAt(indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension MeetingDoctorsSDK.MDVideocallProcessBaseViewController : UIKit.UITableViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+}
+extension MeetingDoctorsSDK.MDVideocallProcessBaseViewController : UIKit.UITableViewDataSource {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class AvatarStatusView : UIKit.UIView {
-  public enum Size : CoreGraphics.CGFloat {
+  public enum Size : CoreFoundation.CGFloat {
     case small
     case mid
     case big
     case unknown
-    public init?(rawValue: CoreGraphics.CGFloat)
-    public typealias RawValue = CoreGraphics.CGFloat
-    public var rawValue: CoreGraphics.CGFloat {
+    public init?(rawValue: CoreFoundation.CGFloat)
+    public typealias RawValue = CoreFoundation.CGFloat
+    public var rawValue: CoreFoundation.CGFloat {
       get
     }
   }
+  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var avatarView: MeetingDoctorsSDK.AvatarView!
   @_Concurrency.MainActor(unsafe) public var status: MeetingDoctorsSDK.StatusView.Status? {
     get
     set
@@ -2540,8 +2744,12 @@ extension UIKit.UINavigationBar {
     get
     set
   }
+  @_Concurrency.MainActor(unsafe) public var avatarBackgroundColor: UIKit.UIColor? {
+    get
+    set
+  }
   @_Concurrency.MainActor(unsafe) public var onClick: (() -> Swift.Void)?
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder unarchiver: Foundation.NSCoder)
   @objc deinit
 }
@@ -2577,6 +2785,8 @@ extension MeetingDoctorsSDK.MedicalHistoryDescriptionEditViewModel {
     get
   }
 }
+extension CoreFoundation.CGPoint.Point : Swift.Equatable {}
+extension CoreFoundation.CGPoint.Point : Swift.Hashable {}
 extension MeetingDoctorsSDK.FloatyOpenAnimationType : Swift.Equatable {}
 extension MeetingDoctorsSDK.FloatyOpenAnimationType : Swift.Hashable {}
 extension MeetingDoctorsSDK.FloatyOpenAnimationType : Swift.RawRepresentable {}

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/MeetingDoctorsSchema-Swift.h</key>
 		<data>
-		enPLf58Di044MjM76iiJwbp+QWE=
+		UjP/I67G7vvY5gpz+EePIJQZWpg=
 		</data>
 		<key>Headers/Schema.h</key>
 		<data>
@@ -14,19 +14,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		eMIAJEY2hjVI8mhw17KZdk0Ktog=
+		zwb0yYoppPr+h92GRBzkXBTtkX4=
+		</data>
+		<key>Modules/MeetingDoctorsSchema.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<data>
+		kaaFM3Dotogl+H+LEO+lxjxqOJU=
+		</data>
+		<key>Modules/MeetingDoctorsSchema.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<data>
+		wEPe/Yf0iop+L8LxKsmE7eXo6ag=
 		</data>
 		<key>Modules/MeetingDoctorsSchema.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		Wg+chMD31LvTakmOdSuaVkucRQM=
+		cSDblzTw9iuOpkhYoKYpbIX+XZw=
 		</data>
 		<key>Modules/MeetingDoctorsSchema.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		RLoI6YzzgOK+L8eMBL3wgeAYfis=
+		wEPe/Yf0iop+L8LxKsmE7eXo6ag=
 		</data>
 		<key>Modules/MeetingDoctorsSchema.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		UR70kqLFuCYXdiL9ryeXfYVW708=
+		hHsKJ0Z3BbxUGGteQwNz5EsVtOo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,7 +47,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			074g/SJvso1qXMsa8NKA6n+MfhiBJncSrAGTLwIyYr8=
+			nQFu+7bNzZPu/pLYie8XsuuWAcetBFEy9Gch/fNGvhE=
 			</data>
 		</dict>
 		<key>Headers/Schema.h</key>
@@ -49,25 +57,39 @@
 			oam29+5dYJKfVNF9OQC3wbmXT6WBp7RdKev5h0pEqME=
 			</data>
 		</dict>
+		<key>Modules/MeetingDoctorsSchema.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			b3lpfys8lxt1wOXavKYojVcAQb4Cpfwqtezzv4B0dOg=
+			</data>
+		</dict>
+		<key>Modules/MeetingDoctorsSchema.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			lYJ9UE3N7/rRNwsSfItttNk8+KcfAvNO2XylGZoFADU=
+			</data>
+		</dict>
 		<key>Modules/MeetingDoctorsSchema.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TfMkcWNTnEQq300WriejVvncyijtS1fqrlYu4BBqKvU=
+			R5INL7e17M8ge7ocn4lCqgjIrPDCvAT5laKCgUxsIKg=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSchema.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			oAd4xQjQnDKyKXqsJSqL7uYhQrV4CJNqIsqkcJ8VfTc=
+			lYJ9UE3N7/rRNwsSfItttNk8+KcfAvNO2XylGZoFADU=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSchema.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			r9NzaNCYSv50rX7kfo2ymIQgfNZIZU69djB4czfB7yQ=
+			nLra2asvCNmI8oyNT9IjkBu+mTM1hFpFiQQ6y0FM4zM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -1,4 +1,0 @@
-import MeetingDoctorsSDK
-
-struct TestSPM {
-}

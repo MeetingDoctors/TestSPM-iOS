@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/MeetingDoctorsRemote-Swift.h</key>
 		<data>
-		fW0rLF1+aY2SBbJUgq0G3BZYM94=
+		lNARwkucwuvbhYNDvDRNjVUGN6Q=
 		</data>
 		<key>Headers/Remote.h</key>
 		<data>
@@ -18,23 +18,47 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Yy4nXigG2rqpEyCNuuHMlNgeKh0=
+		A5VJSDhgGlxqqlzHc5rJF6qDhU0=
+		</data>
+		<key>MeetingDoctors.der</key>
+		<data>
+		+w8fgoHeQSHXOdUnRg/rJxPZ3bY=
+		</data>
+		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<data>
+		BObH6OoUDQt185C8wShW0asKjW4=
+		</data>
+		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<data>
+		fCJ+w60ELau1BXvZPhm6NFwe5Hg=
 		</data>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		ueWyLMu1hclCqMEklWcVB+SqUIY=
+		VLGVzK6gceUmRocB0DiOcvWZZqw=
 		</data>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		y66ehaoWLsx4ZmKmipcA62O9fPE=
+		fCJ+w60ELau1BXvZPhm6NFwe5Hg=
 		</data>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		zvwy7UkyjB+i2+rMVT1Gn1snZcw=
+		P7uJnxf9ZuuZEqwlFYwO/nZaU20=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		njJi/T96AmILqiPu8nAW4R3QIME=
+		</data>
+		<key>dev-meetingdoctors-com2023.der</key>
+		<data>
+		SbID94OZq7xylZnt13u8S/24OBw=
+		</data>
+		<key>staging-meetingdoctors-com2023.der</key>
+		<data>
+		RGp8wJe7wft5NHvYcbt5zlbLsME=
+		</data>
+		<key>video-call-staging-meetingdoctors-com.der</key>
+		<data>
+		R3BKG1uIc0wAXEtpaTAeHpXmvBI=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -50,7 +74,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Grw2iUeXHAs9/IBBS6zXS1etkDiJHGA4/BwrA1lD/Kg=
+			0AVQdc6hJmY24O8xEuzoc8twt75ENgvmJ6FRS7BXM70=
 			</data>
 		</dict>
 		<key>Headers/Remote.h</key>
@@ -60,25 +84,46 @@
 			jrdx0hFTYIAIj0TZyvcxZinjNwHQVRAwj2rx+JyaFjM=
 			</data>
 		</dict>
+		<key>MeetingDoctors.der</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bQebrcW+50zkZGG9ciKNS5RJIhBu8uvT/jMqPvylyHI=
+			</data>
+		</dict>
+		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ZTWvRDkwVP8pSKYmrKqDjDg/vrvysFfD7N2qgfDYJH4=
+			</data>
+		</dict>
+		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			uBksh1scMsiRXTVrZ77a2O7diZk2Lfys8KuNYlFOLo8=
+			</data>
+		</dict>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RsoCco/yzaQ1aaifuseyQygAlWmmMt/bSKUSC3XZ7/U=
+			tEvKo0rsyYzf343ciSaZNKwHkq3OyTS430z17cPO/5c=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mSZaijBBM6cKLM0HWiXpds1xkySoEyiEqH5UsQEuFlQ=
+			uBksh1scMsiRXTVrZ77a2O7diZk2Lfys8KuNYlFOLo8=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yP8jbLGC8NBWNm4noxYox1NGqwSNiunTz3ndN83l5C0=
+			x7TWdVEFNhRHas0WvTmhR+YkNwnIe+EWzy0au6H2Qcs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -86,6 +131,27 @@
 			<key>hash2</key>
 			<data>
 			eaNdLEyllnwNztS5kS8H1JOxKGwawmNP1r4HPOKFLgU=
+			</data>
+		</dict>
+		<key>dev-meetingdoctors-com2023.der</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			sXlXbu/YYT/KxPYySEDgWzExvbjYrTCBYybzihz05FM=
+			</data>
+		</dict>
+		<key>staging-meetingdoctors-com2023.der</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			4hnPUSrsh0cRVcgE8PmPyYtJX0h1tyqiuxIIqYA5xpM=
+			</data>
+		</dict>
+		<key>video-call-staging-meetingdoctors-com.der</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			W3t5cZuSalynE6ee8XhsMDde6sUEAdIqqVVhKhQfvEo=
 			</data>
 		</dict>
 	</dict>

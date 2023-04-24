@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/MeetingDoctorsStorage-Swift.h</key>
 		<data>
-		oFVeENmpC8oIM8oZs5d+kPVKu+s=
+		tptSKJYzyro1HLCqDi61nwVjYbs=
 		</data>
 		<key>Headers/Storage.h</key>
 		<data>
@@ -14,19 +14,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		5LmAS/9+nQyu/XKIA1RAA+bYjAI=
+		4oq9ExRNbsJ5jI9NFCMKK/8uH+c=
+		</data>
+		<key>Modules/MeetingDoctorsStorage.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<data>
+		74WosY5NiE4DPQTGvLp6RRrZJU0=
+		</data>
+		<key>Modules/MeetingDoctorsStorage.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<data>
+		JnG9JGRBt7Kci5ujA40xZQJf9HI=
 		</data>
 		<key>Modules/MeetingDoctorsStorage.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		Or71KeGsBItCLM1VY7HQC0Y7sns=
+		0JhSeX4USiX+Nc2lKO2PRzLfTS8=
 		</data>
 		<key>Modules/MeetingDoctorsStorage.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		lMZAWwP3D/QOIN8rp4FIR9Cv0d4=
+		JnG9JGRBt7Kci5ujA40xZQJf9HI=
 		</data>
 		<key>Modules/MeetingDoctorsStorage.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Gw4lpFK0OrKyYT9F7d+mCKeJeLY=
+		+RRPCbcM8UCFV33+cD73PCg3yfg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,7 +47,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KojBsjvIl/0r9bm3HbfjkGDMRSJzp2RXtzLodpZUEkU=
+			YYWWhrr0cgIPX9jr+NT+Ea9jINC4xmo2IfIP4WVUh/Y=
 			</data>
 		</dict>
 		<key>Headers/Storage.h</key>
@@ -49,25 +57,39 @@
 			1Sf9WGyac0BYL/BK1+1puhgpC+iipSxZBXcBsdSWP3I=
 			</data>
 		</dict>
+		<key>Modules/MeetingDoctorsStorage.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yqyePC03XcXnAyTp3MqPsOqIAlSY4VNHuOcZgXwN53I=
+			</data>
+		</dict>
+		<key>Modules/MeetingDoctorsStorage.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			QAGpnThhIpANG67lI3Atc6o0B9FWHgUysUT82fHVo6A=
+			</data>
+		</dict>
 		<key>Modules/MeetingDoctorsStorage.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			J49TMjS0wE27dbDEtYBoBZ9mp+8UDbHmGKjj+D3a2sA=
+			xPY1jbBixDZVtEH8ySmd+/BGnmmvsH+6dH3vCD38rKU=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsStorage.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			OW9pA0nHijLTx82p+j2ES7DuNHRQgFP6gdTgUjJplhQ=
+			QAGpnThhIpANG67lI3Atc6o0B9FWHgUysUT82fHVo6A=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsStorage.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zbxu+faI59sVuXjZr8lVsQ8EVynXaNuBAzqA9Q48xMg=
+			l1ZZvAtiPeb0zO2VnwpNkwBaf9dswMQWqBEvPaGu+2Y=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

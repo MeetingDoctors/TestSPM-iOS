@@ -6,6 +6,6 @@ framework module MeetingDoctorsSDK {
 }
 
 module MeetingDoctorsSDK.Swift {
-    header "MeetingDoctorsSDK-Swift.h"
-    requires objc
+  header "MeetingDoctorsSDK-Swift.h"
+  requires objc
 }

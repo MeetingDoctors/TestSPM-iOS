@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MeetingDoctorsController
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import AdSupport
 import CoreLocation
 import Foundation
@@ -14,6 +15,7 @@ import Swift
 import UIKit
 import UserNotifications
 import _Concurrency
+import _StringProcessing
 public class AuthenticationController {
   public init(_ installation: MeetingDoctorsController.InstallationController, repository: MeetingDoctorsController.RepositoryController, remote: MeetingDoctorsController.RemoteController, scheduler: RxSwift.ImmediateSchedulerType, auth: MeetingDoctorsController.CustomerAuthControllerProtocol)
   public func current(_ id: Swift.String) -> RxSwift.Observable<MeetingDoctorsController.AccountModel?>
@@ -66,11 +68,35 @@ extension Foundation.NSNotification.Name {
       public static let Accepted: Foundation.Notification.Name
     }
     public struct VideoCall {
+      public static let videocall_requested: Foundation.Notification.Name
+      public static let videocall_cancelled_user: Foundation.Notification.Name
+      public static let videocall_professional_ready: Foundation.Notification.Name
+      public static let videocall_cancelled_time_expired: Foundation.Notification.Name
+      public static let videocall_user_joined: Foundation.Notification.Name
+      public static let videocall_finished: Foundation.Notification.Name
+      public static let videocall_cancelled_professional_busy: Foundation.Notification.Name
+      public static let videocall_error_network: Foundation.Notification.Name
+      public static let videocall_error_system: Foundation.Notification.Name
+      public static let videocall_cancelled_user_requested_new: Foundation.Notification.Name
       public static let PickedUp: Foundation.Notification.Name
       public static let Finished: Foundation.Notification.Name
       public static let Cancelled: Foundation.Notification.Name
       public static let Assigned: Foundation.Notification.Name
       public static let Calling: Foundation.Notification.Name
+      public struct Process {
+        public struct Canceled {
+          public static let Error: Foundation.Notification.Name
+          public static let Dismiss: Foundation.Notification.Name
+          public static let Alert: Foundation.Notification.Name
+          public static let Timeout: Foundation.Notification.Name
+          public static let Reinit: Foundation.Notification.Name
+        }
+        public static let Init: Foundation.Notification.Name
+        public static let Reinit: Foundation.Notification.Name
+        public struct OneToOne {
+          public static let SendMessage: Foundation.Notification.Name
+        }
+      }
     }
   }
   public struct MeetingDoctorsGroups {
@@ -114,6 +140,12 @@ extension Foundation.Notification {
     }
     public struct VideoCall {
       public static let videoCallId: Swift.String
+      public struct Process {
+        public static let Status: Foundation.Notification.Name
+        public struct OneToOne {
+          public static let SendMessage: Foundation.Notification.Name
+        }
+      }
     }
   }
 }
@@ -196,7 +228,7 @@ extension MeetingDoctorsController.MessageDataModel {
   }
 }
 extension MeetingDoctorsController.MessageDataModel {
-  public var size: CoreGraphics.CGSize? {
+  public var size: CoreFoundation.CGSize? {
     get
   }
 }
@@ -209,6 +241,30 @@ extension MeetingDoctorsController.MessageDataModel {
   }
 }
 public protocol AutoLenses {
+}
+public enum MDVideocallStatusType : Swift.String, Swift.Codable, Swift.Equatable {
+  case onHold
+  case onGoing
+  case cancelled
+  case finished
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum MDVideocallStatus {
+  case onHold(videocallId: Swift.String)
+  case onGoing(participants: [MeetingDoctorsController.MDVideocallCommonDataResponse<MeetingDoctorsController.MDVideocallParticipantResponseModel>])
+  case cancelled
+  case finished
+  case unknown
+}
+public enum MDVideocallPermission {
+  case authorized(status: MeetingDoctorsController.MDVideocallStatus)
+  case notDetermined(status: MeetingDoctorsController.MDVideocallStatus)
+  case denied
+  case unknown
 }
 public class InstallationController {
   public var current: RxSwift.Observable<MeetingDoctorsController.InstallationModel?> {
@@ -364,7 +420,7 @@ public protocol CustomerAuthModelProtocol {
   var expiresIn: Swift.Double? { get }
   var updatedAt: Foundation.Date { get }
 }
-public struct CustomerAuthModel : MeetingDoctorsController.CustomerAuthModelProtocol {
+public struct CustomerAuthModel : Swift.Codable, MeetingDoctorsController.CustomerAuthModelProtocol {
   public let id: Swift.String
   public let accessToken: Swift.String
   public let tokenType: Swift.String
@@ -372,6 +428,8 @@ public struct CustomerAuthModel : MeetingDoctorsController.CustomerAuthModelProt
   public let expiresIn: Swift.Double?
   public let updatedAt: Foundation.Date
   public init(id: Swift.String, accessToken: Swift.String, tokenType: Swift.String, user: MeetingDoctorsController.CustomerUserModel, expiresIn: Swift.Double?, updatedAt: Foundation.Date)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 extension MeetingDoctorsController.CustomerAuthModel {
   public init(schema: MeetingDoctorsSchema.CustomerAuthSchema)
@@ -439,6 +497,28 @@ extension MeetingDoctorsController.MedicalQueryBuilder : MeetingDoctorsControlle
 }
 extension MeetingDoctorsController.MedicalQueryBuilder : MeetingDoctorsController.RemoteRequestBuildable {
   public func build() -> MeetingDoctorsSchema.PaginableRequest
+}
+public struct MDCompaniesArgumentGetResponse : Swift.Codable {
+  public let id: Swift.String?
+  public let apiKey: Swift.String?
+  public let professional: Swift.String?
+  public let customer: Swift.String?
+  public let timezone: Swift.String?
+  public let type: Swift.String?
+  public let service: Swift.String?
+  public let survey: MeetingDoctorsController.MDCompaniesArgumentSurveyGetResponse?
+  public let createdAt: Foundation.Date?
+  public let ratedAt: Foundation.Date?
+  public let sentAt: Foundation.Date?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MDCompaniesArgumentSurveyGetResponse : Swift.Codable {
+  public let title: Swift.String
+  public let body: Swift.String
+  public let form: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public enum ControllerError : Swift.Error {
   public enum InstallationFailureReason {
@@ -561,6 +641,11 @@ extension Foundation.Date {
     get
   }
 }
+public class MDVideocallJoinRequestModel : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public protocol CustomerNotificationsControllerProtocol {
   func register(_ token: Swift.String) -> RxSwift.Observable<MeetingDoctorsController.CustomerInstallationModel>
   func unregister() -> RxSwift.Observable<MeetingDoctorsController.CustomerInstallationModel>
@@ -610,6 +695,15 @@ public protocol IdentifiableAdapter {
   func fetch() -> RxSwift.Single<[Self.SchemaType]>
   func save(entity: Self.SchemaType, update: Swift.Bool) -> RxSwift.Single<Self.SchemaType>
   func delete(entity: Self.SchemaType) -> RxSwift.Completable
+}
+public enum MDVideocallParticipantType : Swift.String, Swift.Codable {
+  case moderator
+  case participant
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
 }
 public class ErrorBodyModel : Swift.Codable {
   final public let code: Swift.Int
@@ -722,16 +816,13 @@ public struct SimpleRepository<E> : MeetingDoctorsController.Repository {
   public typealias EntityType = E
 }
 public protocol VideoCallStatusModelProtocol {
-  var videoConsultation: MeetingDoctorsController.VideoCallModel? { get }
   var professional: MeetingDoctorsController.VideoCallProfessionalModel? { get }
-  var tokbox: MeetingDoctorsController.VideoCallConsultationModel? { get }
+  var type: MeetingDoctorsSchema.VideoCallRemoteNotificationType { get }
 }
 public struct VideoCallStatusModel : MeetingDoctorsController.VideoCallStatusModelProtocol {
-  public let videoConsultation: MeetingDoctorsController.VideoCallModel?
   public let professional: MeetingDoctorsController.VideoCallProfessionalModel?
-  public let tokbox: MeetingDoctorsController.VideoCallConsultationModel?
   public let type: MeetingDoctorsSchema.VideoCallRemoteNotificationType
-  public init(videoConsultation: MeetingDoctorsController.VideoCallModel?, professional: MeetingDoctorsController.VideoCallProfessionalModel?, tokbox: MeetingDoctorsController.VideoCallConsultationModel?, type: MeetingDoctorsSchema.VideoCallRemoteNotificationType = VideoCallRemoteNotificationType.unknown)
+  public init(professional: MeetingDoctorsController.VideoCallProfessionalModel?, type: MeetingDoctorsSchema.VideoCallRemoteNotificationType = .unknown)
 }
 extension MeetingDoctorsController.VideoCallStatusModel {
   public init(schema: MeetingDoctorsSchema.VideoCallStatusSchema)
@@ -821,6 +912,7 @@ extension MeetingDoctorsController.InboxContactModel {
   public static let avatarURLLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Foundation.URL>
   public static let overviewLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.String>
   public static let specialityLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.String>
+  public static let specialityCodeLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.String>
   public static let specialityTypeLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, MeetingDoctorsController.SpecialityTypeModel>
   public static let roleLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, MeetingDoctorsController.ContactRoleModel>
   public static let statusLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, MeetingDoctorsController.ContactStatusModel>
@@ -957,6 +1049,13 @@ public protocol RepositoryControllerAssembly {
 }
 public protocol DerivationReportAdapter {
   func fetch() -> RxSwift.Single<[MeetingDoctorsSchema.DerivationReportSchema]>
+}
+public class MDVideocallErrorModel : Swift.Codable {
+  final public let code: Swift.Int?
+  final public let message: Swift.String?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public protocol ReferrerModelType : Swift.CustomStringConvertible {
   var source: Swift.String { get }
@@ -1153,6 +1252,12 @@ extension MeetingDoctorsController.DiseaseModel : MeetingDoctorsCore.Transmittab
 }
 extension MeetingDoctorsController.DiseaseModel : MeetingDoctorsController.AutoLenses {
 }
+public class MDVideocallParticipantRequestModel : Swift.Codable {
+  public init(user: Swift.String?, name: Swift.String?, image: Swift.String? = nil, role: MeetingDoctorsController.MDVideocallParticipantType? = .participant)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public protocol CustomerInstallationControllerProtocol {
   func fetch() -> RxSwift.Observable<MeetingDoctorsController.CustomerInstallationModel?>
   func update(pushToken: Swift.String?) -> RxSwift.Observable<MeetingDoctorsController.CustomerInstallationModel>
@@ -1197,6 +1302,11 @@ extension RxSwift.PrimitiveSequence where Trait == RxSwift.SingleTrait {
 extension RxSwift.PrimitiveSequence where Trait == RxSwift.CompletableTrait, Element == Swift.Never {
   public func asMaybe() -> RxSwift.PrimitiveSequence<RxSwift.MaybeTrait, Element>
 }
+public class MDVideocallResponseModel : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 extension Foundation.Date {
   public var isInPast: Swift.Bool {
     get
@@ -1214,7 +1324,7 @@ public struct VideoCallProfessionalModel : MeetingDoctorsController.VideoCallPro
   public init(name: Swift.String?, avatar: Swift.String?, detail: Swift.String?)
 }
 extension MeetingDoctorsController.VideoCallProfessionalModel {
-  public init(schema: MeetingDoctorsSchema.VideoCallProfessionalSchema)
+  public init(schema: MeetingDoctorsSchema.VideoCallProfessionalSchema?)
 }
 extension MeetingDoctorsController.VideoCallProfessionalModel : MeetingDoctorsController.AutoLenses {
 }
@@ -1259,6 +1369,12 @@ public struct UserFeaturesModel {
 }
 extension MeetingDoctorsController.UserFeaturesModel {
   public init(schema: MeetingDoctorsSchema.UserFeaturesSchema)
+}
+public class MDVideocallRequestModel : Swift.Codable {
+  public init(id: Swift.String?, apiKey: Swift.String?, consultation: Swift.Int?, type: MeetingDoctorsController.MDVideocallType?, speciality: Swift.String?, participants: [MeetingDoctorsController.MDVideocallParticipantRequestModel]?)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public enum SystemModel : Swift.String {
   case iOS
@@ -1549,10 +1665,12 @@ public protocol CustomerUserModelProtocol {
   var hash: Swift.String { get }
   var token: Swift.String { get }
 }
-public struct CustomerUserModel : MeetingDoctorsController.CustomerUserModelProtocol {
+public struct CustomerUserModel : Swift.Codable, MeetingDoctorsController.CustomerUserModelProtocol {
   public let hash: Swift.String
   public let token: Swift.String
   public init(hash: Swift.String, token: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 extension MeetingDoctorsController.CustomerUserModel {
   public init(schema: MeetingDoctorsSchema.CustomerUserSchema)
@@ -1570,6 +1688,36 @@ public protocol QueryType {
   var offset: Swift.Int { get }
   var limit: Swift.Int { get }
 }
+public enum MDVCParticipantProviderResponseEnum : Swift.String, Swift.Codable {
+  case opentok
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public class MDVideocallParticipantResponseModel : Swift.Codable {
+  final public let id: Swift.String?
+  final public let videocall: Swift.String?
+  final public let apiKey: Swift.String?
+  final public let type: MeetingDoctorsController.MDVideocallType?
+  final public let provider: MeetingDoctorsController.MDVCParticipantProviderResponseEnum?
+  final public let status: MeetingDoctorsController.MDVideocallStatusType?
+  final public let speciality: Swift.String?
+  final public let session: Swift.String?
+  final public let token: Swift.String?
+  final public let user: Swift.String?
+  final public let name: Swift.String?
+  final public let image: Swift.String?
+  final public let role: MeetingDoctorsController.MDVideocallParticipantType?
+  final public let position: Swift.Int?
+  final public let time: Swift.Int?
+  final public let createdAt: Swift.String?
+  final public let updatedAt: Swift.String?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public protocol InstallationAdapter {
   func setup(_ request: MeetingDoctorsSchema.SetupRequest) -> RxSwift.Single<MeetingDoctorsSchema.SetupSchema>
   func setup(_ request: MeetingDoctorsSchema.SetupRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.SetupSchema?, Swift.Error>) -> Swift.Void)
@@ -1583,6 +1731,12 @@ public protocol InstallationAdapter {
     set
   }
   @objc deinit
+}
+public class MDVideocallParticipantStatusRequestModel : Swift.Codable {
+  public init(status: MeetingDoctorsController.MDVideocallStatusType?, signIn: Swift.Bool? = nil, argument: Swift.String? = "-")
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public protocol MessageModelType : Swift.CustomStringConvertible {
   var id: Swift.String { get }
@@ -1632,6 +1786,7 @@ public protocol InboxContactModelType {
   var avatarURL: Foundation.URL { get }
   var overview: Swift.String { get }
   var speciality: Swift.String { get }
+  var specialityCode: Swift.String { get }
   var specialityType: MeetingDoctorsController.SpecialityTypeModel { get }
   var role: MeetingDoctorsController.ContactRoleModel { get }
   var status: MeetingDoctorsController.ContactStatusModel { get set }
@@ -1653,6 +1808,7 @@ public struct InboxContactModel : MeetingDoctorsController.InboxContactModelType
   public let avatarURL: Foundation.URL
   public let overview: Swift.String
   public let speciality: Swift.String
+  public let specialityCode: Swift.String
   public let specialityType: MeetingDoctorsController.SpecialityTypeModel
   public let role: MeetingDoctorsController.ContactRoleModel
   public var status: MeetingDoctorsController.ContactStatusModel
@@ -1671,7 +1827,7 @@ public struct InboxContactModel : MeetingDoctorsController.InboxContactModelType
   public let conversationId: Swift.String?
   public let isVcAvailable: Swift.Bool?
   public let isAccessible: Swift.Bool
-  public init(id: Swift.String, channel: Swift.String, name: Swift.String, avatarURL: Foundation.URL, overview: Swift.String, speciality: Swift.String, specialityType: MeetingDoctorsController.SpecialityTypeModel, role: MeetingDoctorsController.ContactRoleModel, status: MeetingDoctorsController.ContactStatusModel, unread: [MeetingDoctorsController.MessageModel], lastMessageTimestamp: Foundation.TimeInterval?, pending: Swift.Int, timezone: Foundation.TimeZone, timeZoneOffset: Swift.Int, nextOnlineAt: Foundation.Date?, nextOfflineAt: Foundation.Date?, onHolidays: Swift.Bool, schedules: [MeetingDoctorsController.ScheduleModel], updatedAt: Foundation.Date, saturated: Swift.String, collegiateNumber: Swift.String, conversationId: Swift.String?, isVcAvailable: Swift.Bool?, isAccessible: Swift.Bool)
+  public init(id: Swift.String, channel: Swift.String, name: Swift.String, avatarURL: Foundation.URL, overview: Swift.String, speciality: Swift.String, specialityCode: Swift.String, specialityType: MeetingDoctorsController.SpecialityTypeModel, role: MeetingDoctorsController.ContactRoleModel, status: MeetingDoctorsController.ContactStatusModel, unread: [MeetingDoctorsController.MessageModel], lastMessageTimestamp: Foundation.TimeInterval?, pending: Swift.Int, timezone: Foundation.TimeZone, timeZoneOffset: Swift.Int, nextOnlineAt: Foundation.Date?, nextOfflineAt: Foundation.Date?, onHolidays: Swift.Bool, schedules: [MeetingDoctorsController.ScheduleModel], updatedAt: Foundation.Date, saturated: Swift.String, collegiateNumber: Swift.String, conversationId: Swift.String?, isVcAvailable: Swift.Bool?, isAccessible: Swift.Bool)
 }
 extension MeetingDoctorsController.InboxContactModel {
   public typealias ScheduleAvailability = (schedule: Foundation.Date?, availability: MeetingDoctorsController.ScheduleAvailabilityModel)
@@ -1858,6 +2014,14 @@ public enum MessageStatusModel : Swift.String {
 extension MeetingDoctorsSchema.MessageSchema.Status {
   public init(model: MeetingDoctorsController.MessageStatusModel)
 }
+public class MDVideocallCommonDataResponse<ResponseModel> : Swift.Codable where ResponseModel : Swift.Decodable, ResponseModel : Swift.Encodable {
+  final public let id: Swift.String?
+  final public let type: Swift.String?
+  final public let attributes: ResponseModel
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public enum ScheduleWeekDayModel : Swift.String {
   case unknown
   case sunday
@@ -1927,6 +2091,23 @@ extension MeetingDoctorsController.MedicalAddressModel : MeetingDoctorsCore.Tran
     get
   }
   public init(schemaObject: MeetingDoctorsSchema.MedicalAddressSchema) throws
+}
+public class MDVideocallDoctorAvailableModel {
+  final public let professionalId: Swift.String?
+  final public let name: Swift.String?
+  final public let specialty: Swift.String?
+  final public let imageURL: Swift.String?
+  public init(professionalId: Swift.String?, name: Swift.String?, specialty: Swift.String?, imageURL: Swift.String?)
+  @objc deinit
+}
+public enum MDVideocallType : Swift.String, Swift.Codable, Swift.Equatable {
+  case pool
+  case oneToOne
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
 }
 public protocol ScheduleModelType {
   var id: Swift.String { get }
@@ -2261,6 +2442,8 @@ extension MeetingDoctorsController.VideoCallReportModel : MeetingDoctorsControll
 extension MeetingDoctorsController.SpecialityTypeModel : Swift.Equatable {}
 extension MeetingDoctorsController.SpecialityTypeModel : Swift.Hashable {}
 extension MeetingDoctorsController.SpecialityTypeModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.MDVideocallStatusType : Swift.Hashable {}
+extension MeetingDoctorsController.MDVideocallStatusType : Swift.RawRepresentable {}
 extension MeetingDoctorsController.MessageTypeModel : Swift.Equatable {}
 extension MeetingDoctorsController.MessageTypeModel : Swift.Hashable {}
 extension MeetingDoctorsController.MessageTypeModel : Swift.RawRepresentable {}
@@ -2273,6 +2456,9 @@ extension MeetingDoctorsController.ControllerError.InstallationFailureReason : S
 extension MeetingDoctorsController.ControllerError.InstallationFailureReason : Swift.Hashable {}
 extension MeetingDoctorsController.ControllerError.TransmittableFailureReason : Swift.Equatable {}
 extension MeetingDoctorsController.ControllerError.TransmittableFailureReason : Swift.Hashable {}
+extension MeetingDoctorsController.MDVideocallParticipantType : Swift.Equatable {}
+extension MeetingDoctorsController.MDVideocallParticipantType : Swift.Hashable {}
+extension MeetingDoctorsController.MDVideocallParticipantType : Swift.RawRepresentable {}
 extension MeetingDoctorsController.ContactRoleModel : Swift.Equatable {}
 extension MeetingDoctorsController.ContactRoleModel : Swift.Hashable {}
 extension MeetingDoctorsController.ContactRoleModel : Swift.RawRepresentable {}
@@ -2299,6 +2485,9 @@ extension MeetingDoctorsController.ScheduleStateModel : Swift.RawRepresentable {
 extension MeetingDoctorsController.ScheduleAvailabilityModel : Swift.Equatable {}
 extension MeetingDoctorsController.ScheduleAvailabilityModel : Swift.Hashable {}
 extension MeetingDoctorsController.ScheduleAvailabilityModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.MDVCParticipantProviderResponseEnum : Swift.Equatable {}
+extension MeetingDoctorsController.MDVCParticipantProviderResponseEnum : Swift.Hashable {}
+extension MeetingDoctorsController.MDVCParticipantProviderResponseEnum : Swift.RawRepresentable {}
 extension MeetingDoctorsController.UserGenderModel : Swift.Equatable {}
 extension MeetingDoctorsController.UserGenderModel : Swift.Hashable {}
 extension MeetingDoctorsController.UserGenderModel : Swift.RawRepresentable {}
@@ -2308,6 +2497,8 @@ extension MeetingDoctorsController.MessageStatusModel : Swift.RawRepresentable {
 extension MeetingDoctorsController.ScheduleWeekDayModel : Swift.Equatable {}
 extension MeetingDoctorsController.ScheduleWeekDayModel : Swift.Hashable {}
 extension MeetingDoctorsController.ScheduleWeekDayModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.MDVideocallType : Swift.Hashable {}
+extension MeetingDoctorsController.MDVideocallType : Swift.RawRepresentable {}
 extension MeetingDoctorsController.AccountModel.CodingKeys : Swift.Equatable {}
 extension MeetingDoctorsController.AccountModel.CodingKeys : Swift.Hashable {}
 extension MeetingDoctorsController.AccountModel.CodingKeys : Swift.RawRepresentable {}

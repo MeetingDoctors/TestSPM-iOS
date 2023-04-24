@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MeetingDoctorsSocket
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import Foundation
 import MeetingDoctorsController
 import MeetingDoctorsCore
@@ -9,6 +10,7 @@ import RxSwift
 import SocketIO
 import Swift
 import _Concurrency
+import _StringProcessing
 public class SocketClientStream : MeetingDoctorsController.SocketStream {
   public var error: RxSwift.Observable<MeetingDoctorsSchema.SocketClientSchema> {
     get
@@ -66,8 +68,8 @@ public class SocketNativeStream : MeetingDoctorsController.SocketStream {
   public func join(namespace _: Swift.String)
   public func leave()
   public func clear()
-  public typealias SocketInputType = Swift.Array<Any>
-  public typealias SocketNativeType = Swift.Array<Any>
+  public typealias SocketInputType = [Any]
+  public typealias SocketNativeType = [Any]
   public typealias SocketOutputType = SocketIO.SocketData
   @objc deinit
 }
@@ -107,7 +109,7 @@ public struct NativeSocketInputStream : MeetingDoctorsController.SocketInputStre
   public init(client: SocketIO.SocketIOClient, event: MeetingDoctorsSchema.SocketListenerType)
   public init(client: SocketIO.SocketIOClient, event: SocketIO.SocketClientEvent)
   public func on() -> RxSwift.Observable<[Any]>
-  public typealias EventType = Swift.Array<Any>
+  public typealias EventType = [Any]
 }
 extension MeetingDoctorsSchema.SocketClientStatus {
   public static func wrap(from rawValue: SocketIO.SocketIOStatus?) -> MeetingDoctorsSchema.SocketClientStatus?

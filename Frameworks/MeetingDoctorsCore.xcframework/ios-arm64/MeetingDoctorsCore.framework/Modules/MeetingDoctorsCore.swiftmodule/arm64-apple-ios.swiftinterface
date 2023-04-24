@@ -1,15 +1,19 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MeetingDoctorsCore
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
 import CoreLocation
 import CryptoSwift
+import FirebaseAnalytics
 import Foundation
+import Photos
 import Security
 import Swift
 import UIKit
 import UserNotifications
 import _Concurrency
+import _StringProcessing
 extension MeetingDoctorsCore.Endpoint : Swift.Equatable {
 }
 public func == (lhs: MeetingDoctorsCore.Endpoint, rhs: MeetingDoctorsCore.Endpoint) -> Swift.Bool
@@ -23,6 +27,33 @@ public func == (lhs: MeetingDoctorsCore.Keystore, rhs: MeetingDoctorsCore.Keysto
   override public init()
   @_semantics("optimize.sil.never") override public func load(_ source: Foundation.URL) -> Foundation.Data?
   @objc deinit
+}
+public enum MDPermissionTypeEnum : Swift.Int {
+  case camera
+  case photoLibrary
+  case notification
+  case microphone
+  case calendar
+  case contacts
+  case reminders
+  case speech
+  case locationWhenInUse
+  case locationAlways
+  case motion
+  case mediaLibrary
+  case bluetooth
+  case tracking
+  case faceID
+  case siri
+  case health
+  public var name: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 public class JsonLoader : MeetingDoctorsCore.Loader<Foundation.URL, [Swift.String : Any]> {
   public init(_ loader: MeetingDoctorsCore.Loader<Foundation.URL, Foundation.Data>)
@@ -72,6 +103,20 @@ public enum CryptoManagerError : Swift.Error {
     get
   }
 }
+public protocol MDLoggingServiceProtocol {
+  func log(_ format: Swift.String, _ args: Swift.CVarArg...)
+  func log(_ error: Swift.Error)
+  func log(_ string: Swift.String)
+}
+public class MDLoggingService {
+  public init()
+  @objc deinit
+}
+extension MeetingDoctorsCore.MDLoggingService : MeetingDoctorsCore.MDLoggingServiceProtocol {
+  public func log(_ format: Swift.String, _ args: Swift.CVarArg...)
+  public func log(_ error: Swift.Error)
+  public func log(_ string: Swift.String)
+}
 public struct JsonMapper : MeetingDoctorsCore.CodableMapper {
   public let encoder: Foundation.JSONEncoder
   public let decoder: Foundation.JSONDecoder
@@ -79,8 +124,42 @@ public struct JsonMapper : MeetingDoctorsCore.CodableMapper {
   public func decode<T>(_ type: T.Type, from data: Foundation.Data) throws -> T where T : Swift.Decodable
   public func encode<T>(_ value: T) throws -> Foundation.Data where T : Swift.Encodable
 }
+extension MeetingDoctorsCore.MDPermission {
+  public static var microphone: MeetingDoctorsCore.MDMicrophonePermission {
+    get
+  }
+}
+@_inheritsConvenienceInitializers public class MDMicrophonePermission : MeetingDoctorsCore.MDPermission {
+  override open var type: MeetingDoctorsCore.MDPermissionTypeEnum {
+    get
+  }
+  open var usageDescriptionKey: Swift.String? {
+    get
+  }
+  override public var status: MeetingDoctorsCore.MDPermissionStatusEnum {
+    get
+  }
+  override public func request(completion: @escaping () -> Swift.Void)
+  override public init()
+  @objc deinit
+}
+public protocol MDEventProviderProtocol {
+  func logEvent()
+  func logEvent(_ event: MeetingDoctorsCore.MDEventProtocol)
+}
+extension MeetingDoctorsCore.MDEventProviderProtocol {
+  public func logEvent()
+  public func logEvent(_: MeetingDoctorsCore.MDEventProtocol)
+}
+open class MDEventProvider : MeetingDoctorsCore.MDEventProviderProtocol {
+  public var event: MeetingDoctorsCore.MDEventProtocol?
+  public init(event: MeetingDoctorsCore.MDEventProtocol? = nil)
+  public func logEvent()
+  public func logEvent(_ event: MeetingDoctorsCore.MDEventProtocol)
+  @objc deinit
+}
 extension Foundation.NSAttributedString {
-  public func size(maxWidth: CoreGraphics.CGFloat, font: UIKit.UIFont? = nil) -> CoreGraphics.CGSize
+  public func size(maxWidth: CoreFoundation.CGFloat, font: UIKit.UIFont? = nil) -> CoreFoundation.CGSize
 }
 extension Swift.Collection {
   public func toDictionary<K, V>(_ transform: (_ element: Self.Iterator.Element) -> [K : V]) -> [K : V] where K : Swift.Hashable
@@ -139,6 +218,30 @@ public protocol DateDecodingStrategy {
 extension MeetingDoctorsCore.DateDecodingStrategy {
   public func date(_: Swift.Decoder) throws -> Foundation.Date
 }
+open class MDPermission {
+  open var authorized: Swift.Bool {
+    get
+  }
+  open var denied: Swift.Bool {
+    get
+  }
+  open var notDetermined: Swift.Bool {
+    get
+  }
+  open func openSettingPage()
+  open var type: MeetingDoctorsCore.MDPermissionTypeEnum {
+    get
+  }
+  open var status: MeetingDoctorsCore.MDPermissionStatusEnum {
+    get
+  }
+  open func request(completion _: @escaping () -> Swift.Void)
+  public init()
+  @objc deinit
+}
+extension MeetingDoctorsCore.MDPermission : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsCore.MDPermission, rhs: MeetingDoctorsCore.MDPermission) -> Swift.Bool
+}
 extension Foundation.Bundle {
   public static var packageBundle: Foundation.Bundle {
     get
@@ -173,6 +276,16 @@ extension Foundation.Bundle {
   public var isDebug: Swift.Bool? {
     get
   }
+}
+public protocol MDEventProtocol {
+  var eventName: Swift.String { get }
+  var eventParameters: [Swift.String : Any]? { get }
+}
+open class MDEvent : MeetingDoctorsCore.MDEventProtocol {
+  public var eventName: Swift.String
+  public var eventParameters: [Swift.String : Any]?
+  public init(eventName: Swift.String, eventParameters: [Swift.String : Any]? = nil)
+  @objc deinit
 }
 public struct Keystore : Swift.Codable {
   public let clientId: Swift.String
@@ -291,7 +404,7 @@ open class Loader<S, T> : MeetingDoctorsCore.Loadable {
   @_Concurrency.MainActor(unsafe) @objc open func application(_ application: UIKit.UIApplication, didFailToContinueUserActivityWithType userActivityType: Swift.String, error: Swift.Error)
   @available(iOS 8.0, *)
   @_Concurrency.MainActor(unsafe) @objc open func application(_ application: UIKit.UIApplication, didUpdate userActivity: Foundation.NSUserActivity)
-  @objc override dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
   @objc deinit
 }
 public protocol CodableMapper {
@@ -357,6 +470,15 @@ extension CoreLocation.CLLocationCoordinate2D {
   public func formatAsLatLonString(withDecimalPlaces places: Swift.Int = 5) -> (Swift.String, Swift.String)
 }
 @_inheritsConvenienceInitializers public class UserDefaultsProperty<T> : MeetingDoctorsCore.NamedProperty<T> where T : Swift.Decodable, T : Swift.Encodable {
+  public enum Keys : Swift.String {
+    case jwt
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  convenience public init(_ key: MeetingDoctorsCore.UserDefaultsProperty<T>.Keys, default value: T? = nil)
   convenience override public init(_ name: Swift.String, default value: T? = nil)
   public init(_ name: Swift.String, store: Foundation.UserDefaults = UserDefaults.standard, mapper: MeetingDoctorsCore.CodableMapper = PropertyListMapper(), default value: T? = nil)
   override public var value: T? {
@@ -473,9 +595,9 @@ public enum BuildConfigurationType : Swift.String, Swift.Codable, Swift.CodingKe
   case debug
   case release
   case staging
+  public init?(rawValue: Swift.String)
   public init?(stringValue: Swift.String)
   public init?(intValue: Swift.Int)
-  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var intValue: Swift.Int? {
     get
@@ -501,6 +623,8 @@ public enum EndpointType : Swift.String, Swift.CodingKey {
   case sdk
   case electronicPrescription
   case coreV2
+  case videocall
+  case consultationsV2
   public init?(rawValue: Swift.String)
   public init?(stringValue: Swift.String)
   public init?(intValue: Swift.Int)
@@ -557,6 +681,13 @@ public class ClosureSelector<T> {
   public init(_ closure: @escaping MeetingDoctorsCore.Decoration<T>)
   @objc deinit
 }
+public protocol MDPermissionsProviderProtocol {
+  static func request(permission: MeetingDoctorsCore.MDPermission, completion: @escaping (Swift.Bool) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers public class MDPermissionsProvider : MeetingDoctorsCore.MDPermissionsProviderProtocol {
+  public static func request(permission: MeetingDoctorsCore.MDPermission, completion: @escaping (Swift.Bool) -> Swift.Void)
+  @objc deinit
+}
 extension MeetingDoctorsCore.BuildConfigurationType {
   public static let count: Swift.Int
   public static let allCases: [MeetingDoctorsCore.BuildConfigurationType]
@@ -572,6 +703,17 @@ extension MeetingDoctorsCore.EnvironmentType {
 extension MeetingDoctorsCore.LogLevel {
   public static let count: Swift.Int
   public static let allCases: [MeetingDoctorsCore.LogLevel]
+}
+public enum MDPermissionStatusEnum : Swift.Int {
+  case authorized
+  case denied
+  case notDetermined
+  case notSupported
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 @_hasMissingDesignatedInitializers public class FileManagerWrapper {
   public static func download(url: Foundation.URL, completion: @escaping (Foundation.URL?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)
@@ -594,24 +736,28 @@ extension MeetingDoctorsCore.Endpoint {
 extension MeetingDoctorsCore.Endpoint : MeetingDoctorsCore.AutoEquatable {
 }
 extension UIKit.UIImage {
-  public func croppedImage(bounds: CoreGraphics.CGRect) -> UIKit.UIImage
+  public func croppedImage(bounds: CoreFoundation.CGRect) -> UIKit.UIImage
   public func thumbnailImage(thumbnailSize: Swift.Int, transparentBorder _: Swift.Int, cornerRadius _: Swift.Int, interpolationQuality quality: CoreGraphics.CGInterpolationQuality) -> UIKit.UIImage
-  public func resizedImage(newSize: CoreGraphics.CGSize, interpolationQuality quality: CoreGraphics.CGInterpolationQuality) -> UIKit.UIImage
-  public func resizedImageWithContentMode(contentMode: UIKit.UIView.ContentMode, bounds: CoreGraphics.CGSize, interpolationQuality quality: CoreGraphics.CGInterpolationQuality) -> UIKit.UIImage
-  public func resizedImage(newSize: CoreGraphics.CGSize, transform: CoreGraphics.CGAffineTransform, drawTransposed transpose: Swift.Bool, interpolationQuality quality: CoreGraphics.CGInterpolationQuality) -> UIKit.UIImage
-  public func transformForOrientation(newSize: CoreGraphics.CGSize) -> CoreGraphics.CGAffineTransform
-  public func resizedData(maxCount: Swift.Int = 512) -> (Foundation.Data?, CoreGraphics.CGSize)
-  public func withShadow(blur: CoreGraphics.CGFloat = 10, offset: CoreGraphics.CGSize = .zero, color: UIKit.UIColor = UIColor(white: 0, alpha: 0.8)) -> UIKit.UIImage
+  public func resizedImage(newSize: CoreFoundation.CGSize, interpolationQuality quality: CoreGraphics.CGInterpolationQuality) -> UIKit.UIImage
+  public func resizedImageWithContentMode(contentMode: UIKit.UIView.ContentMode, bounds: CoreFoundation.CGSize, interpolationQuality quality: CoreGraphics.CGInterpolationQuality) -> UIKit.UIImage
+  public func resizedImage(newSize: CoreFoundation.CGSize, transform: CoreFoundation.CGAffineTransform, drawTransposed transpose: Swift.Bool, interpolationQuality quality: CoreGraphics.CGInterpolationQuality) -> UIKit.UIImage
+  public func transformForOrientation(newSize: CoreFoundation.CGSize) -> CoreFoundation.CGAffineTransform
+  public func resizedData(maxCount: Swift.Int = 512) -> (Foundation.Data?, CoreFoundation.CGSize)
+  public func withShadow(blur: CoreFoundation.CGFloat = 10, offset: CoreFoundation.CGSize = .zero, color: UIKit.UIColor = UIColor(white: 0, alpha: 0.8)) -> UIKit.UIImage
 }
 @objc @_inheritsConvenienceInitializers public class PermissionWrapper : ObjectiveC.NSObject {
   @objc override dynamic public init()
   @objc deinit
 }
 extension MeetingDoctorsCore.PermissionWrapper {
+  public static var microphonePermissions: AVFAudio.AVAudioSession.RecordPermission
   public static func checkMicrophoneAvailable(completion: @escaping ((Swift.Bool) -> Swift.Void))
+  public static func requestMicrophonePermissions(completion: @escaping ((Swift.Bool) -> Swift.Void))
 }
 extension MeetingDoctorsCore.PermissionWrapper {
+  public static var cameraPermissions: AVFoundation.AVAuthorizationStatus
   public static func checkVideoCameraAvailable(completion: @escaping ((AVFoundation.AVAuthorizationStatus) -> Swift.Void))
+  public static func requestCameraPermissions(completion: @escaping ((Swift.Bool) -> Swift.Void))
 }
 extension MeetingDoctorsCore.PermissionWrapper {
   public static func notificationSettings(completion: @escaping (UserNotifications.UNAuthorizationStatus) -> Swift.Void)
@@ -629,6 +775,63 @@ public struct AnyNavigatable<Destination> : MeetingDoctorsCore.Navigatable {
   public init<Concrete>(_ concrete: Concrete) where Destination == Concrete.Destination, Concrete : MeetingDoctorsCore.Navigatable
   public func navigate(to destination: Destination)
 }
+extension MeetingDoctorsCore.MDPermission {
+  public static var camera: MeetingDoctorsCore.MDCameraPermission {
+    get
+  }
+}
+@_inheritsConvenienceInitializers public class MDCameraPermission : MeetingDoctorsCore.MDPermission {
+  override open var type: MeetingDoctorsCore.MDPermissionTypeEnum {
+    get
+  }
+  open var usageDescriptionKey: Swift.String? {
+    get
+  }
+  override public var status: MeetingDoctorsCore.MDPermissionStatusEnum {
+    get
+  }
+  override public func request(completion: @escaping () -> Swift.Void)
+  override public init()
+  @objc deinit
+}
+extension MeetingDoctorsCore.MDPermission {
+  public static var notification: MeetingDoctorsCore.MDNotificationPermission {
+    get
+  }
+}
+@_inheritsConvenienceInitializers public class MDNotificationPermission : MeetingDoctorsCore.MDPermission {
+  override open var type: MeetingDoctorsCore.MDPermissionTypeEnum {
+    get
+  }
+  override public var status: MeetingDoctorsCore.MDPermissionStatusEnum {
+    get
+  }
+  override public func request(completion: @escaping () -> Swift.Void)
+  override public init()
+  @objc deinit
+}
+extension MeetingDoctorsCore.MDPermission {
+  public static var photoLibrary: MeetingDoctorsCore.MDPhotoLibraryPermission {
+    get
+  }
+}
+@_inheritsConvenienceInitializers public class MDPhotoLibraryPermission : MeetingDoctorsCore.MDPermission {
+  override open var type: MeetingDoctorsCore.MDPermissionTypeEnum {
+    get
+  }
+  open var fullAccessUsageDescriptionKey: Swift.String? {
+    get
+  }
+  open var addingOnlyUsageDescriptionKey: Swift.String? {
+    get
+  }
+  override public var status: MeetingDoctorsCore.MDPermissionStatusEnum {
+    get
+  }
+  override public func request(completion: @escaping () -> Swift.Void)
+  override public init()
+  @objc deinit
+}
 extension UIKit.UIDevice {
   @_Concurrency.MainActor(unsafe) public var modelId: Swift.String {
     get
@@ -643,8 +846,14 @@ public protocol DateEncodingStrategy {
 extension MeetingDoctorsCore.DateEncodingStrategy {
   public func value(_: Foundation.Date, _: Swift.Encoder) throws
 }
+extension MeetingDoctorsCore.MDPermissionTypeEnum : Swift.Equatable {}
+extension MeetingDoctorsCore.MDPermissionTypeEnum : Swift.Hashable {}
+extension MeetingDoctorsCore.MDPermissionTypeEnum : Swift.RawRepresentable {}
 extension MeetingDoctorsCore.CryptoManagerError : Swift.Equatable {}
 extension MeetingDoctorsCore.CryptoManagerError : Swift.Hashable {}
+extension MeetingDoctorsCore.UserDefaultsProperty.Keys : Swift.Equatable {}
+extension MeetingDoctorsCore.UserDefaultsProperty.Keys : Swift.Hashable {}
+extension MeetingDoctorsCore.UserDefaultsProperty.Keys : Swift.RawRepresentable {}
 extension MeetingDoctorsCore.BuildConfigurationType : Swift.Equatable {}
 extension MeetingDoctorsCore.BuildConfigurationType : Swift.Hashable {}
 extension MeetingDoctorsCore.BuildConfigurationType : Swift.RawRepresentable {}
@@ -657,3 +866,6 @@ extension MeetingDoctorsCore.EnvironmentType : Swift.RawRepresentable {}
 extension MeetingDoctorsCore.LogLevel : Swift.Equatable {}
 extension MeetingDoctorsCore.LogLevel : Swift.Hashable {}
 extension MeetingDoctorsCore.LogLevel : Swift.RawRepresentable {}
+extension MeetingDoctorsCore.MDPermissionStatusEnum : Swift.Equatable {}
+extension MeetingDoctorsCore.MDPermissionStatusEnum : Swift.Hashable {}
+extension MeetingDoctorsCore.MDPermissionStatusEnum : Swift.RawRepresentable {}
