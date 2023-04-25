@@ -13,13 +13,13 @@ let package = Package(
         .library(
             name: "MeetingDoctorsSDK",
             targets: [
-                "MeetingDoctorsCoreTargets",
-                "MeetingDoctorsSchemaTargets",
-                "MeetingDoctorsSocketTargets",
-                "MeetingDoctorsRemoteTargets",
-                "MeetingDoctorsStorageTargets",
-                "MeetingDoctorsControllerTargets",
-                "MeetingDoctorsSDKTargets",
+                "MeetingDoctorsCoreWrapper",
+                "MeetingDoctorsSchemaWrapper",
+                "MeetingDoctorsSocketWrapper",
+                "MeetingDoctorsRemoteWrapper",
+                "MeetingDoctorsStorageWrapper",
+                "MeetingDoctorsControllerWrapper",
+                "MeetingDoctorsSDKWrapper",
             ]),
     ],
     dependencies: [
@@ -45,11 +45,12 @@ let package = Package(
                  from: "4.1.2")
     ],
     targets: [
+        // MARK: - MDCore
         .binaryTarget(
             name: "MeetingDoctorsCore",
             path: "Frameworks/MeetingDoctorsCore.xcframework"
         ),
-        .target(name: "MeetingDoctorsCoreTargets",
+        .target(name: "MeetingDoctorsCoreWrapper",
                 dependencies: [
                     .target(name: "MeetingDoctorsCore"),
                     .product(name: "CryptoSwift",
@@ -57,88 +58,132 @@ let package = Package(
                     .product(name: "FirebaseAnalyticsSwift",
                              package: "firebase-ios-sdk")
                 ],
-                path: "Sources/MDCore"
-        ),
+                path: "Sources/MDCore",
+                linkerSettings: [
+                    //['Foundation', 'UIKit', 'CoreLocation', 'AVFoundation']
+                    .linkedFramework("Foundation"),
+                    .linkedFramework("UIKit"),
+                    .linkedFramework("CoreLocation"),
+                    .linkedFramework("AVFoundation"),
+                ]
+               ),
+        // MARK: - MDSchema
         .binaryTarget(
             name: "MeetingDoctorsSchema",
             path: "Frameworks/MeetingDoctorsSchema.xcframework"
         ),
-        .target(name: "MeetingDoctorsSchemaTargets",
+        .target(name: "MeetingDoctorsSchemaWrapper",
                 dependencies: [
-                    .target(name: "MeetingDoctorsCore"),
+                    .target(name: "MeetingDoctorsSchema"),
+                    .target(name: "MeetingDoctorsCoreWrapper"),
                 ],
-                path: "Sources/MDSchema"
-        ),
+                path: "Sources/MDSchema",
+                linkerSettings: [
+                    .linkedFramework("Foundation"),
+                    .linkedFramework("UIKit"),
+                    .linkedFramework("AdSupport"),
+                ]
+               ),
+        // MARK: - MDSocket
         .binaryTarget(
             name: "MeetingDoctorsSocket",
             path: "Frameworks/MeetingDoctorsSocket.xcframework"
         ),
-        .target(name: "MeetingDoctorsSocketTargets",
+        .target(name: "MeetingDoctorsSocketWrapper",
                 dependencies: [
-                    .target(name: "MeetingDoctorsSchema"),
-                    .target(name: "MeetingDoctorsCore"),
-                    .target(name: "MeetingDoctorsController"),
+                    .target(name: "MeetingDoctorsSocket"),
+                    .target(name: "MeetingDoctorsSchemaWrapper"),
+                    .target(name: "MeetingDoctorsCoreWrapper"),
+                    .target(name: "MeetingDoctorsControllerWrapper"),
                     .product(name: "SocketIO",
                              package: "socket.io-client-swift")
                 ],
-                path: "Sources/MDSocket"
-        ),
+                path: "Sources/MDSocket",
+                linkerSettings: [
+                    .linkedFramework("Foundation"),
+                    .linkedFramework("UIKit"),
+                ]
+               ),
+        // MARK: - MDRemote
         .binaryTarget(
             name: "MeetingDoctorsRemote",
             path: "Frameworks/MeetingDoctorsRemote.xcframework"
         ),
-        .target(name: "MeetingDoctorsRemoteTargets",
+        .target(name: "MeetingDoctorsRemoteWrapper",
                 dependencies: [
-                    .target(name: "MeetingDoctorsSchema"),
-                    .target(name: "MeetingDoctorsCore"),
-                    .target(name: "MeetingDoctorsController"),
+                    .target(name: "MeetingDoctorsRemote"),
+                    .target(name: "MeetingDoctorsSchemaWrapper"),
+                    .target(name: "MeetingDoctorsCoreWrapper"),
+                    .target(name: "MeetingDoctorsControllerWrapper"),
                     .product(name: "Alamofire",
                              package: "Alamofire")
                 ],
-                path: "Sources/MDRemote"
-        ),
+                path: "Sources/MDRemote",
+                linkerSettings: [
+                    .linkedFramework("Foundation"),
+                    .linkedFramework("UIKit"),
+                ]
+               ),
+        // MARK: - MDStorage
         .binaryTarget(
             name: "MeetingDoctorsStorage",
             path: "Frameworks/MeetingDoctorsStorage.xcframework"
         ),
-        .target(name: "MeetingDoctorsStorageTargets",
+        .target(name: "MeetingDoctorsStorageWrapper",
                 dependencies: [
-                    .target(name: "MeetingDoctorsSchema"),
-                    .target(name: "MeetingDoctorsCore"),
-                    .target(name: "MeetingDoctorsController"),
-                    .target(name: "MeetingDoctorsSocket"),
+                    .target(name: "MeetingDoctorsStorage"),
+                    .target(name: "MeetingDoctorsSchemaWrapper"),
+                    .target(name: "MeetingDoctorsCoreWrapper"),
+                    .target(name: "MeetingDoctorsControllerWrapper"),
+                    .target(name: "MeetingDoctorsSocketWrapper"),
                     .product(name: "RealmSwift",
                              package: "realm-swift")
                 ],
-                path: "Sources/MDStorage"
-        ),
+                path: "Sources/MDStorage",
+                linkerSettings: [
+                    .linkedFramework("Foundation"),
+                    .linkedFramework("UIKit"),
+                    .linkedFramework("CoreLocation"),
+                ]
+               ),
+        // MARK: - MDController
         .binaryTarget(
             name: "MeetingDoctorsController",
             path: "Frameworks/MeetingDoctorsController.xcframework"
         ),
-        .target(name: "MeetingDoctorsControllerTargets",
+        .target(name: "MeetingDoctorsControllerWrapper",
                 dependencies: [
-                    .target(name: "MeetingDoctorsSchema"),
-                    .target(name: "MeetingDoctorsCore"),
+                    .target(name: "MeetingDoctorsController"),
+                    .target(name: "MeetingDoctorsSchemaWrapper"),
+                    .target(name: "MeetingDoctorsCoreWrapper"),
                     .product(name: "RxSwift",
                              package: "RxSwift"),
                     .product(name: "RxBlocking",
                              package: "RxSwift")
                 ],
-                path: "Sources/MDController"
-        ),
+                path: "Sources/MDController",
+                linkerSettings: [
+                    .linkedFramework("Foundation"),
+                    .linkedFramework("UIKit"),
+                    .linkedFramework("CoreLocation"),
+                    .linkedFramework("Photos"),
+                    .linkedFramework("AdSupport"),
+                ]
+               ),
+        // MARK: - MDSDK
         .binaryTarget(
             name: "MeetingDoctorsSDK",
             path: "Frameworks/MeetingDoctorsSDK.xcframework"
         ),
-        .target(name: "MeetingDoctorsSDKTargets",
+        .target(name: "MeetingDoctorsSDKWrapper",
                 dependencies: [
-                    .target(name: "MeetingDoctorsSchema"),
-                    .target(name: "MeetingDoctorsCore"),
-                    .target(name: "MeetingDoctorsController"),
-                    .target(name: "MeetingDoctorsRemote"),
-                    .target(name: "MeetingDoctorsSocket"),
-                    .target(name: "MeetingDoctorsStorage"),
+                    .target(name: "MeetingDoctorsSDK"),
+                    .target(name: "MeetingDoctorsSchemaWrapper"),
+                    .target(name: "MeetingDoctorsCoreWrapper"),
+                    .target(name: "MeetingDoctorsControllerWrapper"),
+                    .target(name: "MeetingDoctorsRemoteWrapper"),
+                    .target(name: "MeetingDoctorsSocketWrapper"),
+                    .target(name: "MeetingDoctorsStorageWrapper"),
                     .product(name: "RxSwift",
                              package: "RxSwift"),
                     .product(name: "RxCocoa",
@@ -152,7 +197,14 @@ let package = Package(
                     .product(name: "Lottie",
                              package: "lottie-spm")
                 ],
-                path: "Sources/MDSDK"
-        ),
+                path: "Sources/MDSDK",
+                linkerSettings: [
+                    .linkedFramework("Foundation"),
+                    .linkedFramework("UIKit"),
+                    .linkedFramework("CoreLocation"),
+                    .linkedFramework("Photos"),
+                    .linkedFramework("StoreKit"),
+                ]
+               ),
     ]
 )
