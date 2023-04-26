@@ -1,2 +1,4 @@
+import MeetingDoctorsRemote
+
 struct MDRemote {
 }

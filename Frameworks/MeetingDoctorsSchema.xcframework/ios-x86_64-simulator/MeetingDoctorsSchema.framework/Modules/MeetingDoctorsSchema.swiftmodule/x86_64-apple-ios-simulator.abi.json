@@ -37661,13 +37661,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "AutoCases",
-            "printedName": "AutoCases",
-            "usr": "s:20MeetingDoctorsSchema9AutoCasesP",
-            "mangledName": "$s20MeetingDoctorsSchema9AutoCasesP"
-          },
-          {
-            "kind": "Conformance",
             "name": "SocketEventType",
             "printedName": "SocketEventType",
             "usr": "s:20MeetingDoctorsSchema15SocketEventTypeP",
@@ -38283,13 +38276,6 @@
             ],
             "usr": "s:SY",
             "mangledName": "$sSY"
-          },
-          {
-            "kind": "Conformance",
-            "name": "AutoCases",
-            "printedName": "AutoCases",
-            "usr": "s:20MeetingDoctorsSchema9AutoCasesP",
-            "mangledName": "$s20MeetingDoctorsSchema9AutoCasesP"
           },
           {
             "kind": "Conformance",
@@ -76019,140 +76005,140 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 263,
+      "offset": 252,
       "length": 21,
       "value": "\"getProfessionalList\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 313,
+      "offset": 302,
       "length": 11,
       "value": "\"enterRoom\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 355,
+      "offset": 344,
       "length": 10,
       "value": "\"exitRoom\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 406,
+      "offset": 395,
       "length": 16,
       "value": "\"getMessageList\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 469,
+      "offset": 458,
       "length": 8,
       "value": "\"typing\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 528,
+      "offset": 517,
       "length": 12,
       "value": "\"deleteRoom\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 263,
+      "offset": 252,
       "length": 21,
       "value": "\"getProfessionalList\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 313,
+      "offset": 302,
       "length": 11,
       "value": "\"enterRoom\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 355,
+      "offset": 344,
       "length": 10,
       "value": "\"exitRoom\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 406,
+      "offset": 395,
       "length": 16,
       "value": "\"getMessageList\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 469,
+      "offset": 458,
       "length": 8,
       "value": "\"typing\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 528,
+      "offset": 517,
       "length": 12,
       "value": "\"deleteRoom\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 697,
+      "offset": 675,
       "length": 19,
       "value": "\"doctorListChanged\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 737,
+      "offset": 715,
       "length": 18,
       "value": "\"professionalList\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 784,
+      "offset": 762,
       "length": 11,
       "value": "\"enterRoom\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 924,
+      "offset": 902,
       "length": 8,
       "value": "\"typing\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 697,
+      "offset": 675,
       "length": 19,
       "value": "\"doctorListChanged\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 737,
+      "offset": 715,
       "length": 18,
       "value": "\"professionalList\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 784,
+      "offset": 762,
       "length": 11,
       "value": "\"enterRoom\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Socket\/SocketEventType.swift",
       "kind": "StringLiteral",
-      "offset": 924,
+      "offset": 902,
       "length": 8,
       "value": "\"typing\""
     },

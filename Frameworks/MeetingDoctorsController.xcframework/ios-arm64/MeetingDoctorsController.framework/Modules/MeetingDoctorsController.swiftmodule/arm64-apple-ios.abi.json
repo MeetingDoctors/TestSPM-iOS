@@ -40783,13 +40783,6 @@
             ],
             "usr": "s:s12CaseIterableP",
             "mangledName": "$ss12CaseIterableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "AutoCases",
-            "printedName": "AutoCases",
-            "usr": "s:24MeetingDoctorsController9AutoCasesP",
-            "mangledName": "$s24MeetingDoctorsController9AutoCasesP"
           }
         ]
       },

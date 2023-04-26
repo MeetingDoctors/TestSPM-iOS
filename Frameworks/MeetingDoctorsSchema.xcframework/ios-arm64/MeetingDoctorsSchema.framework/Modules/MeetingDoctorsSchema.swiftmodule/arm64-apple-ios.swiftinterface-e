@@ -1369,7 +1369,7 @@ public struct UserRequest : Swift.Codable {
 public protocol SocketEventType {
   var name: Swift.String { get }
 }
-public enum SocketEmissionType : Swift.String, MeetingDoctorsSchema.AutoCases, MeetingDoctorsSchema.SocketEventType {
+public enum SocketEmissionType : Swift.String, MeetingDoctorsSchema.SocketEventType {
   case contacts
   case joinConversation
   case leaveConverstation
@@ -1388,7 +1388,7 @@ public enum SocketEmissionType : Swift.String, MeetingDoctorsSchema.AutoCases, M
     get
   }
 }
-public enum SocketListenerType : Swift.String, MeetingDoctorsSchema.AutoCases, MeetingDoctorsSchema.SocketEventType {
+public enum SocketListenerType : Swift.String, MeetingDoctorsSchema.SocketEventType {
   case update
   case contacts
   case joinConversation

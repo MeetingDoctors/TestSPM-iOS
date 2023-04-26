@@ -1498,8 +1498,6 @@ public enum SpecialityTypeModel : Swift.String, Swift.CaseIterable {
     get
   }
 }
-extension MeetingDoctorsController.SpecialityTypeModel : MeetingDoctorsController.AutoCases {
-}
 extension MeetingDoctorsController.SpecialityTypeModel {
   public var id: Swift.String {
     get

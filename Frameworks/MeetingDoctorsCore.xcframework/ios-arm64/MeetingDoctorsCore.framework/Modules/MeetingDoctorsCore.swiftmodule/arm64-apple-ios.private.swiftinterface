@@ -609,9 +609,7 @@ public enum BuildConfigurationType : Swift.String, Swift.Codable, Swift.CodingKe
     get
   }
 }
-extension MeetingDoctorsCore.BuildConfigurationType : MeetingDoctorsCore.AutoCases {
-}
-public enum EndpointType : Swift.String, Swift.CodingKey {
+public enum EndpointType : Swift.String, Swift.CodingKey, Swift.CaseIterable {
   case directory
   case console
   case core
@@ -628,7 +626,11 @@ public enum EndpointType : Swift.String, Swift.CodingKey {
   public init?(rawValue: Swift.String)
   public init?(stringValue: Swift.String)
   public init?(intValue: Swift.Int)
+  public typealias AllCases = [MeetingDoctorsCore.EndpointType]
   public typealias RawValue = Swift.String
+  public static var allCases: [MeetingDoctorsCore.EndpointType] {
+    get
+  }
   public var intValue: Swift.Int? {
     get
   }
@@ -638,8 +640,6 @@ public enum EndpointType : Swift.String, Swift.CodingKey {
   public var stringValue: Swift.String {
     get
   }
-}
-extension MeetingDoctorsCore.EndpointType : MeetingDoctorsCore.AutoCases {
 }
 public enum EnvironmentType : Swift.String, Swift.Codable, Swift.CodingKey {
   case development
@@ -659,8 +659,6 @@ public enum EnvironmentType : Swift.String, Swift.Codable, Swift.CodingKey {
     get
   }
 }
-extension MeetingDoctorsCore.EnvironmentType : MeetingDoctorsCore.AutoCases {
-}
 public enum LogLevel : Swift.String, Swift.Codable {
   case off
   case error
@@ -674,8 +672,6 @@ public enum LogLevel : Swift.String, Swift.Codable {
     get
   }
 }
-extension MeetingDoctorsCore.LogLevel : MeetingDoctorsCore.AutoCases {
-}
 public class ClosureSelector<T> {
   final public let selector: ObjectiveC.Selector
   public init(_ closure: @escaping MeetingDoctorsCore.Decoration<T>)
@@ -687,22 +683,6 @@ public protocol MDPermissionsProviderProtocol {
 @_hasMissingDesignatedInitializers public class MDPermissionsProvider : MeetingDoctorsCore.MDPermissionsProviderProtocol {
   public static func request(permission: MeetingDoctorsCore.MDPermission, completion: @escaping (Swift.Bool) -> Swift.Void)
   @objc deinit
-}
-extension MeetingDoctorsCore.BuildConfigurationType {
-  public static let count: Swift.Int
-  public static let allCases: [MeetingDoctorsCore.BuildConfigurationType]
-}
-extension MeetingDoctorsCore.EndpointType {
-  public static let count: Swift.Int
-  public static let allCases: [MeetingDoctorsCore.EndpointType]
-}
-extension MeetingDoctorsCore.EnvironmentType {
-  public static let count: Swift.Int
-  public static let allCases: [MeetingDoctorsCore.EnvironmentType]
-}
-extension MeetingDoctorsCore.LogLevel {
-  public static let count: Swift.Int
-  public static let allCases: [MeetingDoctorsCore.LogLevel]
 }
 public enum MDPermissionStatusEnum : Swift.Int {
   case authorized

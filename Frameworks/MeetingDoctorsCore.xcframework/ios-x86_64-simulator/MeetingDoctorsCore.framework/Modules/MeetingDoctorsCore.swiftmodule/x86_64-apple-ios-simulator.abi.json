@@ -13432,118 +13432,6 @@
             "moduleName": "MeetingDoctorsCore",
             "implicit": true,
             "init_kind": "Designated"
-          },
-          {
-            "kind": "Var",
-            "name": "count",
-            "printedName": "count",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:18MeetingDoctorsCore22BuildConfigurationTypeO5countSivpZ",
-            "mangledName": "$s18MeetingDoctorsCore22BuildConfigurationTypeO5countSivpZ",
-            "moduleName": "MeetingDoctorsCore",
-            "static": true,
-            "declAttributes": [
-              "HasInitialValue",
-              "HasStorage"
-            ],
-            "isFromExtension": true,
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:18MeetingDoctorsCore22BuildConfigurationTypeO5countSivgZ",
-                "mangledName": "$s18MeetingDoctorsCore22BuildConfigurationTypeO5countSivgZ",
-                "moduleName": "MeetingDoctorsCore",
-                "static": true,
-                "implicit": true,
-                "isFromExtension": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "allCases",
-            "printedName": "allCases",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[MeetingDoctorsCore.BuildConfigurationType]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "BuildConfigurationType",
-                    "printedName": "MeetingDoctorsCore.BuildConfigurationType",
-                    "usr": "s:18MeetingDoctorsCore22BuildConfigurationTypeO"
-                  }
-                ],
-                "usr": "s:Sa"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:18MeetingDoctorsCore22BuildConfigurationTypeO8allCasesSayACGvpZ",
-            "mangledName": "$s18MeetingDoctorsCore22BuildConfigurationTypeO8allCasesSayACGvpZ",
-            "moduleName": "MeetingDoctorsCore",
-            "static": true,
-            "declAttributes": [
-              "HasInitialValue",
-              "HasStorage"
-            ],
-            "isFromExtension": true,
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[MeetingDoctorsCore.BuildConfigurationType]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "BuildConfigurationType",
-                        "printedName": "MeetingDoctorsCore.BuildConfigurationType",
-                        "usr": "s:18MeetingDoctorsCore22BuildConfigurationTypeO"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:18MeetingDoctorsCore22BuildConfigurationTypeO8allCasesSayACGvgZ",
-                "mangledName": "$s18MeetingDoctorsCore22BuildConfigurationTypeO8allCasesSayACGvgZ",
-                "moduleName": "MeetingDoctorsCore",
-                "static": true,
-                "implicit": true,
-                "isFromExtension": true,
-                "accessorKind": "get"
-              }
-            ]
           }
         ],
         "declKind": "Enum",
@@ -13632,13 +13520,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "AutoCases",
-            "printedName": "AutoCases",
-            "usr": "s:18MeetingDoctorsCore9AutoCasesP",
-            "mangledName": "$s18MeetingDoctorsCore9AutoCasesP"
           }
         ]
       },
@@ -14372,54 +14253,6 @@
           },
           {
             "kind": "Var",
-            "name": "count",
-            "printedName": "count",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:18MeetingDoctorsCore12EndpointTypeO5countSivpZ",
-            "mangledName": "$s18MeetingDoctorsCore12EndpointTypeO5countSivpZ",
-            "moduleName": "MeetingDoctorsCore",
-            "static": true,
-            "declAttributes": [
-              "HasInitialValue",
-              "HasStorage"
-            ],
-            "isFromExtension": true,
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:18MeetingDoctorsCore12EndpointTypeO5countSivgZ",
-                "mangledName": "$s18MeetingDoctorsCore12EndpointTypeO5countSivgZ",
-                "moduleName": "MeetingDoctorsCore",
-                "static": true,
-                "implicit": true,
-                "isFromExtension": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
             "name": "allCases",
             "printedName": "allCases",
             "children": [
@@ -14443,13 +14276,7 @@
             "mangledName": "$s18MeetingDoctorsCore12EndpointTypeO8allCasesSayACGvpZ",
             "moduleName": "MeetingDoctorsCore",
             "static": true,
-            "declAttributes": [
-              "HasInitialValue",
-              "HasStorage"
-            ],
-            "isFromExtension": true,
-            "isLet": true,
-            "hasStorage": true,
+            "implicit": true,
             "accessors": [
               {
                 "kind": "Accessor",
@@ -14477,7 +14304,6 @@
                 "moduleName": "MeetingDoctorsCore",
                 "static": true,
                 "implicit": true,
-                "isFromExtension": true,
                 "accessorKind": "get"
               }
             ]
@@ -14537,6 +14363,36 @@
           },
           {
             "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[MeetingDoctorsCore.EndpointType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EndpointType",
+                        "printedName": "MeetingDoctorsCore.EndpointType",
+                        "usr": "s:18MeetingDoctorsCore12EndpointTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "CustomDebugStringConvertible",
             "printedName": "CustomDebugStringConvertible",
             "usr": "s:s28CustomDebugStringConvertibleP",
@@ -14555,13 +14411,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "AutoCases",
-            "printedName": "AutoCases",
-            "usr": "s:18MeetingDoctorsCore9AutoCasesP",
-            "mangledName": "$s18MeetingDoctorsCore9AutoCasesP"
           }
         ]
       },
@@ -14922,118 +14771,6 @@
             "moduleName": "MeetingDoctorsCore",
             "implicit": true,
             "init_kind": "Designated"
-          },
-          {
-            "kind": "Var",
-            "name": "count",
-            "printedName": "count",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:18MeetingDoctorsCore15EnvironmentTypeO5countSivpZ",
-            "mangledName": "$s18MeetingDoctorsCore15EnvironmentTypeO5countSivpZ",
-            "moduleName": "MeetingDoctorsCore",
-            "static": true,
-            "declAttributes": [
-              "HasInitialValue",
-              "HasStorage"
-            ],
-            "isFromExtension": true,
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:18MeetingDoctorsCore15EnvironmentTypeO5countSivgZ",
-                "mangledName": "$s18MeetingDoctorsCore15EnvironmentTypeO5countSivgZ",
-                "moduleName": "MeetingDoctorsCore",
-                "static": true,
-                "implicit": true,
-                "isFromExtension": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "allCases",
-            "printedName": "allCases",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[MeetingDoctorsCore.EnvironmentType]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "EnvironmentType",
-                    "printedName": "MeetingDoctorsCore.EnvironmentType",
-                    "usr": "s:18MeetingDoctorsCore15EnvironmentTypeO"
-                  }
-                ],
-                "usr": "s:Sa"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:18MeetingDoctorsCore15EnvironmentTypeO8allCasesSayACGvpZ",
-            "mangledName": "$s18MeetingDoctorsCore15EnvironmentTypeO8allCasesSayACGvpZ",
-            "moduleName": "MeetingDoctorsCore",
-            "static": true,
-            "declAttributes": [
-              "HasInitialValue",
-              "HasStorage"
-            ],
-            "isFromExtension": true,
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[MeetingDoctorsCore.EnvironmentType]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "EnvironmentType",
-                        "printedName": "MeetingDoctorsCore.EnvironmentType",
-                        "usr": "s:18MeetingDoctorsCore15EnvironmentTypeO"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:18MeetingDoctorsCore15EnvironmentTypeO8allCasesSayACGvgZ",
-                "mangledName": "$s18MeetingDoctorsCore15EnvironmentTypeO8allCasesSayACGvgZ",
-                "moduleName": "MeetingDoctorsCore",
-                "static": true,
-                "implicit": true,
-                "isFromExtension": true,
-                "accessorKind": "get"
-              }
-            ]
           }
         ],
         "declKind": "Enum",
@@ -15122,13 +14859,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "AutoCases",
-            "printedName": "AutoCases",
-            "usr": "s:18MeetingDoctorsCore9AutoCasesP",
-            "mangledName": "$s18MeetingDoctorsCore9AutoCasesP"
           }
         ]
       },
@@ -15440,118 +15170,6 @@
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Var",
-            "name": "count",
-            "printedName": "count",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:18MeetingDoctorsCore8LogLevelO5countSivpZ",
-            "mangledName": "$s18MeetingDoctorsCore8LogLevelO5countSivpZ",
-            "moduleName": "MeetingDoctorsCore",
-            "static": true,
-            "declAttributes": [
-              "HasInitialValue",
-              "HasStorage"
-            ],
-            "isFromExtension": true,
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:18MeetingDoctorsCore8LogLevelO5countSivgZ",
-                "mangledName": "$s18MeetingDoctorsCore8LogLevelO5countSivgZ",
-                "moduleName": "MeetingDoctorsCore",
-                "static": true,
-                "implicit": true,
-                "isFromExtension": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "allCases",
-            "printedName": "allCases",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[MeetingDoctorsCore.LogLevel]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LogLevel",
-                    "printedName": "MeetingDoctorsCore.LogLevel",
-                    "usr": "s:18MeetingDoctorsCore8LogLevelO"
-                  }
-                ],
-                "usr": "s:Sa"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:18MeetingDoctorsCore8LogLevelO8allCasesSayACGvpZ",
-            "mangledName": "$s18MeetingDoctorsCore8LogLevelO8allCasesSayACGvpZ",
-            "moduleName": "MeetingDoctorsCore",
-            "static": true,
-            "declAttributes": [
-              "HasInitialValue",
-              "HasStorage"
-            ],
-            "isFromExtension": true,
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[MeetingDoctorsCore.LogLevel]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "LogLevel",
-                        "printedName": "MeetingDoctorsCore.LogLevel",
-                        "usr": "s:18MeetingDoctorsCore8LogLevelO"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:18MeetingDoctorsCore8LogLevelO8allCasesSayACGvgZ",
-                "mangledName": "$s18MeetingDoctorsCore8LogLevelO8allCasesSayACGvgZ",
-                "moduleName": "MeetingDoctorsCore",
-                "static": true,
-                "implicit": true,
-                "isFromExtension": true,
-                "accessorKind": "get"
-              }
-            ]
           }
         ],
         "declKind": "Enum",
@@ -15612,13 +15230,6 @@
             "printedName": "Encodable",
             "usr": "s:SE",
             "mangledName": "$sSE"
-          },
-          {
-            "kind": "Conformance",
-            "name": "AutoCases",
-            "printedName": "AutoCases",
-            "usr": "s:18MeetingDoctorsCore9AutoCasesP",
-            "mangledName": "$s18MeetingDoctorsCore9AutoCasesP"
           }
         ]
       },
@@ -22095,182 +21706,182 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 149,
+      "offset": 163,
       "length": 18,
       "value": "\"MedicalDirectory\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 187,
+      "offset": 201,
       "length": 9,
       "value": "\"Console\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 213,
+      "offset": 227,
       "length": 6,
       "value": "\"Core\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 235,
+      "offset": 249,
       "length": 5,
       "value": "\"API\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 261,
+      "offset": 275,
       "length": 10,
       "value": "\"Customer\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 297,
+      "offset": 311,
       "length": 15,
       "value": "\"Notifications\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 338,
+      "offset": 352,
       "length": 15,
       "value": "\"Consultations\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 387,
+      "offset": 401,
       "length": 23,
       "value": "\"ConsultationsCustomer\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 426,
+      "offset": 440,
       "length": 5,
       "value": "\"SDK\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 466,
+      "offset": 480,
       "length": 24,
       "value": "\"ElectronicPrescription\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 509,
+      "offset": 523,
       "length": 8,
       "value": "\"CoreV2\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 539,
+      "offset": 553,
       "length": 11,
       "value": "\"Videocall\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 578,
+      "offset": 592,
       "length": 17,
       "value": "\"ConsultationsV2\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 149,
+      "offset": 163,
       "length": 18,
       "value": "\"MedicalDirectory\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 187,
+      "offset": 201,
       "length": 9,
       "value": "\"Console\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 213,
+      "offset": 227,
       "length": 6,
       "value": "\"Core\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 235,
+      "offset": 249,
       "length": 5,
       "value": "\"API\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 261,
+      "offset": 275,
       "length": 10,
       "value": "\"Customer\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 297,
+      "offset": 311,
       "length": 15,
       "value": "\"Notifications\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 338,
+      "offset": 352,
       "length": 15,
       "value": "\"Consultations\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 387,
+      "offset": 401,
       "length": 23,
       "value": "\"ConsultationsCustomer\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 426,
+      "offset": 440,
       "length": 5,
       "value": "\"SDK\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 466,
+      "offset": 480,
       "length": 24,
       "value": "\"ElectronicPrescription\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 509,
+      "offset": 523,
       "length": 8,
       "value": "\"CoreV2\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 539,
+      "offset": 553,
       "length": 11,
       "value": "\"Videocall\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Environment\/EndpointType.swift",
       "kind": "StringLiteral",
-      "offset": 578,
+      "offset": 592,
       "length": 17,
       "value": "\"ConsultationsV2\""
     },
@@ -22399,34 +22010,6 @@
       "offset": 264,
       "length": 9,
       "value": "\"Verbose\""
-    },
-    {
-      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Generated\/AutoCases.generated.swift",
-      "kind": "IntegerLiteral",
-      "offset": 133,
-      "length": 1,
-      "value": "3"
-    },
-    {
-      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Generated\/AutoCases.generated.swift",
-      "kind": "IntegerLiteral",
-      "offset": 309,
-      "length": 2,
-      "value": "13"
-    },
-    {
-      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Generated\/AutoCases.generated.swift",
-      "kind": "IntegerLiteral",
-      "offset": 703,
-      "length": 1,
-      "value": "3"
-    },
-    {
-      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Generated\/AutoCases.generated.swift",
-      "kind": "IntegerLiteral",
-      "offset": 877,
-      "length": 1,
-      "value": "6"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Utilis\/Permissions\/Enum\/MDPermissionStatusEnum.swift",

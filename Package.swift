@@ -23,16 +23,23 @@ let package = Package(
             ]),
     ],
     dependencies: [
+        // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git",
-                 from: "1.6.0"),
+                 exact: "1.6.0"),
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git",
-                 from: "10.8.0"),
-        .package(url: "https://github.com/socketio/socket.io-client-swift",
+                 exact: "10.8.0"),
+//        .package(url: "https://github.com/google/GoogleUtilities#swift-package-manager.git",
+//                 exact: "7.11.1"),
+        .package(url: "https://github.com/google/promises.git",
+                 exact: "2.2.0"),
+        .package(url: "https://github.com/socketio/socket.io-client-swift.git",
                  from: "15.2.0"),
         .package(url: "https://github.com/Alamofire/Alamofire.git",
                  .upToNextMajor(from: "4.8.0")),
         .package(url: "https://github.com/realm/realm-swift.git",
-                 from: "10.17.0"),
+                 exact: "10.17.0"),
+//        .package(url: "https://github.com/realm/realm-cocoa.git",
+//                 exact: "10.17.0"),
         .package(url: "https://github.com/ReactiveX/RxSwift.git",
                  from: "6.5.0"),
         .package(url: "https://github.com/Swinject/Swinject.git",
@@ -45,6 +52,8 @@ let package = Package(
                  from: "4.1.2")
     ],
     targets: [
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         // MARK: - MDCore
         .binaryTarget(
             name: "MeetingDoctorsCore",
@@ -55,12 +64,15 @@ let package = Package(
                     .target(name: "MeetingDoctorsCore"),
                     .product(name: "CryptoSwift",
                              package: "CryptoSwift"),
-                    .product(name: "FirebaseAnalyticsSwift",
-                             package: "firebase-ios-sdk")
+//                    .product(name: "GoogleUtilities",
+//                             package: "GoogleUtilities#swift-package-manager"),
+                    .product(name: "Promises",
+                             package: "promises"),
+                    .product(name: "FirebaseAnalytics",
+                             package: "firebase-ios-sdk"),
                 ],
                 path: "Sources/MDCore",
                 linkerSettings: [
-                    //['Foundation', 'UIKit', 'CoreLocation', 'AVFoundation']
                     .linkedFramework("Foundation"),
                     .linkedFramework("UIKit"),
                     .linkedFramework("CoreLocation"),
@@ -81,6 +93,30 @@ let package = Package(
                 linkerSettings: [
                     .linkedFramework("Foundation"),
                     .linkedFramework("UIKit"),
+                    .linkedFramework("AdSupport"),
+                ]
+               ),
+        // MARK: - MDController
+        .binaryTarget(
+            name: "MeetingDoctorsController",
+            path: "Frameworks/MeetingDoctorsController.xcframework"
+        ),
+        .target(name: "MeetingDoctorsControllerWrapper",
+                dependencies: [
+                    .target(name: "MeetingDoctorsController"),
+                    .target(name: "MeetingDoctorsSchemaWrapper"),
+                    .target(name: "MeetingDoctorsCoreWrapper"),
+                    .product(name: "RxSwift",
+                             package: "RxSwift"),
+                    .product(name: "RxBlocking",
+                             package: "RxSwift")
+                ],
+                path: "Sources/MDController",
+                linkerSettings: [
+                    .linkedFramework("Foundation"),
+                    .linkedFramework("UIKit"),
+                    .linkedFramework("CoreLocation"),
+                    .linkedFramework("Photos"),
                     .linkedFramework("AdSupport"),
                 ]
                ),
@@ -136,6 +172,8 @@ let package = Package(
                     .target(name: "MeetingDoctorsCoreWrapper"),
                     .target(name: "MeetingDoctorsControllerWrapper"),
                     .target(name: "MeetingDoctorsSocketWrapper"),
+                    .product(name: "Realm",
+                             package: "realm-swift"), //NOTE: not find realm module
                     .product(name: "RealmSwift",
                              package: "realm-swift")
                 ],
@@ -144,30 +182,9 @@ let package = Package(
                     .linkedFramework("Foundation"),
                     .linkedFramework("UIKit"),
                     .linkedFramework("CoreLocation"),
-                ]
-               ),
-        // MARK: - MDController
-        .binaryTarget(
-            name: "MeetingDoctorsController",
-            path: "Frameworks/MeetingDoctorsController.xcframework"
-        ),
-        .target(name: "MeetingDoctorsControllerWrapper",
-                dependencies: [
-                    .target(name: "MeetingDoctorsController"),
-                    .target(name: "MeetingDoctorsSchemaWrapper"),
-                    .target(name: "MeetingDoctorsCoreWrapper"),
-                    .product(name: "RxSwift",
-                             package: "RxSwift"),
-                    .product(name: "RxBlocking",
-                             package: "RxSwift")
-                ],
-                path: "Sources/MDController",
-                linkerSettings: [
-                    .linkedFramework("Foundation"),
-                    .linkedFramework("UIKit"),
-                    .linkedFramework("CoreLocation"),
-                    .linkedFramework("Photos"),
-                    .linkedFramework("AdSupport"),
+//                    .unsafeFlags([
+//                        "-Xlinker", "-exclude_arch", "-Xlinker", "arm64"
+//                    ])
                 ]
                ),
         // MARK: - MDSDK
