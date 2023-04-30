@@ -65211,6 +65211,43 @@
                 "moduleName": "MeetingDoctorsSchema"
               },
               {
+                "kind": "Var",
+                "name": "companyGroupCode",
+                "printedName": "companyGroupCode",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(MeetingDoctorsSchema.UserSchema.CodingKeys.Type) -> MeetingDoctorsSchema.UserSchema.CodingKeys",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CodingKeys",
+                        "printedName": "MeetingDoctorsSchema.UserSchema.CodingKeys",
+                        "usr": "s:20MeetingDoctorsSchema04UserC0V10CodingKeysO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "MeetingDoctorsSchema.UserSchema.CodingKeys.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "CodingKeys",
+                            "printedName": "MeetingDoctorsSchema.UserSchema.CodingKeys",
+                            "usr": "s:20MeetingDoctorsSchema04UserC0V10CodingKeysO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:20MeetingDoctorsSchema04UserC0V10CodingKeysO16companyGroupCodeyA2EmF",
+                "mangledName": "$s20MeetingDoctorsSchema04UserC0V10CodingKeysO16companyGroupCodeyA2EmF",
+                "moduleName": "MeetingDoctorsSchema"
+              },
+              {
                 "kind": "Constructor",
                 "name": "init",
                 "printedName": "init(rawValue:)",
@@ -66912,6 +66949,66 @@
                 "declKind": "Accessor",
                 "usr": "s:20MeetingDoctorsSchema04UserC0V15termsAcceptedAt10Foundation4DateVSgvg",
                 "mangledName": "$s20MeetingDoctorsSchema04UserC0V15termsAcceptedAt10Foundation4DateVSgvg",
+                "moduleName": "MeetingDoctorsSchema",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "companyGroupCode",
+            "printedName": "companyGroupCode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20MeetingDoctorsSchema04UserC0V16companyGroupCodeSSSgvp",
+            "mangledName": "$s20MeetingDoctorsSchema04UserC0V16companyGroupCodeSSSgvp",
+            "moduleName": "MeetingDoctorsSchema",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20MeetingDoctorsSchema04UserC0V16companyGroupCodeSSSgvg",
+                "mangledName": "$s20MeetingDoctorsSchema04UserC0V16companyGroupCodeSSSgvg",
                 "moduleName": "MeetingDoctorsSchema",
                 "implicit": true,
                 "accessorKind": "get"
@@ -76978,168 +77075,168 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 651,
+      "offset": 681,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 675,
+      "offset": 705,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 651,
+      "offset": 681,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 675,
+      "offset": 705,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 651,
+      "offset": 681,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 675,
+      "offset": 705,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 759,
+      "offset": 789,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 787,
+      "offset": 817,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 815,
+      "offset": 845,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 841,
+      "offset": 871,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 759,
+      "offset": 789,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 787,
+      "offset": 817,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 815,
+      "offset": 845,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 841,
+      "offset": 871,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 759,
+      "offset": 789,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 787,
+      "offset": 817,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 815,
+      "offset": 845,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "IntegerLiteral",
-      "offset": 841,
+      "offset": 871,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "StringLiteral",
-      "offset": 1919,
+      "offset": 1990,
       "length": 10,
       "value": "\"userData\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "StringLiteral",
-      "offset": 1919,
+      "offset": 1990,
       "length": 10,
       "value": "\"userData\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "StringLiteral",
-      "offset": 4082,
+      "offset": 4244,
       "length": 12,
       "value": "\"video_call\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "StringLiteral",
-      "offset": 4124,
+      "offset": 4286,
       "length": 17,
       "value": "\"video_call_1to1\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "StringLiteral",
-      "offset": 4082,
+      "offset": 4244,
       "length": 12,
       "value": "\"video_call\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/UserSchema.swift",
       "kind": "StringLiteral",
-      "offset": 4124,
+      "offset": 4286,
       "length": 17,
       "value": "\"video_call_1to1\""
     },

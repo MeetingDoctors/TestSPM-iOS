@@ -172,7 +172,6 @@ extension MeetingDoctorsSDK.FetchedResultsDelegateProvider where CellConfig.View
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MDVideocallInformationViewController : MeetingDoctorsSDK.MDVideocallProcessBaseViewController {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
   @objc deinit
   @_Concurrency.MainActor(unsafe) @objc override public func closeProcess()
   @_Concurrency.MainActor(unsafe) override public func numberOfRowsInSection(section _: Swift.Int) -> Swift.Int
@@ -207,7 +206,7 @@ public struct MeetingDoctorsChatColors : MeetingDoctorsSDK.MeetingDoctorsChatCol
 }
 final public class MDVideocallInformationAssembler {
   public init(moderator: MeetingDoctorsController.MDVideocallParticipantRequestModel? = nil, specialityCode: Swift.String? = nil)
-  final public func viewController(permission: MeetingDoctorsController.MDVideocallPermission? = nil) -> UIKit.UIViewController
+  final public func viewController() -> UIKit.UIViewController
   @objc deinit
 }
 public protocol InboxBaseCellViewModelType {

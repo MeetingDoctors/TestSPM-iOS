@@ -8,7 +8,6 @@ import MeetingDoctorsController
 import MeetingDoctorsCore
 import MeetingDoctorsSchema
 import MeetingDoctorsSocket
-import Realm
 import RealmSwift
 import RxSwift
 import Swift
@@ -600,6 +599,7 @@ extension MeetingDoctorsStorage.RealmConfigurationAssembler : MeetingDoctorsCore
   @objc dynamic public var isBanned: Swift.Bool
   @objc dynamic public var features: MeetingDoctorsStorage.UserFeaturesEntity?
   @objc dynamic public var termsAcceptedAt: Foundation.Date?
+  @objc dynamic public var companyGroupCode: Swift.String?
   final public let account: RealmSwift.LinkingObjects<MeetingDoctorsStorage.AccountEntity>
   @objc override public static func primaryKey() -> Swift.String?
   @objc override dynamic public init()
@@ -623,6 +623,7 @@ extension MeetingDoctorsStorage.UserEntity {
     case isBanned
     case features
     case termsAcceptedAt
+    case companyGroupCode
     public init?(rawValue: Swift.String)
     public init?(stringValue: Swift.String)
     public init?(intValue: Swift.Int)

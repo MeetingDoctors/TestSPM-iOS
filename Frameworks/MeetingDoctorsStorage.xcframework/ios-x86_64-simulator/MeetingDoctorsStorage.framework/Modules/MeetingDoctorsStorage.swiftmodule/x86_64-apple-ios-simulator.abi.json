@@ -1602,13 +1602,6 @@
       },
       {
         "kind": "Import",
-        "name": "Realm",
-        "printedName": "Realm",
-        "declKind": "Import",
-        "moduleName": "MeetingDoctorsStorage"
-      },
-      {
-        "kind": "Import",
         "name": "RealmSwift",
         "printedName": "RealmSwift",
         "declKind": "Import",
@@ -10263,13 +10256,6 @@
         "kind": "Import",
         "name": "MeetingDoctorsController",
         "printedName": "MeetingDoctorsController",
-        "declKind": "Import",
-        "moduleName": "MeetingDoctorsStorage"
-      },
-      {
-        "kind": "Import",
-        "name": "Realm",
-        "printedName": "Realm",
         "declKind": "Import",
         "moduleName": "MeetingDoctorsStorage"
       },
@@ -19906,6 +19892,108 @@
           },
           {
             "kind": "Var",
+            "name": "companyGroupCode",
+            "printedName": "companyGroupCode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MeetingDoctorsStorage@objc(cs)UserEntity(py)companyGroupCode",
+            "mangledName": "$s21MeetingDoctorsStorage10UserEntityC16companyGroupCodeSSSgvp",
+            "moduleName": "MeetingDoctorsStorage",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MeetingDoctorsStorage@objc(cs)UserEntity(im)companyGroupCode",
+                "mangledName": "$s21MeetingDoctorsStorage10UserEntityC16companyGroupCodeSSSgvg",
+                "moduleName": "MeetingDoctorsStorage",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MeetingDoctorsStorage@objc(cs)UserEntity(im)setCompanyGroupCode:",
+                "mangledName": "$s21MeetingDoctorsStorage10UserEntityC16companyGroupCodeSSSgvs",
+                "moduleName": "MeetingDoctorsStorage",
+                "implicit": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "account",
             "printedName": "account",
             "children": [
@@ -20625,6 +20713,43 @@
                 "declKind": "EnumElement",
                 "usr": "s:21MeetingDoctorsStorage10UserEntityC10AttributesO15termsAcceptedAtyA2EmF",
                 "mangledName": "$s21MeetingDoctorsStorage10UserEntityC10AttributesO15termsAcceptedAtyA2EmF",
+                "moduleName": "MeetingDoctorsStorage"
+              },
+              {
+                "kind": "Var",
+                "name": "companyGroupCode",
+                "printedName": "companyGroupCode",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(MeetingDoctorsStorage.UserEntity.Attributes.Type) -> MeetingDoctorsStorage.UserEntity.Attributes",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Attributes",
+                        "printedName": "MeetingDoctorsStorage.UserEntity.Attributes",
+                        "usr": "s:21MeetingDoctorsStorage10UserEntityC10AttributesO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "MeetingDoctorsStorage.UserEntity.Attributes.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Attributes",
+                            "printedName": "MeetingDoctorsStorage.UserEntity.Attributes",
+                            "usr": "s:21MeetingDoctorsStorage10UserEntityC10AttributesO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:21MeetingDoctorsStorage10UserEntityC10AttributesO16companyGroupCodeyA2EmF",
+                "mangledName": "$s21MeetingDoctorsStorage10UserEntityC10AttributesO16companyGroupCodeyA2EmF",
                 "moduleName": "MeetingDoctorsStorage"
               },
               {
@@ -28849,13 +28974,6 @@
       },
       {
         "kind": "Import",
-        "name": "Realm",
-        "printedName": "Realm",
-        "declKind": "Import",
-        "moduleName": "MeetingDoctorsStorage"
-      },
-      {
-        "kind": "Import",
         "name": "RealmSwift",
         "printedName": "RealmSwift",
         "declKind": "Import",
@@ -29437,13 +29555,6 @@
         "declAttributes": [
           "RawDocComment"
         ]
-      },
-      {
-        "kind": "Import",
-        "name": "Realm",
-        "printedName": "Realm",
-        "declKind": "Import",
-        "moduleName": "MeetingDoctorsStorage"
       },
       {
         "kind": "Import",
@@ -56192,56 +56303,56 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "IntegerLiteral",
-      "offset": 1586,
+      "offset": 1573,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "IntegerLiteral",
-      "offset": 1602,
+      "offset": 1589,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "Array",
-      "offset": 4229,
+      "offset": 4216,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "IntegerLiteral",
-      "offset": 4247,
+      "offset": 4234,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "IntegerLiteral",
-      "offset": 4263,
+      "offset": 4250,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "BooleanLiteral",
-      "offset": 4771,
+      "offset": 4758,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "BooleanLiteral",
-      "offset": 7464,
+      "offset": 7451,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "BooleanLiteral",
-      "offset": 9415,
+      "offset": 9402,
       "length": 4,
       "value": "true"
     },
@@ -56304,28 +56415,28 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Entity\/UserEntity.swift",
       "kind": "BooleanLiteral",
-      "offset": 2723,
+      "offset": 2808,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Entity\/UserEntity.swift",
       "kind": "BooleanLiteral",
-      "offset": 2780,
+      "offset": 2865,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmStore.swift",
       "kind": "BooleanLiteral",
-      "offset": 1693,
+      "offset": 1680,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmStore.swift",
       "kind": "BooleanLiteral",
-      "offset": 1891,
+      "offset": 1878,
       "length": 5,
       "value": "false"
     },

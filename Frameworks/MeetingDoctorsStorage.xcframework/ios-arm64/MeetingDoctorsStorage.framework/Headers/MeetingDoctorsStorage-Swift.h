@@ -580,6 +580,7 @@ SWIFT_CLASS("_TtC21MeetingDoctorsStorage10UserEntity")
 @property (nonatomic) BOOL isBanned;
 @property (nonatomic, strong) UserFeaturesEntity * _Nullable features;
 @property (nonatomic, copy) NSDate * _Nullable termsAcceptedAt;
+@property (nonatomic, copy) NSString * _Nullable companyGroupCode;
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end

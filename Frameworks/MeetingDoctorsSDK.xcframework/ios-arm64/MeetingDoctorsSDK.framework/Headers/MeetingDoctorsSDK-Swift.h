@@ -615,11 +615,11 @@ SWIFT_CLASS("_TtC17MeetingDoctorsSDK36MDVideocallProcessBaseViewController")
 SWIFT_CLASS("_TtC17MeetingDoctorsSDK36MDVideocallInformationViewController")
 @interface MDVideocallInformationViewController : MDVideocallProcessBaseViewController
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)animated;
 - (void)closeProcess;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 
 
@@ -833,11 +833,11 @@ SWIFT_CLASS("_TtC17MeetingDoctorsSDK18UIImageViewAligned")
 @end
 
 
-
-
 @interface UILabel (SWIFT_EXTENSION(MeetingDoctorsSDK))
 - (void)awakeFromNib;
 @end
+
+
 
 
 @interface UINavigationBar (SWIFT_EXTENSION(MeetingDoctorsSDK))

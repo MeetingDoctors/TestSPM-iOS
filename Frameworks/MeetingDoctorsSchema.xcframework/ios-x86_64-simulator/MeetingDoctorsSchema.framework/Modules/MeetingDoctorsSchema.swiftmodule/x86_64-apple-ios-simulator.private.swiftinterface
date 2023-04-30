@@ -2273,6 +2273,7 @@ public struct UserSchema : Swift.Codable {
     case banned
     case features
     case termsAcceptedAt
+    case companyGroupCode
     public init?(rawValue: Swift.String)
     public init?(stringValue: Swift.String)
     public init?(intValue: Swift.Int)
@@ -2322,6 +2323,7 @@ public struct UserSchema : Swift.Codable {
   public let banned: Swift.Int?
   public let features: MeetingDoctorsSchema.UserFeaturesSchema?
   public let termsAcceptedAt: Foundation.Date?
+  public let companyGroupCode: Swift.String?
   public var isClient: Swift.Bool {
     get
   }

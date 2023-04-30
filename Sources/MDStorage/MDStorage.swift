@@ -1,4 +1,2 @@
-import MeetingDoctorsStorage
-
 struct MDStorage {
 }

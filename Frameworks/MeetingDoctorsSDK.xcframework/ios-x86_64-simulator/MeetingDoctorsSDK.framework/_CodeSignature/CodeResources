@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		MwkNMIMl8GRbJMu4L70vd7TO+90=
+		aWYIWOdARIh95bdvxroeNG/tjkI=
 		</data>
 		<key>AvatarStatusView.nib</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Headers/MeetingDoctorsSDK-Swift.h</key>
 		<data>
-		mkdOJhO0i5Z/fwQgOvl9w01+9RQ=
+		8vMa/dw6qbCGRE8KSWyd2nF+op0=
 		</data>
 		<key>Headers/MeetingDoctorsSDK.h</key>
 		<data>
@@ -182,11 +182,11 @@
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		wzDquAwGBFOl/jv8OVxQjEt3wWw=
+		8gQ2R7xtL3cZ8An44O9q4sJSous=
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		IMuQZBGeO4H2n0Cpb0GxJEvLAqk=
+		FzePCe/qZ4TPlU/xIY1wmshb9TU=
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -194,11 +194,11 @@
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		IMuQZBGeO4H2n0Cpb0GxJEvLAqk=
+		FzePCe/qZ4TPlU/xIY1wmshb9TU=
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		gC5qvAiRGXkax0QgSFj2k+yC/VQ=
+		ACnwaq9e4BYqC00SCFp6e9UqCvk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -294,15 +294,15 @@
 		</data>
 		<key>MyHealthStoryboard.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<data>
-		zok0qz3OyM5ffLGoKxcPV4qMJWs=
+		zdozvkhoZ3ZxM9q0GTcicOrraWc=
 		</data>
 		<key>MyHealthStoryboard.storyboardc/fYa-bI-t0e-view-MLc-3i-X5g.nib</key>
 		<data>
-		dLOYUoCtZgprOLo9JhGACAg64d0=
+		aA64ZOZS2d0Hh/kCQlL61RmtE1A=
 		</data>
 		<key>MyHealthStoryboard.storyboardc/ySB-P6-piZ-view-Jzj-QM-Xub.nib</key>
 		<data>
-		qrF2c5X4OuiZVZIhIWXti6O1bWA=
+		YH1RZGGQ5zpytK79ZIK27ow5zuU=
 		</data>
 		<key>NPSBannerView.nib</key>
 		<data>
@@ -385,7 +385,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			2MFoz+qbRGIXLrVeidaiD5b5weo=
+			01GoNjFW6OtcX6j9e+7y5l0pPPQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -407,7 +407,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cDxChTHFhdI6EhYlCXwqe3yQdIc=
+			KOZIV0QGn2UXOBRrkZ+8x/q/Rww=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -429,7 +429,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tr5Wr2iM90mFC1MGyqH6v1HYmdQ=
+			fyUPGMQHisLhBH2qmBNMISiv6uw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -447,7 +447,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			QEfCk/z2Dke/Teaq2tHuDhOk+m4=
+			kaN9lLSvVRR7KEkC+QIElgLlLYM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -465,7 +465,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mMk8tnqPnRz6d8RKSGldF9Job10=
+			QXj8GocxK8878xklhqOzlPqki6I=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -491,7 +491,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7QhY0g5HyPx26EiL26JFV9/jZh0=
+			brBRPNXpxYoXAaQBMNOwP8/cpDE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -515,7 +515,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5wCSAlXC+FxemLVZlHC2ENoDazlSHStiAw5U3izIunQ=
+			D0eqrdMPND9h3BvqTYMT+SvCaBYsbhGwdbyO7HFLgI4=
 			</data>
 		</dict>
 		<key>AvatarStatusView.nib</key>
@@ -599,7 +599,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YLqIjSZ/ktiw8WOV7zoDzbwWalXPaBRaRPiKpOykP/w=
+			gjK1I8uRlcDBYaWVBjgwSHOQ7Y6tIq/4Bd6h8Zfl6Jk=
 			</data>
 		</dict>
 		<key>Headers/MeetingDoctorsSDK.h</key>
@@ -816,14 +816,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			TniDhke5HHCc5tY7+i99Rjrq6G7bI8UGMFYvSFAW/Io=
+			jiyRpdszr7E3paWWH95Dvv5AwhtBYaVhN0/0pW9B838=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6+680bAS7elkN52pNypnH6zoz/j37IeWIXs79lXkEck=
+			CIm6qCrAzb5gbaZJExvDHiIfM6oA7b3UNN/v5n9HOqw=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -837,14 +837,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6+680bAS7elkN52pNypnH6zoz/j37IeWIXs79lXkEck=
+			CIm6qCrAzb5gbaZJExvDHiIfM6oA7b3UNN/v5n9HOqw=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			OLkqioeVoPNEYmVj2dRWgRDUfzXbUKy8G8DWMB8iKJ4=
+			VtKummRkgMy5YNWCroXMQxzRDIF0eU9+dtj0+bUSLyU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -1012,21 +1012,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rkFoG1VTgyxYjyqdc4yHWziPKlkoshicK7BD2l0pAr0=
+			ikFSnfn28giFlwrCY02F18eb0VuNf0lSI+5mLhD+rh4=
 			</data>
 		</dict>
 		<key>MyHealthStoryboard.storyboardc/fYa-bI-t0e-view-MLc-3i-X5g.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1II4S8sd4VwpobVmgA48NfLE4wJGL+jC290DOpahynY=
+			2iXzEvEBia1hIioFdv2yoT0qexOhofUZNPF3DRdocag=
 			</data>
 		</dict>
 		<key>MyHealthStoryboard.storyboardc/ySB-P6-piZ-view-Jzj-QM-Xub.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MkFxORyADrZ06EndaLQ/AXX5j9eGE+3FXkWwjCjE9Uk=
+			MOjW9NVkRDytA/LKJyoU7WwRCmnpIaaYNk7f2EIPmdw=
 			</data>
 		</dict>
 		<key>NPSBannerView.nib</key>
@@ -1161,7 +1161,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			H1/S9J0jU2gGpi6zYqIETvD1ztqHPYW/0Lbc8xxsFss=
+			PU88Vd9YYt84Cq+2ejxWF6TJguZ4fvCUUxihX4y7/7Q=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1186,7 +1186,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uUD4eoM0epf1sXjv2mTDzVeoM1iIiavCqpZxM/o3u6g=
+			34gJAgVv9OQ/Jqx/1Z3acpTMbsZiIhtXtEMYiaLkNPc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1211,7 +1211,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xcGKnBHpvT+0fgchlRTkV8dB6bJ5QX7kHAkevFbQXZk=
+			fK6DoVnLT3c2yuyrhchx3dJNletKjIIx18XmKxKjw5I=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1229,7 +1229,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Z5X4lj+zHrGxcPs0+S7vHXioL5khw+gkENvDqCqm6gg=
+			gQ+OybuSpUvuzkKv9nJzGdnFXWzz1KR+fzLp8VTEdfs=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1247,7 +1247,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			2uKf+tW1UDwnqeupyrgXAaj9+CVHk/9Mtte+IeIYoOo=
+			Yo8I+J0nPj0Tcyq40gRKTEZs6aesKsIBYXoALY7LOj8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1279,7 +1279,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ckEu8YP9IcoSQ5h5BB55zFIU0ksq/mGMTUP+inlf5BM=
+			Z1Uxn5ai8Qu2/ljprKPOiS4U8BY3HMlDjxtCk1wjB6o=
 			</data>
 			<key>optional</key>
 			<true/>

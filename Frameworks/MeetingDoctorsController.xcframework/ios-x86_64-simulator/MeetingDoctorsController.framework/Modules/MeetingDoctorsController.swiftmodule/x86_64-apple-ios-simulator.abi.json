@@ -36131,7 +36131,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(id:apiKey:consultation:type:speciality:participants:)",
+            "printedName": "init(id:apiKey:consultation:type:speciality:participants:group:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -36230,11 +36230,25 @@
                   }
                 ],
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:24MeetingDoctorsController23MDVideocallRequestModelC2id6apiKey12consultation4type10speciality12participantsACSSSg_AJSiSgAA0D4TypeOSgAJSayAA0d11ParticipanteF0CGSgtcfc",
-            "mangledName": "$s24MeetingDoctorsController23MDVideocallRequestModelC2id6apiKey12consultation4type10speciality12participantsACSSSg_AJSiSgAA0D4TypeOSgAJSayAA0d11ParticipanteF0CGSgtcfc",
+            "usr": "s:24MeetingDoctorsController23MDVideocallRequestModelC2id6apiKey12consultation4type10speciality12participants5groupACSSSg_AKSiSgAA0D4TypeOSgAKSayAA0d11ParticipanteF0CGSgAKtcfc",
+            "mangledName": "$s24MeetingDoctorsController23MDVideocallRequestModelC2id6apiKey12consultation4type10speciality12participants5groupACSSSg_AKSiSgAA0D4TypeOSgAKSayAA0d11ParticipanteF0CGSgAKtcfc",
             "moduleName": "MeetingDoctorsController",
             "declAttributes": [
               "AccessControl"
@@ -44921,6 +44935,811 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "MDVCParticipantArgumentResponseEnum",
+        "printedName": "MDVCParticipantArgumentResponseEnum",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "moderatorUserDisconected",
+            "printedName": "moderatorUserDisconected",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO24moderatorUserDisconectedyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO24moderatorUserDisconectedyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "moderatorWPDisconected",
+            "printedName": "moderatorWPDisconected",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO22moderatorWPDisconectedyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO22moderatorWPDisconectedyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "moderatorIssuesAudio",
+            "printedName": "moderatorIssuesAudio",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO20moderatorIssuesAudioyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO20moderatorIssuesAudioyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "moderatorIssuesVideo",
+            "printedName": "moderatorIssuesVideo",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO20moderatorIssuesVideoyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO20moderatorIssuesVideoyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "moderatorIssuesBlocked",
+            "printedName": "moderatorIssuesBlocked",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO22moderatorIssuesBlockedyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO22moderatorIssuesBlockedyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "moderatorUserBehaviour",
+            "printedName": "moderatorUserBehaviour",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO22moderatorUserBehaviouryA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO22moderatorUserBehaviouryA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "moderatorOther",
+            "printedName": "moderatorOther",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO14moderatorOtheryA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO14moderatorOtheryA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "moderatorReportAdded",
+            "printedName": "moderatorReportAdded",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO20moderatorReportAddedyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO20moderatorReportAddedyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "moderatorRejectedVideocall",
+            "printedName": "moderatorRejectedVideocall",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO26moderatorRejectedVideocallyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO26moderatorRejectedVideocallyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "userLongWaiting",
+            "printedName": "userLongWaiting",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO15userLongWaitingyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO15userLongWaitingyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "userTestError",
+            "printedName": "userTestError",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO13userTestErroryA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO13userTestErroryA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "userBadConnection",
+            "printedName": "userBadConnection",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO17userBadConnectionyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO17userBadConnectionyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "userIssueTechnical",
+            "printedName": "userIssueTechnical",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO18userIssueTechnicalyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO18userIssueTechnicalyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "userNotNeededAnymore",
+            "printedName": "userNotNeededAnymore",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO20userNotNeededAnymoreyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO20userNotNeededAnymoreyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "userOther",
+            "printedName": "userOther",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO9userOtheryA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO9userOtheryA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "userTimeoutWaiting",
+            "printedName": "userTimeoutWaiting",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO18userTimeoutWaitingyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO18userTimeoutWaitingyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "userCreatedNewVideocall",
+            "printedName": "userCreatedNewVideocall",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO23userCreatedNewVideocallyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO23userCreatedNewVideocallyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Var",
+            "name": "connectionIssues",
+            "printedName": "connectionIssues",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO16connectionIssuesyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO16connectionIssuesyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO8rawValueACSgSS_tcfc",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO8rawValueACSgSS_tcfc",
+            "moduleName": "MeetingDoctorsController",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO8rawValueSSvp",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO8rawValueSSvp",
+            "moduleName": "MeetingDoctorsController",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO8rawValueSSvg",
+                "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO8rawValueSSvg",
+                "moduleName": "MeetingDoctorsController",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO",
+        "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO",
+        "moduleName": "MeetingDoctorsController",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "enumRawTypeName": "String",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "MDVideocallParticipantResponseModel",
         "printedName": "MDVideocallParticipantResponseModel",
         "children": [
@@ -45299,6 +46118,70 @@
                 "declKind": "Accessor",
                 "usr": "s:24MeetingDoctorsController35MDVideocallParticipantResponseModelC6statusAA0D10StatusTypeOSgvg",
                 "mangledName": "$s24MeetingDoctorsController35MDVideocallParticipantResponseModelC6statusAA0D10StatusTypeOSgvg",
+                "moduleName": "MeetingDoctorsController",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "argument",
+            "printedName": "argument",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:24MeetingDoctorsController35MDVideocallParticipantResponseModelC8argumentAA023MDVCParticipantArgumentF4EnumOSgvp",
+            "mangledName": "$s24MeetingDoctorsController35MDVideocallParticipantResponseModelC8argumentAA023MDVCParticipantArgumentF4EnumOSgvp",
+            "moduleName": "MeetingDoctorsController",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:24MeetingDoctorsController35MDVideocallParticipantResponseModelC8argumentAA023MDVCParticipantArgumentF4EnumOSgvg",
+                "mangledName": "$s24MeetingDoctorsController35MDVideocallParticipantResponseModelC8argumentAA023MDVCParticipantArgumentF4EnumOSgvg",
                 "moduleName": "MeetingDoctorsController",
                 "implicit": true,
                 "declAttributes": [
@@ -71381,6 +72264,64 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "companyGroupCode",
+            "printedName": "companyGroupCode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:24MeetingDoctorsController13UserModelTypeP16companyGroupCodeSSSgvp",
+            "mangledName": "$s24MeetingDoctorsController13UserModelTypeP16companyGroupCodeSSSgvp",
+            "moduleName": "MeetingDoctorsController",
+            "protocolReq": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:24MeetingDoctorsController13UserModelTypeP16companyGroupCodeSSSgvg",
+                "mangledName": "$s24MeetingDoctorsController13UserModelTypeP16companyGroupCodeSSSgvg",
+                "moduleName": "MeetingDoctorsController",
+                "genericSig": "<τ_0_0 where τ_0_0 : MeetingDoctorsController.UserModelType>",
+                "sugared_genericSig": "<Self where Self : MeetingDoctorsController.UserModelType>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "hasAccess",
             "printedName": "hasAccess(to:)",
@@ -72402,6 +73343,66 @@
           },
           {
             "kind": "Var",
+            "name": "companyGroupCode",
+            "printedName": "companyGroupCode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:24MeetingDoctorsController9UserModelV16companyGroupCodeSSSgvp",
+            "mangledName": "$s24MeetingDoctorsController9UserModelV16companyGroupCodeSSSgvp",
+            "moduleName": "MeetingDoctorsController",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:24MeetingDoctorsController9UserModelV16companyGroupCodeSSSgvg",
+                "mangledName": "$s24MeetingDoctorsController9UserModelV16companyGroupCodeSSSgvg",
+                "moduleName": "MeetingDoctorsController",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "displayName",
             "printedName": "displayName",
             "children": [
@@ -72483,7 +73484,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(id:firstName:lastName:email:phone:documentId:gender:status:birthday:cardNumber:contract:coverage:company:isBanned:features:termsAcceptedAt:)",
+            "printedName": "init(id:firstName:lastName:email:phone:documentId:gender:status:birthday:cardNumber:contract:coverage:company:isBanned:features:termsAcceptedAt:companyGroupCode:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -72698,11 +73699,25 @@
                   }
                 ],
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:24MeetingDoctorsController9UserModelV2id9firstName04lastH05email5phone10documentId6gender6status8birthday10cardNumber8contract8coverage7company8isBanned8features15termsAcceptedAtACSS_SSSgA4tA0d6GenderE0OSgAA0d18RegistrationStatusE0OSg10Foundation4DateVSgA4TSbAA0d8FeaturesE0VSgA2_tcfc",
-            "mangledName": "$s24MeetingDoctorsController9UserModelV2id9firstName04lastH05email5phone10documentId6gender6status8birthday10cardNumber8contract8coverage7company8isBanned8features15termsAcceptedAtACSS_SSSgA4tA0d6GenderE0OSgAA0d18RegistrationStatusE0OSg10Foundation4DateVSgA4TSbAA0d8FeaturesE0VSgA2_tcfc",
+            "usr": "s:24MeetingDoctorsController9UserModelV2id9firstName04lastH05email5phone10documentId6gender6status8birthday10cardNumber8contract8coverage7company8isBanned8features15termsAcceptedAt0U9GroupCodeACSS_SSSgA4uA0d6GenderE0OSgAA0d18RegistrationStatusE0OSg10Foundation4DateVSgA4USbAA0d8FeaturesE0VSgA3_AUtcfc",
+            "mangledName": "$s24MeetingDoctorsController9UserModelV2id9firstName04lastH05email5phone10documentId6gender6status8birthday10cardNumber8contract8coverage7company8isBanned8features15termsAcceptedAt0U9GroupCodeACSS_SSSgA4uA0d6GenderE0OSgAA0d18RegistrationStatusE0OSg10Foundation4DateVSgA4USbAA0d8FeaturesE0VSgA3_AUtcfc",
             "moduleName": "MeetingDoctorsController",
             "declAttributes": [
               "AccessControl",
@@ -82957,56 +83972,308 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 311,
+      "offset": 272,
+      "length": 28,
+      "value": "\"moderator_user_disconected\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 335,
+      "length": 26,
+      "value": "\"moderator_wp_disconected\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 394,
+      "length": 24,
+      "value": "\"moderator_issues_audio\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 451,
+      "length": 24,
+      "value": "\"moderator_issues_video\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 510,
+      "length": 26,
+      "value": "\"moderator_issues_blocked\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 571,
+      "length": 26,
+      "value": "\"moderator_user_behaviour\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 624,
+      "length": 17,
+      "value": "\"moderator_other\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 674,
+      "length": 24,
+      "value": "\"moderator_report_added\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 737,
+      "length": 30,
+      "value": "\"moderator_rejected_videocall\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 795,
+      "length": 19,
+      "value": "\"user_long_waiting\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 840,
+      "length": 17,
+      "value": "\"user_test_error\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 887,
+      "length": 21,
+      "value": "\"user_bad_connection\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 939,
+      "length": 22,
+      "value": "\"user_issue_technical\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 994,
+      "length": 25,
+      "value": "\"user_not_needed_anymore\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 1041,
+      "length": 12,
+      "value": "\"user_other\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 1084,
+      "length": 22,
+      "value": "\"user_timeout_waiting\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 1142,
+      "length": 28,
+      "value": "\"user_created_new_videocall\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 1199,
+      "length": 19,
+      "value": "\"connection_issues\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 272,
+      "length": 28,
+      "value": "\"moderator_user_disconected\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 335,
+      "length": 26,
+      "value": "\"moderator_wp_disconected\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 394,
+      "length": 24,
+      "value": "\"moderator_issues_audio\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 451,
+      "length": 24,
+      "value": "\"moderator_issues_video\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 510,
+      "length": 26,
+      "value": "\"moderator_issues_blocked\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 571,
+      "length": 26,
+      "value": "\"moderator_user_behaviour\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 624,
+      "length": 17,
+      "value": "\"moderator_other\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 674,
+      "length": 24,
+      "value": "\"moderator_report_added\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 737,
+      "length": 30,
+      "value": "\"moderator_rejected_videocall\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 795,
+      "length": 19,
+      "value": "\"user_long_waiting\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 840,
+      "length": 17,
+      "value": "\"user_test_error\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 887,
+      "length": 21,
+      "value": "\"user_bad_connection\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 939,
+      "length": 22,
+      "value": "\"user_issue_technical\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 994,
+      "length": 25,
+      "value": "\"user_not_needed_anymore\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 1041,
+      "length": 12,
+      "value": "\"user_other\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 1084,
+      "length": 22,
+      "value": "\"user_timeout_waiting\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 1142,
+      "length": 28,
+      "value": "\"user_created_new_videocall\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 1199,
+      "length": 19,
+      "value": "\"connection_issues\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 1364,
       "length": 12,
       "value": "\"video_call\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 346,
+      "offset": 1399,
       "length": 9,
       "value": "\"api_key\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 618,
+      "offset": 1693,
       "length": 12,
       "value": "\"created_at\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 656,
+      "offset": 1731,
       "length": 12,
       "value": "\"updated_at\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 311,
+      "offset": 1364,
       "length": 12,
       "value": "\"video_call\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 346,
+      "offset": 1399,
       "length": 9,
       "value": "\"api_key\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 618,
+      "offset": 1693,
       "length": 12,
       "value": "\"created_at\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 656,
+      "offset": 1731,
       "length": 12,
       "value": "\"updated_at\""
     },

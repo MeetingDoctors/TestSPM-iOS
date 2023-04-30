@@ -1371,7 +1371,7 @@ extension MeetingDoctorsController.UserFeaturesModel {
   public init(schema: MeetingDoctorsSchema.UserFeaturesSchema)
 }
 public class MDVideocallRequestModel : Swift.Codable {
-  public init(id: Swift.String?, apiKey: Swift.String?, consultation: Swift.Int?, type: MeetingDoctorsController.MDVideocallType?, speciality: Swift.String?, participants: [MeetingDoctorsController.MDVideocallParticipantRequestModel]?)
+  public init(id: Swift.String?, apiKey: Swift.String?, consultation: Swift.Int?, type: MeetingDoctorsController.MDVideocallType?, speciality: Swift.String?, participants: [MeetingDoctorsController.MDVideocallParticipantRequestModel]?, group: Swift.String?)
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -1694,6 +1694,31 @@ public enum MDVCParticipantProviderResponseEnum : Swift.String, Swift.Codable {
     get
   }
 }
+public enum MDVCParticipantArgumentResponseEnum : Swift.String, Swift.Codable {
+  case moderatorUserDisconected
+  case moderatorWPDisconected
+  case moderatorIssuesAudio
+  case moderatorIssuesVideo
+  case moderatorIssuesBlocked
+  case moderatorUserBehaviour
+  case moderatorOther
+  case moderatorReportAdded
+  case moderatorRejectedVideocall
+  case userLongWaiting
+  case userTestError
+  case userBadConnection
+  case userIssueTechnical
+  case userNotNeededAnymore
+  case userOther
+  case userTimeoutWaiting
+  case userCreatedNewVideocall
+  case connectionIssues
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 public class MDVideocallParticipantResponseModel : Swift.Codable {
   final public let id: Swift.String?
   final public let videocall: Swift.String?
@@ -1701,6 +1726,7 @@ public class MDVideocallParticipantResponseModel : Swift.Codable {
   final public let type: MeetingDoctorsController.MDVideocallType?
   final public let provider: MeetingDoctorsController.MDVCParticipantProviderResponseEnum?
   final public let status: MeetingDoctorsController.MDVideocallStatusType?
+  final public let argument: MeetingDoctorsController.MDVCParticipantArgumentResponseEnum?
   final public let speciality: Swift.String?
   final public let session: Swift.String?
   final public let token: Swift.String?
@@ -2349,6 +2375,7 @@ public protocol UserModelType {
   var company: Swift.String? { get }
   var isBanned: Swift.Bool { get }
   var termsAcceptedAt: Foundation.Date? { get set }
+  var companyGroupCode: Swift.String? { get }
   func hasAccess(to contact: MeetingDoctorsController.InboxContactModel) -> Swift.Bool
 }
 public struct UserModel : MeetingDoctorsController.UserModelType {
@@ -2368,13 +2395,14 @@ public struct UserModel : MeetingDoctorsController.UserModelType {
   public let isBanned: Swift.Bool
   public let features: MeetingDoctorsController.UserFeaturesModel?
   public var termsAcceptedAt: Foundation.Date?
+  public let companyGroupCode: Swift.String?
   public var displayName: Swift.String {
     get
   }
   public var isClient: Swift.Bool {
     get
   }
-  public init(id: Swift.String, firstName: Swift.String?, lastName: Swift.String?, email: Swift.String?, phone: Swift.String?, documentId: Swift.String?, gender: MeetingDoctorsController.UserGenderModel?, status: MeetingDoctorsController.UserRegistrationStatusModel?, birthday: Foundation.Date?, cardNumber: Swift.String?, contract: Swift.String?, coverage: Swift.String?, company: Swift.String?, isBanned: Swift.Bool, features: MeetingDoctorsController.UserFeaturesModel?, termsAcceptedAt: Foundation.Date?)
+  public init(id: Swift.String, firstName: Swift.String?, lastName: Swift.String?, email: Swift.String?, phone: Swift.String?, documentId: Swift.String?, gender: MeetingDoctorsController.UserGenderModel?, status: MeetingDoctorsController.UserRegistrationStatusModel?, birthday: Foundation.Date?, cardNumber: Swift.String?, contract: Swift.String?, coverage: Swift.String?, company: Swift.String?, isBanned: Swift.Bool, features: MeetingDoctorsController.UserFeaturesModel?, termsAcceptedAt: Foundation.Date?, companyGroupCode: Swift.String?)
   public func hasAccess(to contact: MeetingDoctorsController.InboxContactModel) -> Swift.Bool
 }
 extension MeetingDoctorsController.UserModel {
@@ -2486,6 +2514,9 @@ extension MeetingDoctorsController.ScheduleAvailabilityModel : Swift.RawRepresen
 extension MeetingDoctorsController.MDVCParticipantProviderResponseEnum : Swift.Equatable {}
 extension MeetingDoctorsController.MDVCParticipantProviderResponseEnum : Swift.Hashable {}
 extension MeetingDoctorsController.MDVCParticipantProviderResponseEnum : Swift.RawRepresentable {}
+extension MeetingDoctorsController.MDVCParticipantArgumentResponseEnum : Swift.Equatable {}
+extension MeetingDoctorsController.MDVCParticipantArgumentResponseEnum : Swift.Hashable {}
+extension MeetingDoctorsController.MDVCParticipantArgumentResponseEnum : Swift.RawRepresentable {}
 extension MeetingDoctorsController.UserGenderModel : Swift.Equatable {}
 extension MeetingDoctorsController.UserGenderModel : Swift.Hashable {}
 extension MeetingDoctorsController.UserGenderModel : Swift.RawRepresentable {}
