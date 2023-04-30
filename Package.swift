@@ -17,7 +17,7 @@ let package = Package(
                 "MeetingDoctorsSchemaWrapper",
                 "MeetingDoctorsSocketWrapper",
                 "MeetingDoctorsRemoteWrapper",
-                "MeetingDoctorsStorageWrapper",
+//                "MeetingDoctorsStorageWrapper",
                 "MeetingDoctorsControllerWrapper",
                 "MeetingDoctorsSDKWrapper",
             ]),
@@ -165,28 +165,30 @@ let package = Package(
             name: "MeetingDoctorsStorage",
             path: "Frameworks/MeetingDoctorsStorage.xcframework"
         ),
-        .target(name: "MeetingDoctorsStorageWrapper",
-                dependencies: [
-                    .target(name: "MeetingDoctorsStorage"),
-                    .target(name: "MeetingDoctorsSchemaWrapper"),
-                    .target(name: "MeetingDoctorsCoreWrapper"),
-                    .target(name: "MeetingDoctorsControllerWrapper"),
-                    .target(name: "MeetingDoctorsSocketWrapper"),
-                    .product(name: "Realm",
-                             package: "realm-swift"), //NOTE: not find realm module
-                    .product(name: "RealmSwift",
-                             package: "realm-swift")
-                ],
-                path: "Sources/MDStorage",
-                linkerSettings: [
-                    .linkedFramework("Foundation"),
-                    .linkedFramework("UIKit"),
-                    .linkedFramework("CoreLocation"),
-//                    .unsafeFlags([
-//                        "-Xlinker", "-exclude_arch", "-Xlinker", "arm64"
-//                    ])
-                ]
-               ),
+//        .target(name: "MeetingDoctorsStorageWrapper",
+//                dependencies: [
+//                    .target(name: "MeetingDoctorsStorage"),
+//                    .target(name: "MeetingDoctorsSchemaWrapper"),
+//                    .target(name: "MeetingDoctorsCoreWrapper"),
+//                    .target(name: "MeetingDoctorsControllerWrapper"),
+//                    .target(name: "MeetingDoctorsSocketWrapper"),
+//                    .product(name: "Realm",
+//                             package: "realm-swift"), //NOTE: not find realm module
+//                    .product(name: "RealmSwift",
+//                             package: "realm-swift")
+//                ],
+//                path: "Sources/MDStorage",
+////                cSettings: ([
+////                    .headerSearchPath("../SourcePackages/checkouts/realm-swift/Realm/")
+////                ] as [CSetting]),
+//                linkerSettings: [
+//                    .linkedFramework("Foundation"),
+//                    .linkedFramework("CoreLocation"),
+////                    .unsafeFlags([
+////                        "-Xlinker", "-exclude_arch", "-Xlinker", "arm64"
+////                    ])
+//                ]
+//               ),
         // MARK: - MDSDK
         .binaryTarget(
             name: "MeetingDoctorsSDK",
@@ -200,7 +202,7 @@ let package = Package(
                     .target(name: "MeetingDoctorsControllerWrapper"),
                     .target(name: "MeetingDoctorsRemoteWrapper"),
                     .target(name: "MeetingDoctorsSocketWrapper"),
-                    .target(name: "MeetingDoctorsStorageWrapper"),
+//                    .target(name: "MeetingDoctorsStorageWrapper"),
                     .product(name: "RxSwift",
                              package: "RxSwift"),
                     .product(name: "RxCocoa",
