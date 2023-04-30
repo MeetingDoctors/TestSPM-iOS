@@ -21,36 +21,55 @@ let package = Package(
             type: .dynamic,
             targets: [
                 "MeetingDoctorsSchemaWrapper",
+                "MeetingDoctorsCoreWrapper"
             ]),
         .library(
             name: "MeetingDoctorsSocketLibrary",
             type: .dynamic,
             targets: [
                 "MeetingDoctorsSocketWrapper",
+                "MeetingDoctorsSchemaWrapper",
+                "MeetingDoctorsCoreWrapper",
+                "MeetingDoctorsControllerWrapper",
             ]),
         .library(
             name: "MeetingDoctorsRemoteLibrary",
             type: .dynamic,
             targets: [
                 "MeetingDoctorsRemoteWrapper",
+                "MeetingDoctorsSchemaWrapper",
+                "MeetingDoctorsCoreWrapper",
+                "MeetingDoctorsControllerWrapper"
             ]),
         .library(
             name: "MeetingDoctorsStorageLibrary",
             type: .dynamic,
             targets: [
                 "MeetingDoctorsStorageWrapper",
+                "MeetingDoctorsSchemaWrapper",
+                "MeetingDoctorsCoreWrapper",
+                "MeetingDoctorsControllerWrapper",
+                "MeetingDoctorsSocketWrapper",
             ]),
         .library(
             name: "MeetingDoctorsControllerLibrary",
             type: .dynamic,
             targets: [
                 "MeetingDoctorsControllerWrapper",
+                "MeetingDoctorsSchemaWrapper",
+                "MeetingDoctorsCoreWrapper"
             ]),
         .library(
             name: "MeetingDoctorsSDKLibrary",
             type: .dynamic,
             targets: [
                 "MeetingDoctorsSDKWrapper",
+                "MeetingDoctorsSchemaWrapper",
+                "MeetingDoctorsCoreWrapper",
+                "MeetingDoctorsControllerWrapper",
+                "MeetingDoctorsRemoteWrapper",
+                "MeetingDoctorsSocketWrapper",
+                "MeetingDoctorsStorageWrapper",
             ]),
     ],
     dependencies: [
@@ -69,8 +88,6 @@ let package = Package(
                  .upToNextMajor(from: "4.8.0")),
         .package(url: "https://github.com/realm/realm-swift.git",
                  exact: "10.38.3"),
-//        .package(url: "https://github.com/realm/realm-cocoa.git",
-//                 exact: "10.17.0"),
         .package(url: "https://github.com/ReactiveX/RxSwift.git",
                  from: "6.5.0"),
         .package(url: "https://github.com/Swinject/Swinject.git",
@@ -95,8 +112,6 @@ let package = Package(
                     .target(name: "MeetingDoctorsCore"),
                     .product(name: "CryptoSwift",
                              package: "CryptoSwift"),
-//                    .product(name: "GoogleUtilities",
-//                             package: "GoogleUtilities#swift-package-manager"),
                     .product(name: "Promises",
                              package: "promises"),
                     .product(name: "FirebaseAnalytics",
@@ -118,7 +133,6 @@ let package = Package(
         .target(name: "MeetingDoctorsSchemaWrapper",
                 dependencies: [
                     .target(name: "MeetingDoctorsSchema"),
-                    .target(name: "MeetingDoctorsCoreWrapper"),
                 ],
                 path: "Sources/MDSchema",
                 linkerSettings: [
@@ -135,8 +149,6 @@ let package = Package(
         .target(name: "MeetingDoctorsControllerWrapper",
                 dependencies: [
                     .target(name: "MeetingDoctorsController"),
-                    .target(name: "MeetingDoctorsSchemaWrapper"),
-                    .target(name: "MeetingDoctorsCoreWrapper"),
                     .product(name: "RxSwift",
                              package: "RxSwift"),
                     .product(name: "RxBlocking",
@@ -159,9 +171,6 @@ let package = Package(
         .target(name: "MeetingDoctorsSocketWrapper",
                 dependencies: [
                     .target(name: "MeetingDoctorsSocket"),
-                    .target(name: "MeetingDoctorsSchemaWrapper"),
-                    .target(name: "MeetingDoctorsCoreWrapper"),
-                    .target(name: "MeetingDoctorsControllerWrapper"),
                     .product(name: "SocketIO",
                              package: "socket.io-client-swift")
                 ],
@@ -179,9 +188,6 @@ let package = Package(
         .target(name: "MeetingDoctorsRemoteWrapper",
                 dependencies: [
                     .target(name: "MeetingDoctorsRemote"),
-                    .target(name: "MeetingDoctorsSchemaWrapper"),
-                    .target(name: "MeetingDoctorsCoreWrapper"),
-                    .target(name: "MeetingDoctorsControllerWrapper"),
                     .product(name: "Alamofire",
                              package: "Alamofire")
                 ],
@@ -199,10 +205,6 @@ let package = Package(
         .target(name: "MeetingDoctorsStorageWrapper",
                 dependencies: [
                     .target(name: "MeetingDoctorsStorage"),
-                    .target(name: "MeetingDoctorsSchemaWrapper"),
-                    .target(name: "MeetingDoctorsCoreWrapper"),
-                    .target(name: "MeetingDoctorsControllerWrapper"),
-                    .target(name: "MeetingDoctorsSocketWrapper"),
                     .product(name: "RealmSwift",
                              package: "realm-swift"),
                     .product(name: "Realm",
@@ -228,12 +230,6 @@ let package = Package(
         .target(name: "MeetingDoctorsSDKWrapper",
                 dependencies: [
                     .target(name: "MeetingDoctorsSDK"),
-                    .target(name: "MeetingDoctorsSchemaWrapper"),
-                    .target(name: "MeetingDoctorsCoreWrapper"),
-                    .target(name: "MeetingDoctorsControllerWrapper"),
-                    .target(name: "MeetingDoctorsRemoteWrapper"),
-                    .target(name: "MeetingDoctorsSocketWrapper"),
-                    .target(name: "MeetingDoctorsStorageWrapper"),
                     .product(name: "RxSwift",
                              package: "RxSwift"),
                     .product(name: "RxCocoa",
