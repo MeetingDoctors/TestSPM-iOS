@@ -1,4 +1,2 @@
-import MeetingdoctorsSDK
-
 struct MDSDK {
 }

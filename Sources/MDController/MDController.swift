@@ -1,4 +1,2 @@
-import MeetingDoctorsController
-
 struct MDController {
 }
