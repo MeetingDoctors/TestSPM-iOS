@@ -12,64 +12,64 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "MeetingDoctorsCoreLibrary",
-            type: .dynamic,
+//            type: .dynamic,
             targets: [
-                "MeetingDoctorsCoreWrapper",
+                "MeetingDoctorsCoreTarget",
             ]),
         .library(
             name: "MeetingDoctorsSchemaLibrary",
-            type: .dynamic,
+//            type: .dynamic,
             targets: [
-                "MeetingDoctorsSchemaWrapper",
-                "MeetingDoctorsCoreWrapper"
-            ]),
-        .library(
-            name: "MeetingDoctorsSocketLibrary",
-            type: .dynamic,
-            targets: [
-                "MeetingDoctorsSocketWrapper",
-                "MeetingDoctorsSchemaWrapper",
-                "MeetingDoctorsCoreWrapper",
-                "MeetingDoctorsControllerWrapper",
-            ]),
-        .library(
-            name: "MeetingDoctorsRemoteLibrary",
-            type: .dynamic,
-            targets: [
-                "MeetingDoctorsRemoteWrapper",
-                "MeetingDoctorsSchemaWrapper",
-                "MeetingDoctorsCoreWrapper",
-                "MeetingDoctorsControllerWrapper"
-            ]),
-        .library(
-            name: "MeetingDoctorsStorageLibrary",
-            type: .dynamic,
-            targets: [
-                "MeetingDoctorsStorageWrapper",
-                "MeetingDoctorsSchemaWrapper",
-                "MeetingDoctorsCoreWrapper",
-                "MeetingDoctorsControllerWrapper",
-                "MeetingDoctorsSocketWrapper",
+                "MeetingDoctorsCoreTarget",
+                "MeetingDoctorsSchemaTarget"
             ]),
         .library(
             name: "MeetingDoctorsControllerLibrary",
-            type: .dynamic,
+//            type: .dynamic,
             targets: [
-                "MeetingDoctorsControllerWrapper",
-                "MeetingDoctorsSchemaWrapper",
-                "MeetingDoctorsCoreWrapper"
+                "MeetingDoctorsCoreTarget",
+                "MeetingDoctorsSchemaTarget",
+                "MeetingDoctorsControllerTarget"
+            ]),
+        .library(
+            name: "MeetingDoctorsSocketLibrary",
+//            type: .dynamic,
+            targets: [
+                "MeetingDoctorsCoreTarget",
+                "MeetingDoctorsSchemaTarget",
+                "MeetingDoctorsControllerTarget",
+                "MeetingDoctorsSocketTarget"
+            ]),
+        .library(
+            name: "MeetingDoctorsRemoteLibrary",
+//            type: .dynamic,
+            targets: [
+                "MeetingDoctorsCoreTarget",
+                "MeetingDoctorsSchemaTarget",
+                "MeetingDoctorsControllerTarget",
+                "MeetingDoctorsRemoteTarget",
+            ]),
+        .library(
+            name: "MeetingDoctorsStorageLibrary",
+//            type: .dynamic,
+            targets: [
+                "MeetingDoctorsCoreTarget",
+                "MeetingDoctorsSchemaTarget",
+                "MeetingDoctorsControllerTarget",
+                "MeetingDoctorsSocketTarget",
+                "MeetingDoctorsStorageTarget",
             ]),
         .library(
             name: "MeetingDoctorsSDKLibrary",
-            type: .dynamic,
+//            type: .dynamic,
             targets: [
-                "MeetingDoctorsSDKWrapper",
-                "MeetingDoctorsSchemaWrapper",
-                "MeetingDoctorsCoreWrapper",
-                "MeetingDoctorsControllerWrapper",
-                "MeetingDoctorsRemoteWrapper",
-                "MeetingDoctorsSocketWrapper",
-                "MeetingDoctorsStorageWrapper",
+                "MeetingDoctorsCoreTarget",
+                "MeetingDoctorsSchemaTarget",
+                "MeetingDoctorsControllerTarget",
+                "MeetingDoctorsRemoteTarget",
+                "MeetingDoctorsSocketTarget",
+                "MeetingDoctorsStorageTarget",
+                "MeetingDoctorsSDKTarget"
             ]),
     ],
     dependencies: [
@@ -78,8 +78,6 @@ let package = Package(
                  exact: "1.6.0"),
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git",
                  exact: "10.8.0"),
-//        .package(url: "https://github.com/google/GoogleUtilities#swift-package-manager.git",
-//                 exact: "7.11.1"),
         .package(url: "https://github.com/google/promises.git",
                  exact: "2.2.0"),
         .package(url: "https://github.com/socketio/socket.io-client-swift.git",
@@ -87,7 +85,7 @@ let package = Package(
         .package(url: "https://github.com/Alamofire/Alamofire.git",
                  .upToNextMajor(from: "4.8.0")),
         .package(url: "https://github.com/realm/realm-swift.git",
-                 exact: "10.38.3"),
+                 from: "10.32.3"),
         .package(url: "https://github.com/ReactiveX/RxSwift.git",
                  from: "6.5.0"),
         .package(url: "https://github.com/Swinject/Swinject.git",
@@ -107,7 +105,7 @@ let package = Package(
             name: "MeetingDoctorsCore",
             path: "Frameworks/MeetingDoctorsCore.xcframework"
         ),
-        .target(name: "MeetingDoctorsCoreWrapper",
+        .target(name: "MeetingDoctorsCoreTarget",
                 dependencies: [
                     .target(name: "MeetingDoctorsCore"),
                     .product(name: "CryptoSwift",
@@ -130,7 +128,7 @@ let package = Package(
             name: "MeetingDoctorsSchema",
             path: "Frameworks/MeetingDoctorsSchema.xcframework"
         ),
-        .target(name: "MeetingDoctorsSchemaWrapper",
+        .target(name: "MeetingDoctorsSchemaTarget",
                 dependencies: [
                     .target(name: "MeetingDoctorsSchema"),
                 ],
@@ -146,7 +144,7 @@ let package = Package(
             name: "MeetingDoctorsController",
             path: "Frameworks/MeetingDoctorsController.xcframework"
         ),
-        .target(name: "MeetingDoctorsControllerWrapper",
+        .target(name: "MeetingDoctorsControllerTarget",
                 dependencies: [
                     .target(name: "MeetingDoctorsController"),
                     .product(name: "RxSwift",
@@ -168,7 +166,7 @@ let package = Package(
             name: "MeetingDoctorsSocket",
             path: "Frameworks/MeetingDoctorsSocket.xcframework"
         ),
-        .target(name: "MeetingDoctorsSocketWrapper",
+        .target(name: "MeetingDoctorsSocketTarget",
                 dependencies: [
                     .target(name: "MeetingDoctorsSocket"),
                     .product(name: "SocketIO",
@@ -185,7 +183,7 @@ let package = Package(
             name: "MeetingDoctorsRemote",
             path: "Frameworks/MeetingDoctorsRemote.xcframework"
         ),
-        .target(name: "MeetingDoctorsRemoteWrapper",
+        .target(name: "MeetingDoctorsRemoteTarget",
                 dependencies: [
                     .target(name: "MeetingDoctorsRemote"),
                     .product(name: "Alamofire",
@@ -202,13 +200,13 @@ let package = Package(
             name: "MeetingDoctorsStorage",
             path: "Frameworks/MeetingDoctorsStorage.xcframework"
         ),
-        .target(name: "MeetingDoctorsStorageWrapper",
+        .target(name: "MeetingDoctorsStorageTarget",
                 dependencies: [
                     .target(name: "MeetingDoctorsStorage"),
                     .product(name: "RealmSwift",
                              package: "realm-swift"),
-                    .product(name: "Realm",
-                             package: "realm-swift"), //NOTE: not find realm module
+//                    .product(name: "Realm",
+//                             package: "realm-swift"), //NOTE: not find realm module
                 ],
                 path: "Sources/MDStorage",
 //                cSettings: ([
@@ -227,7 +225,7 @@ let package = Package(
             name: "MeetingDoctorsSDK",
             path: "Frameworks/MeetingDoctorsSDK.xcframework"
         ),
-        .target(name: "MeetingDoctorsSDKWrapper",
+        .target(name: "MeetingDoctorsSDKTarget",
                 dependencies: [
                     .target(name: "MeetingDoctorsSDK"),
                     .product(name: "RxSwift",

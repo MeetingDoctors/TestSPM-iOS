@@ -131,8 +131,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-core",
       "state" : {
-        "revision" : "f0045b71f9d3e9a6d82c711828f14222811fa6e9",
-        "version" : "13.9.4"
+        "revision" : "3c4b86da569368c4ee5ccca2a112d511cc6fa936",
+        "version" : "12.11.0"
       }
     },
     {
@@ -140,8 +140,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-swift.git",
       "state" : {
-        "revision" : "00e098a61acdf5e8cee4e2a6292c9ec6762ba1b4",
-        "version" : "10.38.3"
+        "revision" : "72a0dd9dc0ec1bab417155471191ef68e1bb0eaf",
+        "version" : "10.32.3"
       }
     },
     {
