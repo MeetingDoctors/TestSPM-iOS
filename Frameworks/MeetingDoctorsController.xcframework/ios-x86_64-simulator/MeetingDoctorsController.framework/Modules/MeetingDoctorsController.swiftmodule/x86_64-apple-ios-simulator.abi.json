@@ -45688,13 +45688,6 @@
         "conformances": [
           {
             "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
             "name": "Hashable",
             "printedName": "Hashable",
             "usr": "s:SH",
@@ -45735,6 +45728,13 @@
             "printedName": "Encodable",
             "usr": "s:SE",
             "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
           }
         ]
       },
@@ -83972,308 +83972,308 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 272,
+      "offset": 283,
       "length": 28,
       "value": "\"moderator_user_disconected\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 335,
+      "offset": 346,
       "length": 26,
       "value": "\"moderator_wp_disconected\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 394,
+      "offset": 405,
       "length": 24,
       "value": "\"moderator_issues_audio\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 451,
+      "offset": 462,
       "length": 24,
       "value": "\"moderator_issues_video\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 510,
+      "offset": 521,
       "length": 26,
       "value": "\"moderator_issues_blocked\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 571,
+      "offset": 582,
       "length": 26,
       "value": "\"moderator_user_behaviour\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 624,
+      "offset": 635,
       "length": 17,
       "value": "\"moderator_other\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 674,
+      "offset": 685,
       "length": 24,
       "value": "\"moderator_report_added\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 737,
+      "offset": 748,
       "length": 30,
       "value": "\"moderator_rejected_videocall\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 795,
+      "offset": 806,
       "length": 19,
       "value": "\"user_long_waiting\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 840,
+      "offset": 851,
       "length": 17,
       "value": "\"user_test_error\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 887,
+      "offset": 898,
       "length": 21,
       "value": "\"user_bad_connection\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 939,
+      "offset": 950,
       "length": 22,
       "value": "\"user_issue_technical\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 994,
+      "offset": 1005,
       "length": 25,
       "value": "\"user_not_needed_anymore\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1041,
+      "offset": 1052,
       "length": 12,
       "value": "\"user_other\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1084,
+      "offset": 1095,
       "length": 22,
       "value": "\"user_timeout_waiting\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1142,
+      "offset": 1153,
       "length": 28,
       "value": "\"user_created_new_videocall\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1199,
+      "offset": 1210,
       "length": 19,
       "value": "\"connection_issues\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 272,
+      "offset": 283,
       "length": 28,
       "value": "\"moderator_user_disconected\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 335,
+      "offset": 346,
       "length": 26,
       "value": "\"moderator_wp_disconected\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 394,
+      "offset": 405,
       "length": 24,
       "value": "\"moderator_issues_audio\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 451,
+      "offset": 462,
       "length": 24,
       "value": "\"moderator_issues_video\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 510,
+      "offset": 521,
       "length": 26,
       "value": "\"moderator_issues_blocked\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 571,
+      "offset": 582,
       "length": 26,
       "value": "\"moderator_user_behaviour\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 624,
+      "offset": 635,
       "length": 17,
       "value": "\"moderator_other\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 674,
+      "offset": 685,
       "length": 24,
       "value": "\"moderator_report_added\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 737,
+      "offset": 748,
       "length": 30,
       "value": "\"moderator_rejected_videocall\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 795,
+      "offset": 806,
       "length": 19,
       "value": "\"user_long_waiting\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 840,
+      "offset": 851,
       "length": 17,
       "value": "\"user_test_error\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 887,
+      "offset": 898,
       "length": 21,
       "value": "\"user_bad_connection\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 939,
+      "offset": 950,
       "length": 22,
       "value": "\"user_issue_technical\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 994,
+      "offset": 1005,
       "length": 25,
       "value": "\"user_not_needed_anymore\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1041,
+      "offset": 1052,
       "length": 12,
       "value": "\"user_other\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1084,
+      "offset": 1095,
       "length": 22,
       "value": "\"user_timeout_waiting\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1142,
+      "offset": 1153,
       "length": 28,
       "value": "\"user_created_new_videocall\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1199,
+      "offset": 1210,
       "length": 19,
       "value": "\"connection_issues\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1364,
+      "offset": 1375,
       "length": 12,
       "value": "\"video_call\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1399,
+      "offset": 1410,
       "length": 9,
       "value": "\"api_key\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1693,
+      "offset": 1704,
       "length": 12,
       "value": "\"created_at\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1731,
+      "offset": 1742,
       "length": 12,
       "value": "\"updated_at\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1364,
+      "offset": 1375,
       "length": 12,
       "value": "\"video_call\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1399,
+      "offset": 1410,
       "length": 9,
       "value": "\"api_key\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1693,
+      "offset": 1704,
       "length": 12,
       "value": "\"created_at\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1731,
+      "offset": 1742,
       "length": 12,
       "value": "\"updated_at\""
     },

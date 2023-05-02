@@ -1694,7 +1694,7 @@ public enum MDVCParticipantProviderResponseEnum : Swift.String, Swift.Codable {
     get
   }
 }
-public enum MDVCParticipantArgumentResponseEnum : Swift.String, Swift.Codable {
+public enum MDVCParticipantArgumentResponseEnum : Swift.String, Swift.Codable, Swift.Equatable {
   case moderatorUserDisconected
   case moderatorWPDisconected
   case moderatorIssuesAudio
@@ -2514,7 +2514,6 @@ extension MeetingDoctorsController.ScheduleAvailabilityModel : Swift.RawRepresen
 extension MeetingDoctorsController.MDVCParticipantProviderResponseEnum : Swift.Equatable {}
 extension MeetingDoctorsController.MDVCParticipantProviderResponseEnum : Swift.Hashable {}
 extension MeetingDoctorsController.MDVCParticipantProviderResponseEnum : Swift.RawRepresentable {}
-extension MeetingDoctorsController.MDVCParticipantArgumentResponseEnum : Swift.Equatable {}
 extension MeetingDoctorsController.MDVCParticipantArgumentResponseEnum : Swift.Hashable {}
 extension MeetingDoctorsController.MDVCParticipantArgumentResponseEnum : Swift.RawRepresentable {}
 extension MeetingDoctorsController.UserGenderModel : Swift.Equatable {}
