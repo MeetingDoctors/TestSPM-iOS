@@ -1602,6 +1602,13 @@
       },
       {
         "kind": "Import",
+        "name": "Realm",
+        "printedName": "Realm",
+        "declKind": "Import",
+        "moduleName": "MeetingDoctorsStorage"
+      },
+      {
+        "kind": "Import",
         "name": "RealmSwift",
         "printedName": "RealmSwift",
         "declKind": "Import",
@@ -10256,6 +10263,13 @@
         "kind": "Import",
         "name": "MeetingDoctorsController",
         "printedName": "MeetingDoctorsController",
+        "declKind": "Import",
+        "moduleName": "MeetingDoctorsStorage"
+      },
+      {
+        "kind": "Import",
+        "name": "Realm",
+        "printedName": "Realm",
         "declKind": "Import",
         "moduleName": "MeetingDoctorsStorage"
       },
@@ -28974,6 +28988,13 @@
       },
       {
         "kind": "Import",
+        "name": "Realm",
+        "printedName": "Realm",
+        "declKind": "Import",
+        "moduleName": "MeetingDoctorsStorage"
+      },
+      {
+        "kind": "Import",
         "name": "RealmSwift",
         "printedName": "RealmSwift",
         "declKind": "Import",
@@ -29555,6 +29576,13 @@
         "declAttributes": [
           "RawDocComment"
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Realm",
+        "printedName": "Realm",
+        "declKind": "Import",
+        "moduleName": "MeetingDoctorsStorage"
       },
       {
         "kind": "Import",
@@ -56303,56 +56331,56 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "IntegerLiteral",
-      "offset": 1573,
+      "offset": 1586,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "IntegerLiteral",
-      "offset": 1589,
+      "offset": 1602,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "Array",
-      "offset": 4216,
+      "offset": 4229,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "IntegerLiteral",
-      "offset": 4234,
+      "offset": 4247,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "IntegerLiteral",
-      "offset": 4250,
+      "offset": 4263,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "BooleanLiteral",
-      "offset": 4758,
+      "offset": 4771,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "BooleanLiteral",
-      "offset": 7451,
+      "offset": 7464,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmRepository.swift",
       "kind": "BooleanLiteral",
-      "offset": 9402,
+      "offset": 9415,
       "length": 4,
       "value": "true"
     },
@@ -56429,14 +56457,14 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmStore.swift",
       "kind": "BooleanLiteral",
-      "offset": 1680,
+      "offset": 1693,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Storage\/Storage\/Source\/Store\/Realm\/RealmStore.swift",
       "kind": "BooleanLiteral",
-      "offset": 1878,
+      "offset": 1891,
       "length": 5,
       "value": "false"
     },

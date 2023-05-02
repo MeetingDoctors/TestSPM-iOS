@@ -8,6 +8,7 @@ import MeetingDoctorsController
 import MeetingDoctorsCore
 import MeetingDoctorsSchema
 import MeetingDoctorsSocket
+import Realm
 import RealmSwift
 import RxSwift
 import Swift

@@ -18,7 +18,7 @@ let package = Package(
             ]),
         .library(
             name: "MeetingDoctorsSchemaLibrary",
-            type: .dynamic,
+             type: .dynamic,
             targets: [
                 "MeetingDoctorsCoreTarget",
                 "MeetingDoctorsSchemaTarget"
@@ -84,8 +84,8 @@ let package = Package(
                  from: "15.2.0"),
         .package(url: "https://github.com/Alamofire/Alamofire.git",
                  .upToNextMajor(from: "4.8.0")),
-        .package(url: "https://github.com/realm/realm-swift.git",
-                 from: "10.32.3"),
+//        .package(url: "https://github.com/realm/realm-swift.git",
+//                 from: "10.38.3"),
         .package(url: "https://github.com/ReactiveX/RxSwift.git",
                  from: "6.5.0"),
         .package(url: "https://github.com/Swinject/Swinject.git",
@@ -195,18 +195,31 @@ let package = Package(
                     .linkedFramework("UIKit"),
                 ]
                ),
-        // MARK: - MDStorage
+//        // MARK: - MDStorage
+        .binaryTarget(
+            name: "Realm",
+            path: "Frameworks/Realm.xcframework"
+        ),
+        .binaryTarget(
+            name: "RealmSwift",
+            path: "Frameworks/RealmSwift.xcframework"
+        ),
         .binaryTarget(
             name: "MeetingDoctorsStorage",
             path: "Frameworks/MeetingDoctorsStorage.xcframework"
         ),
         .target(name: "MeetingDoctorsStorageTarget",
                 dependencies: [
-                    .target(name: "MeetingDoctorsStorage"),
-                    .product(name: "RealmSwift",
-                             package: "realm-swift"),
+//                    .target(name: "Realm"),
+                    .target(name: "RealmSwift"),
 //                    .product(name: "Realm",
-//                             package: "realm-swift"), //NOTE: not find realm module
+//                             package: "realm-swift"),
+//                    .product(name: "RealmSwift",
+//                             package: "realm-swift"),
+                    .product(name: "RxSwift",
+                             package: "RxSwift"),
+                    .target(name: "MeetingDoctorsStorage")
+                    
                 ],
                 path: "Sources/MDStorage",
 //                cSettings: ([

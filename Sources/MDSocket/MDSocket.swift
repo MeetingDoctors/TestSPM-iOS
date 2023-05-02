@@ -1,2 +1,4 @@
+import MeetingDoctorsSocket
+
 struct MDSocket {
 }
