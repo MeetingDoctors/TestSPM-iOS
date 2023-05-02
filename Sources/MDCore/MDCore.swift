@@ -1,4 +1,2 @@
-import MeetingDoctorsCore
-
 struct MDCore {
 }

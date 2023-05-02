@@ -1,4 +1,2 @@
-import MeetingDoctorsSchema
-
 struct MDSchema {
 }
