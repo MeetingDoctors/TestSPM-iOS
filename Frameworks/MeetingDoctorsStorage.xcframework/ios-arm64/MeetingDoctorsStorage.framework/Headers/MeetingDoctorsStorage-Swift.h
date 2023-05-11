@@ -231,7 +231,7 @@ using UInt = size_t;
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import Foundation;
-@import Realm.Swift;
+@import Realm;
 #endif
 
 #endif

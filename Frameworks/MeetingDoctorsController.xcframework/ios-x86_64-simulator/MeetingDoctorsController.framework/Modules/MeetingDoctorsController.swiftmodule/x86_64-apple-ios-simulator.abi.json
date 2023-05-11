@@ -6875,13 +6875,6 @@
       },
       {
         "kind": "Import",
-        "name": "RxBlocking",
-        "printedName": "RxBlocking",
-        "declKind": "Import",
-        "moduleName": "MeetingDoctorsController"
-      },
-      {
-        "kind": "Import",
         "name": "RxSwift",
         "printedName": "RxSwift",
         "declKind": "Import",
@@ -18661,6 +18654,27 @@
             "usr": "s:24MeetingDoctorsController26MDVideocallParticipantTypeO11participantyA2CmF",
             "mangledName": "$s24MeetingDoctorsController26MDVideocallParticipantTypeO11participantyA2CmF",
             "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Function",
+            "name": "callAsFunction",
+            "printedName": "callAsFunction()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:24MeetingDoctorsController26MDVideocallParticipantTypeO14callAsFunctionSSyF",
+            "mangledName": "$s24MeetingDoctorsController26MDVideocallParticipantTypeO14callAsFunctionSSyF",
+            "moduleName": "MeetingDoctorsController",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
           },
           {
             "kind": "Constructor",
@@ -32561,6 +32575,262 @@
         "printedName": "MDVideocallParticipantRequestModel",
         "children": [
           {
+            "kind": "Var",
+            "name": "user",
+            "printedName": "user",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:24MeetingDoctorsController34MDVideocallParticipantRequestModelC4userSSSgvp",
+            "mangledName": "$s24MeetingDoctorsController34MDVideocallParticipantRequestModelC4userSSSgvp",
+            "moduleName": "MeetingDoctorsController",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:24MeetingDoctorsController34MDVideocallParticipantRequestModelC4userSSSgvg",
+                "mangledName": "$s24MeetingDoctorsController34MDVideocallParticipantRequestModelC4userSSSgvg",
+                "moduleName": "MeetingDoctorsController",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "name",
+            "printedName": "name",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:24MeetingDoctorsController34MDVideocallParticipantRequestModelC4nameSSSgvp",
+            "mangledName": "$s24MeetingDoctorsController34MDVideocallParticipantRequestModelC4nameSSSgvp",
+            "moduleName": "MeetingDoctorsController",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:24MeetingDoctorsController34MDVideocallParticipantRequestModelC4nameSSSgvg",
+                "mangledName": "$s24MeetingDoctorsController34MDVideocallParticipantRequestModelC4nameSSSgvg",
+                "moduleName": "MeetingDoctorsController",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "image",
+            "printedName": "image",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:24MeetingDoctorsController34MDVideocallParticipantRequestModelC5imageSSSgvp",
+            "mangledName": "$s24MeetingDoctorsController34MDVideocallParticipantRequestModelC5imageSSSgvp",
+            "moduleName": "MeetingDoctorsController",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:24MeetingDoctorsController34MDVideocallParticipantRequestModelC5imageSSSgvg",
+                "mangledName": "$s24MeetingDoctorsController34MDVideocallParticipantRequestModelC5imageSSSgvg",
+                "moduleName": "MeetingDoctorsController",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "role",
+            "printedName": "role",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:24MeetingDoctorsController34MDVideocallParticipantRequestModelC4roleSSSgvp",
+            "mangledName": "$s24MeetingDoctorsController34MDVideocallParticipantRequestModelC4roleSSSgvp",
+            "moduleName": "MeetingDoctorsController",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:24MeetingDoctorsController34MDVideocallParticipantRequestModelC4roleSSSgvg",
+                "mangledName": "$s24MeetingDoctorsController34MDVideocallParticipantRequestModelC4roleSSSgvg",
+                "moduleName": "MeetingDoctorsController",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(user:name:image:role:)",
@@ -45605,6 +45875,43 @@
             "moduleName": "MeetingDoctorsController"
           },
           {
+            "kind": "Var",
+            "name": "empty",
+            "printedName": "empty",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type) -> MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVCParticipantArgumentResponseEnum",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                    "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVCParticipantArgumentResponseEnum",
+                        "printedName": "MeetingDoctorsController.MDVCParticipantArgumentResponseEnum",
+                        "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO5emptyyA2CmF",
+            "mangledName": "$s24MeetingDoctorsController35MDVCParticipantArgumentResponseEnumO5emptyyA2CmF",
+            "moduleName": "MeetingDoctorsController"
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(rawValue:)",
@@ -46182,6 +46489,70 @@
                 "declKind": "Accessor",
                 "usr": "s:24MeetingDoctorsController35MDVideocallParticipantResponseModelC8argumentAA023MDVCParticipantArgumentF4EnumOSgvg",
                 "mangledName": "$s24MeetingDoctorsController35MDVideocallParticipantResponseModelC8argumentAA023MDVCParticipantArgumentF4EnumOSgvg",
+                "moduleName": "MeetingDoctorsController",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "consultation",
+            "printedName": "consultation",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:24MeetingDoctorsController35MDVideocallParticipantResponseModelC12consultationSSSgvp",
+            "mangledName": "$s24MeetingDoctorsController35MDVideocallParticipantResponseModelC12consultationSSSgvp",
+            "moduleName": "MeetingDoctorsController",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:24MeetingDoctorsController35MDVideocallParticipantResponseModelC12consultationSSSgvg",
+                "mangledName": "$s24MeetingDoctorsController35MDVideocallParticipantResponseModelC12consultationSSSgvg",
                 "moduleName": "MeetingDoctorsController",
                 "implicit": true,
                 "declAttributes": [
@@ -56813,6 +57184,135 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "MDVideoconsultationStatusRequestModel",
+        "printedName": "MDVideoconsultationStatusRequestModel",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(status:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MDVideoconsultationStatusRequestModel",
+                "printedName": "MeetingDoctorsController.MDVideoconsultationStatusRequestModel",
+                "usr": "s:24MeetingDoctorsController37MDVideoconsultationStatusRequestModelC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:24MeetingDoctorsController37MDVideoconsultationStatusRequestModelC6statusACSSSg_tcfc",
+            "mangledName": "$s24MeetingDoctorsController37MDVideoconsultationStatusRequestModelC6statusACSSSg_tcfc",
+            "moduleName": "MeetingDoctorsController",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MDVideoconsultationStatusRequestModel",
+                "printedName": "MeetingDoctorsController.MDVideoconsultationStatusRequestModel",
+                "usr": "s:24MeetingDoctorsController37MDVideoconsultationStatusRequestModelC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:24MeetingDoctorsController37MDVideoconsultationStatusRequestModelC4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s24MeetingDoctorsController37MDVideoconsultationStatusRequestModelC4fromACs7Decoder_p_tKcfc",
+            "moduleName": "MeetingDoctorsController",
+            "implicit": true,
+            "declAttributes": [
+              "Required"
+            ],
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:24MeetingDoctorsController37MDVideoconsultationStatusRequestModelC6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s24MeetingDoctorsController37MDVideoconsultationStatusRequestModelC6encode2toys7Encoder_p_tKF",
+            "moduleName": "MeetingDoctorsController",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:24MeetingDoctorsController37MDVideoconsultationStatusRequestModelC",
+        "mangledName": "$s24MeetingDoctorsController37MDVideoconsultationStatusRequestModelC",
+        "moduleName": "MeetingDoctorsController",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "MeetingDoctorsController",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
         "kind": "Import",
         "name": "MeetingDoctorsSchema",
         "printedName": "MeetingDoctorsSchema",
@@ -63597,6 +64097,27 @@
             "usr": "s:24MeetingDoctorsController15MDVideocallTypeO8oneToOneyA2CmF",
             "mangledName": "$s24MeetingDoctorsController15MDVideocallTypeO8oneToOneyA2CmF",
             "moduleName": "MeetingDoctorsController"
+          },
+          {
+            "kind": "Function",
+            "name": "callAsFunction",
+            "printedName": "callAsFunction()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:24MeetingDoctorsController15MDVideocallTypeO14callAsFunctionSSyF",
+            "mangledName": "$s24MeetingDoctorsController15MDVideocallTypeO14callAsFunctionSSyF",
+            "moduleName": "MeetingDoctorsController",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
           },
           {
             "kind": "Constructor",
@@ -78256,104 +78777,71 @@
                     ]
                   },
                   {
-                    "kind": "Var",
-                    "name": "Assigned",
-                    "printedName": "Assigned",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Name",
-                        "printedName": "Foundation.NSNotification.Name",
-                        "usr": "c:@T@NSNotificationName"
-                      }
-                    ],
-                    "declKind": "Var",
-                    "usr": "s:So18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV8AssignedABvpZ",
-                    "mangledName": "$sSo18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV8AssignedABvpZ",
-                    "moduleName": "MeetingDoctorsController",
-                    "static": true,
-                    "declAttributes": [
-                      "HasInitialValue",
-                      "HasStorage",
-                      "AccessControl"
-                    ],
-                    "isLet": true,
-                    "hasStorage": true,
-                    "accessors": [
-                      {
-                        "kind": "Accessor",
-                        "name": "Get",
-                        "printedName": "Get()",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Name",
-                            "printedName": "Foundation.NSNotification.Name",
-                            "usr": "c:@T@NSNotificationName"
-                          }
-                        ],
-                        "declKind": "Accessor",
-                        "usr": "s:So18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV8AssignedABvgZ",
-                        "mangledName": "$sSo18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV8AssignedABvgZ",
-                        "moduleName": "MeetingDoctorsController",
-                        "static": true,
-                        "implicit": true,
-                        "accessorKind": "get"
-                      }
-                    ]
-                  },
-                  {
-                    "kind": "Var",
-                    "name": "Calling",
-                    "printedName": "Calling",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Name",
-                        "printedName": "Foundation.NSNotification.Name",
-                        "usr": "c:@T@NSNotificationName"
-                      }
-                    ],
-                    "declKind": "Var",
-                    "usr": "s:So18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV7CallingABvpZ",
-                    "mangledName": "$sSo18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV7CallingABvpZ",
-                    "moduleName": "MeetingDoctorsController",
-                    "static": true,
-                    "declAttributes": [
-                      "HasInitialValue",
-                      "HasStorage",
-                      "AccessControl"
-                    ],
-                    "isLet": true,
-                    "hasStorage": true,
-                    "accessors": [
-                      {
-                        "kind": "Accessor",
-                        "name": "Get",
-                        "printedName": "Get()",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Name",
-                            "printedName": "Foundation.NSNotification.Name",
-                            "usr": "c:@T@NSNotificationName"
-                          }
-                        ],
-                        "declKind": "Accessor",
-                        "usr": "s:So18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV7CallingABvgZ",
-                        "mangledName": "$sSo18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV7CallingABvgZ",
-                        "moduleName": "MeetingDoctorsController",
-                        "static": true,
-                        "implicit": true,
-                        "accessorKind": "get"
-                      }
-                    ]
-                  },
-                  {
                     "kind": "TypeDecl",
                     "name": "Process",
                     "printedName": "Process",
                     "children": [
+                      {
+                        "kind": "TypeDecl",
+                        "name": "Searching",
+                        "printedName": "Searching",
+                        "children": [
+                          {
+                            "kind": "Var",
+                            "name": "Retry",
+                            "printedName": "Retry",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Name",
+                                "printedName": "Foundation.NSNotification.Name",
+                                "usr": "c:@T@NSNotificationName"
+                              }
+                            ],
+                            "declKind": "Var",
+                            "usr": "s:So18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV7ProcessV9SearchingV5RetryABvpZ",
+                            "mangledName": "$sSo18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV7ProcessV9SearchingV5RetryABvpZ",
+                            "moduleName": "MeetingDoctorsController",
+                            "static": true,
+                            "declAttributes": [
+                              "HasInitialValue",
+                              "HasStorage",
+                              "AccessControl"
+                            ],
+                            "isLet": true,
+                            "hasStorage": true,
+                            "accessors": [
+                              {
+                                "kind": "Accessor",
+                                "name": "Get",
+                                "printedName": "Get()",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "Name",
+                                    "printedName": "Foundation.NSNotification.Name",
+                                    "usr": "c:@T@NSNotificationName"
+                                  }
+                                ],
+                                "declKind": "Accessor",
+                                "usr": "s:So18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV7ProcessV9SearchingV5RetryABvgZ",
+                                "mangledName": "$sSo18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV7ProcessV9SearchingV5RetryABvgZ",
+                                "moduleName": "MeetingDoctorsController",
+                                "static": true,
+                                "implicit": true,
+                                "accessorKind": "get"
+                              }
+                            ]
+                          }
+                        ],
+                        "declKind": "Struct",
+                        "usr": "s:So18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV7ProcessV9SearchingV",
+                        "mangledName": "$sSo18NSNotificationNamea24MeetingDoctorsControllerE0cD0V9VideoCallV7ProcessV9SearchingV",
+                        "moduleName": "MeetingDoctorsController",
+                        "declAttributes": [
+                          "AccessControl"
+                        ]
+                      },
                       {
                         "kind": "TypeDecl",
                         "name": "Canceled",
@@ -79826,6 +80314,53 @@
                         "declKind": "Accessor",
                         "usr": "s:10Foundation12NotificationV24MeetingDoctorsControllerE3KeyV9VideoCallV05videoH2IdSSvgZ",
                         "mangledName": "$s10Foundation12NotificationV24MeetingDoctorsControllerE3KeyV9VideoCallV05videoH2IdSSvgZ",
+                        "moduleName": "MeetingDoctorsController",
+                        "static": true,
+                        "implicit": true,
+                        "accessorKind": "get"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Var",
+                    "name": "Item",
+                    "printedName": "Item",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "declKind": "Var",
+                    "usr": "s:10Foundation12NotificationV24MeetingDoctorsControllerE3KeyV9VideoCallV4ItemSSvpZ",
+                    "mangledName": "$s10Foundation12NotificationV24MeetingDoctorsControllerE3KeyV9VideoCallV4ItemSSvpZ",
+                    "moduleName": "MeetingDoctorsController",
+                    "static": true,
+                    "declAttributes": [
+                      "HasInitialValue",
+                      "HasStorage",
+                      "AccessControl"
+                    ],
+                    "isLet": true,
+                    "hasStorage": true,
+                    "accessors": [
+                      {
+                        "kind": "Accessor",
+                        "name": "Get",
+                        "printedName": "Get()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "declKind": "Accessor",
+                        "usr": "s:10Foundation12NotificationV24MeetingDoctorsControllerE3KeyV9VideoCallV4ItemSSvgZ",
+                        "mangledName": "$s10Foundation12NotificationV24MeetingDoctorsControllerE3KeyV9VideoCallV4ItemSSvgZ",
                         "moduleName": "MeetingDoctorsController",
                         "static": true,
                         "implicit": true,
@@ -83034,203 +83569,203 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 5590,
-      "length": 57,
-      "value": "\"com.meetingdoctors.videocall.notification.name.assigned\""
+      "offset": 5674,
+      "length": 72,
+      "value": "\"com.meetingdoctors.videocall.notification.name.process.searching.retry\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 5717,
-      "length": 56,
-      "value": "\"com.meetingdoctors.videocall.notification.name.calling\""
-    },
-    {
-      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
-      "kind": "StringLiteral",
-      "offset": 5926,
+      "offset": 5882,
       "length": 71,
       "value": "\"com.meetingdoctors.videocall.notification.name.process.canceled.error\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 6075,
+      "offset": 6031,
       "length": 73,
       "value": "\"com.meetingdoctors.videocall.notification.name.process.canceled.dismiss\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 6224,
+      "offset": 6180,
       "length": 71,
       "value": "\"com.meetingdoctors.videocall.notification.name.process.canceled.alert\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 6373,
+      "offset": 6329,
       "length": 73,
       "value": "\"com.meetingdoctors.videocall.notification.name.process.canceled.timeout\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 6523,
+      "offset": 6479,
       "length": 72,
       "value": "\"com.meetingdoctors.videocall.notification.name.process.canceled.reinit\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 6685,
+      "offset": 6641,
       "length": 61,
       "value": "\"com.meetingdoctors.videocall.notification.name.process.init\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 6820,
+      "offset": 6776,
       "length": 63,
       "value": "\"com.meetingdoctors.videocall.notification.name.process.reinit\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 7006,
+      "offset": 6962,
       "length": 79,
       "value": "\"com.meetingdoctors.videocall.notification.name.process.on.to.one.send.message\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 7232,
+      "offset": 7188,
       "length": 51,
       "value": "\"com.meetingdoctors.groups.notification.name.error\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 7390,
+      "offset": 7346,
       "length": 54,
       "value": "\"com.meetingdoctors.video.call.notification.name.push\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 7668,
+      "offset": 7624,
       "length": 52,
       "value": "\"com.meetingdoctors.notification.key.authentication\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 7776,
+      "offset": 7732,
       "length": 68,
       "value": "\"com.meetingdoctors.groups.notification.key.customer.authentication\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 7894,
+      "offset": 7850,
       "length": 54,
       "value": "\"com.meetingdoctors.notification.key.deauthentication\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 8063,
+      "offset": 8019,
       "length": 60,
       "value": "\"com.meetingdoctors.notification.key.message.unread.changed\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 8194,
+      "offset": 8150,
       "length": 50,
       "value": "\"com.meetingdoctors.notification.key.message.sent\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 8315,
+      "offset": 8271,
       "length": 50,
       "value": "\"com.meetingdoctors.notification.key.message.read\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 8495,
+      "offset": 8451,
       "length": 59,
       "value": "\"com.meetingdoctors.notification.key.socket.status.changed\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 8636,
+      "offset": 8592,
       "length": 57,
       "value": "\"com.meetingdoctors.notification.key.socket.message.sent\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 8771,
+      "offset": 8727,
       "length": 57,
       "value": "\"com.meetingdoctors.notification.key.socket.message.read\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 8883,
+      "offset": 8839,
       "length": 43,
       "value": "\"com.meetingdoctors.notification.key.style\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 9048,
+      "offset": 9004,
       "length": 67,
       "value": "\"com.meetingdoctors.terms.and.conditions.notification.key.declined\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 9225,
+      "offset": 9181,
       "length": 43,
       "value": "\"com.meetingdoctors.notification.key.error\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 9393,
+      "offset": 9349,
       "length": 53,
       "value": "\"com.meetingdoctors.video.call.notification.key.push\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 9585,
+      "offset": 9541,
       "length": 61,
       "value": "\"com.meetingdoctors.notification.key.professional.login.view\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 9750,
+      "offset": 9706,
       "length": 50,
       "value": "\"com.meetingdoctors.notification.key.videocall.id\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 9909,
+      "offset": 9794,
+      "length": 52,
+      "value": "\"com.meetingdoctors.notification.key.videocall.item\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
+      "kind": "StringLiteral",
+      "offset": 9955,
       "length": 62,
       "value": "\"com.meetingdoctors.videocall.notification.key.process.status\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Notifications.swift",
       "kind": "StringLiteral",
-      "offset": 10095,
+      "offset": 10141,
       "length": 78,
       "value": "\"com.meetingdoctors.videocall.notification.key.process.on.to.one.send.message\""
     },
@@ -84098,6 +84633,13 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
+      "offset": 1247,
+      "length": 3,
+      "value": "\"-\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
       "offset": 283,
       "length": 28,
       "value": "\"moderator_user_disconected\""
@@ -84224,56 +84766,63 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1375,
+      "offset": 1247,
+      "length": 3,
+      "value": "\"-\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
+      "kind": "StringLiteral",
+      "offset": 1396,
       "length": 12,
       "value": "\"video_call\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1410,
+      "offset": 1431,
       "length": 9,
       "value": "\"api_key\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1704,
+      "offset": 1751,
       "length": 12,
       "value": "\"created_at\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1742,
+      "offset": 1789,
       "length": 12,
       "value": "\"updated_at\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1375,
+      "offset": 1396,
       "length": 12,
       "value": "\"video_call\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1410,
+      "offset": 1431,
       "length": 9,
       "value": "\"api_key\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1704,
+      "offset": 1751,
       "length": 12,
       "value": "\"created_at\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Controller\/Controller\/Source\/Controller\/Model\/VideoCall\/Participants\/Response\/MDVideocallParticipantResponseModel.swift",
       "kind": "StringLiteral",
-      "offset": 1742,
+      "offset": 1789,
       "length": 12,
       "value": "\"updated_at\""
     },

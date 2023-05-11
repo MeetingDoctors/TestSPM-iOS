@@ -756,7 +756,6 @@ SWIFT_CLASS("_TtC17MeetingDoctorsSDK10StatusView")
 @end
 
 
-
 SWIFT_CLASS("_TtC17MeetingDoctorsSDK32TermsAndConditionsViewController")
 @interface TermsAndConditionsViewController : UIViewController
 - (void)viewDidLoad;
@@ -833,10 +832,10 @@ SWIFT_CLASS("_TtC17MeetingDoctorsSDK18UIImageViewAligned")
 @end
 
 
+
 @interface UILabel (SWIFT_EXTENSION(MeetingDoctorsSDK))
 - (void)awakeFromNib;
 @end
-
 
 
 

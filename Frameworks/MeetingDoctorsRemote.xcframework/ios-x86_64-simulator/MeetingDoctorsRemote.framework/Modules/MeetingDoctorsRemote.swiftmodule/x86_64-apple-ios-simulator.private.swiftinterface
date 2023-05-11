@@ -222,6 +222,7 @@ extension MeetingDoctorsRemote.MDHTTP {
       case apiKey
       case cacheControl
       case authorization
+      case acceptLanguage
       public func callAsFunction() -> Swift.String
       public init?(rawValue: Swift.String)
       public typealias RawValue = Swift.String

@@ -54,7 +54,7 @@
 		</data>
 		<key>Headers/MeetingDoctorsSDK-Swift.h</key>
 		<data>
-		8vMa/dw6qbCGRE8KSWyd2nF+op0=
+		qomw3WYlIDYPTjrNz6bbUBnlVvs=
 		</data>
 		<key>Headers/MeetingDoctorsSDK.h</key>
 		<data>
@@ -182,11 +182,11 @@
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		8gQ2R7xtL3cZ8An44O9q4sJSous=
+		Q2ThcnrnV8I6atZ95yQexoJvkTQ=
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		FzePCe/qZ4TPlU/xIY1wmshb9TU=
+		b/zF9ZIq84ZmW54ADgs98JUul9U=
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -194,11 +194,11 @@
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		FzePCe/qZ4TPlU/xIY1wmshb9TU=
+		b/zF9ZIq84ZmW54ADgs98JUul9U=
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		jJR9W5vrc6E74f0ggy6ofsj2lgc=
+		+9v9Du2VqXi14bJoPqbKqfqKk7A=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -360,18 +360,6 @@
 		<data>
 		1RvPfMxJvPHbVQQtD6je0o9haFQ=
 		</data>
-		<key>VideoCallWaiting.storyboardc/GQr-wV-dE2-view-0eN-q3-RGc.nib</key>
-		<data>
-		CTi/UE7V+io/cFsrp0ovsJDihxg=
-		</data>
-		<key>VideoCallWaiting.storyboardc/Info.plist</key>
-		<data>
-		Twa6w4EL8zRYomM0gRNBz/7fDrs=
-		</data>
-		<key>VideoCallWaiting.storyboardc/VideoCallWaitingViewController.nib</key>
-		<data>
-		1VDpJ0hNk/F2oGK1ogHQspJR7lo=
-		</data>
 		<key>ar.lproj/InfoPlist.strings</key>
 		<dict>
 			<key>hash</key>
@@ -385,7 +373,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mf3bM5OHln0coSVboPeiP8iohS8=
+			XbUSWar9r1Jq54NvEdkQMyR1ZcY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -407,7 +395,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			pR2ixEl3AtY66zGMejM6r1J3PAo=
+			QdRZeZGhqYX+W020R/s9aizVA/A=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -429,7 +417,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5f1ou9IFwMzpxcLLz7iLmGL/P3I=
+			bGZKpiDMIb6OR+05PV7n4A6Q0Tg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -447,7 +435,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Oay2YFrbhjgN6M8bqS4xd17bJzM=
+			6l0OM+ov2ycUzF2KVtziYgRTnp4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -465,7 +453,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			NRW0CaIHD4Zb4nydwtNd5CtY1oc=
+			DvlVkak+nt+IY+CUgM9p9eMJUsc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -491,7 +479,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			m4PcLNj9z0wi6fPFPRO7xZnRcoU=
+			CjCQzyZ1E8gbNGcVo+fAR134QS0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -599,7 +587,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gjK1I8uRlcDBYaWVBjgwSHOQ7Y6tIq/4Bd6h8Zfl6Jk=
+			yUEcmK0HEmoSbuzPuGnfLICP96u4AW6u8m7zqwnVadA=
 			</data>
 		</dict>
 		<key>Headers/MeetingDoctorsSDK.h</key>
@@ -816,14 +804,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jiyRpdszr7E3paWWH95Dvv5AwhtBYaVhN0/0pW9B838=
+			1hHFVhZgrZbZ6ZrYZiTGqOW2TSsk+Wk8T1wkZ9jyotg=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CIm6qCrAzb5gbaZJExvDHiIfM6oA7b3UNN/v5n9HOqw=
+			pg+xF28ZtUEKG3KzY0Imu2kJOtpDuU5UUn+F9QfnYuM=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -837,14 +825,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CIm6qCrAzb5gbaZJExvDHiIfM6oA7b3UNN/v5n9HOqw=
+			pg+xF28ZtUEKG3KzY0Imu2kJOtpDuU5UUn+F9QfnYuM=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZhAFNkX9Ce1TNxWYS0yX5uKmgtZHyTlkfzbiAMtbprk=
+			/+lwuns5d3fDAmFjhM7lrgE86dCgz/AHekgwJy5uN6Q=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -1127,27 +1115,6 @@
 			LQ1kUJyK5dZpl/P74SpoS6RUlY29kFVq+S/EXVeiBYk=
 			</data>
 		</dict>
-		<key>VideoCallWaiting.storyboardc/GQr-wV-dE2-view-0eN-q3-RGc.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Oss0zeawOLlXgo8Gs1lnbesaFD58g1NXTC4loMIMFXk=
-			</data>
-		</dict>
-		<key>VideoCallWaiting.storyboardc/Info.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			GgL/FdLSI5IYiW71LXy2A9VNSAtdLr6GZ6HGBrNyCt0=
-			</data>
-		</dict>
-		<key>VideoCallWaiting.storyboardc/VideoCallWaitingViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			hTBUND4GyxmHx2dlEgWhnLEznPxk0e9cHc03+94HnWQ=
-			</data>
-		</dict>
 		<key>ar.lproj/InfoPlist.strings</key>
 		<dict>
 			<key>hash2</key>
@@ -1161,7 +1128,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			iyxImQpTgZc+4gC/CvpXLYqkrSYuKIbwF1TwmAtYXyU=
+			OX5oY75RD2ll5Q4loA3a6yQ4CbGm1P7y4D8XHIZk6XI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1186,7 +1153,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7W9dd7C1FTbII8HHpcS3eSJdmZeniqauYQhDF/bj4Uo=
+			tp+JzMohWiAHomcubcSTKBZlwpOtLmps3k5kpjC5BnY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1211,7 +1178,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			iAa7HcecWnvlHFRWTRrjpSB1kkVMRncZm1FH4+c+Dvk=
+			4JfuCoqGe1PcsSOQgddiDLB9pJD/2cYMnMV+PPGguaY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1229,7 +1196,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6QLEvCSOWTHuzEhHMfUMO2oW680MdKFS005H2taDL3I=
+			ysDcAtX+tHCwHwbkywmUFtvS8shhwTSVqSkQYQF0ElY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1247,7 +1214,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SUS9UCgJMoabFdNp1/t+DH9IoIX6SS8UTKqlaPsAx80=
+			fUZO1VyM+mBjeGjAoUDjPfAXggz1ebRRIuKZlcCN2qg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1279,7 +1246,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1GIrGp13CunbP++irFhJOZgNp0DVmuWoYLcADDJz1YU=
+			GkzOzj6t+wge088ys/zwqXXqpASJeHQgtCumLO5GSMQ=
 			</data>
 			<key>optional</key>
 			<true/>

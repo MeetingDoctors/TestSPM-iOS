@@ -9926,6 +9926,43 @@
                     "moduleName": "MeetingDoctorsRemote"
                   },
                   {
+                    "kind": "Var",
+                    "name": "acceptLanguage",
+                    "printedName": "acceptLanguage",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(MeetingDoctorsRemote.MDHTTP.Header.Key.Type) -> MeetingDoctorsRemote.MDHTTP.Header.Key",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Key",
+                            "printedName": "MeetingDoctorsRemote.MDHTTP.Header.Key",
+                            "usr": "s:20MeetingDoctorsRemote6MDHTTPV6HeaderO3KeyO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Metatype",
+                            "printedName": "MeetingDoctorsRemote.MDHTTP.Header.Key.Type",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Key",
+                                "printedName": "MeetingDoctorsRemote.MDHTTP.Header.Key",
+                                "usr": "s:20MeetingDoctorsRemote6MDHTTPV6HeaderO3KeyO"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "declKind": "EnumElement",
+                    "usr": "s:20MeetingDoctorsRemote6MDHTTPV6HeaderO3KeyO14acceptLanguageyA2GmF",
+                    "mangledName": "$s20MeetingDoctorsRemote6MDHTTPV6HeaderO3KeyO14acceptLanguageyA2GmF",
+                    "moduleName": "MeetingDoctorsRemote"
+                  },
+                  {
                     "kind": "Function",
                     "name": "callAsFunction",
                     "printedName": "callAsFunction()",
@@ -21971,6 +22008,13 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
       "kind": "StringLiteral",
+      "offset": 431,
+      "length": 17,
+      "value": "\"Accept-Language\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
+      "kind": "StringLiteral",
       "offset": 186,
       "length": 8,
       "value": "\"Accept\""
@@ -22006,84 +22050,91 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
       "kind": "StringLiteral",
-      "offset": 588,
+      "offset": 431,
+      "length": 17,
+      "value": "\"Accept-Language\""
+    },
+    {
+      "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
+      "kind": "StringLiteral",
+      "offset": 640,
       "length": 18,
       "value": "\"application\/json\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
       "kind": "StringLiteral",
-      "offset": 649,
+      "offset": 701,
       "length": 35,
       "value": "\"application\/x-www-form-urlencoded\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
       "kind": "StringLiteral",
-      "offset": 588,
+      "offset": 640,
       "length": 18,
       "value": "\"application\/json\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
       "kind": "StringLiteral",
-      "offset": 649,
+      "offset": 701,
       "length": 35,
       "value": "\"application\/x-www-form-urlencoded\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
       "kind": "StringLiteral",
-      "offset": 850,
+      "offset": 902,
       "length": 21,
       "value": "\"binary\/octet-stream\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
       "kind": "StringLiteral",
-      "offset": 899,
+      "offset": 951,
       "length": 15,
       "value": "\"image\/svg+xml\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
       "kind": "StringLiteral",
-      "offset": 850,
+      "offset": 902,
       "length": 21,
       "value": "\"binary\/octet-stream\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
       "kind": "StringLiteral",
-      "offset": 899,
+      "offset": 951,
       "length": 15,
       "value": "\"image\/svg+xml\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
       "kind": "StringLiteral",
-      "offset": 1031,
+      "offset": 1083,
       "length": 20,
       "value": "\"no-cache, no-store\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
       "kind": "StringLiteral",
-      "offset": 1078,
+      "offset": 1130,
       "length": 11,
       "value": "\"Bearer %@\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
       "kind": "StringLiteral",
-      "offset": 1031,
+      "offset": 1083,
       "length": 20,
       "value": "\"no-cache, no-store\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Remote\/Remote\/Source\/Remote\/MDRemote\/Request\/HTTP\/Headers\/MDHTTP+Header.swift",
       "kind": "StringLiteral",
-      "offset": 1078,
+      "offset": 1130,
       "length": 11,
       "value": "\"Bearer %@\""
     },

@@ -8,7 +8,6 @@ import Foundation
 import MeetingDoctorsCore
 import MeetingDoctorsSchema
 import Photos
-import RxBlocking
 import RxSwift
 import Security
 import Swift
@@ -81,9 +80,10 @@ extension Foundation.NSNotification.Name {
       public static let PickedUp: Foundation.Notification.Name
       public static let Finished: Foundation.Notification.Name
       public static let Cancelled: Foundation.Notification.Name
-      public static let Assigned: Foundation.Notification.Name
-      public static let Calling: Foundation.Notification.Name
       public struct Process {
+        public struct Searching {
+          public static let Retry: Foundation.Notification.Name
+        }
         public struct Canceled {
           public static let Error: Foundation.Notification.Name
           public static let Dismiss: Foundation.Notification.Name
@@ -140,6 +140,7 @@ extension Foundation.Notification {
     }
     public struct VideoCall {
       public static let videoCallId: Swift.String
+      public static let Item: Swift.String
       public struct Process {
         public static let Status: Foundation.Notification.Name
         public struct OneToOne {
@@ -699,6 +700,7 @@ public protocol IdentifiableAdapter {
 public enum MDVideocallParticipantType : Swift.String, Swift.Codable {
   case moderator
   case participant
+  public func callAsFunction() -> Swift.String
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -1253,6 +1255,10 @@ extension MeetingDoctorsController.DiseaseModel : MeetingDoctorsCore.Transmittab
 extension MeetingDoctorsController.DiseaseModel : MeetingDoctorsController.AutoLenses {
 }
 public class MDVideocallParticipantRequestModel : Swift.Codable {
+  final public let user: Swift.String?
+  final public let name: Swift.String?
+  final public let image: Swift.String?
+  final public let role: Swift.String?
   public init(user: Swift.String?, name: Swift.String?, image: Swift.String? = nil, role: MeetingDoctorsController.MDVideocallParticipantType? = .participant)
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
@@ -1713,6 +1719,7 @@ public enum MDVCParticipantArgumentResponseEnum : Swift.String, Swift.Codable, S
   case userTimeoutWaiting
   case userCreatedNewVideocall
   case connectionIssues
+  case empty
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -1727,6 +1734,7 @@ public class MDVideocallParticipantResponseModel : Swift.Codable {
   final public let provider: MeetingDoctorsController.MDVCParticipantProviderResponseEnum?
   final public let status: MeetingDoctorsController.MDVideocallStatusType?
   final public let argument: MeetingDoctorsController.MDVCParticipantArgumentResponseEnum?
+  final public let consultation: Swift.String?
   final public let speciality: Swift.String?
   final public let session: Swift.String?
   final public let token: Swift.String?
@@ -1925,6 +1933,12 @@ extension MeetingDoctorsController.RepositoryError {
   public var underlyingError: Swift.Error? {
     get
   }
+}
+public class MDVideoconsultationStatusRequestModel : Swift.Codable {
+  public init(status: Swift.String?)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public protocol MedicalDirectoryAdapter {
   associatedtype SchemaType : MeetingDoctorsSchema.MedicalDirectorySchema
@@ -2127,6 +2141,7 @@ public class MDVideocallDoctorAvailableModel {
 public enum MDVideocallType : Swift.String, Swift.Codable, Swift.Equatable {
   case pool
   case oneToOne
+  public func callAsFunction() -> Swift.String
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {

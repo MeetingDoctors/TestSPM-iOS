@@ -2,7 +2,6 @@
 // swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MeetingDoctorsSDK
 // swift-module-flags-ignorable: -enable-bare-slash-regex
-import AVFoundation
 import Alamofire
 import AudioToolbox
 import Combine
@@ -26,8 +25,6 @@ import RxSwift
 import SocketIO
 import StoreKit
 import Swift
-import Swinject
-import SwinjectStoryboard
 import UIKit
 import UserNotifications
 import WebKit
@@ -178,9 +175,6 @@ extension MeetingDoctorsSDK.FetchedResultsDelegateProvider where CellConfig.View
   @_Concurrency.MainActor(unsafe) override public func cellForRowAt(indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-}
-extension SwinjectStoryboard.SwinjectStoryboard {
-  @_Concurrency.MainActor(unsafe) public static func getDefaultMDContainer() -> Swinject.Container
 }
 public protocol MeetingDoctorsColorsType {
   var chat: MeetingDoctorsSDK.MeetingDoctorsChatColorsType { get set }
@@ -1329,6 +1323,8 @@ public enum MedicalHistoryEditViewModelType : MeetingDoctorsSDK.MedicalHistoryEd
   public func save(_ completion: @escaping () -> Swift.Void)
   public func validate() -> Swift.Bool
 }
+public struct MDVCExposedMethodsModel {
+}
 public protocol MeetingDoctorsDeeplinkViewControllerProtocol : AnyObject {
   func deeplink(_ deeplinkOption: MeetingDoctorsSDK.MeetingDoctorsDeeplinkOption, animated: Swift.Bool) -> Swift.Bool
 }
@@ -2184,16 +2180,8 @@ public struct MeetingDoctorsMedicalHistoryStrings : MeetingDoctorsSDK.MeetingDoc
   public var recipeEmptyMessage: Swift.String?
 }
 public protocol MeetingDoctorsVideoCallStringsType {
-  var videoCallWaitingDoctorCurrentStatusCall: Swift.String? { get set }
-  var videoCallWaitingDoctorNextAppointment: Swift.String? { get set }
-  var videoCallPrepareCallingDoctorCurrentStatusCall: Swift.String? { get set }
-  var videoCallPrepareCallingDoctorNextAppointment: Swift.String? { get set }
 }
 public struct MeetingDoctorsVideoCallStrings : MeetingDoctorsSDK.MeetingDoctorsVideoCallStringsType {
-  public var videoCallWaitingDoctorCurrentStatusCall: Swift.String?
-  public var videoCallWaitingDoctorNextAppointment: Swift.String?
-  public var videoCallPrepareCallingDoctorCurrentStatusCall: Swift.String?
-  public var videoCallPrepareCallingDoctorNextAppointment: Swift.String?
 }
 public protocol MeetingDoctorsProfessionalListStringsType {
   var listTitleHeader: Swift.String? { get set }
