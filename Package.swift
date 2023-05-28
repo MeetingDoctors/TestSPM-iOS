@@ -193,9 +193,7 @@ let package = Package(
                     .product(name: "OpenTok",
                              package: "OpenTok"),
                     .product(name: "Lottie",
-                             package: "lottie-spm"),
-                    .product(name: "CryptoSwift",
-                             package: "CryptoSwift")
+                             package: "lottie-spm")
                 ],
                 path: "Sources/MDSDK",
                 linkerSettings: [
