@@ -4,7 +4,6 @@
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
 import CoreLocation
-import CryptoSwift
 import FirebaseAnalytics
 import Foundation
 import Photos
@@ -83,7 +82,7 @@ extension MeetingDoctorsCore.Navigator where T : UIKit.UIViewController {
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CryptoManager : ObjectiveC.NSObject {
   public static func decrypt(_ data: Foundation.Data?) -> Swift.Result<Foundation.Data, Swift.Error>
   public static func decrypt(_ data: Foundation.Data?) -> Foundation.Data?
-  public static func encrypt(_ data: Foundation.Data?) -> Swift.Result<Foundation.Data, Swift.Error>
+  public static func encrypt(_: Foundation.Data?) -> Swift.Result<Foundation.Data, Swift.Error>
   public static func encrypt(_ data: Foundation.Data?) -> Foundation.Data?
   public static func decryptString(_ data: Foundation.Data) -> Swift.Result<Swift.String, Swift.Error>
   public static func encrypt(_ string: Swift.String) -> Swift.Result<Foundation.Data, Swift.Error>
