@@ -18,7 +18,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		A5VJSDhgGlxqqlzHc5rJF6qDhU0=
+		EA6D/K6IO5hRxcdPSm+jjRzdhoc=
 		</data>
 		<key>MeetingDoctors.der</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		El2F6dv2diT4yvhzQuFV/Vs95qg=
+		MCT+XUtxpD8k9Ra07KZyX9bbaEE=
 		</data>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		W3fXbNIKPKufJyD0TfRJaQEdY+g=
+		p7f2Snv2bMHm7DKmll5QdblsENI=
 		</data>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -38,11 +38,11 @@
 		</data>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		W3fXbNIKPKufJyD0TfRJaQEdY+g=
+		p7f2Snv2bMHm7DKmll5QdblsENI=
 		</data>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		ghVqz6pfu/9vS92EuyzKL2hZZoI=
+		U+c9ojaXzQgaN2ihhikZvYANeu4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -51,6 +51,14 @@
 		<key>dev-meetingdoctors-com2023.der</key>
 		<data>
 		SbID94OZq7xylZnt13u8S/24OBw=
+		</data>
+		<key>meetingdoctors-com2023.der</key>
+		<data>
+		dXUPgXr7ZlIrhPNs5qixF1MQloA=
+		</data>
+		<key>meetingdoctors-com2024.der</key>
+		<data>
+		RvGQToInDKYKocyI148xXZQJTnE=
 		</data>
 		<key>staging-meetingdoctors-com2023.der</key>
 		<data>
@@ -99,14 +107,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			aLJj08RpZWHYnMq3LUqDn/S/rwyBy0xgTSE0OMjfvEk=
+			Y+aCNczXHyvyNH66eA9FTDi9AWmgyivgD9AnS9iEbVM=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EgvV/URobjbzLzee0a2XlmIlX/W17O5Lftmza6skbvg=
+			n07Qn3FYVoyQ8LLL48xBicfS9G8i3Wf2Hw+u9IXkoFY=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -120,14 +128,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EgvV/URobjbzLzee0a2XlmIlX/W17O5Lftmza6skbvg=
+			n07Qn3FYVoyQ8LLL48xBicfS9G8i3Wf2Hw+u9IXkoFY=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsRemote.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KgwlZNO4rKswtVrr2jdzMfLdpel6r+zhxtb+W2fgGM8=
+			XZ9FhyftnY8bXbhwtb1SjyJASW0h6SY5HcSU0QBiE7s=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -142,6 +150,20 @@
 			<key>hash2</key>
 			<data>
 			sXlXbu/YYT/KxPYySEDgWzExvbjYrTCBYybzihz05FM=
+			</data>
+		</dict>
+		<key>meetingdoctors-com2023.der</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bHyeUrZ5hvF1U1kOGTWn5Vc9bDWCdyRV3gIxfoUhTNo=
+			</data>
+		</dict>
+		<key>meetingdoctors-com2024.der</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qDHLo6zujZxlZ37Qw40qGY73KPR+YxHnnPzixSlxrrk=
 			</data>
 		</dict>
 		<key>staging-meetingdoctors-com2023.der</key>

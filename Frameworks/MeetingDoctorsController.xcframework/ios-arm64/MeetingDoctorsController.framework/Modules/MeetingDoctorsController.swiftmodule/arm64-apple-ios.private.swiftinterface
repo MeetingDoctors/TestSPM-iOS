@@ -1462,6 +1462,12 @@ extension MeetingDoctorsController.SocketControllerModel {
     get
   }
 }
+public class MDCV2VideoConsultationsRequest : Swift.Codable {
+  public init(workflow: Swift.String?, professionalHash: Swift.String?)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public enum SpecialityTypeModel : Swift.String, Swift.CaseIterable {
   case unknown
   case generalMedicine
@@ -1746,6 +1752,7 @@ public class MDVideocallParticipantResponseModel : Swift.Codable {
   final public let time: Swift.Int?
   final public let createdAt: Swift.String?
   final public let updatedAt: Swift.String?
+  final public let startedAt: Swift.String?
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws

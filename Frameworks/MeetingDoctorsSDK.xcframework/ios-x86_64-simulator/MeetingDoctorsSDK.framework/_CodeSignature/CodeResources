@@ -54,7 +54,7 @@
 		</data>
 		<key>Headers/MeetingDoctorsSDK-Swift.h</key>
 		<data>
-		qomw3WYlIDYPTjrNz6bbUBnlVvs=
+		ZylSom4bhvvAB9dLuPKBfg+A9Ow=
 		</data>
 		<key>Headers/MeetingDoctorsSDK.h</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		mAI4W+j3+H9JWrKpBXI+eAMoDE0=
+		uUBdmzBy5NPVfYU2+sKSagiV3JY=
 		</data>
 		<key>MedicalHistory.storyboardc/7tD-65-aGd-view-In8-82-SN0.nib</key>
 		<data>
@@ -162,7 +162,7 @@
 		</data>
 		<key>MessengerScene.storyboardc/Ljq-8x-xUG-view-tFX-7W-JqX.nib</key>
 		<data>
-		m7aqccLgaRdHcL9CW1V58GSBXA0=
+		CXh4Ee7mjiy8fsi+RsN3ET/5DuY=
 		</data>
 		<key>MessengerScene.storyboardc/ProfessionalListViewController.nib</key>
 		<data>
@@ -174,19 +174,19 @@
 		</data>
 		<key>MessengerScene.storyboardc/QjO-wL-Hsb-view-svH-Pt-449.nib</key>
 		<data>
-		Poubh1JtSSzpmUKQ9dXfAFL+F98=
+		an2Dy+cUiC1yQMM5vM89RNxHbJQ=
 		</data>
 		<key>MessengerScene.storyboardc/wbU-yY-0Ud-view-p5a-69-thf.nib</key>
 		<data>
-		gT/5f36kq2baiMlOTWVEul3UU/M=
+		fQMESs0qO1PlHbz4yjaPus8sea4=
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		Q2ThcnrnV8I6atZ95yQexoJvkTQ=
+		OuTUbvf6zhQQqqy8gPwjBNnvxZI=
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		b/zF9ZIq84ZmW54ADgs98JUul9U=
+		YvD+rt99EjgufhvRL4zd8IYfTOw=
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -194,11 +194,11 @@
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		b/zF9ZIq84ZmW54ADgs98JUul9U=
+		YvD+rt99EjgufhvRL4zd8IYfTOw=
 		</data>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		+9v9Du2VqXi14bJoPqbKqfqKk7A=
+		jiA4Pbay2AJPtqhC9Ca4ZkUEeHw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -250,7 +250,7 @@
 		</data>
 		<key>MyHealthElectronicPrescriptionDetailTableViewCell.nib</key>
 		<data>
-		budTVl9M51mTShtvI3FQqBnBoBI=
+		mBPg0uRi4TTh1kgac48X/uI2a1Y=
 		</data>
 		<key>MyHealthHeaderListTableViewCell.nib</key>
 		<data>
@@ -435,7 +435,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6l0OM+ov2ycUzF2KVtziYgRTnp4=
+			+L7x6KyBlgNthI/3YLHy7EXuuW0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -453,7 +453,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DvlVkak+nt+IY+CUgM9p9eMJUsc=
+			ntbYg3fMfMEzC4LCoPxWEK1oMIQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -587,7 +587,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yUEcmK0HEmoSbuzPuGnfLICP96u4AW6u8m7zqwnVadA=
+			XR+o5kuWhsVCz17safgacXHdH9YlFe8s7cYDeFOkD7s=
 			</data>
 		</dict>
 		<key>Headers/MeetingDoctorsSDK.h</key>
@@ -769,7 +769,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+av7p2kf5TFhEezEzAQKj4p4LSYo/4vG1K2sRYPDVYM=
+			ywDGpG47Hb0t4BxErgoFnKnMa+DzJMI+IvQ50hNRXo0=
 			</data>
 		</dict>
 		<key>MessengerScene.storyboardc/ProfessionalListViewController.nib</key>
@@ -790,28 +790,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			E1K3xKvEJXkJ9LsVrqRWifbFEQqnQygFh0Rhqkvz2Lo=
+			8l9M8izEVew2rUqQ3ngkqV23n1yb8VLtrAQUqnknYy4=
 			</data>
 		</dict>
 		<key>MessengerScene.storyboardc/wbU-yY-0Ud-view-p5a-69-thf.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			esn2Modc9px8uPW6HFsHrETV6qLURqbMEu2QyVXCM7c=
+			D5zw3vTVzdZeJTTzgQUHhzrDEI+RcU/zqOckIcpzM+Q=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1hHFVhZgrZbZ6ZrYZiTGqOW2TSsk+Wk8T1wkZ9jyotg=
+			sXGWuQBEqmj3SoczpF1+eaZBN52pMCC1rsKgAICljGE=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pg+xF28ZtUEKG3KzY0Imu2kJOtpDuU5UUn+F9QfnYuM=
+			QixbJck/TjKzinJOWa0GpGOhalu/UdfvTqwUl2dmek0=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -825,14 +825,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pg+xF28ZtUEKG3KzY0Imu2kJOtpDuU5UUn+F9QfnYuM=
+			QixbJck/TjKzinJOWa0GpGOhalu/UdfvTqwUl2dmek0=
 			</data>
 		</dict>
 		<key>Modules/MeetingDoctorsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/+lwuns5d3fDAmFjhM7lrgE86dCgz/AHekgwJy5uN6Q=
+			WEEIHq90DFEjRaZIi0jHk570kYEQBNUpiou3lqIKY74=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -923,7 +923,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			HNcF846rhEryHVfWu8g6IwdSjeawMxB/BWOF3cBALhs=
+			AzbIYn0leZrGyYQSrLBHGNu1KkVrHSCv0LtPEoP509o=
 			</data>
 		</dict>
 		<key>MyHealthHeaderListTableViewCell.nib</key>
@@ -1196,7 +1196,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ysDcAtX+tHCwHwbkywmUFtvS8shhwTSVqSkQYQF0ElY=
+			fn4tcXfCGL3LBxKQg38fzBEG6qdXIgW+s/ovingJHLY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1214,7 +1214,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fUZO1VyM+mBjeGjAoUDjPfAXggz1ebRRIuKZlcCN2qg=
+			eo+SeMXaUcK4qmgqLMvpCyP4SXhqEr9IX345R4AGueI=
 			</data>
 			<key>optional</key>
 			<true/>

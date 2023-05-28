@@ -945,6 +945,39 @@
           },
           {
             "kind": "TypeNominal",
+            "name": "MDVideocallModel",
+            "printedName": "MeetingDoctorsSchema.MDVideocallModel",
+            "usr": "s:20MeetingDoctorsSchema16MDVideocallModelV"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "MDVideocallModel",
+            "printedName": "MeetingDoctorsSchema.MDVideocallModel",
+            "usr": "s:20MeetingDoctorsSchema16MDVideocallModelV"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:20MeetingDoctorsSchema2eeoiySbAA16MDVideocallModelV_ADtF",
+        "mangledName": "$s20MeetingDoctorsSchema2eeoiySbAA16MDVideocallModelV_ADtF",
+        "moduleName": "MeetingDoctorsSchema",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "==",
+        "printedName": "==(_:_:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Bool",
+            "printedName": "Swift.Bool",
+            "usr": "s:Sb"
+          },
+          {
+            "kind": "TypeNominal",
             "name": "MedicalAddressSchema",
             "printedName": "MeetingDoctorsSchema.MedicalAddressSchema",
             "usr": "s:20MeetingDoctorsSchema014MedicalAddressC0V"
@@ -21596,6 +21629,66 @@
           },
           {
             "kind": "Var",
+            "name": "videoCall",
+            "printedName": "videoCall",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MeetingDoctorsSchema.MDVideocallModel?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MDVideocallModel",
+                    "printedName": "MeetingDoctorsSchema.MDVideocallModel",
+                    "usr": "s:20MeetingDoctorsSchema16MDVideocallModelV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20MeetingDoctorsSchema05SetupC0V9videoCallAA16MDVideocallModelVSgvp",
+            "mangledName": "$s20MeetingDoctorsSchema05SetupC0V9videoCallAA16MDVideocallModelVSgvp",
+            "moduleName": "MeetingDoctorsSchema",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "MeetingDoctorsSchema.MDVideocallModel?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MDVideocallModel",
+                        "printedName": "MeetingDoctorsSchema.MDVideocallModel",
+                        "usr": "s:20MeetingDoctorsSchema16MDVideocallModelV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20MeetingDoctorsSchema05SetupC0V9videoCallAA16MDVideocallModelVSgvg",
+                "mangledName": "$s20MeetingDoctorsSchema05SetupC0V9videoCallAA16MDVideocallModelVSgvg",
+                "moduleName": "MeetingDoctorsSchema",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "professionalList",
             "printedName": "professionalList",
             "children": [
@@ -23070,6 +23163,154 @@
             ],
             "usr": "s:SY",
             "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MDVideocallModel",
+        "printedName": "MDVideocallModel",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "timeout",
+            "printedName": "timeout",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20MeetingDoctorsSchema16MDVideocallModelV7timeoutSiSgvp",
+            "mangledName": "$s20MeetingDoctorsSchema16MDVideocallModelV7timeoutSiSgvp",
+            "moduleName": "MeetingDoctorsSchema",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Int?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20MeetingDoctorsSchema16MDVideocallModelV7timeoutSiSgvg",
+                "mangledName": "$s20MeetingDoctorsSchema16MDVideocallModelV7timeoutSiSgvg",
+                "moduleName": "MeetingDoctorsSchema",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MDVideocallModel",
+                "printedName": "MeetingDoctorsSchema.MDVideocallModel",
+                "usr": "s:20MeetingDoctorsSchema16MDVideocallModelV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:20MeetingDoctorsSchema16MDVideocallModelV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s20MeetingDoctorsSchema16MDVideocallModelV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "MeetingDoctorsSchema",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20MeetingDoctorsSchema16MDVideocallModelV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s20MeetingDoctorsSchema16MDVideocallModelV6encode2toys7Encoder_p_tKF",
+            "moduleName": "MeetingDoctorsSchema",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:20MeetingDoctorsSchema16MDVideocallModelV",
+        "mangledName": "$s20MeetingDoctorsSchema16MDVideocallModelV",
+        "moduleName": "MeetingDoctorsSchema",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
           }
         ]
       },
@@ -77244,15 +77485,15 @@
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/VideoCall\/VideoCallRemoteNotificationSchema.swift",
       "kind": "StringLiteral",
       "offset": 468,
-      "length": 61,
-      "value": "\"push-notifications.professional:video_consultation:assigned\""
+      "length": 52,
+      "value": "\"push-notifications.new_video_consultation:assigned\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/VideoCall\/VideoCallRemoteNotificationSchema.swift",
       "kind": "StringLiteral",
       "offset": 468,
-      "length": 61,
-      "value": "\"push-notifications.professional:video_consultation:assigned\""
+      "length": 52,
+      "value": "\"push-notifications.new_video_consultation:assigned\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Schema\/Schema\/Source\/Schema\/Customer\/CustomerInstallationSchema.swift",

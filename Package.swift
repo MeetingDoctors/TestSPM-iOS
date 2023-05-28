@@ -50,16 +50,6 @@ let package = Package(
                 "MeetingDoctorsRemoteTarget",
             ]),
         .library(
-            name: "MeetingDoctorsStorageLibrary",
-            type: .dynamic,
-            targets: [
-                "MeetingDoctorsCoreTarget",
-                "MeetingDoctorsSchemaTarget",
-                "MeetingDoctorsControllerTarget",
-                "MeetingDoctorsSocketTarget",
-                "MeetingDoctorsStorageTarget",
-            ]),
-        .library(
             name: "MeetingDoctorsSDKLibrary",
             type: .dynamic,
             targets: [
@@ -68,7 +58,6 @@ let package = Package(
                 "MeetingDoctorsControllerTarget",
                 "MeetingDoctorsRemoteTarget",
                 "MeetingDoctorsSocketTarget",
-                "MeetingDoctorsStorageTarget",
                 "MeetingDoctorsSDKTarget"
             ]),
     ],
@@ -84,8 +73,6 @@ let package = Package(
                  from: "15.2.0"),
         .package(url: "https://github.com/Alamofire/Alamofire.git",
                  .upToNextMajor(from: "4.8.0")),
-        .package(url: "https://github.com/realm/realm-swift.git",
-                 exact: "10.17.0"),
         .package(url: "https://github.com/ReactiveX/RxSwift.git",
                  from: "6.5.0"),
         .package(url: "https://github.com/MattKiazyk/OpenTok.git",
@@ -190,45 +177,7 @@ let package = Package(
                     .linkedFramework("Foundation"),
                     .linkedFramework("UIKit"),
                 ]
-               ),
-//        // MARK: - MDStorage
-//        .binaryTarget(
-//            name: "Realm",
-//            path: "Frameworks/Realm.xcframework"
-//        ),
-//        .binaryTarget(
-//            name: "RealmSwift",
-//            path: "Frameworks/RealmSwift.xcframework"
-//        ),
-        .binaryTarget(
-            name: "MeetingDoctorsStorage",
-            path: "Frameworks/MeetingDoctorsStorage.xcframework"
         ),
-        .target(name: "MeetingDoctorsStorageTarget",
-                dependencies: [
-//                    .target(name: "Realm"),
-//                    .target(name: "RealmSwift"),
-                    .product(name: "Realm",
-                             package: "realm-swift"),
-                    .product(name: "RealmSwift",
-                             package: "realm-swift"),
-                    .product(name: "RxSwift",
-                             package: "RxSwift"),
-                    .target(name: "MeetingDoctorsStorage")
-                    
-                ],
-                path: "Sources/MDStorage",
-//                cSettings: ([
-//                    .headerSearchPath(".build/checkouts/realm-swift/Realm")
-//                ] as [CSetting]),
-                linkerSettings: [
-                    .linkedFramework("Foundation"),
-                    .linkedFramework("CoreLocation"),
-//                    .unsafeFlags([
-//                        "-Xlinker", "-exclude_arch", "-Xlinker", "arm64"
-//                    ])
-                ]
-               ),
         // MARK: - MDSDK
         .binaryTarget(
             name: "MeetingDoctorsSDK",

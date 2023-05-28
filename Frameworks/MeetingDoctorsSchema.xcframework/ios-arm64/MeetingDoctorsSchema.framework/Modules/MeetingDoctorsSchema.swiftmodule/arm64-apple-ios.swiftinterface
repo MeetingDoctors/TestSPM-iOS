@@ -94,6 +94,9 @@ public func == (lhs: MeetingDoctorsSchema.JoinConversationSchema, rhs: MeetingDo
 extension MeetingDoctorsSchema.LastMessageSchema : Swift.Equatable {
 }
 public func == (lhs: MeetingDoctorsSchema.LastMessageSchema, rhs: MeetingDoctorsSchema.LastMessageSchema) -> Swift.Bool
+extension MeetingDoctorsSchema.MDVideocallModel : Swift.Equatable {
+}
+public func == (lhs: MeetingDoctorsSchema.MDVideocallModel, rhs: MeetingDoctorsSchema.MDVideocallModel) -> Swift.Bool
 extension MeetingDoctorsSchema.MedicalAddressSchema : Swift.Equatable {
 }
 public func == (lhs: MeetingDoctorsSchema.MedicalAddressSchema, rhs: MeetingDoctorsSchema.MedicalAddressSchema) -> Swift.Bool
@@ -822,6 +825,7 @@ public struct SetupSchema : Swift.Codable {
   public let medicalHistory: MeetingDoctorsSchema.MedicalHistory?
   public let termsUrl: Swift.String?
   public let privacyUrl: Swift.String?
+  public let videoCall: MeetingDoctorsSchema.MDVideocallModel?
   public let professionalList: [MeetingDoctorsSchema.SetupProfessionalListSchema]?
   public static var lastSetup: MeetingDoctorsSchema.SetupSchema? {
     get
@@ -876,6 +880,11 @@ public enum SetupProfessionalListType : Swift.String {
   public var rawValue: Swift.String {
     get
   }
+}
+public struct MDVideocallModel : Swift.Codable {
+  public let timeout: Swift.Int?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public struct TypingSchema : Swift.Codable {
   public enum CodingKeys : Swift.String, Swift.CodingKey {

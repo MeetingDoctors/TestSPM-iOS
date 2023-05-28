@@ -2,6 +2,8 @@
 // swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MeetingDoctorsSDK
 // swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFAudio
+import AVFoundation
 import Alamofire
 import AudioToolbox
 import Combine
@@ -16,11 +18,9 @@ import MeetingDoctorsRemote
 @_exported import MeetingDoctorsSDK
 import MeetingDoctorsSchema
 import MeetingDoctorsSocket
-import MeetingDoctorsStorage
 import MobileCoreServices
 import OpenTok
 import Photos
-import RealmSwift
 import RxSwift
 import SocketIO
 import StoreKit
@@ -212,7 +212,7 @@ extension QuartzCore.CALayer {
   public func fade()
 }
 extension UIKit.UIColor {
-  public func isLight(_ threshold: Swift.Float = 0.7) -> Swift.Bool?
+  public func isLight(_ threshold: Swift.Float = 0.5) -> Swift.Bool?
 }
 extension CoreFoundation.CGPoint {
   public enum Point {
@@ -570,12 +570,13 @@ public enum MeetingDoctorsResult<Value> {
     public let id: Swift.String
     public let secret: Swift.String
     public let enableVideoCall: Swift.Bool
-    public let videCallSoundFileName: Swift.String?
+    public let videocallLongSoundFileName: Swift.String?
+    public let videocallShortSoundFileName: Swift.String?
     public let environment: MeetingDoctorsCore.EnvironmentType
     public var buildConfiguration: MeetingDoctorsCore.BuildConfigurationType {
       get
     }
-    public init(id: Swift.String, secret: Swift.String, enableVideoCall: Swift.Bool = false, environment: MeetingDoctorsCore.EnvironmentType = .production, videCallSoundFileName: Swift.String? = nil)
+    public init(id: Swift.String, secret: Swift.String, enableVideoCall: Swift.Bool = false, environment: MeetingDoctorsCore.EnvironmentType = .production, videocallLongSoundFileName: Swift.String? = nil, videocallShortSoundFileName: Swift.String? = nil)
   }
   public static var referrer: MeetingDoctorsSDK.MeetingDoctorsReferrerType? {
     get
@@ -1136,6 +1137,7 @@ public protocol MeetingDoctorsStyleType {
   var titleView: UIKit.UIView? { get set }
   var preferredStatusBarStyle: UIKit.UIStatusBarStyle { get set }
   var navigationBarOpaque: Swift.Bool { get set }
+  var isProfessionalListNavigationBarHidden: Swift.Bool { get set }
   var navigationBarColor: UIKit.UIColor? { get set }
   var navigationBarTintColor: UIKit.UIColor? { get set }
   var navigationBarBackIndicatorImage: UIKit.UIImage? { get set }
@@ -1185,6 +1187,7 @@ public struct MeetingDoctorsStyle : MeetingDoctorsSDK.MeetingDoctorsStyleType {
   public var navigationBarTintColor: UIKit.UIColor?
   public var navigationBarBackIndicatorImage: UIKit.UIImage?
   public var navigationBarOpaque: Swift.Bool
+  public var isProfessionalListNavigationBarHidden: Swift.Bool
   public var inboxTitle: Swift.String?
   public var inboxLeftBarButtonItem: UIKit.UIBarButtonItem? {
     get

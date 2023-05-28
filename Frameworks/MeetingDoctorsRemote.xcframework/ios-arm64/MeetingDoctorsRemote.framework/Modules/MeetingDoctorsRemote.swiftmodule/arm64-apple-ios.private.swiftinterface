@@ -183,8 +183,6 @@ public protocol MDDataTransferServiceProtocol {
   typealias CompletionHandler<T> = (Swift.Result<T, Swift.Error>) -> Swift.Void
   @discardableResult
   func request<T, E>(endpoint: E, completion: @escaping Self.CompletionHandler<T>) -> MeetingDoctorsRemote.MDNetworkCancellableProtocol? where T : Swift.Decodable, T : Swift.Encodable, T == E.Response, E : MeetingDoctorsRemote.MDRequestableProtocol, E : MeetingDoctorsRemote.MDResponseDecoderProtocol
-  @discardableResult
-  func request<E>(endpoint: E, completion: @escaping Self.CompletionHandler<Swift.Void>) -> MeetingDoctorsRemote.MDNetworkCancellableProtocol? where E : MeetingDoctorsRemote.MDRequestableProtocol, E : MeetingDoctorsRemote.MDResponseDecoderProtocol, E.Response == ()
 }
 public enum NetworkType {
   case notReachable
@@ -590,7 +588,6 @@ final public class MDDefaultDataTransferService {
 }
 extension MeetingDoctorsRemote.MDDefaultDataTransferService : MeetingDoctorsRemote.MDDataTransferServiceProtocol {
   final public func request<T, E>(endpoint: E, completion: @escaping MeetingDoctorsRemote.MDDefaultDataTransferService.CompletionHandler<T>) -> MeetingDoctorsRemote.MDNetworkCancellableProtocol? where T : Swift.Decodable, T : Swift.Encodable, T == E.Response, E : MeetingDoctorsRemote.MDRequestableProtocol, E : MeetingDoctorsRemote.MDResponseDecoderProtocol
-  final public func request<E>(endpoint: E, completion: @escaping MeetingDoctorsRemote.MDDefaultDataTransferService.CompletionHandler<Swift.Void>) -> MeetingDoctorsRemote.MDNetworkCancellableProtocol? where E : MeetingDoctorsRemote.MDRequestableProtocol, E : MeetingDoctorsRemote.MDResponseDecoderProtocol, E.Response == ()
 }
 public class AlamofireInstallationAdapter : MeetingDoctorsController.InstallationAdapter {
   public init(session: MeetingDoctorsRemote.SessionAdapter)
