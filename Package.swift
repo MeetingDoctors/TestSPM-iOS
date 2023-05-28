@@ -12,17 +12,20 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "MeetingDoctorsCoreLibrary",
+            type: .dynamic,
             targets: [
                 "MeetingDoctorsCoreTarget",
             ]),
         .library(
             name: "MeetingDoctorsSchemaLibrary",
+            type: .dynamic,
             targets: [
                 "MeetingDoctorsCoreTarget",
                 "MeetingDoctorsSchemaTarget"
             ]),
         .library(
             name: "MeetingDoctorsControllerLibrary",
+            type: .dynamic,
             targets: [
                 "MeetingDoctorsCoreTarget",
                 "MeetingDoctorsSchemaTarget",
@@ -30,6 +33,7 @@ let package = Package(
             ]),
         .library(
             name: "MeetingDoctorsSocketLibrary",
+            type: .dynamic,
             targets: [
                 "MeetingDoctorsCoreTarget",
                 "MeetingDoctorsSchemaTarget",
@@ -38,6 +42,7 @@ let package = Package(
             ]),
         .library(
             name: "MeetingDoctorsRemoteLibrary",
+            type: .dynamic,
             targets: [
                 "MeetingDoctorsCoreTarget",
                 "MeetingDoctorsSchemaTarget",
@@ -46,6 +51,7 @@ let package = Package(
             ]),
         .library(
             name: "MeetingDoctorsSDKLibrary",
+            type: .dynamic,
             targets: [
                 "MeetingDoctorsCoreTarget",
                 "MeetingDoctorsSchemaTarget",
