@@ -84,8 +84,6 @@ let package = Package(
                 dependencies: [
                     .target(name: "MeetingDoctorsController"),
                     .product(name: "RxSwift",
-                             package: "RxSwift"),
-                    .product(name: "RxBlocking",
                              package: "RxSwift")
                 ],
                 path: "Sources/MDController",
