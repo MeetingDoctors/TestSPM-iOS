@@ -59,8 +59,6 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git",
                  exact: "10.8.0"),
-        .package(url: "https://github.com/google/promises.git",
-                 exact: "2.2.0"),
         .package(url: "https://github.com/socketio/socket.io-client-swift.git",
                  from: "15.2.0"),
         .package(url: "https://github.com/Alamofire/Alamofire.git",
@@ -83,8 +81,6 @@ let package = Package(
         .target(name: "MeetingDoctorsCoreTarget",
                 dependencies: [
                     .target(name: "MeetingDoctorsCore"),
-                    .product(name: "Promises",
-                             package: "promises"),
                     .product(name: "FirebaseAnalytics",
                              package: "firebase-ios-sdk"),
                 ],
