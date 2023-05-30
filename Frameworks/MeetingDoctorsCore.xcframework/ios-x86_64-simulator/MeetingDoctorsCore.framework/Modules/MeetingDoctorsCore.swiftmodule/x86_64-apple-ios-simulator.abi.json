@@ -1557,20 +1557,13 @@
       },
       {
         "kind": "Import",
-        "name": "CryptoSwift",
-        "printedName": "CryptoSwift",
+        "name": "Foundation",
+        "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "MeetingDoctorsCore",
         "declAttributes": [
           "RawDocComment"
         ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "MeetingDoctorsCore"
       },
       {
         "kind": "TypeDecl",
@@ -21223,14 +21216,14 @@
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Manager\/CryptoManager.swift",
       "kind": "StringLiteral",
-      "offset": 120,
+      "offset": 101,
       "length": 11,
       "value": "\"cypherKey\""
     },
     {
       "filePath": "\/Users\/carlescanadastorrents\/Projects\/meetingdoctors-legacy-library-ios\/Core\/Core\/Source\/Manager\/CryptoManager.swift",
       "kind": "StringLiteral",
-      "offset": 150,
+      "offset": 131,
       "length": 7,
       "value": "\"ivKey\""
     },
