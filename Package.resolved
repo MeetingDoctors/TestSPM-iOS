@@ -10,15 +10,6 @@
       }
     },
     {
-      "identity" : "alamofire",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Alamofire/Alamofire.git",
-      "state" : {
-        "revision" : "747c8db8d57b68d5e35275f10c92d55f982adbd4",
-        "version" : "4.9.1"
-      }
-    },
-    {
       "identity" : "cryptoswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/krzyzanowskim/CryptoSwift.git",
@@ -91,15 +82,6 @@
       }
     },
     {
-      "identity" : "lottie-spm",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/airbnb/lottie-spm.git",
-      "state" : {
-        "revision" : "60ea4f82fba8b4cb21a75665a889e86ed4d81c6e",
-        "version" : "4.2.0"
-      }
-    },
-    {
       "identity" : "nanopb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/nanopb.git",
@@ -109,48 +91,12 @@
       }
     },
     {
-      "identity" : "opentok",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/MattKiazyk/OpenTok.git",
-      "state" : {
-        "revision" : "174beb87a6898dd5aa3a06df4a0557a3426e11e9",
-        "version" : "2.24.2"
-      }
-    },
-    {
       "identity" : "promises",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/promises.git",
       "state" : {
         "revision" : "ec957ccddbcc710ccc64c9dcbd4c7006fcf8b73a",
         "version" : "2.2.0"
-      }
-    },
-    {
-      "identity" : "rxswift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ReactiveX/RxSwift.git",
-      "state" : {
-        "revision" : "b4307ba0b6425c0ba4178e138799946c3da594f8",
-        "version" : "6.5.0"
-      }
-    },
-    {
-      "identity" : "socket.io-client-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/socketio/socket.io-client-swift",
-      "state" : {
-        "revision" : "36db2ff0ebc7239187f9b382fd318e122da71caa",
-        "version" : "15.2.0"
-      }
-    },
-    {
-      "identity" : "starscream",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/daltoniam/Starscream",
-      "state" : {
-        "revision" : "a063fda2b8145a231953c20e7a646be254365396",
-        "version" : "3.1.2"
       }
     },
     {

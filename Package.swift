@@ -4,62 +4,62 @@
 import PackageDescription
 
 let package = Package(
-    name: "MeetingDoctorsSDK",
+    name: "MeetingDoctorsCore",
     platforms: [
         .iOS(.v13),
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "MeetingDoctorsCoreLibrary",
-//            type: .dynamic,
+            name: "MeetingDoctorsCore",
+            type: .dynamic,
             targets: [
                 "MeetingDoctorsCoreTarget",
             ]),
-        .library(
-            name: "MeetingDoctorsSchemaLibrary",
-//             type: .dynamic,
-            targets: [
-                "MeetingDoctorsCoreTarget",
-                "MeetingDoctorsSchemaTarget"
-            ]),
-        .library(
-            name: "MeetingDoctorsControllerLibrary",
-//            type: .dynamic,
-            targets: [
-                "MeetingDoctorsCoreTarget",
-                "MeetingDoctorsSchemaTarget",
-                "MeetingDoctorsControllerTarget"
-            ]),
-        .library(
-            name: "MeetingDoctorsSocketLibrary",
-//            type: .dynamic,
-            targets: [
-                "MeetingDoctorsCoreTarget",
-                "MeetingDoctorsSchemaTarget",
-                "MeetingDoctorsControllerTarget",
-                "MeetingDoctorsSocketTarget"
-            ]),
-        .library(
-            name: "MeetingDoctorsRemoteLibrary",
-//            type: .dynamic,
-            targets: [
-                "MeetingDoctorsCoreTarget",
-                "MeetingDoctorsSchemaTarget",
-                "MeetingDoctorsControllerTarget",
-                "MeetingDoctorsRemoteTarget",
-            ]),
-        .library(
-            name: "MeetingDoctorsSDKLibrary",
-//            type: .dynamic,
-            targets: [
-                "MeetingDoctorsCoreTarget",
-                "MeetingDoctorsSchemaTarget",
-                "MeetingDoctorsControllerTarget",
-                "MeetingDoctorsRemoteTarget",
-                "MeetingDoctorsSocketTarget",
-                "MeetingDoctorsSDKTarget"
-            ]),
+//        .library(
+//            name: "MeetingDoctorsSchemaLibrary",
+////             type: .dynamic,
+//            targets: [
+//                "MeetingDoctorsCoreTarget",
+//                "MeetingDoctorsSchemaTarget"
+//            ]),
+//        .library(
+//            name: "MeetingDoctorsControllerLibrary",
+////            type: .dynamic,
+//            targets: [
+//                "MeetingDoctorsCoreTarget",
+//                "MeetingDoctorsSchemaTarget",
+//                "MeetingDoctorsControllerTarget"
+//            ]),
+//        .library(
+//            name: "MeetingDoctorsSocketLibrary",
+////            type: .dynamic,
+//            targets: [
+//                "MeetingDoctorsCoreTarget",
+//                "MeetingDoctorsSchemaTarget",
+//                "MeetingDoctorsControllerTarget",
+//                "MeetingDoctorsSocketTarget"
+//            ]),
+//        .library(
+//            name: "MeetingDoctorsRemoteLibrary",
+////            type: .dynamic,
+//            targets: [
+//                "MeetingDoctorsCoreTarget",
+//                "MeetingDoctorsSchemaTarget",
+//                "MeetingDoctorsControllerTarget",
+//                "MeetingDoctorsRemoteTarget",
+//            ]),
+//        .library(
+//            name: "MeetingDoctorsSDKLibrary",
+////            type: .dynamic,
+//            targets: [
+//                "MeetingDoctorsCoreTarget",
+//                "MeetingDoctorsSchemaTarget",
+//                "MeetingDoctorsControllerTarget",
+//                "MeetingDoctorsRemoteTarget",
+//                "MeetingDoctorsSocketTarget",
+//                "MeetingDoctorsSDKTarget"
+//            ]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -69,16 +69,16 @@ let package = Package(
                  exact: "10.8.0"),
         .package(url: "https://github.com/google/promises.git",
                  exact: "2.2.0"),
-        .package(url: "https://github.com/socketio/socket.io-client-swift.git",
-                 from: "15.2.0"),
-        .package(url: "https://github.com/Alamofire/Alamofire.git",
-                 .upToNextMajor(from: "4.8.0")),
-        .package(url: "https://github.com/ReactiveX/RxSwift.git",
-                 from: "6.5.0"),
-        .package(url: "https://github.com/MattKiazyk/OpenTok.git",
-                 from: "2.24.2"),
-        .package(url: "https://github.com/airbnb/lottie-spm.git",
-                 from: "4.1.2")
+//        .package(url: "https://github.com/socketio/socket.io-client-swift.git",
+//                 from: "15.2.0"),
+//        .package(url: "https://github.com/Alamofire/Alamofire.git",
+//                 .upToNextMajor(from: "4.8.0")),
+//        .package(url: "https://github.com/ReactiveX/RxSwift.git",
+//                 from: "6.5.0"),
+//        .package(url: "https://github.com/MattKiazyk/OpenTok.git",
+//                 from: "2.24.2"),
+//        .package(url: "https://github.com/airbnb/lottie-spm.git",
+//                 from: "4.1.2")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -107,104 +107,104 @@ let package = Package(
                 ]
                ),
         // MARK: - MDSchema
-        .binaryTarget(
-            name: "MeetingDoctorsSchema",
-            path: "Frameworks/MeetingDoctorsSchema.xcframework"
-        ),
-        .target(name: "MeetingDoctorsSchemaTarget",
-                dependencies: [
-                    .target(name: "MeetingDoctorsSchema"),
-                ],
-                path: "Sources/MDSchema",
-                linkerSettings: [
-                    .linkedFramework("Foundation"),
-                    .linkedFramework("UIKit"),
-                    .linkedFramework("AdSupport"),
-                ]
-               ),
-        // MARK: - MDController
-        .binaryTarget(
-            name: "MeetingDoctorsController",
-            path: "Frameworks/MeetingDoctorsController.xcframework"
-        ),
-        .target(name: "MeetingDoctorsControllerTarget",
-                dependencies: [
-                    .target(name: "MeetingDoctorsController"),
-                    .product(name: "RxSwift",
-                             package: "RxSwift"),
-                    .product(name: "RxBlocking",
-                             package: "RxSwift")
-                ],
-                path: "Sources/MDController",
-                linkerSettings: [
-                    .linkedFramework("Foundation"),
-                    .linkedFramework("UIKit"),
-                    .linkedFramework("CoreLocation"),
-                    .linkedFramework("Photos"),
-                    .linkedFramework("AdSupport"),
-                ]
-               ),
-        // MARK: - MDSocket
-        .binaryTarget(
-            name: "MeetingDoctorsSocket",
-            path: "Frameworks/MeetingDoctorsSocket.xcframework"
-        ),
-        .target(name: "MeetingDoctorsSocketTarget",
-                dependencies: [
-                    .target(name: "MeetingDoctorsSocket"),
-                    .product(name: "SocketIO",
-                             package: "socket.io-client-swift")
-                ],
-                path: "Sources/MDSocket",
-                linkerSettings: [
-                    .linkedFramework("Foundation"),
-                    .linkedFramework("UIKit"),
-                ]
-               ),
-        // MARK: - MDRemote
-        .binaryTarget(
-            name: "MeetingDoctorsRemote",
-            path: "Frameworks/MeetingDoctorsRemote.xcframework"
-        ),
-        .target(name: "MeetingDoctorsRemoteTarget",
-                dependencies: [
-                    .target(name: "MeetingDoctorsRemote"),
-                    .product(name: "Alamofire",
-                             package: "Alamofire")
-                ],
-                path: "Sources/MDRemote",
-                linkerSettings: [
-                    .linkedFramework("Foundation"),
-                    .linkedFramework("UIKit"),
-                ]
-        ),
-        // MARK: - MDSDK
-        .binaryTarget(
-            name: "MeetingDoctorsSDK",
-            path: "Frameworks/MeetingDoctorsSDK.xcframework"
-        ),
-        .target(name: "MeetingDoctorsSDKTarget",
-                dependencies: [
-                    .target(name: "MeetingDoctorsSDK"),
-                    .product(name: "RxSwift",
-                             package: "RxSwift"),
-                    .product(name: "RxCocoa",
-                             package: "RxSwift"),
-                    .product(name: "OpenTok",
-                             package: "OpenTok"),
-                    .product(name: "Lottie",
-                             package: "lottie-spm"),
-                    .product(name: "CryptoSwift",
-                             package: "CryptoSwift")
-                ],
-                path: "Sources/MDSDK",
-                linkerSettings: [
-                    .linkedFramework("Foundation"),
-                    .linkedFramework("UIKit"),
-                    .linkedFramework("CoreLocation"),
-                    .linkedFramework("Photos"),
-                    .linkedFramework("StoreKit"),
-                ]
-               ),
+//        .binaryTarget(
+//            name: "MeetingDoctorsSchema",
+//            path: "Frameworks/MeetingDoctorsSchema.xcframework"
+//        ),
+//        .target(name: "MeetingDoctorsSchemaTarget",
+//                dependencies: [
+//                    .target(name: "MeetingDoctorsSchema"),
+//                ],
+//                path: "Sources/MDSchema",
+//                linkerSettings: [
+//                    .linkedFramework("Foundation"),
+//                    .linkedFramework("UIKit"),
+//                    .linkedFramework("AdSupport"),
+//                ]
+//               ),
+//        // MARK: - MDController
+//        .binaryTarget(
+//            name: "MeetingDoctorsController",
+//            path: "Frameworks/MeetingDoctorsController.xcframework"
+//        ),
+//        .target(name: "MeetingDoctorsControllerTarget",
+//                dependencies: [
+//                    .target(name: "MeetingDoctorsController"),
+//                    .product(name: "RxSwift",
+//                             package: "RxSwift"),
+//                    .product(name: "RxBlocking",
+//                             package: "RxSwift")
+//                ],
+//                path: "Sources/MDController",
+//                linkerSettings: [
+//                    .linkedFramework("Foundation"),
+//                    .linkedFramework("UIKit"),
+//                    .linkedFramework("CoreLocation"),
+//                    .linkedFramework("Photos"),
+//                    .linkedFramework("AdSupport"),
+//                ]
+//               ),
+//        // MARK: - MDSocket
+//        .binaryTarget(
+//            name: "MeetingDoctorsSocket",
+//            path: "Frameworks/MeetingDoctorsSocket.xcframework"
+//        ),
+//        .target(name: "MeetingDoctorsSocketTarget",
+//                dependencies: [
+//                    .target(name: "MeetingDoctorsSocket"),
+//                    .product(name: "SocketIO",
+//                             package: "socket.io-client-swift")
+//                ],
+//                path: "Sources/MDSocket",
+//                linkerSettings: [
+//                    .linkedFramework("Foundation"),
+//                    .linkedFramework("UIKit"),
+//                ]
+//               ),
+//        // MARK: - MDRemote
+//        .binaryTarget(
+//            name: "MeetingDoctorsRemote",
+//            path: "Frameworks/MeetingDoctorsRemote.xcframework"
+//        ),
+//        .target(name: "MeetingDoctorsRemoteTarget",
+//                dependencies: [
+//                    .target(name: "MeetingDoctorsRemote"),
+//                    .product(name: "Alamofire",
+//                             package: "Alamofire")
+//                ],
+//                path: "Sources/MDRemote",
+//                linkerSettings: [
+//                    .linkedFramework("Foundation"),
+//                    .linkedFramework("UIKit"),
+//                ]
+//        ),
+//        // MARK: - MDSDK
+//        .binaryTarget(
+//            name: "MeetingDoctorsSDK",
+//            path: "Frameworks/MeetingDoctorsSDK.xcframework"
+//        ),
+//        .target(name: "MeetingDoctorsSDKTarget",
+//                dependencies: [
+//                    .target(name: "MeetingDoctorsSDK"),
+//                    .product(name: "RxSwift",
+//                             package: "RxSwift"),
+//                    .product(name: "RxCocoa",
+//                             package: "RxSwift"),
+//                    .product(name: "OpenTok",
+//                             package: "OpenTok"),
+//                    .product(name: "Lottie",
+//                             package: "lottie-spm"),
+//                    .product(name: "CryptoSwift",
+//                             package: "CryptoSwift")
+//                ],
+//                path: "Sources/MDSDK",
+//                linkerSettings: [
+//                    .linkedFramework("Foundation"),
+//                    .linkedFramework("UIKit"),
+//                    .linkedFramework("CoreLocation"),
+//                    .linkedFramework("Photos"),
+//                    .linkedFramework("StoreKit"),
+//                ]
+//               ),
     ]
 )
