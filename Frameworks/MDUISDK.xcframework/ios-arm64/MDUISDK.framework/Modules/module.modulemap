@@ -1,0 +1,4 @@
+framework module MDUISDK {
+  header "MDUISDK-Swift.h"
+  requires objc
+}
