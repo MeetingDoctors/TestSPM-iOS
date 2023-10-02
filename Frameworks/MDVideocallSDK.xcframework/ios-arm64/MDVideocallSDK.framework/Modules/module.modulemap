@@ -1,0 +1,11 @@
+framework module MDVideocallSDK {
+  umbrella header "MDVideocallSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module MDVideocallSDK.Swift {
+  header "MDVideocallSDK-Swift.h"
+  requires objc
+}

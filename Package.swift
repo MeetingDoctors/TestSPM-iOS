@@ -4,22 +4,49 @@
 import PackageDescription
 
 let package = Package(
-    name: "MDUISDK",
+    name: "MDVideocallSDKSPM",
     platforms: [
         .iOS(.v13),
     ],
     products: [
         .library(
-            name: "MDUISDK",
+            name: "MDVideocallSDKSPM",
             targets: [
-                "MDUISDK",
+                "MDVideocallSDKSPM",
             ]),
     ],
-    dependencies: [],
+    dependencies: [
+        // Dependencies declare other packages that this package depends on.
+        .package(url: "https://github.com/socketio/socket.io-client-swift.git",
+                 from: "15.2.0"),
+        .package(url: "https://github.com/ReactiveX/RxSwift.git",
+                 from: "6.5.0"),
+        .package(url: "https://github.com/opentok/vonage-client-sdk-video",
+                 from: "2.26.0"),
+        .package(url: "https://github.com/airbnb/lottie-spm.git",
+                 from: "4.1.2")
+    ],
     targets: [
+        .target(name: "MDVideocallSDKSPM",
+                dependencies: [
+                    .target(name: "MDVideocallSDK"),
+                    .product(name: "SocketIO",
+                             package: "socket.io-client-swift"),
+                    .product(name: "RxSwift",
+                             package: "RxSwift"),
+                    .product(name: "RxCocoa",
+                             package: "RxSwift"),
+                    .product(name: "VonageClientSDKVideo",
+                             package: "vonage-client-sdk-video"),
+                    .product(name: "Lottie",
+                             package: "lottie-spm")
+                ]
+               ),
         .binaryTarget(
-            name: "MDUISDK",
-            path: "Frameworks/MDUISDK.xcframework"
+            name: "MDVideocallSDK",
+            path: "Frameworks/MDVideocallSDK.xcframework"
         )
     ]
 )
+
+
