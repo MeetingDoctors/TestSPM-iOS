@@ -45,6 +45,14 @@ let package = Package(
                 "MeetingDoctorsRemoteTarget",
             ]),
         .library(
+            name: "MeetingDoctorsStorageLibrary",
+            targets: [
+                "MeetingDoctorsCoreTarget",
+                "MeetingDoctorsSchemaTarget",
+                "MeetingDoctorsControllerTarget",
+                "MeetingDoctorsSocketTarget",
+            ]),
+        .library(
             name: "MeetingDoctorsSDKLibrary",
             targets: [
                 "MeetingDoctorsCoreTarget",
@@ -52,6 +60,7 @@ let package = Package(
                 "MeetingDoctorsControllerTarget",
                 "MeetingDoctorsRemoteTarget",
                 "MeetingDoctorsSocketTarget",
+                "MeetingDoctorsStorageTarget",
                 "MeetingDoctorsSDKTarget"
             ]),
     ],
@@ -131,6 +140,26 @@ let package = Package(
                     .linkedFramework("AdSupport"),
                 ]
                ),
+        // MARK: - MDStorage
+        .binaryTarget(
+            name: "MeetingDoctorsStorage",
+            path: "Frameworks/MeetingDoctorsStorage.xcframework"
+        ),
+        .target(name: "MeetingDoctorsStorageTarget",
+                dependencies: [
+                    .target(name: "MeetingDoctorsStorage"),
+                    .product(name: "Realm",
+                             package: "realm-swift"),
+                    .product(name: "RealmSwift",
+                             package: "realm-swift"),
+
+                ],
+                path: "Sources/MDRemote",
+                linkerSettings: [
+                    .linkedFramework("Foundation"),
+                    .linkedFramework("UIKit"),
+                ]
+        ),
         // MARK: - MDSocket
         .binaryTarget(
             name: "MeetingDoctorsSocket",
@@ -155,14 +184,9 @@ let package = Package(
         ),
         .target(name: "MeetingDoctorsRemoteTarget",
                 dependencies: [
-                    .target(name: "MeetingDoctorsRemote"),
-                    .product(name: "Realm",
-                             package: "realm-swift"),
-                    .product(name: "RealmSwift",
-                             package: "realm-swift"),
-
+                    .target(name: "MeetingDoctorsRemote")
                 ],
-                path: "Sources/MDRemote",
+                path: "Sources/MDStorage",
                 linkerSettings: [
                     .linkedFramework("Foundation"),
                     .linkedFramework("UIKit"),
