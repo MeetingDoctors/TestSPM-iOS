@@ -1,0 +1,2706 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MeetingDoctorsSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFAudio
+import AVFoundation
+import AudioToolbox
+import Combine
+import CoreLocation
+import DeveloperToolsSupport
+import Foundation
+import ImageIO
+import Lottie
+import MeetingDoctorsController
+import MeetingDoctorsCore
+import MeetingDoctorsRemote
+@_exported import MeetingDoctorsSDK
+import MeetingDoctorsSchema
+import MeetingDoctorsSocket
+import MeetingDoctorsStorage
+import MobileCoreServices
+import OpenTok
+import Photos
+import PhotosUI
+import RealmSwift
+import RxSwift
+import SocketIO
+import StoreKit
+import Swift
+import SwiftUI
+import UIKit
+import UserNotifications
+import WebKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MDVideocallBaseViewController : MeetingDoctorsSDK.BaseViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol MeetingDoctorsMessageType {
+  var id: Swift.String { get }
+  var roomId: Swift.String { get }
+  var contentType: MeetingDoctorsSDK.MeetingDoctorsMessageContentType { get }
+  var contactHash: Swift.String { get }
+  var contactSpeciality: Swift.String { get }
+  var contactSpecialityCode: Swift.String { get }
+}
+public enum MeetingDoctorsMessageContentType {
+  case text(value: Swift.String)
+  case image(url: Foundation.URL)
+  case file(url: Foundation.URL)
+  case unknown
+  public var identifier: Swift.String? {
+    get
+  }
+}
+@objc public protocol FloatyDelegate {
+  @objc optional func emptyFloatySelected(_ floaty: MeetingDoctorsSDK.Floaty)
+  @objc optional func floatyShouldOpen(_ floaty: MeetingDoctorsSDK.Floaty) -> Swift.Bool
+  @objc optional func floatyWillOpen(_ floaty: MeetingDoctorsSDK.Floaty)
+  @objc optional func floatyDidOpen(_ floaty: MeetingDoctorsSDK.Floaty)
+  @objc optional func floatyShouldClose(_ floaty: MeetingDoctorsSDK.Floaty) -> Swift.Bool
+  @objc optional func floatyWillClose(_ floaty: MeetingDoctorsSDK.Floaty)
+  @objc optional func floatyDidClose(_ floaty: MeetingDoctorsSDK.Floaty)
+  @objc optional func shallWorkHorizontal() -> Swift.Bool
+  @objc optional func floatyWillToggled(_ floaty: MeetingDoctorsSDK.Floaty)
+  @objc optional func floatyOpened(_ floaty: MeetingDoctorsSDK.Floaty)
+  @objc optional func floatyClosed(_ floaty: MeetingDoctorsSDK.Floaty)
+}
+public struct MDCompaniesArgumentGetResponse : Swift.Codable {
+  public let id: Swift.String?
+  public let apiKey: Swift.String?
+  public let professional: Swift.String?
+  public let customer: Swift.String?
+  public let timezone: Swift.String?
+  public let type: Swift.String?
+  public let service: Swift.String?
+  public let survey: MeetingDoctorsSDK.MDCompaniesArgumentSurveyGetResponse?
+  public let createdAt: Foundation.Date?
+  public let ratedAt: Foundation.Date?
+  public let sentAt: Foundation.Date?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct MDCompaniesArgumentSurveyGetResponse : Swift.Codable {
+  public let title: Swift.String
+  public let body: Swift.String
+  public let form: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) public class BadgeView : UIKit.UILabel {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var badgeColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var borderWidth: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var borderColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var insets: CoreFoundation.CGSize {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowOpacityBadge: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowRadiusBadge: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowColorBadge: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowOffsetBadge: CoreFoundation.CGSize {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var cornerRadius: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func textRect(forBounds bounds: CoreFoundation.CGRect, limitedToNumberOfLines numberOfLines: Swift.Int) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func drawText(in rect: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func draw(_ rect: CoreFoundation.CGRect)
+  @available(iOS 8.0, *)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepareForInterfaceBuilder()
+  @objc deinit
+}
+extension MeetingDoctorsController.MessengerRemoteNotificationModel {
+  public var deeplinkOption: MeetingDoctorsSDK.MeetingDoctorsDeeplinkOption {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MDSecondaryButton : MeetingDoctorsSDK.MDBaseButton {
+  @_Concurrency.MainActor(unsafe) public var borderColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var borderWidth: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) override public func setup()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MDVideocallInformationViewController : MeetingDoctorsSDK.MDVideocallProcessBaseViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override public func closeProcess()
+  @_Concurrency.MainActor(unsafe) override public func numberOfRowsInSection(section _: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) override public func cellForRowAt(indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+public class MDCV2VideoConsultationsRequest : Swift.Codable {
+  public init(workflow: Swift.String?, professionalHash: Swift.String?, speciality: Swift.String?)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDLabelS18W600 : MeetingDoctorsSDK.MDLabelBase {
+  @_Concurrency.MainActor(unsafe) override public func setup()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+public protocol MeetingDoctorsColorsType {
+  var common: any MeetingDoctorsSDK.MeetingDoctorsCommonColorsType { get set }
+  var chat: any MeetingDoctorsSDK.MeetingDoctorsChatColorsType { get set }
+}
+public struct MeetingDoctorsColors : MeetingDoctorsSDK.MeetingDoctorsColorsType {
+  public var common: any MeetingDoctorsSDK.MeetingDoctorsCommonColorsType
+  public var chat: any MeetingDoctorsSDK.MeetingDoctorsChatColorsType
+}
+public protocol MeetingDoctorsCommonColorsType {
+  var primary: UIKit.UIColor? { get set }
+  var dataTextColor: UIKit.UIColor? { get set }
+}
+public protocol MeetingDoctorsChatColorsType {
+  var disconnectMessageImageTintColor: UIKit.UIColor? { get set }
+  var disconnectMessageContainerBackgroundColor: UIKit.UIColor? { get set }
+  var disconnectMessageTextColor: UIKit.UIColor? { get set }
+  var messageTextOutgoing: UIKit.UIColor? { get set }
+  var messageDateOutgoing: UIKit.UIColor? { get set }
+  var bubbleBackgroundOutgoing: UIKit.UIColor? { get set }
+  var messageTextIncoming: UIKit.UIColor? { get set }
+  var messageDateIncoming: UIKit.UIColor? { get set }
+  var bubbleBackgroundIncoming: UIKit.UIColor? { get set }
+}
+public struct MeetingDoctorsCommonColors : MeetingDoctorsSDK.MeetingDoctorsCommonColorsType {
+  public var primary: UIKit.UIColor?
+  public var dataTextColor: UIKit.UIColor?
+}
+public struct MeetingDoctorsChatColors : MeetingDoctorsSDK.MeetingDoctorsChatColorsType {
+  public var disconnectMessageImageTintColor: UIKit.UIColor?
+  public var disconnectMessageContainerBackgroundColor: UIKit.UIColor?
+  public var disconnectMessageTextColor: UIKit.UIColor?
+  public var messageTextOutgoing: UIKit.UIColor?
+  public var messageDateOutgoing: UIKit.UIColor?
+  public var bubbleBackgroundOutgoing: UIKit.UIColor?
+  public var messageTextIncoming: UIKit.UIColor?
+  public var messageDateIncoming: UIKit.UIColor?
+  public var bubbleBackgroundIncoming: UIKit.UIColor?
+}
+public enum MDVideocallStatusType : Swift.String, Swift.Codable, Swift.Equatable {
+  case onHold
+  case assigned
+  case onGoing
+  case cancelled
+  case finished
+  case failed
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum MDVideocallStatus {
+  case onHold(videocallId: Swift.String)
+  case onGoing(participants: [MeetingDoctorsSDK.MDCommonDataResponse<MeetingDoctorsSDK.MDVideocallParticipantResponseModel>])
+  case cancelled
+  case finished
+  case unknown
+}
+public enum MDVideocallPermission {
+  case authorized(status: MeetingDoctorsSDK.MDVideocallStatus)
+  case notDetermined(status: MeetingDoctorsSDK.MDVideocallStatus)
+  case denied
+  case unknown
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class BaseViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+final public class MDVideocallInformationAssembler {
+  public init(moderator: MeetingDoctorsSDK.MDVideocallParticipantRequestModel? = nil, specialityCode: Swift.String? = nil)
+  final public func viewController() -> UIKit.UIViewController
+  @objc deinit
+}
+public struct MDVCEnvironment : Swift.Decodable {
+  public let endpoint: [MeetingDoctorsSDK.MDVCEndpointType : MeetingDoctorsSDK.MDVCEndpoint]
+  public let requestTimeout: Swift.Int?
+  public let logLevel: MeetingDoctorsSDK.MDVCLogLevel?
+  public let reportCrashes: Swift.Bool?
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension MeetingDoctorsSDK.MDVCEnvironment : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.MDVCEnvironment, rhs: MeetingDoctorsSDK.MDVCEnvironment) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDLabelBase : UIKit.UILabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) open func setup()
+  @objc deinit
+}
+public protocol InboxBaseCellViewModelType {
+}
+extension UIKit.UITextField {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
+}
+extension QuartzCore.CALayer {
+  public func fade()
+}
+public struct MDNotificationsPushTokenArgumentPostResponse : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension MeetingDoctorsSDK.MDNotificationsPushTokenArgumentPostResponse : Swift.Equatable {
+  public static func == (a: MeetingDoctorsSDK.MDNotificationsPushTokenArgumentPostResponse, b: MeetingDoctorsSDK.MDNotificationsPushTokenArgumentPostResponse) -> Swift.Bool
+}
+public class MDVideoconsultationStatusRequestModel : Swift.Codable {
+  public init(status: Swift.String?)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+extension UIKit.UIColor {
+  public var luminance: CoreFoundation.CGFloat {
+    get
+  }
+  public var isLight: Swift.Bool {
+    get
+  }
+}
+extension CoreFoundation.CGPoint {
+  public enum Point {
+    case topLeft
+    case centerLeft
+    case bottomLeft
+    case topCenter
+    case center
+    case bottomCenter
+    case topRight
+    case centerRight
+    case bottomRight
+    public static func == (a: CoreFoundation.CGPoint.Point, b: CoreFoundation.CGPoint.Point) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public protocol MDNotificationsAdapterProtocol {
+  func pushTokenArgumentPostRequest(model: MeetingDoctorsSchema.CustomerRegisterNotificationRequest, completion: @escaping (Swift.Result<MeetingDoctorsSDK.MDNotificationsPushTokenArgumentPostResponse, any Swift.Error>) -> Swift.Void)
+  func pushTokenDeleteRequest(pushToken: Swift.String, completion: @escaping (Swift.Result<MeetingDoctorsRemote.VoidResponse, any Swift.Error>) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers public class MDNotificationsAdapter : MeetingDoctorsSDK.MDNotificationsAdapterProtocol {
+  public func pushTokenArgumentPostRequest(model: MeetingDoctorsSchema.CustomerRegisterNotificationRequest, completion: @escaping (Swift.Result<MeetingDoctorsSDK.MDNotificationsPushTokenArgumentPostResponse, any Swift.Error>) -> Swift.Void)
+  public func pushTokenDeleteRequest(pushToken: Swift.String, completion: @escaping (Swift.Result<MeetingDoctorsRemote.VoidResponse, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MDNumeratedItem : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder unarchiver: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @objc deinit
+}
+@objc public enum FloatyOpenAnimationType : Swift.Int {
+  case pop
+  case fade
+  case slideLeft
+  case slideUp
+  case slideDown
+  case fullCircular
+  case semiCircular
+  case quadCircular
+  case none
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum FloatyVerticalDirection : Swift.Int {
+  case up
+  case down
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum FloatyHorizontalDirection : Swift.Int {
+  case left
+  case right
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) open class Floaty : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) open var items: [MeetingDoctorsSDK.FloatyItem]
+  @objc @_Concurrency.MainActor(unsafe) open var size: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var circleAnimationRadius: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var circleAnimationDegreeOffset: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var paddingX: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var paddingY: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @IBInspectable @objc @_Concurrency.MainActor(unsafe) open var autoCloseOnTap: Swift.Bool
+  @IBInspectable @objc @_Concurrency.MainActor(unsafe) open var autoCloseOnOverlayTap: Swift.Bool
+  @IBInspectable @objc @_Concurrency.MainActor(unsafe) open var handleFirstItemDirectly: Swift.Bool
+  @IBInspectable @objc @_Concurrency.MainActor(unsafe) open var relativeToSafeArea: Swift.Bool
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var rotationDegrees: CoreFoundation.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var animationSpeed: Swift.Double
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonColor: UIKit.UIColor?
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonHighlightedColor: UIKit.UIColor?
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonShadowColor: UIKit.UIColor
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonImage: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var plusColor: UIKit.UIColor
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var overlayColor: UIKit.UIColor
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var itemSpace: CoreFoundation.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var itemSize: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var itemButtonColor: UIKit.UIColor
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var itemTitleColor: UIKit.UIColor
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var itemImageColor: UIKit.UIColor?
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var hasShadow: Swift.Bool
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var itemShadowColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) open var closed: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var isDraggable: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var respondsToKeyboard: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) open var openAnimationType: MeetingDoctorsSDK.FloatyOpenAnimationType
+  @objc @_Concurrency.MainActor(unsafe) open var verticalDirection: MeetingDoctorsSDK.FloatyVerticalDirection
+  @objc @_Concurrency.MainActor(unsafe) open var horizontalDirection: MeetingDoctorsSDK.FloatyHorizontalDirection
+  @objc @_Concurrency.MainActor(unsafe) open var friendlyTap: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) open var sticky: Swift.Bool
+  @IBInspectable @objc @_Concurrency.MainActor(unsafe) open var supportLanscape: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public static var global: MeetingDoctorsSDK.FloatyManager {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) weak open var delegate: (any MeetingDoctorsSDK.FloatyDelegate)?
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var selectedColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) public init(size: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func draw(_ rect: CoreFoundation.CGRect)
+  @objc @_Concurrency.MainActor(unsafe) open func open()
+  @objc @_Concurrency.MainActor(unsafe) open func close()
+  @objc @_Concurrency.MainActor(unsafe) open func toggle()
+  @objc @_Concurrency.MainActor(unsafe) open func addItem(item: MeetingDoctorsSDK.FloatyItem)
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) open func addItem(title: Swift.String, titlePosition: MeetingDoctorsSDK.FloatyItemLabelPositionType = .left) -> MeetingDoctorsSDK.FloatyItem
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) open func addItem(title: Swift.String) -> MeetingDoctorsSDK.FloatyItem
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) open func addItem(_ title: Swift.String, icon: UIKit.UIImage?, titlePosition: MeetingDoctorsSDK.FloatyItemLabelPositionType = .left) -> MeetingDoctorsSDK.FloatyItem
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) open func addItem(_ title: Swift.String, icon: UIKit.UIImage?) -> MeetingDoctorsSDK.FloatyItem
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) open func addItem(title: Swift.String, handler: @escaping ((MeetingDoctorsSDK.FloatyItem) -> Swift.Void)) -> MeetingDoctorsSDK.FloatyItem
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) open func addItem(title: Swift.String, titlePosition: MeetingDoctorsSDK.FloatyItemLabelPositionType = .left, handler: @escaping ((MeetingDoctorsSDK.FloatyItem) -> Swift.Void)) -> MeetingDoctorsSDK.FloatyItem
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) open func addItem(_ title: Swift.String, icon: UIKit.UIImage?, handler: @escaping ((MeetingDoctorsSDK.FloatyItem) -> Swift.Void)) -> MeetingDoctorsSDK.FloatyItem
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) open func addItem(_ title: Swift.String, icon: UIKit.UIImage?, titlePosition: MeetingDoctorsSDK.FloatyItemLabelPositionType = .left, handler: @escaping ((MeetingDoctorsSDK.FloatyItem) -> Swift.Void)) -> MeetingDoctorsSDK.FloatyItem
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) open func addItem(icon: UIKit.UIImage?) -> MeetingDoctorsSDK.FloatyItem
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) open func addItem(icon: UIKit.UIImage?, handler: @escaping ((MeetingDoctorsSDK.FloatyItem) -> Swift.Void)) -> MeetingDoctorsSDK.FloatyItem
+  @objc @_Concurrency.MainActor(unsafe) open func removeItem(item: MeetingDoctorsSDK.FloatyItem)
+  @objc @_Concurrency.MainActor(unsafe) open func removeItem(index: Swift.Int)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func hitTest(_ point: CoreFoundation.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change _: [Foundation.NSKeyValueChangeKey : Any]?, context _: Swift.UnsafeMutableRawPointer?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func willMove(toSuperview newSuperview: UIKit.UIView?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func didMoveToSuperview()
+}
+extension MeetingDoctorsSDK.Floaty {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var accessibilityLabel: Swift.String? {
+    @objc get
+    @objc set(newLabel)
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var accessibilityHint: Swift.String? {
+    @objc get
+    @objc set(newHint)
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var accessibilityValue: Swift.String? {
+    @objc get
+    @objc set(newHint)
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var accessibilityElements: [Any]? {
+    @objc get
+    @objc set
+  }
+}
+extension Foundation.URL {
+  public static func lottieAnimationWithURL(_ bundleURL: Foundation.URL?) -> [Swift.String : Any]?
+}
+extension UIKit.UIImage {
+  public class func gifImageWithData(_ data: Foundation.Data) -> UIKit.UIImage?
+  public class func gifImageWithURL(_ gifUrl: Foundation.URL?) -> UIKit.UIImage?
+  public class func gifImageWithName(_ name: Swift.String) -> UIKit.UIImage?
+}
+public struct InboxHeaderStyle {
+  public let headerView: UIKit.UIView
+  public let frame: CoreFoundation.CGRect?
+  public init(headerView: UIKit.UIView, frame: CoreFoundation.CGRect? = nil)
+}
+public enum MedicalHistoryDeeplinkOption {
+  case main
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension MeetingDoctorsSDK.MedicalHistoryDeeplinkOption : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.MedicalHistoryDeeplinkOption, rhs: MeetingDoctorsSDK.MedicalHistoryDeeplinkOption) -> Swift.Bool
+}
+extension UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public func removeAllConstraints()
+}
+public protocol MeetingDoctorsDividerType : MeetingDoctorsSDK.InboxBaseCellViewModelType {
+  var contentView: UIKit.UIView { get }
+  func configure<View>(cell: UIKit.UITableViewCell, view: View) where View : UIKit.UIView
+  func select(id: Swift.String, name: Swift.String, role: MeetingDoctorsSDK.MeetingDoctorsRole, authorized: Swift.Bool, saturated: MeetingDoctorsSDK.MeetingDoctorsSaturation) -> Swift.Bool
+}
+extension MeetingDoctorsSDK.MeetingDoctorsDividerType {
+  public func configure<View>(cell _: UIKit.UITableViewCell, view _: View) where View : UIKit.UIView
+  public func select(id _: Swift.String, name: Swift.String, role _: MeetingDoctorsSDK.MeetingDoctorsRole, authorized _: Swift.Bool, saturated _: MeetingDoctorsSDK.MeetingDoctorsSaturation) -> Swift.Bool
+}
+public class MeetingDoctorsDivider<ViewType> : MeetingDoctorsSDK.MeetingDoctorsDividerType where ViewType : UIKit.UIView {
+  public typealias ViewConfigurator = (_ cell: UIKit.UITableViewCell, _ view: ViewType) -> Swift.Void
+  public typealias ViewSelector = (_ id: Swift.String, _ name: Swift.String, _ role: MeetingDoctorsSDK.MeetingDoctorsRole, _ authorized: Swift.Bool, _ saturated: MeetingDoctorsSDK.MeetingDoctorsSaturation) -> Swift.Bool
+  final public let contentView: UIKit.UIView
+  public init(view: ViewType)
+  public func add(configuration: @escaping MeetingDoctorsSDK.MeetingDoctorsDivider<ViewType>.ViewConfigurator) -> Self
+  public func add(selector: @escaping MeetingDoctorsSDK.MeetingDoctorsDivider<ViewType>.ViewSelector) -> Self
+  public func configure<View>(cell: UIKit.UITableViewCell, view: View) where View : UIKit.UIView
+  public func select(id: Swift.String, name: Swift.String, role: MeetingDoctorsSDK.MeetingDoctorsRole, authorized: Swift.Bool, saturated: MeetingDoctorsSDK.MeetingDoctorsSaturation) -> Swift.Bool
+  @objc deinit
+}
+public typealias MDMeetingDoctors = MeetingDoctorsSDK.MeetingDoctors
+public typealias MDResponse<T> = MeetingDoctorsSDK.MDResult<T, MeetingDoctorsSDK.MeetingDoctorsError>
+public enum MDResult<Value, Error> {
+  case success(Value)
+  case failure(Error)
+  public func process(doSuccess: (Value) -> Swift.Void, doFailure: (Error) -> Swift.Void)
+  public func process<T>(doSuccess: (Value) -> MeetingDoctorsSDK.MDResponse<T>, doFailure: (Error) -> MeetingDoctorsSDK.MDResponse<T>) -> MeetingDoctorsSDK.MDResponse<T>
+}
+public enum MeetingDoctorsResult<Value> {
+  case success(Value)
+  case failure(any Swift.Error)
+  public func process(doSuccess: (Value) -> Swift.Void, doFailure: (any Swift.Error) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers final public class MeetingDoctors {
+  public struct Configuration {
+    public let secret: Swift.String
+    public let videocallLongSoundFileName: Swift.String?
+    public let videocallShortSoundFileName: Swift.String?
+    public let environment: MeetingDoctorsCore.EnvironmentType
+    public var buildConfiguration: MeetingDoctorsCore.BuildConfigurationType {
+      get
+    }
+    public init(secret: Swift.String, environment: MeetingDoctorsCore.EnvironmentType = .production, videocallLongSoundFileName: Swift.String? = nil, videocallShortSoundFileName: Swift.String? = nil)
+  }
+  public static var referrer: (any MeetingDoctorsSDK.MeetingDoctorsReferrerType)? {
+    get
+  }
+  public static var resources: Foundation.Bundle {
+    get
+  }
+  public static var environmentLoader: MeetingDoctorsCore.EnvironmentLoader {
+    get
+  }
+  public static var style: (any MeetingDoctorsSDK.MeetingDoctorsStyleType)? {
+    get
+    set
+  }
+  final public var firebaseToken: Swift.String? {
+    get
+  }
+  public static var isAuthenticated: Swift.Bool {
+    get
+  }
+  @objc deinit
+  @discardableResult
+  final public class func initialize(_ application: UIKit.UIApplication = UIApplication.shared, with configuration: MeetingDoctorsSDK.MeetingDoctors.Configuration, options _: [UIKit.UIApplication.LaunchOptionsKey : Any]?, completion: ((MeetingDoctorsSDK.MeetingDoctorsResult<any MeetingDoctorsSDK.MeetingDoctorsInstallationType>) -> Swift.Void)? = nil) -> Foundation.UUID?
+  final public class func authenticate(token: Swift.String, completion: @escaping (MeetingDoctorsSDK.MeetingDoctorsResult<Swift.Void>) -> Swift.Void)
+  final public class func shutdown(_ completion: ((MeetingDoctorsSDK.MeetingDoctorsResult<Swift.Void>) -> Swift.Void)? = nil)
+  final public class func logout(_ completion: ((MeetingDoctorsSDK.MeetingDoctorsResult<Swift.Void>) -> Swift.Void)? = nil)
+  final public class func medicalHistoryViewController(withTitle titleText: Swift.String? = nil, withIcon icon: UIKit.UIImage? = nil) -> MeetingDoctorsSDK.MeetingDoctorsResult<UIKit.UIViewController>
+  final public class func updateStyle()
+  final public class func unreadMessageCount(with filter: any MeetingDoctorsSDK.MeetingDoctorsFilterType, _ completion: @escaping (MeetingDoctorsSDK.MeetingDoctorsResult<Swift.Int>) -> Swift.Void)
+}
+extension MeetingDoctorsSDK.MeetingDoctors {
+  final public class func unreadMessageCount(_ completion: @escaping (MeetingDoctorsSDK.MeetingDoctorsResult<Swift.Int>) -> Swift.Void)
+  final public class func didReceiveRemoteNotification(_ application: UIKit.UIApplication = UIApplication.shared, with userInfo: [Swift.AnyHashable : Any], completion: @escaping ((MeetingDoctorsSDK.MeetingDoctorsResult<UIKit.UIBackgroundFetchResult>) -> Swift.Void))
+  final public class func deeplinkOption(for userInfo: [Swift.AnyHashable : Any]) -> MeetingDoctorsSDK.MeetingDoctorsDeeplinkOption
+}
+extension MeetingDoctorsSDK.MeetingDoctors {
+  final public class func userNotificationCenter(_ userNotificationCenter: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, completion: @escaping ((MeetingDoctorsSDK.MeetingDoctorsResult<UserNotifications.UNNotificationPresentationOptions>) -> Swift.Void))
+  final public class func userNotificationCenter(_ userNotificationCenter: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, completion: @escaping ((MeetingDoctorsSDK.MeetingDoctorsResult<Swift.Void>) -> Swift.Void))
+}
+extension MeetingDoctorsSDK.MeetingDoctors {
+  final public class func deeplink(_ deeplinkOption: MeetingDoctorsSDK.MeetingDoctorsDeeplinkOption, origin: UIKit.UIViewController? = nil, animated: Swift.Bool = true, completion: @escaping ((MeetingDoctorsSDK.MeetingDoctorsResult<Swift.Void>) -> Swift.Void))
+}
+extension MeetingDoctorsSDK.MeetingDoctors {
+  final public class func registerFirebaseForNotifications(token: Swift.String, completion: @escaping (MeetingDoctorsSDK.MDResponse<Swift.Void>) -> Swift.Void)
+  public static func hasAnyVideocallStarted(completion: @escaping (Swift.Bool) -> Swift.Void)
+}
+public protocol CellParentViewProtocol {
+  associatedtype CellType : UIKit.UIView
+  func dequeueReusableCellFor(identifier: Swift.String, indexPath: Foundation.IndexPath) -> Self.CellType
+  func dequeueReusableSupplementaryViewFor(kind: Swift.String, identifier: Swift.String, indexPath: Foundation.IndexPath) -> Self.CellType?
+}
+extension UIKit.UICollectionView : MeetingDoctorsSDK.CellParentViewProtocol {
+  public typealias CellType = UIKit.UICollectionReusableView
+  @_Concurrency.MainActor(unsafe) public func dequeueReusableCellFor(identifier: Swift.String, indexPath: Foundation.IndexPath) -> UIKit.UICollectionView.CellType
+  @_Concurrency.MainActor(unsafe) public func dequeueReusableSupplementaryViewFor(kind: Swift.String, identifier: Swift.String, indexPath: Foundation.IndexPath) -> UIKit.UICollectionView.CellType?
+}
+extension UIKit.UITableView : MeetingDoctorsSDK.CellParentViewProtocol {
+  public typealias CellType = UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) public func dequeueReusableCellFor(identifier: Swift.String, indexPath: Foundation.IndexPath) -> UIKit.UITableView.CellType
+  @_Concurrency.MainActor(unsafe) public func dequeueReusableSupplementaryViewFor(kind _: Swift.String, identifier _: Swift.String, indexPath _: Foundation.IndexPath) -> UIKit.UITableView.CellType?
+}
+public protocol ReusableViewProtocol {
+  associatedtype ParentView : UIKit.UIView, MeetingDoctorsSDK.CellParentViewProtocol
+  var reuseIdentifier: Swift.String? { get }
+  func prepareForReuse()
+}
+extension UIKit.UICollectionReusableView : MeetingDoctorsSDK.ReusableViewProtocol {
+  public typealias ParentView = UIKit.UICollectionView
+}
+extension UIKit.UITableViewCell : MeetingDoctorsSDK.ReusableViewProtocol {
+  public typealias ParentView = UIKit.UITableView
+}
+public enum ReusableViewType {
+  case cell
+  case supplementaryView(kind: Swift.String)
+}
+extension MeetingDoctorsSDK.ReusableViewType : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.ReusableViewType, rhs: MeetingDoctorsSDK.ReusableViewType) -> Swift.Bool
+}
+public protocol ReusableViewConfigProtocol {
+  associatedtype Item
+  associatedtype View : MeetingDoctorsSDK.ReusableViewProtocol
+  func reuseIdentiferFor(item: Self.Item?, type: MeetingDoctorsSDK.ReusableViewType, indexPath: Foundation.IndexPath) -> Swift.String
+  @discardableResult
+  func configure(view: Self.View, item: Self.Item?, type: MeetingDoctorsSDK.ReusableViewType, parentView: Self.View.ParentView, indexPath: Foundation.IndexPath) -> Self.View
+}
+extension MeetingDoctorsSDK.ReusableViewConfigProtocol where Self.View : UIKit.UITableViewCell {
+  public func tableCellFor(item: Self.Item, tableView: UIKit.UITableView, indexPath: Foundation.IndexPath) -> Self.View
+}
+extension MeetingDoctorsSDK.ReusableViewConfigProtocol where Self.View : UIKit.UICollectionViewCell {
+  public func collectionCellFor(item: Self.Item, collectionView: UIKit.UICollectionView, indexPath: Foundation.IndexPath) -> Self.View
+}
+extension MeetingDoctorsSDK.ReusableViewConfigProtocol where Self.View : UIKit.UICollectionReusableView {
+  public func supplementaryViewFor(item: Self.Item?, kind: Swift.String, collectionView: UIKit.UICollectionView, indexPath: Foundation.IndexPath) -> Self.View
+}
+public struct ReusableViewConfig<Item, Cell> : MeetingDoctorsSDK.ReusableViewConfigProtocol where Cell : MeetingDoctorsSDK.ReusableViewProtocol {
+  public typealias ViewConfigurator = (Cell, Item?, MeetingDoctorsSDK.ReusableViewType, Cell.ParentView, Foundation.IndexPath) -> Cell
+  public let reuseIdentifier: Swift.String
+  public let type: MeetingDoctorsSDK.ReusableViewType
+  public let viewConfigurator: MeetingDoctorsSDK.ReusableViewConfig<Item, Cell>.ViewConfigurator
+  public init(reuseIdentifier: Swift.String, type: MeetingDoctorsSDK.ReusableViewType = .cell, viewConfigurator: @escaping MeetingDoctorsSDK.ReusableViewConfig<Item, Cell>.ViewConfigurator)
+  public func reuseIdentiferFor(item _: Item?, type _: MeetingDoctorsSDK.ReusableViewType, indexPath _: Foundation.IndexPath) -> Swift.String
+  public func configure(view: Cell, item: Item?, type: MeetingDoctorsSDK.ReusableViewType, parentView: Cell.ParentView, indexPath: Foundation.IndexPath) -> Cell
+  public typealias View = Cell
+}
+public enum MDVCDeeplinkOption {
+  case videoCall
+  case unknown
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension MeetingDoctorsSDK.MDVCDeeplinkOption : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.MDVCDeeplinkOption, rhs: MeetingDoctorsSDK.MDVCDeeplinkOption) -> Swift.Bool
+}
+public protocol ChatMessageStatusViewModelType {
+  var icon: UIKit.UIImage? { get }
+}
+public struct ChatMessageCellViewModel : MeetingDoctorsSDK.ChatMessageProtocol {
+  public enum Status : Swift.String {
+    case pending
+    case sent
+    case delivered
+    case received
+    case read
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var model: MeetingDoctorsController.MessageModel
+  public let sender: any MeetingDoctorsSDK.ChatMessageSenderProtocol
+  public var messageId: Swift.String {
+    get
+  }
+  public var sentDate: Foundation.Date {
+    get
+  }
+  public var kind: MeetingDoctorsSDK.ChatMessageKindEnum {
+    get
+  }
+  public var status: MeetingDoctorsSDK.ChatMessageCellViewModel.Status {
+    get
+  }
+  public init(model: MeetingDoctorsController.MessageModel, sender: any MeetingDoctorsSDK.ChatMessageSenderProtocol)
+  public func update(status: MeetingDoctorsSDK.ChatMessageCellViewModel.Status) -> MeetingDoctorsSDK.ChatMessageCellViewModel
+}
+extension MeetingDoctorsSDK.ChatMessageCellViewModel : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.ChatMessageCellViewModel, rhs: MeetingDoctorsSDK.ChatMessageCellViewModel) -> Swift.Bool
+}
+extension MeetingDoctorsSDK.ChatMessageCellViewModel {
+  public var attachmentURL: Foundation.URL? {
+    get
+  }
+}
+extension MeetingDoctorsSDK.ChatMessageCellViewModel.Status : MeetingDoctorsSDK.ChatMessageStatusViewModelType {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+}
+extension MeetingDoctorsController.MessageStatusModel {
+  public init(view: MeetingDoctorsSDK.ChatMessageCellViewModel.Status)
+}
+public protocol ChatMessageSenderProtocol {
+  var senderId: Swift.String { get }
+  var senderName: Swift.String { get }
+}
+public struct ChatMessageSender : MeetingDoctorsSDK.ChatMessageSenderProtocol {
+  public var senderId: Swift.String
+  public var senderName: Swift.String
+}
+public protocol ChatMessageProtocol : MeetingDoctorsSDK.TModel {
+  var sender: any MeetingDoctorsSDK.ChatMessageSenderProtocol { get }
+  var messageId: Swift.String { get }
+  var sentDate: Foundation.Date { get }
+  var kind: MeetingDoctorsSDK.ChatMessageKindEnum { get }
+}
+public enum ChatMessageKindEnum {
+  case text(Swift.String)
+  case file(any MeetingDoctorsSDK.ChatFileItemProtocol)
+  case photo(any MeetingDoctorsSDK.ChatMediaItemProtocol)
+}
+public protocol ChatMediaItemProtocol {
+  var url: Foundation.URL? { get }
+  var image: UIKit.UIImage? { get }
+  var placeholderImage: UIKit.UIImage { get }
+  var size: CoreFoundation.CGSize { get }
+}
+public protocol ChatFileItemProtocol {
+  var data: Foundation.Data? { get }
+  var name: Swift.String { get }
+  var url: Foundation.URL { get }
+  var size: Swift.Int { get }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class TermsAndConditionsViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+public func abstractMethod(file: Swift.StaticString = #file, line: Swift.UInt = #line, function: Swift.StaticString = #function) -> Swift.Never
+public enum MDVCCoreError : Swift.Error, Foundation.LocalizedError, Foundation.CustomNSError {
+  public enum MapperFailureReason {
+    case unexpectedFormat(event: Swift.String, data: [Any])
+    case decoderFailed(error: any Swift.Error)
+    case encoderFailed(error: any Swift.Error)
+  }
+  case mapperFailed(reason: MeetingDoctorsSDK.MDVCCoreError.MapperFailureReason)
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+extension MeetingDoctorsSDK.MDVCCoreError {
+  public var underlyingError: (any Swift.Error)? {
+    get
+  }
+}
+extension UIKit.UIAlertController {
+  @_Concurrency.MainActor(unsafe) public func show(animated: Swift.Bool = true, vibrate: Swift.Bool = false, style: UIKit.UIBlurEffect.Style? = nil, completion: (() -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public func show(viewController: UIKit.UIViewController, animated: Swift.Bool = true, vibrate: Swift.Bool = false, style: UIKit.UIBlurEffect.Style? = nil, completion: (() -> Swift.Void)? = nil)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDLabelS16W400 : MeetingDoctorsSDK.MDLabelBase {
+  @_Concurrency.MainActor(unsafe) override public func setup()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+public class Chat {
+  public init()
+  public func getRoomID() -> Swift.Int?
+  public func getProfessionalHash() -> Swift.String?
+  public func setRoomID(_ roomID: Swift.Int)
+  public func setProfessionalHash(_ professionalHash: Swift.String)
+  public func joinRoom(with id: Swift.String, _ completion: @escaping (Swift.Int) -> Swift.Void)
+  public func fetchProfessionalDetail(from id: Swift.String, _ completion: @escaping (Swift.Result<MeetingDoctorsSchema.ContactSchema, any Swift.Error>) -> Swift.Void)
+  public func fetchMessages(completion: @escaping (MeetingDoctorsSDK.MeetingDoctorsResult<([MeetingDoctorsController.MessageModel], MeetingDoctorsController.Changeset?)>) -> Swift.Void)
+  public func sendMessage(professionalSpeciality: Swift.String, message text: Swift.String, completion: (() -> Swift.Void)? = nil)
+  public func leaveRoom()
+  public func deleteMessages(completion: @escaping (() -> Swift.Void))
+  public func sendImage(withURL url: Foundation.URL, image: UIKit.UIImage, completion: (() -> Swift.Void)? = nil)
+  public func sendDocument(withURL url: Foundation.URL, completion: (() -> Swift.Void)? = nil)
+  public func sendVideo(withName name: Swift.String, withURL url: Foundation.URL, completion: (() -> Swift.Void)? = nil)
+  @objc deinit
+}
+extension MeetingDoctorsSDK.MDVideocall {
+  public struct Configuration {
+    public let secret: Swift.String
+    public let videocallLongSoundFileName: Swift.String?
+    public let videocallShortSoundFileName: Swift.String?
+    public let environment: MeetingDoctorsSDK.MDVCEnvironmentType
+    public var buildConfiguration: MeetingDoctorsSDK.MDVCBuildConfigurationType {
+      get
+    }
+    public init(secret: Swift.String, environment: MeetingDoctorsSDK.MDVCEnvironmentType = .production, videocallLongSoundFileName: Swift.String? = nil, videocallShortSoundFileName: Swift.String? = nil)
+  }
+}
+extension MeetingDoctorsSDK.MeetingDoctors {
+  @available(*, deprecated, renamed: "professionalListViewController", message: "Use professionalListViewController instead")
+  final public class func messengerViewController(with filter: any MeetingDoctorsSDK.MeetingDoctorsFilterType = MeetingDoctorsFilter.default, withTitle titleText: Swift.String? = nil, showHeader: Swift.Bool = false, showDivider: Swift.Bool = true, showTopDividers: Swift.Bool = true, onUpdateLayout listener: ((CoreFoundation.CGSize) -> Swift.Void)? = nil) -> MeetingDoctorsSDK.MeetingDoctorsResult<UIKit.UINavigationController>
+  final public class func professionalListViewController(with filter: any MeetingDoctorsSDK.MeetingDoctorsFilterType = MeetingDoctorsFilter.default, showHeader: Swift.Bool = false, divider: (any MeetingDoctorsSDK.MeetingDoctorsDividerType)? = nil, topDividers: [any MeetingDoctorsSDK.MeetingDoctorsDividerType]? = [], onUpdateLayout listener: ((CoreFoundation.CGSize) -> Swift.Void)? = nil) -> MeetingDoctorsSDK.MeetingDoctorsResult<UIKit.UIViewController>
+  final public class func messengerChatViewController(searchOption: MeetingDoctorsSDK.MeetingDoctorsSearchOption, actionMessage: MeetingDoctorsSDK.MeetingDoctorsActionMessage, completion: @escaping (MeetingDoctorsSDK.MeetingDoctorsResult<UIKit.UIViewController>) -> Swift.Void)
+}
+public class MDVCEnvironmentLoader : MeetingDoctorsSDK.MDVCLoader<MeetingDoctorsSDK.MDVCBuildConfigurationType, MeetingDoctorsSDK.MDVCEnvironment> {
+  public init(loader: MeetingDoctorsSDK.MDVCLoader<Swift.String, Foundation.Data>, mapper: any MeetingDoctorsSDK.MDVCCodableMapper = MDVCPropertyListMapper())
+  @_semantics("optimize.sil.never") override public func load(_ source: MeetingDoctorsSDK.MDVCBuildConfigurationType) -> MeetingDoctorsSDK.MDVCEnvironment?
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDLabelS20W700 : MeetingDoctorsSDK.MDLabelBase {
+  @_Concurrency.MainActor(unsafe) override public func setup()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class MDVCDataLoader : MeetingDoctorsSDK.MDVCLoader<Foundation.URL, Foundation.Data> {
+  override public init()
+  @_semantics("optimize.sil.never") override public func load(_ source: Foundation.URL) -> Foundation.Data?
+  @objc deinit
+}
+extension QuartzCore.CALayer {
+  public func rotate()
+}
+public class MDVideocallParticipantRequestModel : Swift.Codable {
+  final public let user: Swift.String?
+  final public let name: Swift.String?
+  final public let image: Swift.String?
+  final public let role: Swift.String?
+  public init(user: Swift.String?, name: Swift.String?, image: Swift.String? = nil, role: MeetingDoctorsSDK.MDVideocallParticipantType? = .participant)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public struct UIImageViewAlignmentMask : Swift.OptionSet {
+  public let rawValue: Swift.Int
+  public init(rawValue: Swift.Int)
+  public static let center: MeetingDoctorsSDK.UIImageViewAlignmentMask
+  public static let left: MeetingDoctorsSDK.UIImageViewAlignmentMask
+  public static let right: MeetingDoctorsSDK.UIImageViewAlignmentMask
+  public static let top: MeetingDoctorsSDK.UIImageViewAlignmentMask
+  public static let bottom: MeetingDoctorsSDK.UIImageViewAlignmentMask
+  public static let topLeft: MeetingDoctorsSDK.UIImageViewAlignmentMask
+  public static let topRight: MeetingDoctorsSDK.UIImageViewAlignmentMask
+  public static let bottomLeft: MeetingDoctorsSDK.UIImageViewAlignmentMask
+  public static let bottomRight: MeetingDoctorsSDK.UIImageViewAlignmentMask
+  public typealias ArrayLiteralElement = MeetingDoctorsSDK.UIImageViewAlignmentMask
+  public typealias Element = MeetingDoctorsSDK.UIImageViewAlignmentMask
+  public typealias RawValue = Swift.Int
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) open class UIImageViewAligned : UIKit.UIImageView {
+  @_Concurrency.MainActor(unsafe) open var alignment: MeetingDoctorsSDK.UIImageViewAlignmentMask {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var image: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var highlightedImage: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var alignTop: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var alignLeft: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var alignRight: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var alignBottom: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isHighlighted: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(image: UIKit.UIImage?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(image: UIKit.UIImage?, highlightedImage: UIKit.UIImage?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func didMoveToSuperview()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func didMoveToWindow()
+  @objc deinit
+}
+public enum MeetingDoctorsActionMessage {
+  case incoming(Swift.String)
+  case outgoing(Swift.String)
+  case pretyped(Swift.String)
+  case action(action: MeetingDoctorsSDK.MeetingDoctorsMessagAction)
+  case none
+}
+extension MeetingDoctorsSDK.MeetingDoctorsActionMessage : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.MeetingDoctorsActionMessage, rhs: MeetingDoctorsSDK.MeetingDoctorsActionMessage) -> Swift.Bool
+}
+public enum MeetingDoctorsMessagAction : Swift.CaseIterable {
+  case open1to1
+  case unknown
+  public static func from(string: Swift.String) -> MeetingDoctorsSDK.MeetingDoctorsMessagAction
+  public func hash(into hasher: inout Swift.Hasher)
+  public typealias AllCases = [MeetingDoctorsSDK.MeetingDoctorsMessagAction]
+  public static var allCases: [MeetingDoctorsSDK.MeetingDoctorsMessagAction] {
+    get
+  }
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension MeetingDoctorsSDK.MeetingDoctorsMessagAction : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.MeetingDoctorsMessagAction, rhs: MeetingDoctorsSDK.MeetingDoctorsMessagAction) -> Swift.Bool
+}
+public struct InboxDividerCellViewModel : MeetingDoctorsSDK.MeetingDoctorsDividerType {
+  public var contentView: UIKit.UIView {
+    get
+  }
+  public init(_ behavior: any MeetingDoctorsSDK.MeetingDoctorsDividerType)
+  public func configure<View>(cell: UIKit.UITableViewCell, view: View) where View : UIKit.UIView
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MDVideocallSpinnerView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public func setImageView(image: UIKit.UIImage?)
+  @_Concurrency.MainActor(unsafe) public func setImageView(tintColor: UIKit.UIColor?)
+  @_Concurrency.MainActor(unsafe) public func setTitle(text: Swift.String?)
+  @_Concurrency.MainActor(unsafe) public func setTitle(textColor: UIKit.UIColor?)
+  @_Concurrency.MainActor(unsafe) public func setSubtitle(text: Swift.String?)
+  @_Concurrency.MainActor(unsafe) public func setSubtitle(textColor: UIKit.UIColor?)
+  @_Concurrency.MainActor(unsafe) public func startAnimation()
+  @_Concurrency.MainActor(unsafe) public func stopAnimation()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension MeetingDoctorsSDK.MDVideocallSpinnerView {
+  @_hasMissingDesignatedInitializers public class Builder {
+    @discardableResult
+    public func with(image: UIKit.UIImage?) -> MeetingDoctorsSDK.MDVideocallSpinnerView.Builder
+    @discardableResult
+    public func with(tintColor: UIKit.UIColor?) -> MeetingDoctorsSDK.MDVideocallSpinnerView.Builder
+    @discardableResult
+    public func with(titleText: Swift.String?) -> MeetingDoctorsSDK.MDVideocallSpinnerView.Builder
+    @discardableResult
+    public func with(subtitleText: Swift.String?) -> MeetingDoctorsSDK.MDVideocallSpinnerView.Builder
+    @discardableResult
+    public func with(textColor: UIKit.UIColor?) -> MeetingDoctorsSDK.MDVideocallSpinnerView.Builder
+    public func build() -> MeetingDoctorsSDK.MDVideocallSpinnerView
+    @objc deinit
+  }
+}
+public class ProfessionalList {
+  public init()
+  public func getProfessionalList(completion: @escaping (Foundation.Data?) -> Swift.Void)
+  @objc deinit
+}
+public class MDVideocallRequestModel : Swift.Codable {
+  public init(id: Swift.String?, apiKey: Swift.String?, consultation: Swift.Int?, type: MeetingDoctorsSDK.MDVideocallType?, speciality: Swift.String?, participants: [MeetingDoctorsSDK.MDVideocallParticipantRequestModel]?, group: Swift.String?)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+extension UIKit.UIView {
+  public enum UIViewHierarchyPosition {
+    case `default`
+    case top
+    case back
+    public static func == (a: UIKit.UIView.UIViewHierarchyPosition, b: UIKit.UIView.UIViewHierarchyPosition) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) public func addSubview(_ view: UIKit.UIView, insets: UIKit.UIEdgeInsets, hierarchy position: UIKit.UIView.UIViewHierarchyPosition = .default)
+  @_Concurrency.MainActor(unsafe) public func addSubviewFullViewFit(to view: UIKit.UIView, hierarchy position: UIKit.UIView.UIViewHierarchyPosition = .default)
+  @_Concurrency.MainActor(unsafe) public func move(_ view: UIKit.UIView, hierarchy position: UIKit.UIView.UIViewHierarchyPosition)
+}
+public class MDVideocallResponseModel : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public enum MeetingDoctorsInboxCellStyle {
+  case classic(overlay: UIKit.UIColor, badge: UIKit.UIColor, speciality: UIKit.UIColor, hideSchedule: Swift.Bool)
+  case meetingDoctors(overlay: UIKit.UIColor, badge: UIKit.UIColor, speciality: UIKit.UIColor, specialityIcon: UIKit.UIColor, hideSchedule: Swift.Bool)
+  case complete(overlay: UIKit.UIColor, badge: UIKit.UIColor, speciality: UIKit.UIColor, specialityIcon: UIKit.UIColor, schedule: UIKit.UIColor, hideSchedule: Swift.Bool)
+}
+public protocol MeetingDoctorsStyleType {
+  var titleView: UIKit.UIView? { get set }
+  @available(*, deprecated, message: "Don't use this property, use MeetingDoctors.style?.flags.professionalList.isNavigationBarHiddden property instead")
+  var isProfessionalListNavigationBarHidden: Swift.Bool? { get set }
+  @available(*, deprecated, message: "Don't use this property, use MeetingDoctors.style?.colors.common.primary property instead")
+  var navigationBarColor: UIKit.UIColor? { get set }
+  var inboxTitle: Swift.String? { get set }
+  var rootLeftBarButtonItem: UIKit.UIBarButtonItem? { get set }
+  var rootRightBarButtonItem: UIKit.UIBarButtonItem? { get set }
+  var inboxCellStyle: MeetingDoctorsSDK.MeetingDoctorsInboxCellStyle { get set }
+  @available(*, deprecated, message: "Don't use this property, use MeetingDoctors.style?.flags.professionalList.showCollegiateNumber property instead")
+  var showCollegiateNumber: Swift.Bool? { get set }
+  @available(*, deprecated, message: "Don't use this property, use MeetingDoctors.style?.flags.professionalList.showHeader property instead")
+  var showProfessionalListHeader: Swift.Bool? { get set }
+  @available(*, deprecated, message: "Don't use this property, use MeetingDoctors.style?.flags.common.showNotificationPermission property instead")
+  var showNotificationPermission: Swift.Bool? { get set }
+  var divider: (any MeetingDoctorsSDK.MeetingDoctorsDividerType)? { get set }
+  @available(*, deprecated, message: "Don't use this property, use topdivider property instead")
+  var headerView: MeetingDoctorsSDK.InboxHeaderStyle? { get set }
+  var bannerDivider: (any MeetingDoctorsSDK.MeetingDoctorsDividerType)? { get set }
+  var topDividers: [any MeetingDoctorsSDK.MeetingDoctorsDividerType]? { get set }
+  var floatingChatModel: (any MeetingDoctorsSDK.FloatingChatModelType)? { get set }
+  var chatBackgroundView: UIKit.UIView? { get set }
+  var supportMailBanned: Swift.String? { get set }
+  var emptyView: UIKit.UIView? { get set }
+  func style(view: UIKit.UINavigationBar)
+  func style(view: UIKit.UINavigationItem)
+  var images: any MeetingDoctorsSDK.MeetingDoctorsImagesType { get set }
+  var strings: any MeetingDoctorsSDK.MeetingDoctorsStringsType { get set }
+  var colors: any MeetingDoctorsSDK.MeetingDoctorsColorsType { get set }
+  var flags: any MeetingDoctorsSDK.MeetingDoctorsFlagsType { get set }
+}
+extension MeetingDoctorsSDK.MeetingDoctorsStyleType {
+  public func style(view: UIKit.UINavigationBar)
+  public func style(view: UIKit.UINavigationItem)
+}
+public struct MeetingDoctorsStyle : MeetingDoctorsSDK.MeetingDoctorsStyleType {
+  public var titleView: UIKit.UIView?
+  public var navigationBarColor: UIKit.UIColor?
+  public var isProfessionalListNavigationBarHidden: Swift.Bool?
+  public var inboxTitle: Swift.String?
+  public var rootLeftBarButtonItem: UIKit.UIBarButtonItem?
+  public var rootRightBarButtonItem: UIKit.UIBarButtonItem?
+  public var inboxCellStyle: MeetingDoctorsSDK.MeetingDoctorsInboxCellStyle
+  public var showCollegiateNumber: Swift.Bool?
+  public var showProfessionalListHeader: Swift.Bool?
+  public var showNotificationPermission: Swift.Bool?
+  public var divider: (any MeetingDoctorsSDK.MeetingDoctorsDividerType)?
+  public var headerView: MeetingDoctorsSDK.InboxHeaderStyle?
+  public var bannerDivider: (any MeetingDoctorsSDK.MeetingDoctorsDividerType)?
+  public var topDividers: [any MeetingDoctorsSDK.MeetingDoctorsDividerType]?
+  public var floatingChatModel: (any MeetingDoctorsSDK.FloatingChatModelType)?
+  public var chatBackgroundView: UIKit.UIView?
+  public var supportMailBanned: Swift.String?
+  public var emptyView: UIKit.UIView?
+  public var images: any MeetingDoctorsSDK.MeetingDoctorsImagesType
+  public var strings: any MeetingDoctorsSDK.MeetingDoctorsStringsType
+  public var colors: any MeetingDoctorsSDK.MeetingDoctorsColorsType
+  public var flags: any MeetingDoctorsSDK.MeetingDoctorsFlagsType
+  public init()
+}
+extension MeetingDoctorsSDK.MeetingDoctorsStyle {
+  public func style(view: UIKit.UINavigationBar)
+  public func style(view: UIKit.UINavigationItem)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDLabelS12W700 : MeetingDoctorsSDK.MDLabelBase {
+  @_Concurrency.MainActor(unsafe) override public func setup()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+public struct SupportedSendFiles {
+}
+public struct MDVCEndpoint : Swift.Codable {
+  public var url: Foundation.URL? {
+    get
+  }
+  public let scheme: Swift.String?
+  public let host: Swift.String?
+  public let port: Swift.Int?
+  public let path: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension MeetingDoctorsSDK.MDVCEndpoint {
+  public init(url: Foundation.URL)
+}
+extension MeetingDoctorsSDK.MDVCEndpoint : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.MDVCEndpoint, rhs: MeetingDoctorsSDK.MDVCEndpoint) -> Swift.Bool
+}
+public enum MeetingDoctorsRole : Swift.Int, Swift.CaseIterable {
+  case unknown
+  case generalMedicine
+  case pediatrics
+  case psychology
+  case sportsMedicine
+  case customerCare
+  case medicalSupport
+  case personalTraining
+  case commercial
+  case medicalAppointment
+  case cardiology
+  case gynecology
+  case pharmacy
+  case sexology
+  case doctorOnDuty
+  case nutrition
+  case fertilityConsultant
+  case nursing
+  case medicalAdvisor
+  case dermatology
+  case ophthalmology
+  case allergology
+  case anesthesiologyResuscitation
+  case angiologyVascularSurgery
+  case digestiveSystem
+  case cardiovascularSurgery
+  case generalSurgeryDigestiveSystem
+  case orthopedicSurgeryTraumatology
+  case plasticSurgery
+  case geriatrics
+  case hematologyHemotherapy
+  case familyCommunityMedicine
+  case physicalMedicineRehabilitation
+  case internalMedicine
+  case nephrology
+  case pulmonology
+  case neurology
+  case oncology
+  case otolaryngology
+  case psychiatry
+  case rheumatology
+  case urology
+  case odontology
+  case podology
+  case logopedics
+  case nursingAssistant
+  case physiotherapist
+  case dieteticTechnician
+  case biology
+  case endocrinology
+  case nutritionProgram
+  case generalPartitioner
+  case customerCareIsaludColectivos
+  case veterinary
+  case ethology
+  case doctorGoHealthAdvisor
+  case fitnessCoaching
+  case nutritionalCoaching
+  case initialAssessmentVC
+  case animalNutrition
+  case medicalManager
+  case coachMental
+  case nutricionClinica
+  public static var all: [MeetingDoctorsSDK.MeetingDoctorsRole] {
+    get
+  }
+  public static var none: [MeetingDoctorsSDK.MeetingDoctorsRole] {
+    get
+  }
+  public init(speciality: MeetingDoctorsController.SpecialityTypeModel)
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [MeetingDoctorsSDK.MeetingDoctorsRole]
+  public typealias RawValue = Swift.Int
+  public static var allCases: [MeetingDoctorsSDK.MeetingDoctorsRole] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDLabelS18W500 : MeetingDoctorsSDK.MDLabelBase {
+  @_Concurrency.MainActor(unsafe) override public func setup()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+public enum MyHealthDeeplinkOption {
+  case feeds(deeplink: MeetingDoctorsSDK.FeedsDeeplinkOption)
+  case medicalHistory(deeplink: MeetingDoctorsSDK.MedicalHistoryDeeplinkOption)
+}
+extension MeetingDoctorsSDK.MyHealthDeeplinkOption : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.MyHealthDeeplinkOption, rhs: MeetingDoctorsSDK.MyHealthDeeplinkOption) -> Swift.Bool
+}
+public struct MDVCExposedMethodsModel {
+  public var videoconsultation_id: Swift.Int?
+  public var videocall_id: Swift.String?
+  public var videoconsultation_type: Swift.String?
+  public var videoconsultation_specialty: Swift.String?
+  public var customer_token: Swift.String?
+  public var professional_name: Swift.String?
+  public var professional_token: Swift.String?
+  public var timestamp: Foundation.Date?
+  public var customer_cancellation_argument: Swift.String?
+}
+public class MDVideocallErrorModel : Swift.Codable {
+  final public let code: Swift.Int?
+  final public let message: Swift.String?
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public protocol MeetingDoctorsDeeplinkViewControllerProtocol : AnyObject {
+  func deeplink(_ deeplinkOption: MeetingDoctorsSDK.MeetingDoctorsDeeplinkOption, animated: Swift.Bool) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MDPrimaryButton : MeetingDoctorsSDK.MDBaseButton {
+  @_Concurrency.MainActor(unsafe) public var borderWidth: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var backgroundColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) override public func setup()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class MDVideocall {
+  @objc deinit
+}
+extension MeetingDoctorsSDK.MDVideocall {
+  public class func deeplink(_ deeplinkOption: MeetingDoctorsSDK.MDVCDeeplinkOption, origin: UIKit.UIViewController? = nil, animated: Swift.Bool = true, completion: @escaping ((MeetingDoctorsSDK.MeetingDoctorsResult<Swift.Void>) -> Swift.Void))
+}
+extension MeetingDoctorsSDK.MDVideocall {
+  public static func startVideocall(from presenterViewController: UIKit.UIViewController)
+  public static func getVideocallInitialViewController() -> UIKit.UIViewController
+  public static func hasAnyVideocallStarted(completion: @escaping (Swift.Bool) -> Swift.Void)
+}
+public protocol MeetingDoctorsInstallationType {
+  var installationId: Foundation.UUID { get }
+  var systemVersion: Swift.String { get }
+  var frameworkVersion: Swift.String { get }
+  var deviceModel: Swift.String { get }
+  var referrer: (any MeetingDoctorsSDK.MeetingDoctorsReferrerType)? { get }
+}
+public struct MeetingDoctorsInstallation : MeetingDoctorsSDK.MeetingDoctorsInstallationType {
+  public var installationId: Foundation.UUID {
+    get
+  }
+  public var systemVersion: Swift.String {
+    get
+  }
+  public var frameworkVersion: Swift.String {
+    get
+  }
+  public var deviceModel: Swift.String {
+    get
+  }
+  public var referrer: (any MeetingDoctorsSDK.MeetingDoctorsReferrerType)? {
+    get
+  }
+  public init(from model: MeetingDoctorsController.InstallationModel)
+}
+public class MDVideocallJoinRequestModel : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDLabelS18W700 : MeetingDoctorsSDK.MDLabelBase {
+  @_Concurrency.MainActor(unsafe) override public func setup()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+public protocol FloatingChatModelType {
+  var items: [any MeetingDoctorsSDK.FloatingChatItemsModelType]? { get set }
+}
+public struct FloatingChatModel : MeetingDoctorsSDK.FloatingChatModelType {
+  public var items: [any MeetingDoctorsSDK.FloatingChatItemsModelType]?
+  public init(items: [any MeetingDoctorsSDK.FloatingChatItemsModelType]? = nil)
+}
+public protocol FloatingChatItemsModelType {
+  var name: Swift.String { get set }
+  var icon: UIKit.UIImage? { get set }
+  var action: (() -> Swift.Void)? { get set }
+}
+public struct FloatingChatItemsModel : MeetingDoctorsSDK.FloatingChatItemsModelType {
+  public var name: Swift.String
+  public var icon: UIKit.UIImage?
+  public var action: (() -> Swift.Void)?
+  public init(name: Swift.String = "", icon: UIKit.UIImage? = nil, action: (() -> Swift.Void)? = nil)
+}
+public struct FloatingChatVideoCallItemsModel : MeetingDoctorsSDK.FloatingChatItemsModelType {
+  public var name: Swift.String
+  public var icon: UIKit.UIImage?
+  public var action: (() -> Swift.Void)?
+  public init(name: Swift.String = "", icon: UIKit.UIImage? = nil)
+}
+public protocol MeetingDoctorsReferrerType {
+  var source: Swift.String { get }
+  var medium: Swift.String? { get }
+  var campaign: Swift.String? { get }
+  var content: Swift.String? { get }
+  var term: Swift.String? { get }
+  var data: [Swift.String : Swift.String] { get }
+}
+public struct MeetingDoctorsReferrer : MeetingDoctorsSDK.MeetingDoctorsReferrerType {
+  public var source: Swift.String {
+    get
+  }
+  public var medium: Swift.String? {
+    get
+  }
+  public var campaign: Swift.String? {
+    get
+  }
+  public var content: Swift.String? {
+    get
+  }
+  public var term: Swift.String? {
+    get
+  }
+  public var data: [Swift.String : Swift.String] {
+    get
+  }
+  public init?(from model: MeetingDoctorsController.ReferrerModel?)
+}
+extension UIKit.UICollectionView {
+  @_Concurrency.MainActor(unsafe) public func register<T>(_: T.Type) where T : UIKit.UICollectionViewCell, T : MeetingDoctorsSDK.NibLoadable, T : MeetingDoctorsSDK.ReusableCell
+  @_Concurrency.MainActor(unsafe) public func dequeueReusableCell<T>(_: T.Type, for indexPath: Foundation.IndexPath) -> T where T : UIKit.UICollectionViewCell, T : MeetingDoctorsSDK.ReusableCell
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDLabelS16W900 : MeetingDoctorsSDK.MDLabelBase {
+  @_Concurrency.MainActor(unsafe) override public func setup()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+public class MDCommonDataResponse<ResponseModel> : Swift.Codable where ResponseModel : Swift.Decodable, ResponseModel : Swift.Encodable {
+  final public let id: Swift.String?
+  final public let type: Swift.String?
+  final public let attributes: ResponseModel
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public class MDVCBundleDataLoader : MeetingDoctorsSDK.MDVCLoader<Swift.String, Foundation.Data> {
+  public init(_ bundle: Foundation.Bundle, loader: MeetingDoctorsSDK.MDVCLoader<Foundation.URL, Foundation.Data>, ofType type: Swift.String)
+  @_semantics("optimize.sil.never") override public func load(_ source: Swift.String) -> Foundation.Data?
+  @objc deinit
+}
+public struct PrescriptionResponseModel : Swift.Codable {
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case tin
+    case url
+    case lastModifiedAt
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public protocol MessageType {
+  var sender: MeetingDoctorsSDK.Sender { get }
+  var messageId: Swift.String { get }
+  var sentDate: Foundation.Date { get }
+  var kind: MeetingDoctorsSDK.MessageKind { get }
+}
+public protocol MessageStatusViewModelType {
+  var icon: UIKit.UIImage? { get }
+}
+public enum MessageKind {
+  case text(Swift.String)
+  case attributedText(Foundation.NSAttributedString)
+  case photo(any MeetingDoctorsSDK.MediaItem)
+  case video(any MeetingDoctorsSDK.MediaItem)
+  case location(any MeetingDoctorsSDK.LocationItem)
+  case emoji(Swift.String)
+  case custom(Any?)
+}
+public struct Sender {
+  public let id: Swift.String
+  public let displayName: Swift.String
+  public init(id: Swift.String, displayName: Swift.String)
+}
+extension MeetingDoctorsSDK.Sender : Swift.Equatable {
+  public static func == (left: MeetingDoctorsSDK.Sender, right: MeetingDoctorsSDK.Sender) -> Swift.Bool
+}
+public struct MessageCellViewModel : MeetingDoctorsSDK.MessageType {
+  public enum Status : Swift.String {
+    case pending
+    case sent
+    case delivered
+    case received
+    case read
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var model: MeetingDoctorsController.MessageModel
+  public let sender: MeetingDoctorsSDK.Sender
+  public var messageId: Swift.String {
+    get
+  }
+  public var sentDate: Foundation.Date {
+    get
+  }
+  public var kind: MeetingDoctorsSDK.MessageKind {
+    get
+  }
+  public var status: MeetingDoctorsSDK.MessageCellViewModel.Status {
+    get
+  }
+  public init(model: MeetingDoctorsController.MessageModel, sender: MeetingDoctorsSDK.Sender)
+  public func update(status: MeetingDoctorsSDK.MessageCellViewModel.Status) -> MeetingDoctorsSDK.MessageCellViewModel
+}
+extension MeetingDoctorsSDK.MessageCellViewModel {
+  public var attachmentURL: Foundation.URL? {
+    get
+  }
+}
+extension MeetingDoctorsSDK.MessageCellViewModel.Status : MeetingDoctorsSDK.MessageStatusViewModelType {
+  public var icon: UIKit.UIImage? {
+    get
+  }
+}
+extension MeetingDoctorsController.MessageStatusModel {
+  public init(view: MeetingDoctorsSDK.MessageCellViewModel.Status)
+}
+extension UIKit.UITextView : UIKit.NSTextStorageDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func textStorage(_: UIKit.NSTextStorage, didProcessEditing editedMask: UIKit.NSTextStorage.EditActions, range _: Foundation.NSRange, changeInLength _: Swift.Int)
+}
+extension UIKit.UIFont {
+  public var weight: UIKit.UIFont.Weight {
+    get
+  }
+}
+public enum FeedsDeeplinkOption {
+  case main
+  case detail(id: Swift.String)
+  case detailWeb(url: Swift.String)
+  case detailBrowser(url: Swift.String)
+}
+extension MeetingDoctorsSDK.FeedsDeeplinkOption : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.FeedsDeeplinkOption, rhs: MeetingDoctorsSDK.FeedsDeeplinkOption) -> Swift.Bool
+}
+public enum MDVCEndpointType : Swift.String, Swift.CodingKey, Swift.CaseIterable {
+  case directory
+  case console
+  case core
+  case api
+  case customer
+  case notifications
+  case consultations
+  case consultationsCustomer
+  case sdk
+  case electronicPrescription
+  case coreV2
+  case videocall
+  case consultationsV2
+  case marketing
+  public init?(rawValue: Swift.String)
+  public init?(stringValue: Swift.String)
+  public init?(intValue: Swift.Int)
+  public typealias AllCases = [MeetingDoctorsSDK.MDVCEndpointType]
+  public typealias RawValue = Swift.String
+  public static var allCases: [MeetingDoctorsSDK.MDVCEndpointType] {
+    get
+  }
+  public var intValue: Swift.Int? {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+  public var stringValue: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class StatusView : UIKit.UIView {
+  public enum Status {
+    case online
+    case offline
+    case unknown
+    public static func == (a: MeetingDoctorsSDK.StatusView.Status, b: MeetingDoctorsSDK.StatusView.Status) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) public var status: MeetingDoctorsSDK.StatusView.Status? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MDBaseButton : UIKit.UIButton {
+  @_Concurrency.MainActor(unsafe) open var text: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var textColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var textFont: UIKit.UIFont? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var image: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var cornerRadius: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var contentEdgeInsets: UIKit.UIEdgeInsets {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func draw(_ rect: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) open func setup()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension UIKit.UILabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDLabelS24W700 : MeetingDoctorsSDK.MDLabelBase {
+  @_Concurrency.MainActor(unsafe) override public func setup()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+extension MeetingDoctorsSDK.MeetingDoctors {
+  final public class func getMyHealthMainViewController() -> MeetingDoctorsSDK.MeetingDoctorsResult<UIKit.UIViewController>
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDScrollView : UIKit.UIScrollView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func touchesBegan(_: Swift.Set<UIKit.UITouch>, with _: UIKit.UIEvent?)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class AvatarView : UIKit.UIImageView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(image: UIKit.UIImage?)
+  @available(iOS 3.0, *)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(image: UIKit.UIImage?, highlightedImage: UIKit.UIImage?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+public protocol NibLoadable : AnyObject {
+  static var nibName: Swift.String { get }
+  static func instantiate() -> Self
+}
+extension MeetingDoctorsSDK.NibLoadable where Self : UIKit.UIView {
+  public static var nibName: Swift.String {
+    get
+  }
+  public static func instantiate() -> Self
+}
+extension UIKit.UIFont.Weight {
+  public var toInt: Swift.Int {
+    get
+  }
+}
+public struct MDSegmentedControlAppearance {
+  public var backgroundColor: UIKit.UIColor
+  public var selectedBackgroundColor: UIKit.UIColor
+  public var unselectedTextAttributes: [Foundation.NSAttributedString.Key : Any]?
+  public var selectedTextAttributes: [Foundation.NSAttributedString.Key : Any]?
+  public var bottomLineColor: UIKit.UIColor
+  public var selectorColor: UIKit.UIColor
+  public var bottomLineHeight: CoreFoundation.CGFloat
+  public var selectorHeight: CoreFoundation.CGFloat
+  public var itemTopPadding: CoreFoundation.CGFloat
+  public var selectorOffsetFromLabel: CoreFoundation.CGFloat?
+  public var selectorSpansFullItemWidth: Swift.Bool
+  public var labelsOnEndsFloatToEdges: Swift.Bool
+}
+public protocol MDSegmentedControlDelegate : AnyObject {
+  func segmentedControl(_ segmentedControl: MeetingDoctorsSDK.MDSegmentedControlView, willPressItemAt index: Swift.Int)
+  func segmentedControl(_ segmentedControl: MeetingDoctorsSDK.MDSegmentedControlView, didPressItemAt index: Swift.Int)
+}
+extension MeetingDoctorsSDK.MDSegmentedControlDelegate {
+  public func segmentedControl(_: MeetingDoctorsSDK.MDSegmentedControlView, willPressItemAt _: Swift.Int)
+  public func segmentedControl(_: MeetingDoctorsSDK.MDSegmentedControlView, didPressItemAt _: Swift.Int)
+}
+public typealias MDSegmentedControlAction = (_ segmentedControl: MeetingDoctorsSDK.MDSegmentedControlView, _ index: Swift.Int) -> Swift.Void
+@objc @_Concurrency.MainActor(unsafe) public class MDSegmentedControlView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var action: MeetingDoctorsSDK.MDSegmentedControlAction?
+  @_Concurrency.MainActor(unsafe) public var appearance: MeetingDoctorsSDK.MDSegmentedControlAppearance! {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var titles: [Swift.String]! {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreFoundation.CGRect = .zero, titles: [Swift.String] = [], action: MeetingDoctorsSDK.MDSegmentedControlAction? = nil)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) public func selectItem(at index: Swift.Int, withAnimation animation: Swift.Bool)
+  @objc deinit
+}
+public struct MDVCPropertyListMapper : MeetingDoctorsSDK.MDVCCodableMapper {
+  public let encoder: Foundation.PropertyListEncoder
+  public let decoder: Foundation.PropertyListDecoder
+  public init(decoder: Foundation.PropertyListDecoder = PropertyListDecoder(), encoder: Foundation.PropertyListEncoder = PropertyListEncoder())
+  public func decode<T>(_ type: T.Type, from data: Foundation.Data) throws -> T where T : Swift.Decodable
+  public func encode<T>(_ value: T) throws -> Foundation.Data where T : Swift.Encodable
+}
+@objc public enum FloatyItemLabelPositionType : Swift.Int {
+  case left
+  case right
+  case top
+  case bottom
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_Concurrency.MainActor(unsafe) open class FloatyItem : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) open var size: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var buttonColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) open var titleColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var hasShadow: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) open var circleShadowColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) open var titleShadowColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) open var handler: ((MeetingDoctorsSDK.FloatyItem) -> Swift.Void)?
+  @objc @_Concurrency.MainActor(unsafe) open var imageOffset: CoreFoundation.CGPoint
+  @objc @_Concurrency.MainActor(unsafe) open var imageSize: CoreFoundation.CGSize {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) weak open var actionButton: MeetingDoctorsSDK.Floaty?
+  @objc @_Concurrency.MainActor(unsafe) open var titleLabelPosition: MeetingDoctorsSDK.FloatyItemLabelPositionType {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var title: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var iconImageView: UIKit.UIImageView {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var icon: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var iconTintColor: UIKit.UIColor! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var itemBackgroundColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func draw(_ rect: CoreFoundation.CGRect)
+  @objc deinit
+}
+public protocol TModel {
+}
+extension MeetingDoctorsSDK.MeetingDoctorsResult {
+  public var isSuccess: Swift.Bool {
+    get
+  }
+  public var isFailure: Swift.Bool {
+    get
+  }
+  public var value: Value? {
+    get
+  }
+  public var error: (any Swift.Error)? {
+    get
+  }
+}
+extension MeetingDoctorsSDK.MeetingDoctorsResult {
+  public init(value: () throws -> Value)
+  public func unwrap() throws -> Value
+  public func map<T>(_ transform: (Value) -> T) -> MeetingDoctorsSDK.MeetingDoctorsResult<T>
+  public func compactMap<T>(_ transform: (Value) throws -> T) -> MeetingDoctorsSDK.MeetingDoctorsResult<T>
+}
+extension UIKit.UIFont {
+  public enum S10 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S11 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S12 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S14 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S16 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S17 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S18 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S20 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S22 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S24 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w500: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S25 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S30 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+  public enum S32 {
+    public static let w100: UIKit.UIFont
+    public static let w200: UIKit.UIFont
+    public static let w300: UIKit.UIFont
+    public static let w400: UIKit.UIFont
+    public static let w600: UIKit.UIFont
+    public static let w700: UIKit.UIFont
+    public static let w800: UIKit.UIFont
+    public static let w900: UIKit.UIFont
+  }
+}
+extension UIKit.UITextView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
+}
+public protocol MeetingDoctorsFilterType {
+  var profiles: [MeetingDoctorsSDK.MeetingDoctorsRole] { get }
+  var limit: Swift.Int { get }
+  var excludeRoles: Swift.Bool { get }
+}
+public struct MeetingDoctorsFilter : MeetingDoctorsSDK.MeetingDoctorsFilterType {
+  public static let `default`: MeetingDoctorsSDK.MeetingDoctorsFilter
+  public static let none: MeetingDoctorsSDK.MeetingDoctorsFilter
+  public let profiles: [MeetingDoctorsSDK.MeetingDoctorsRole]
+  public let limit: Swift.Int
+  public let excludeRoles: Swift.Bool
+  public init(profiles: [MeetingDoctorsSDK.MeetingDoctorsRole] = MeetingDoctorsRole.none, take limit: Swift.Int = 0, excludeRoles: Swift.Bool = true)
+}
+public struct InboxHeaderCellViewModel {
+}
+extension MeetingDoctorsSDK.MDPrimaryButton {
+  public struct ButtonAction {
+  }
+  @_hasMissingDesignatedInitializers public class Builder {
+    @discardableResult
+    public func with(text: Swift.String?) -> MeetingDoctorsSDK.MDPrimaryButton.Builder
+    @discardableResult
+    public func with(backgroundColor: UIKit.UIColor?) -> MeetingDoctorsSDK.MDPrimaryButton.Builder
+    @discardableResult
+    public func with(height: CoreFoundation.CGFloat?) -> MeetingDoctorsSDK.MDPrimaryButton.Builder
+    @discardableResult
+    public func with(isEnabled: Swift.Bool?) -> MeetingDoctorsSDK.MDPrimaryButton.Builder
+    @discardableResult
+    public func with(target: Any?, selector: ObjectiveC.Selector, controlEvent: UIKit.UIControl.Event) -> MeetingDoctorsSDK.MDPrimaryButton.Builder
+    @discardableResult
+    public func with(buttonAction: MeetingDoctorsSDK.MDPrimaryButton.ButtonAction) -> MeetingDoctorsSDK.MDPrimaryButton.Builder
+    public func build() -> MeetingDoctorsSDK.MDPrimaryButton
+    @objc deinit
+  }
+}
+public protocol MeetingDoctorsFlagsType {
+  var common: any MeetingDoctorsSDK.MeetingDoctorsCommonFlagsType { get set }
+  var professionalList: any MeetingDoctorsSDK.MeetingDoctorsProfessionalListFlagsType { get set }
+}
+public struct MeetingDoctorsFlags : MeetingDoctorsSDK.MeetingDoctorsFlagsType {
+  public var common: any MeetingDoctorsSDK.MeetingDoctorsCommonFlagsType
+  public var professionalList: any MeetingDoctorsSDK.MeetingDoctorsProfessionalListFlagsType
+}
+public protocol MeetingDoctorsCommonFlagsType {
+  var showNotificationPermission: Swift.Bool? { get set }
+}
+public protocol MeetingDoctorsProfessionalListFlagsType {
+  var showHeader: Swift.Bool? { get set }
+  var isNavigationBarHidden: Swift.Bool? { get set }
+  var showCollegiateNumber: Swift.Bool? { get set }
+}
+public struct MeetingDoctorsCommonFlags : MeetingDoctorsSDK.MeetingDoctorsCommonFlagsType {
+  public var showNotificationPermission: Swift.Bool?
+}
+public struct MeetingDoctorsProfessionalListFlags : MeetingDoctorsSDK.MeetingDoctorsProfessionalListFlagsType {
+  public var showHeader: Swift.Bool?
+  public var isNavigationBarHidden: Swift.Bool?
+  public var showCollegiateNumber: Swift.Bool?
+}
+public enum MeetingDoctorsSaturation : Swift.String {
+  case high
+  case none
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum MeetingDoctorsDeeplinkOption {
+  case messenger(option: MeetingDoctorsSDK.MessengerDeeplinkOption)
+  case videoCall
+  case myHealth(option: MeetingDoctorsSDK.MyHealthDeeplinkOption)
+  case unknown
+}
+extension MeetingDoctorsSDK.MeetingDoctorsDeeplinkOption : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.MeetingDoctorsDeeplinkOption, rhs: MeetingDoctorsSDK.MeetingDoctorsDeeplinkOption) -> Swift.Bool
+}
+public protocol MeetingDoctorsStringsType {
+  var meetingDoctorsMedicalHistoryStrings: any MeetingDoctorsSDK.MeetingDoctorsMedicalHistoryStringsType { get set }
+  var videocall: any MeetingDoctorsSDK.MeetingDoctorsVideoCallStringsType { get set }
+  var meetingDoctorsProfessionalListStrings: any MeetingDoctorsSDK.MeetingDoctorsProfessionalListStringsType { get set }
+}
+public struct MeetingDoctorsStrings : MeetingDoctorsSDK.MeetingDoctorsStringsType {
+  public var meetingDoctorsMedicalHistoryStrings: any MeetingDoctorsSDK.MeetingDoctorsMedicalHistoryStringsType
+  public var videocall: any MeetingDoctorsSDK.MeetingDoctorsVideoCallStringsType
+  public var meetingDoctorsProfessionalListStrings: any MeetingDoctorsSDK.MeetingDoctorsProfessionalListStringsType
+}
+public protocol MeetingDoctorsMedicalHistoryStringsType {
+  var mainTitle: Swift.String? { get set }
+  var recipeDisclaimerTitle: Swift.String? { get set }
+  var recipeDisclaimerDescription: Swift.String? { get set }
+  var recipeBodyMessage: Swift.String? { get set }
+  var recipeEmptyMessage: Swift.String? { get set }
+}
+public struct MeetingDoctorsMedicalHistoryStrings : MeetingDoctorsSDK.MeetingDoctorsMedicalHistoryStringsType {
+  public var mainTitle: Swift.String?
+  public var recipeDisclaimerTitle: Swift.String?
+  public var recipeDisclaimerDescription: Swift.String?
+  public var recipeBodyMessage: Swift.String?
+  public var recipeEmptyMessage: Swift.String?
+}
+public protocol MeetingDoctorsVideoCallStringsType {
+  var permissionSet: any MeetingDoctorsSDK.MeetingDoctorsVideoCallPermissionSetStringsType { get set }
+}
+public struct MeetingDoctorsVideoCallStrings : MeetingDoctorsSDK.MeetingDoctorsVideoCallStringsType {
+  public var permissionSet: any MeetingDoctorsSDK.MeetingDoctorsVideoCallPermissionSetStringsType
+}
+public protocol MeetingDoctorsVideoCallPermissionSetStringsType {
+  var description: Swift.String? { get set }
+  var actionButton: Swift.String? { get set }
+}
+public struct MeetingDoctorsVideoCallPermissionSetStrings : MeetingDoctorsSDK.MeetingDoctorsVideoCallPermissionSetStringsType {
+  public var description: Swift.String?
+  public var actionButton: Swift.String?
+}
+public protocol MeetingDoctorsProfessionalListStringsType {
+  var listTitleHeader: Swift.String? { get set }
+}
+public struct MeetingDoctorsProfessionalListStrings : MeetingDoctorsSDK.MeetingDoctorsProfessionalListStringsType {
+  public var listTitleHeader: Swift.String?
+}
+public enum MessengerDeeplinkOption {
+  case chat(searchOption: MeetingDoctorsSDK.MeetingDoctorsSearchOption, actionMessage: MeetingDoctorsSDK.MeetingDoctorsActionMessage, specialityID: Swift.Int?)
+}
+extension MeetingDoctorsSDK.MessengerDeeplinkOption : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.MessengerDeeplinkOption, rhs: MeetingDoctorsSDK.MessengerDeeplinkOption) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class FloatyViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) final public let floaty: MeetingDoctorsSDK.Floaty
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class MessageView : UIKit.UICollectionReusableView {
+  @_Concurrency.MainActor(unsafe) open class func reuseIdentifier() -> Swift.String
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder _: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class MessageDateHeaderView : MeetingDoctorsSDK.MessageView {
+  @_Concurrency.MainActor(unsafe) override open class func reuseIdentifier() -> Swift.String
+  @_Concurrency.MainActor(unsafe) final public let dateLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder _: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class MessageDateFooterView : MeetingDoctorsSDK.MessageView {
+  @_Concurrency.MainActor(unsafe) override open class func reuseIdentifier() -> Swift.String
+  @_Concurrency.MainActor(unsafe) final public let dateLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder _: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) public func labelPosition(isFromCurrentSender: Swift.Bool)
+  @objc deinit
+}
+public protocol MediaItem {
+  var url: Foundation.URL? { get }
+  var image: UIKit.UIImage? { get }
+  var placeholderImage: UIKit.UIImage { get }
+  var size: CoreFoundation.CGSize { get }
+}
+public protocol LocationItem {
+  var location: CoreLocation.CLLocation { get }
+  var size: CoreFoundation.CGSize { get }
+}
+public struct MessagePhotoModel : MeetingDoctorsSDK.MediaItem {
+  public var url: Foundation.URL?
+  public var image: UIKit.UIImage?
+  public var placeholderImage: UIKit.UIImage
+  public var size: CoreFoundation.CGSize
+}
+public struct MessageImageModel : MeetingDoctorsSDK.ChatMediaItemProtocol {
+  public var url: Foundation.URL?
+  public var image: UIKit.UIImage?
+  public var placeholderImage: UIKit.UIImage
+  public var size: CoreFoundation.CGSize
+}
+public struct ChatFileItemModel : MeetingDoctorsSDK.ChatFileItemProtocol {
+  public var data: Foundation.Data?
+  public var name: Swift.String
+  public var url: Foundation.URL
+  public var size: Swift.Int
+}
+public enum MDVideocallType : Swift.String, Swift.Codable, Swift.Equatable {
+  case pool
+  case oneToOne
+  public func callAsFunction() -> Swift.String
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct SectionModel<Section, ItemType> {
+  public var model: Section
+  public var items: [MeetingDoctorsSDK.SectionModel<Section, ItemType>.Item]
+  public init(model: Section, items: [MeetingDoctorsSDK.SectionModel<Section, ItemType>.Item])
+}
+extension MeetingDoctorsSDK.SectionModel : MeetingDoctorsSDK.SectionModelType {
+  public typealias Identity = Section
+  public typealias Item = ItemType
+  public var identity: Section {
+    get
+  }
+}
+extension MeetingDoctorsSDK.SectionModel : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsSDK.SectionModel {
+  public init(original: MeetingDoctorsSDK.SectionModel<Section, MeetingDoctorsSDK.SectionModel<Section, ItemType>.Item>, items: [MeetingDoctorsSDK.SectionModel<Section, ItemType>.Item])
+}
+extension MeetingDoctorsSDK.SectionModel : Swift.Equatable where Section : Swift.Equatable, ItemType : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.SectionModel<Section, ItemType>, rhs: MeetingDoctorsSDK.SectionModel<Section, ItemType>) -> Swift.Bool
+}
+public protocol SectionModelType {
+  associatedtype Item
+  var items: [Self.Item] { get }
+  init(original: Self, items: [Self.Item])
+}
+@objc @_inheritsConvenienceInitializers open class FloatyManager : ObjectiveC.NSObject {
+  open var button: MeetingDoctorsSDK.Floaty {
+    get
+  }
+  @objc override dynamic public init()
+  open var font: UIKit.UIFont {
+    get
+    set
+  }
+  open var rtlMode: Swift.Bool {
+    get
+    set
+  }
+  open func show(_ animated: Swift.Bool = true)
+  open func hide(_ animated: Swift.Bool = true)
+  open func toggle(_ animated: Swift.Bool = true)
+  open var hidden: Swift.Bool {
+    get
+  }
+  @objc deinit
+}
+public enum MDVCEnvironmentType : Swift.String, Swift.Codable, Swift.CodingKey {
+  case development
+  case production
+  case staging
+  public init?(rawValue: Swift.String)
+  public init?(stringValue: Swift.String)
+  public init?(intValue: Swift.Int)
+  public typealias RawValue = Swift.String
+  public var intValue: Swift.Int? {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+  public var stringValue: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class PhotoViewController : MeetingDoctorsSDK.BaseViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+extension MeetingDoctorsSDK.PhotoViewController : UIKit.UIScrollViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func viewForZooming(in _: UIKit.UIScrollView) -> UIKit.UIView?
+}
+public enum MDVideocallParticipantType : Swift.String, Swift.Codable {
+  case moderator
+  case participant
+  public func callAsFunction() -> Swift.String
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc @_Concurrency.MainActor(unsafe) public class ConstrainedHeightTextViewDelegate : ObjectiveC.NSObject, UIKit.UITextViewDelegate {
+  @_Concurrency.MainActor(unsafe) public init(constraint: UIKit.NSLayoutConstraint, maximumLength: Swift.Int = 50)
+  @_Concurrency.MainActor(unsafe) @objc public func textView(_ textView: UIKit.UITextView, shouldChangeTextIn range: Foundation.NSRange, replacementText text: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+public protocol ScheduleAvailabilityViewModelType {
+  func string(from date: Foundation.Date, locale: Foundation.Locale) -> Swift.String
+}
+public enum MDVCBuildConfigurationType : Swift.String, Swift.Codable, Swift.CodingKey {
+  case debug
+  case release
+  case staging
+  public func callAsFunction() -> Swift.String
+  public init?(rawValue: Swift.String)
+  public init?(stringValue: Swift.String)
+  public init?(intValue: Swift.Int)
+  public typealias RawValue = Swift.String
+  public var intValue: Swift.Int? {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+  public var stringValue: Swift.String {
+    get
+  }
+}
+public class MDVideocallParticipantStatusRequestModel : Swift.Codable {
+  public init(status: MeetingDoctorsSDK.MDVideocallStatusType? = nil, signIn: Swift.Bool? = nil, argument: Swift.String? = nil)
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public protocol MeetingDoctorsImagesType {
+  var meetingDoctorsMedicalHistoryImages: any MeetingDoctorsSDK.MeetingDoctorsMedicalHistoryImagesType { get set }
+  var meetingDoctorsProfessionalListImages: any MeetingDoctorsSDK.MeetingDoctorsProfessionalListImagesType { get set }
+  var meetingDoctorsChatImages: any MeetingDoctorsSDK.MeetingDoctorsChatImagesType { get set }
+  var meetingDoctorsProfileImages: any MeetingDoctorsSDK.MeetingDoctorsProfileImagesType { get set }
+}
+public struct MeetingDoctorsImages : MeetingDoctorsSDK.MeetingDoctorsImagesType {
+  public var meetingDoctorsMedicalHistoryImages: any MeetingDoctorsSDK.MeetingDoctorsMedicalHistoryImagesType
+  public var meetingDoctorsProfessionalListImages: any MeetingDoctorsSDK.MeetingDoctorsProfessionalListImagesType
+  public var meetingDoctorsChatImages: any MeetingDoctorsSDK.MeetingDoctorsChatImagesType
+  public var meetingDoctorsProfileImages: any MeetingDoctorsSDK.MeetingDoctorsProfileImagesType
+}
+public protocol MeetingDoctorsMedicalHistoryImagesType {
+  var mainIcon: UIKit.UIImage? { get set }
+  var allergiesIcon: UIKit.UIImage? { get set }
+  var diseasesIcon: UIKit.UIImage? { get set }
+  var medicationsIcon: UIKit.UIImage? { get set }
+  var imcsIcon: UIKit.UIImage? { get set }
+  var videoCallReportIcon: UIKit.UIImage? { get set }
+  var derivationsIcon: UIKit.UIImage? { get set }
+  var myDocumentsIcon: UIKit.UIImage? { get set }
+  var recipeIcon: UIKit.UIImage? { get set }
+}
+public protocol MeetingDoctorsProfessionalListImagesType {
+  var scheduleIcon: UIKit.UIImage? { get set }
+  var headerIcon: UIKit.UIImage? { get set }
+}
+public protocol MeetingDoctorsChatImagesType {
+  var disconnectMessageAlertIcon: UIKit.UIImage? { get set }
+  var rightNavigationBarButtonIcon: UIKit.UIImage? { get set }
+}
+public struct MeetingDoctorsMedicalHistoryImages : MeetingDoctorsSDK.MeetingDoctorsMedicalHistoryImagesType {
+  public var mainIcon: UIKit.UIImage?
+  public var allergiesIcon: UIKit.UIImage?
+  public var diseasesIcon: UIKit.UIImage?
+  public var medicationsIcon: UIKit.UIImage?
+  public var imcsIcon: UIKit.UIImage?
+  public var videoCallReportIcon: UIKit.UIImage?
+  public var derivationsIcon: UIKit.UIImage?
+  public var myDocumentsIcon: UIKit.UIImage?
+  public var recipeIcon: UIKit.UIImage?
+}
+public struct MeetingDoctorsProfessionalListImages : MeetingDoctorsSDK.MeetingDoctorsProfessionalListImagesType {
+  public var scheduleIcon: UIKit.UIImage?
+  public var headerIcon: UIKit.UIImage?
+}
+public struct MeetingDoctorsChatImages : MeetingDoctorsSDK.MeetingDoctorsChatImagesType {
+  public var disconnectMessageAlertIcon: UIKit.UIImage?
+  public var rightNavigationBarButtonIcon: UIKit.UIImage?
+}
+public protocol MeetingDoctorsProfileImagesType {
+  var profileHeaderImage: UIKit.UIImage? { get set }
+  var profileNavBarIcon: UIKit.UIImage? { get set }
+}
+public struct MeetingDoctorsProfileImages : MeetingDoctorsSDK.MeetingDoctorsProfileImagesType {
+  public var profileHeaderImage: UIKit.UIImage?
+  public var profileNavBarIcon: UIKit.UIImage?
+}
+public protocol MDVCCodableMapper {
+  func decode<T>(_ type: T.Type, from data: Foundation.Data) throws -> T where T : Swift.Decodable
+  func encode<T>(_ value: T) throws -> Foundation.Data where T : Swift.Encodable
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDLabelS18W400 : MeetingDoctorsSDK.MDLabelBase {
+  @_Concurrency.MainActor(unsafe) override public func setup()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+public enum MeetingDoctorsSearchOption {
+  case professionalId([Swift.String], forceOnline: Swift.Bool = false)
+  case speciality([MeetingDoctorsSDK.MeetingDoctorsRole], exclude: Swift.Bool, forceOnline: Swift.Bool = false)
+  case professionalHash([Swift.String], forceOnline: Swift.Bool = false)
+}
+extension MeetingDoctorsSDK.MeetingDoctorsSearchOption : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.MeetingDoctorsSearchOption, rhs: MeetingDoctorsSDK.MeetingDoctorsSearchOption) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDGradientView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public class var layerClass: Swift.AnyClass {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) public var cornerRadius: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var colors: [UIKit.UIColor] {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var gradientStart: CoreFoundation.CGPoint.Point {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var gradientEnd: CoreFoundation.CGPoint.Point {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var locations: [Foundation.NSNumber]? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect = .zero)
+  @objc deinit
+}
+public class MDVideocallDoctorAvailableModel {
+  final public let professionalId: Swift.String?
+  final public let name: Swift.String?
+  final public let specialty: Swift.String?
+  final public let imageURL: Swift.String?
+  public init(professionalId: Swift.String?, name: Swift.String?, specialty: Swift.String?, imageURL: Swift.String?)
+  @objc deinit
+}
+public enum MDVCLogLevel : Swift.String, Swift.Codable {
+  case off
+  case error
+  case warning
+  case info
+  case debug
+  case verbose
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol MDVCLoadable {
+  associatedtype Source
+  associatedtype Element
+  func load(_ source: Self.Source) -> Self.Element?
+}
+open class MDVCLoader<S, T> : MeetingDoctorsSDK.MDVCLoadable {
+  public init()
+  open func load(_: S) -> T?
+  public typealias Element = T
+  public typealias Source = S
+  @objc deinit
+}
+extension UIKit.UIFont.Weight {
+  public static let w100: UIKit.UIFont.Weight
+  public static let w200: UIKit.UIFont.Weight
+  public static let w300: UIKit.UIFont.Weight
+  public static let w400: UIKit.UIFont.Weight
+  public static let w500: UIKit.UIFont.Weight
+  public static let w600: UIKit.UIFont.Weight
+  public static let w700: UIKit.UIFont.Weight
+  public static let w800: UIKit.UIFont.Weight
+  public static let w900: UIKit.UIFont.Weight
+}
+public enum MeetingDoctorsError : Swift.Error, Foundation.LocalizedError, Foundation.CustomNSError {
+  public enum IllegalStateExceptionReason : Swift.Equatable {
+    case frameworkInitializationFailed
+    case invalidBundleId
+    case userNotLoged
+    case installationNotCreated
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MeetingDoctorsSDK.MeetingDoctorsError.IllegalStateExceptionReason, b: MeetingDoctorsSDK.MeetingDoctorsError.IllegalStateExceptionReason) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum MessengerExceptionReason {
+    case cantNavigateTopViewControllerIsNotMessengerViewController(deeplinkOption: MeetingDoctorsSDK.MessengerDeeplinkOption)
+  }
+  public enum MyHealthExceptionReason {
+    case cantNavigateTopViewControllerIsNotMDMyHealthMainViewController(deeplinkOption: MeetingDoctorsSDK.MyHealthDeeplinkOption)
+  }
+  public enum GroupsExceptionReason : Swift.Equatable {
+    case cantCreateInstallation
+    case cantLogin
+    case cantRegisterFirebaseForNotifications
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MeetingDoctorsSDK.MeetingDoctorsError.GroupsExceptionReason, b: MeetingDoctorsSDK.MeetingDoctorsError.GroupsExceptionReason) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum VideoCallExceptionReason : Swift.Equatable {
+    case cantRequestVideoCall
+    case cantNavigateExternalOriginIsRequired
+    case cantStartVideoCall
+    case videoCallNotStartedPreviously
+    case videoCallForbidden
+    case hasPending1to1
+    case cantSendCancelMessage
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MeetingDoctorsSDK.MeetingDoctorsError.VideoCallExceptionReason, b: MeetingDoctorsSDK.MeetingDoctorsError.VideoCallExceptionReason) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  case illegalStateException(reason: MeetingDoctorsSDK.MeetingDoctorsError.IllegalStateExceptionReason)
+  case storyboardFailed
+  case noDoctorFound
+  case accessDeniedToOpenChat
+  case accessDeniedToMedicalHistory
+  case couldNotReceiveMessage
+  case cantDeeplinkToUnknown
+  case notificationContentNotBelongingToFramework
+  case messenger(reason: MeetingDoctorsSDK.MeetingDoctorsError.MessengerExceptionReason)
+  case myHealth(reason: MeetingDoctorsSDK.MeetingDoctorsError.MyHealthExceptionReason)
+  case groups(reason: MeetingDoctorsSDK.MeetingDoctorsError.GroupsExceptionReason)
+  case videoCall(reason: MeetingDoctorsSDK.MeetingDoctorsError.VideoCallExceptionReason)
+  case unknown(error: any Swift.Error)
+  case ProfessionalListDatasourceEmpty
+  case CantAuthenticateUser
+  public enum DataBase : Swift.Error, Swift.Equatable {
+    case databaseNotConfigured
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MeetingDoctorsSDK.MeetingDoctorsError.DataBase, b: MeetingDoctorsSDK.MeetingDoctorsError.DataBase) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+extension MeetingDoctorsSDK.MeetingDoctorsError : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.MeetingDoctorsError, rhs: MeetingDoctorsSDK.MeetingDoctorsError) -> Swift.Bool
+}
+extension MeetingDoctorsSDK.MeetingDoctorsError.MessengerExceptionReason : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.MeetingDoctorsError.MessengerExceptionReason, rhs: MeetingDoctorsSDK.MeetingDoctorsError.MessengerExceptionReason) -> Swift.Bool
+}
+extension MeetingDoctorsSDK.MeetingDoctorsError.MyHealthExceptionReason : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsSDK.MeetingDoctorsError.MyHealthExceptionReason, rhs: MeetingDoctorsSDK.MeetingDoctorsError.MyHealthExceptionReason) -> Swift.Bool
+}
+public protocol ReusableCell : AnyObject {
+  static var reuseIdentifier: Swift.String { get }
+}
+extension MeetingDoctorsSDK.ReusableCell where Self : UIKit.UITableViewCell {
+  public static var reuseIdentifier: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsSDK.ReusableCell where Self : UIKit.UICollectionViewCell {
+  public static var reuseIdentifier: Swift.String {
+    get
+  }
+}
+public struct MDEventField : Swift.Identifiable {
+  public enum EventName {
+    public static let userSession: Swift.String
+    public static let videocallPool: Swift.String
+    public static let professionalList: Swift.String
+    public static let professionalChat: Swift.String
+    public static let feedsList: Swift.String
+    public static let feedsClick: Swift.String
+  }
+  public enum EventType {
+    public static let view: Swift.String
+    public static let click: Swift.String
+  }
+  public let id: Swift.String?
+  public let time: Swift.String?
+  public let type: Swift.String?
+  public let name: Swift.String?
+  public let user: Swift.String?
+  public let value: Swift.String?
+  public let param: [Swift.String : Any]?
+  public init(id: Swift.String? = UUID().uuidString, time: Foundation.Date? = Date(), type: Swift.String?, name: Swift.String?, user: Swift.String?, value: Swift.String? = nil, param: [Swift.String : Any]? = nil)
+  public typealias ID = Swift.String?
+}
+extension MeetingDoctorsSDK.MDEventField : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public protocol MDEventServiceProtocol {
+  func log(event: MeetingDoctorsSDK.MDEventField)
+}
+@_hasMissingDesignatedInitializers public class MDEventService : MeetingDoctorsSDK.MDEventServiceProtocol {
+  public static let shared: any MeetingDoctorsSDK.MDEventServiceProtocol
+  public var eventList: [Swift.String]? {
+    get
+    set
+  }
+  @objc deinit
+  public func log(event: MeetingDoctorsSDK.MDEventField)
+}
+extension UIKit.UITableView {
+  @_Concurrency.MainActor(unsafe) public func register<T>(_: T.Type) where T : UIKit.UITableViewCell, T : MeetingDoctorsSDK.NibLoadable, T : MeetingDoctorsSDK.ReusableCell
+  @_Concurrency.MainActor(unsafe) public func register<T>(_: T.Type) where T : UIKit.UITableViewCell, T : MeetingDoctorsSDK.ReusableCell
+  @_Concurrency.MainActor(unsafe) public func dequeueReusableCell<T>(_: T.Type) -> T where T : UIKit.UITableViewCell, T : MeetingDoctorsSDK.ReusableCell
+  @_Concurrency.MainActor(unsafe) public func dequeueReusableCell<T>(_: T.Type, for indexPath: Foundation.IndexPath) -> T where T : UIKit.UITableViewCell, T : MeetingDoctorsSDK.ReusableCell
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDLabelS20W900 : MeetingDoctorsSDK.MDLabelBase {
+  @_Concurrency.MainActor(unsafe) override public func setup()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MDVideocallProcessBaseViewController : MeetingDoctorsSDK.MDVideocallBaseViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) open var tableView: UIKit.UITableView
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) open func setNavigationTitle()
+  @objc @_Concurrency.MainActor(unsafe) open func closeProcess()
+  @_Concurrency.MainActor(unsafe) open func didSelectRowAt(indexPath: Foundation.IndexPath)
+  @_Concurrency.MainActor(unsafe) open func numberOfRowsInSection(section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) open func cellForRowAt(indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension MeetingDoctorsSDK.MDVideocallProcessBaseViewController : UIKit.UITableViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+}
+extension MeetingDoctorsSDK.MDVideocallProcessBaseViewController : UIKit.UITableViewDataSource {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MDGradientShimmerView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public func startAnimating()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class MDDisclaimerView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var titleText: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var messageText: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var imageImage: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var buttonText: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var action: (() -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class AvatarStatusView : UIKit.UIView {
+  public enum Size : CoreFoundation.CGFloat {
+    case small
+    case mid
+    case big
+    case unknown
+    public init?(rawValue: CoreFoundation.CGFloat)
+    public typealias RawValue = CoreFoundation.CGFloat
+    public var rawValue: CoreFoundation.CGFloat {
+      get
+    }
+  }
+  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var avatarView: MeetingDoctorsSDK.AvatarView!
+  @_Concurrency.MainActor(unsafe) public var status: MeetingDoctorsSDK.StatusView.Status? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var statusSize: MeetingDoctorsSDK.AvatarStatusView.Size? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var urlString: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var image: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var avatarBackgroundColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var onClick: (() -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder unarchiver: Foundation.NSCoder)
+  @objc deinit
+}
+final public class ImageLoaderManager {
+  public init(networkService: any MeetingDoctorsRemote.MDNetworkServiceProtocol = MDDefaultNetworkService(sessionManager: NotSecuredNetworkSessionManager()))
+  @objc deinit
+}
+extension Foundation.NSMutableAttributedString {
+  @discardableResult
+  public func bold(_ text: Swift.String, color: UIKit.UIColor? = .black, fontSize size: Swift.Int? = 17) -> Foundation.NSMutableAttributedString
+  @discardableResult
+  public func normal(_ text: Swift.String, color: UIKit.UIColor? = .black, fontSize size: Swift.Int? = 17) -> Foundation.NSMutableAttributedString
+  @discardableResult
+  public func underline(_ text: Swift.String, color: UIKit.UIColor? = .black, fontSize size: Swift.Int? = 17) -> Foundation.NSMutableAttributedString
+  @discardableResult
+  public func italic(_ text: Swift.String, color: UIKit.UIColor? = .black, fontSize size: Swift.Int? = 17) -> Foundation.NSMutableAttributedString
+}
+public enum MDVCParticipantProviderResponseEnum : Swift.String, Swift.Codable {
+  case opentok
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum MDVCParticipantArgumentResponseEnum : Swift.String, Swift.Codable, Swift.Equatable {
+  case moderatorUserDisconected
+  case moderatorWPDisconected
+  case moderatorIssuesAudio
+  case moderatorIssuesVideo
+  case moderatorIssuesBlocked
+  case moderatorUserBehaviour
+  case moderatorOther
+  case moderatorReportAdded
+  case moderatorRejectedVideocall
+  case userLongWaiting
+  case userTestError
+  case userBadConnection
+  case userIssueTechnical
+  case userNotNeededAnymore
+  case userOther
+  case userTimeoutWaiting
+  case userCreatedNewVideocall
+  case connectionIssues
+  case empty
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public class MDVideocallParticipantResponseModel : Swift.Codable {
+  final public let id: Swift.String?
+  final public let videocall: Swift.String?
+  final public let apiKey: Swift.String?
+  final public let type: MeetingDoctorsSDK.MDVideocallType?
+  final public let provider: MeetingDoctorsSDK.MDVCParticipantProviderResponseEnum?
+  final public let status: MeetingDoctorsSDK.MDVideocallStatusType?
+  final public let argument: MeetingDoctorsSDK.MDVCParticipantArgumentResponseEnum?
+  final public let consultation: Swift.String?
+  final public let speciality: Swift.String?
+  final public let session: Swift.String?
+  final public let token: Swift.String?
+  final public let user: Swift.String?
+  final public let name: Swift.String?
+  final public let image: Swift.String?
+  final public let role: MeetingDoctorsSDK.MDVideocallParticipantType?
+  final public let position: Swift.Int?
+  final public let time: Swift.Int?
+  final public let expiryTime: Swift.Int?
+  final public let isExpired: Swift.Bool?
+  final public let createdAt: Swift.String?
+  final public let updatedAt: Swift.String?
+  final public let startedAt: Swift.String?
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+extension MeetingDoctorsSDK.MDVideocallStatusType : Swift.Hashable {}
+extension MeetingDoctorsSDK.MDVideocallStatusType : Swift.RawRepresentable {}
+extension CoreFoundation.CGPoint.Point : Swift.Equatable {}
+extension CoreFoundation.CGPoint.Point : Swift.Hashable {}
+extension MeetingDoctorsSDK.FloatyOpenAnimationType : Swift.Equatable {}
+extension MeetingDoctorsSDK.FloatyOpenAnimationType : Swift.Hashable {}
+extension MeetingDoctorsSDK.FloatyOpenAnimationType : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.FloatyVerticalDirection : Swift.Equatable {}
+extension MeetingDoctorsSDK.FloatyVerticalDirection : Swift.Hashable {}
+extension MeetingDoctorsSDK.FloatyVerticalDirection : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.FloatyHorizontalDirection : Swift.Equatable {}
+extension MeetingDoctorsSDK.FloatyHorizontalDirection : Swift.Hashable {}
+extension MeetingDoctorsSDK.FloatyHorizontalDirection : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.MedicalHistoryDeeplinkOption : Swift.Hashable {}
+extension MeetingDoctorsSDK.MDVCDeeplinkOption : Swift.Hashable {}
+extension MeetingDoctorsSDK.ChatMessageCellViewModel.Status : Swift.Equatable {}
+extension MeetingDoctorsSDK.ChatMessageCellViewModel.Status : Swift.Hashable {}
+extension MeetingDoctorsSDK.ChatMessageCellViewModel.Status : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.MeetingDoctorsMessagAction : Swift.Hashable {}
+extension UIKit.UIView.UIViewHierarchyPosition : Swift.Equatable {}
+extension UIKit.UIView.UIViewHierarchyPosition : Swift.Hashable {}
+extension MeetingDoctorsSDK.MeetingDoctorsRole : Swift.Equatable {}
+extension MeetingDoctorsSDK.MeetingDoctorsRole : Swift.Hashable {}
+extension MeetingDoctorsSDK.MeetingDoctorsRole : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.PrescriptionResponseModel.CodingKeys : Swift.Equatable {}
+extension MeetingDoctorsSDK.PrescriptionResponseModel.CodingKeys : Swift.Hashable {}
+extension MeetingDoctorsSDK.PrescriptionResponseModel.CodingKeys : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.MessageCellViewModel.Status : Swift.Equatable {}
+extension MeetingDoctorsSDK.MessageCellViewModel.Status : Swift.Hashable {}
+extension MeetingDoctorsSDK.MessageCellViewModel.Status : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.MDVCEndpointType : Swift.Equatable {}
+extension MeetingDoctorsSDK.MDVCEndpointType : Swift.Hashable {}
+extension MeetingDoctorsSDK.MDVCEndpointType : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.StatusView.Status : Swift.Equatable {}
+extension MeetingDoctorsSDK.StatusView.Status : Swift.Hashable {}
+extension MeetingDoctorsSDK.FloatyItemLabelPositionType : Swift.Equatable {}
+extension MeetingDoctorsSDK.FloatyItemLabelPositionType : Swift.Hashable {}
+extension MeetingDoctorsSDK.FloatyItemLabelPositionType : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.InboxHeaderCellViewModel : MeetingDoctorsSDK.InboxBaseCellViewModelType {}
+extension MeetingDoctorsSDK.MeetingDoctorsSaturation : Swift.Equatable {}
+extension MeetingDoctorsSDK.MeetingDoctorsSaturation : Swift.Hashable {}
+extension MeetingDoctorsSDK.MeetingDoctorsSaturation : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.MDVideocallType : Swift.Hashable {}
+extension MeetingDoctorsSDK.MDVideocallType : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.MDVCEnvironmentType : Swift.Equatable {}
+extension MeetingDoctorsSDK.MDVCEnvironmentType : Swift.Hashable {}
+extension MeetingDoctorsSDK.MDVCEnvironmentType : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.MDVideocallParticipantType : Swift.Equatable {}
+extension MeetingDoctorsSDK.MDVideocallParticipantType : Swift.Hashable {}
+extension MeetingDoctorsSDK.MDVideocallParticipantType : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.MDVCBuildConfigurationType : Swift.Equatable {}
+extension MeetingDoctorsSDK.MDVCBuildConfigurationType : Swift.Hashable {}
+extension MeetingDoctorsSDK.MDVCBuildConfigurationType : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.MDVCLogLevel : Swift.Equatable {}
+extension MeetingDoctorsSDK.MDVCLogLevel : Swift.Hashable {}
+extension MeetingDoctorsSDK.MDVCLogLevel : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.MeetingDoctorsError.IllegalStateExceptionReason : Swift.Hashable {}
+extension MeetingDoctorsSDK.MeetingDoctorsError.GroupsExceptionReason : Swift.Hashable {}
+extension MeetingDoctorsSDK.MeetingDoctorsError.VideoCallExceptionReason : Swift.Hashable {}
+extension MeetingDoctorsSDK.MeetingDoctorsError.DataBase : Swift.Hashable {}
+extension MeetingDoctorsSDK.AvatarStatusView.Size : Swift.Equatable {}
+extension MeetingDoctorsSDK.AvatarStatusView.Size : Swift.Hashable {}
+extension MeetingDoctorsSDK.AvatarStatusView.Size : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.MDVCParticipantProviderResponseEnum : Swift.Equatable {}
+extension MeetingDoctorsSDK.MDVCParticipantProviderResponseEnum : Swift.Hashable {}
+extension MeetingDoctorsSDK.MDVCParticipantProviderResponseEnum : Swift.RawRepresentable {}
+extension MeetingDoctorsSDK.MDVCParticipantArgumentResponseEnum : Swift.Hashable {}
+extension MeetingDoctorsSDK.MDVCParticipantArgumentResponseEnum : Swift.RawRepresentable {}

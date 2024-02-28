@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
 // swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MeetingDoctorsSocket
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import Foundation
@@ -11,6 +11,7 @@ import SocketIO
 import Swift
 import _Concurrency
 import _StringProcessing
+import _SwiftConcurrencyShims
 public class SocketClientStream : MeetingDoctorsController.SocketStream {
   public var error: RxSwift.Observable<MeetingDoctorsSchema.SocketClientSchema> {
     get
@@ -18,7 +19,7 @@ public class SocketClientStream : MeetingDoctorsController.SocketStream {
   public var status: RxSwift.Observable<MeetingDoctorsSchema.SocketClientSchema> {
     get
   }
-  public init(client: MeetingDoctorsSocket.SocketNativeStream, mapper: MeetingDoctorsCore.CodableMapper)
+  public init(client: MeetingDoctorsSocket.SocketNativeStream, mapper: any MeetingDoctorsCore.CodableMapper)
   @objc deinit
   public func connect<Credentials>(credentials: Credentials? = nil) -> RxSwift.Observable<MeetingDoctorsSchema.SocketClientSchema> where Credentials : MeetingDoctorsSchema.SocketCredentials
   public func disconnect() -> RxSwift.Observable<MeetingDoctorsSchema.SocketClientSchema>
@@ -48,7 +49,7 @@ public struct ClientSocketOutputStream : MeetingDoctorsController.SocketOutputSt
   public var name: Swift.String {
     get
   }
-  public init(_ stream: MeetingDoctorsController.AnySocketOutputStream<SocketIO.SocketData>)
+  public init(_ stream: MeetingDoctorsController.AnySocketOutputStream<any SocketIO.SocketData>)
   public func emit(event: MeetingDoctorsSchema.SocketClientSchema.Output) throws
   public func acknowledge(event: MeetingDoctorsSchema.SocketClientSchema.Output) throws -> RxSwift.Single<MeetingDoctorsSchema.SocketClientSchema.Input>
   public typealias EventType = MeetingDoctorsSchema.SocketClientSchema.Output
@@ -64,23 +65,23 @@ public class SocketNativeStream : MeetingDoctorsController.SocketStream {
   public func connect<Credentials>(credentials: Credentials?) -> RxSwift.Observable<[Any]> where Credentials : MeetingDoctorsSchema.SocketCredentials
   public func disconnect() -> RxSwift.Observable<[Any]>
   public func input(stream event: MeetingDoctorsSchema.SocketListenerType) throws -> MeetingDoctorsController.AnySocketInputStream<[Any]>
-  public func output(stream event: MeetingDoctorsSchema.SocketEmissionType) throws -> MeetingDoctorsController.AnySocketOutputStream<SocketIO.SocketData>
+  public func output(stream event: MeetingDoctorsSchema.SocketEmissionType) throws -> MeetingDoctorsController.AnySocketOutputStream<any SocketIO.SocketData>
   public func join(namespace _: Swift.String)
   public func leave()
   public func clear()
   public typealias SocketInputType = [Any]
   public typealias SocketNativeType = [Any]
-  public typealias SocketOutputType = SocketIO.SocketData
+  public typealias SocketOutputType = any SocketIO.SocketData
   @objc deinit
 }
-public enum SocketStreamError : Swift.Error {
+public enum SocketStreamError : Swift.Error, Foundation.LocalizedError, Foundation.CustomNSError {
   public enum EventDecodingFailureReason {
     case unexpectedResponseFormat(event: Swift.String, data: [Any])
     case undefinedAckTransformation
   }
   public enum SocketFailureReason {
-    case emitFailed(event: Swift.String, items: [Any], underlyingError: Swift.Error)
-    case ackFailed(ack: Swift.Int, items: [Any], underlyingError: Swift.Error)
+    case emitFailed(event: Swift.String, items: [Any], underlyingError: any Swift.Error)
+    case ackFailed(ack: Swift.Int, items: [Any], underlyingError: any Swift.Error)
     case ackNotFound
     case description(reason: Swift.String)
     case unknown
@@ -98,9 +99,15 @@ public enum SocketStreamError : Swift.Error {
   case socketFailed(reason: MeetingDoctorsSocket.SocketStreamError.SocketFailureReason)
   case outputStreamFailed(reason: MeetingDoctorsSocket.SocketStreamError.StreamFailureReason)
   case inputStreamFailed(reason: MeetingDoctorsSocket.SocketStreamError.StreamFailureReason)
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
 }
 extension MeetingDoctorsSocket.SocketStreamError {
-  public var underlyingError: Swift.Error? {
+  public var underlyingError: (any Swift.Error)? {
     get
   }
 }
@@ -119,9 +126,9 @@ public struct NativeSocketOutputStream : MeetingDoctorsController.SocketOutputSt
     get
   }
   public init(client: SocketIO.SocketIOClient, event: MeetingDoctorsSchema.SocketEmissionType)
-  public func emit(event: SocketIO.SocketData) throws
-  public func acknowledge(event: SocketIO.SocketData) throws -> RxSwift.Single<MeetingDoctorsSchema.SocketClientSchema.Input>
-  public typealias EventType = SocketIO.SocketData
+  public func emit(event: any SocketIO.SocketData) throws
+  public func acknowledge(event: any SocketIO.SocketData) throws -> RxSwift.Single<MeetingDoctorsSchema.SocketClientSchema.Input>
+  public typealias EventType = any SocketIO.SocketData
 }
 extension MeetingDoctorsSchema.SocketClientSchema {
   public static func build(connect data: [Any]) -> MeetingDoctorsSchema.SocketClientSchema
@@ -139,13 +146,13 @@ extension MeetingDoctorsSchema.SocketClientSchema.Output : SocketIO.SocketData {
       get
     }
   }
-  public func socketRepresentation() -> SocketIO.SocketData
+  public func socketRepresentation() -> any SocketIO.SocketData
 }
 public struct ClientSocketInputStream : MeetingDoctorsController.SocketInputStream {
   public var name: Swift.String {
     get
   }
-  public init(_ event: MeetingDoctorsSchema.SocketListenerType, stream: MeetingDoctorsController.AnySocketInputStream<[Any]>, mapper: MeetingDoctorsCore.CodableMapper)
+  public init(_ event: MeetingDoctorsSchema.SocketListenerType, stream: MeetingDoctorsController.AnySocketInputStream<[Any]>, mapper: any MeetingDoctorsCore.CodableMapper)
   public func on() -> RxSwift.Observable<MeetingDoctorsSchema.SocketClientSchema.Input>
   public typealias EventType = MeetingDoctorsSchema.SocketClientSchema.Input
 }

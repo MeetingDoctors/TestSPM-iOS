@@ -1,0 +1,1615 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MeetingDoctorsRemote
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import Dispatch
+import Foundation
+import MeetingDoctorsController
+import MeetingDoctorsCore
+import MeetingDoctorsSchema
+import MobileCoreServices
+import RxSwift
+import Swift
+import SystemConfiguration
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public enum RemoteError : Swift.Error, Foundation.LocalizedError, Foundation.CustomNSError {
+  case responseSerializationFailed(error: (any Swift.Error)?)
+  case invaliEndpoint(type: MeetingDoctorsCore.EndpointType)
+  case invalidAdapterState
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+public class ClientSecretRequestInterceptor : MeetingDoctorsRemote.MDARequestAdapter {
+  public init(key: MeetingDoctorsCore.Keystore)
+  public func adapt(_ urlRequest: Foundation.URLRequest) throws -> Foundation.URLRequest
+  @objc deinit
+}
+public class MDDefaultNetworkService {
+  public init(sessionManager: any MeetingDoctorsRemote.MDNetworkSessionManagerProtocol = DefaultNetworkSessionManager())
+  @objc deinit
+}
+extension MeetingDoctorsRemote.MDDefaultNetworkService : MeetingDoctorsRemote.MDNetworkServiceProtocol {
+  public func request(endpoint: any MeetingDoctorsRemote.MDRequestableProtocol, completion: @escaping MeetingDoctorsRemote.MDDefaultNetworkService.CompletionHandler) -> (any MeetingDoctorsRemote.MDNetworkCancellableProtocol)?
+}
+public class AlamofireAuthenticationAdapter : MeetingDoctorsController.AuthenticationAdapter {
+  public init(apiKey: Swift.String, session: any MeetingDoctorsRemote.SessionAdapter, dataTransferService: any MeetingDoctorsRemote.MDDataTransferServiceProtocol = MDDefaultDataTransferService())
+  public func authenticate(_ request: MeetingDoctorsSchema.AuthenticateRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.SessionSchema, any Swift.Error>) -> Swift.Void)
+  public func user(_ request: MeetingDoctorsSchema.UserRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.UserSchema, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public protocol MedicalHistoryOperation {
+  var endpoint: MeetingDoctorsCore.Endpoint { get }
+  var noun: Swift.String { get }
+  func fetch(by id: Swift.String) -> any MeetingDoctorsRemote.Routable
+  func fetch() -> any MeetingDoctorsRemote.Routable
+  func save() -> any MeetingDoctorsRemote.Routable
+  func update(by id: Swift.String) -> any MeetingDoctorsRemote.Routable
+  func delete(by id: Swift.String) -> any MeetingDoctorsRemote.Routable
+}
+extension MeetingDoctorsRemote.MedicalHistoryOperation {
+  public func fetch(by id: Swift.String) -> any MeetingDoctorsRemote.Routable
+  public func fetch() -> any MeetingDoctorsRemote.Routable
+  public func save() -> any MeetingDoctorsRemote.Routable
+  public func update(by id: Swift.String) -> any MeetingDoctorsRemote.Routable
+  public func delete(by id: Swift.String) -> any MeetingDoctorsRemote.Routable
+}
+public struct AllergyOperation : MeetingDoctorsRemote.MedicalHistoryOperation {
+  public let endpoint: MeetingDoctorsCore.Endpoint
+  public let noun: Swift.String
+  public init(_ endpoint: MeetingDoctorsCore.Endpoint)
+}
+public struct DiseaseOperation : MeetingDoctorsRemote.MedicalHistoryOperation {
+  public let endpoint: MeetingDoctorsCore.Endpoint
+  public let noun: Swift.String
+  public init(_ endpoint: MeetingDoctorsCore.Endpoint)
+}
+public struct MedicationOperation : MeetingDoctorsRemote.MedicalHistoryOperation {
+  public let endpoint: MeetingDoctorsCore.Endpoint
+  public let noun: Swift.String
+  public init(_ endpoint: MeetingDoctorsCore.Endpoint)
+}
+public struct ImcOperation : MeetingDoctorsRemote.MedicalHistoryOperation {
+  public let endpoint: MeetingDoctorsCore.Endpoint
+  public let noun: Swift.String
+  public init(_ endpoint: MeetingDoctorsCore.Endpoint)
+}
+public struct VideoCallReportOperation : MeetingDoctorsRemote.MedicalHistoryOperation {
+  public let endpoint: MeetingDoctorsCore.Endpoint
+  public let noun: Swift.String
+  public init(_ endpoint: MeetingDoctorsCore.Endpoint)
+}
+public protocol MDRequestableProtocol {
+  var url: Swift.String { get }
+  var path: Swift.String { get }
+  var method: MeetingDoctorsRemote.MDHTTP.Method { get }
+  var headers: [MeetingDoctorsRemote.MDHTTP.Header.Key : Swift.String]? { get }
+  var body: Foundation.Data? { get }
+  var queryItems: [Swift.String : Swift.String]? { get }
+  var maxRetries: Swift.Int { get }
+  func getURLRequest() -> Foundation.URLRequest?
+}
+public typealias MDResponseRequestable = MeetingDoctorsRemote.MDRequestableProtocol & MeetingDoctorsRemote.MDResponseDecoderProtocol
+public protocol CompositeRequestAdapter : MeetingDoctorsRemote.MDARequestAdapter {
+  var adapters: [any MeetingDoctorsRemote.MDARequestAdapter] { get }
+  func append(_ adapter: (any MeetingDoctorsRemote.MDARequestAdapter)?)
+  func remove(_ item: Swift.Int)
+  func clear()
+}
+public class CompositeRequestInterceptor : MeetingDoctorsRemote.CompositeRequestAdapter {
+  public var adapters: [any MeetingDoctorsRemote.MDARequestAdapter] {
+    get
+  }
+  public init(_ children: [any MeetingDoctorsRemote.MDARequestAdapter] = [])
+  public func adapt(_ urlRequest: Foundation.URLRequest) throws -> Foundation.URLRequest
+  public func append(_ adapter: (any MeetingDoctorsRemote.MDARequestAdapter)?)
+  public func remove(_ item: Swift.Int)
+  public func clear()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class DefaultNetworkSessionManager : ObjectiveC.NSObject, MeetingDoctorsRemote.MDNetworkSessionManagerProtocol {
+  public static func publicKeys() -> [Security.SecKey]
+  public func request(_ request: Foundation.URLRequest, completion: @escaping MeetingDoctorsRemote.DefaultNetworkSessionManager.CompletionHandler) -> any MeetingDoctorsRemote.MDNetworkCancellableProtocol
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension MeetingDoctorsRemote.DefaultNetworkSessionManager : Foundation.URLSessionDelegate {
+  @objc dynamic public func urlSession(_: Foundation.URLSession, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
+}
+public struct RemoteRequestRetrier : MeetingDoctorsRemote.MDARequestRetrier {
+  public init(_ maxAttemptCount: Swift.Int = Int.max, delay: MeetingDoctorsRemote.DelayOptions)
+  public func should(_: MeetingDoctorsRemote.MDASessionManager, retry request: MeetingDoctorsRemote.MDARequest, with error: any Swift.Error, completion: @escaping MeetingDoctorsRemote.MDARequestRetryCompletion)
+}
+public class AlamofireCustomerNotificationsAdapter : MeetingDoctorsController.CustomerNotificationsAdapter {
+  public init(apiKey: Swift.String, session: any MeetingDoctorsRemote.SessionAdapter, dataTransferService: any MeetingDoctorsRemote.MDDataTransferServiceProtocol = MDDefaultDataTransferService())
+  public func register(_ request: MeetingDoctorsSchema.CustomerRegisterNotificationRequest) -> RxSwift.Single<MeetingDoctorsSchema.CustomerNotificationSchema>
+  public func unregister(_ request: MeetingDoctorsSchema.CustomerRegisterNotificationRequest) -> RxSwift.Single<MeetingDoctorsSchema.CustomerErrorSchema>
+  public func register(_ request: MeetingDoctorsSchema.CustomerRegisterNotificationRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.CustomerNotificationSchema, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public protocol MDNetworkServiceProtocol {
+  typealias CompletionHandler = (Swift.Result<Foundation.Data?, any Swift.Error>) -> Swift.Void
+  func request(endpoint: any MeetingDoctorsRemote.MDRequestableProtocol, completion: @escaping Self.CompletionHandler) -> (any MeetingDoctorsRemote.MDNetworkCancellableProtocol)?
+}
+extension MeetingDoctorsRemote.MDARequest {
+  public enum MDAValidationResult {
+    case success
+    case failure(any Swift.Error)
+  }
+}
+extension MeetingDoctorsRemote.MDADataRequest {
+  public typealias MDAValidation = (Foundation.URLRequest?, Foundation.HTTPURLResponse, Foundation.Data?) -> MeetingDoctorsRemote.MDARequest.MDAValidationResult
+  @discardableResult
+  public func validate(_ validation: @escaping MeetingDoctorsRemote.MDADataRequest.MDAValidation) -> Self
+  @discardableResult
+  public func validate<S>(statusCode acceptableStatusCodes: S) -> Self where S : Swift.Sequence, S.Element == Swift.Int
+  @discardableResult
+  public func validate<S>(contentType acceptableContentTypes: S) -> Self where S : Swift.Sequence, S.Element == Swift.String
+  @discardableResult
+  public func validate() -> Self
+}
+extension MeetingDoctorsRemote.MDADownloadRequest {
+  public typealias MDAValidation = (_ request: Foundation.URLRequest?, _ response: Foundation.HTTPURLResponse, _ temporaryURL: Foundation.URL?, _ destinationURL: Foundation.URL?) -> MeetingDoctorsRemote.MDARequest.MDAValidationResult
+  @discardableResult
+  public func validate(_ validation: @escaping MeetingDoctorsRemote.MDADownloadRequest.MDAValidation) -> Self
+  @discardableResult
+  public func validate<S>(statusCode acceptableStatusCodes: S) -> Self where S : Swift.Sequence, S.Element == Swift.Int
+  @discardableResult
+  public func validate<S>(contentType acceptableContentTypes: S) -> Self where S : Swift.Sequence, S.Element == Swift.String
+  @discardableResult
+  public func validate() -> Self
+}
+public class NoCacheInterceptor : MeetingDoctorsRemote.MDARequestAdapter {
+  public init()
+  public func adapt(_ urlRequest: Foundation.URLRequest) throws -> Foundation.URLRequest
+  @objc deinit
+}
+public typealias RequestSchema = Swift.Encodable
+public typealias ResponseSchema = Swift.Decodable
+public typealias ErrorResponseSchema = Swift.Decodable & Swift.Error
+public protocol SessionAdapter {
+  var adapters: (any MeetingDoctorsRemote.CompositeRequestAdapter)? { get }
+  var mapper: any MeetingDoctorsCore.CodableMapper { get }
+  var endpoint: MeetingDoctorsCore.Endpoint { get }
+  func request<R, S, E>(_ route: any MeetingDoctorsRemote.Routable, parameter: R?, error type: E.Type) -> RxSwift.Single<S> where R : Swift.Encodable, S : Swift.Decodable, E : Swift.Decodable, E : Swift.Error
+  func request<R, S, E>(_ route: any MeetingDoctorsRemote.Routable, parameter: R?, error type: E.Type, completion: @escaping (Swift.Result<S, any Swift.Error>) -> Swift.Void) where R : Swift.Encodable, S : Swift.Decodable, E : Swift.Decodable, E : Swift.Error
+  func append(adapter: (any MeetingDoctorsRemote.MDARequestAdapter)?)
+  func clear()
+}
+public protocol MDARequestAdapter {
+  func adapt(_ urlRequest: Foundation.URLRequest) throws -> Foundation.URLRequest
+}
+public typealias MDARequestRetryCompletion = (_ shouldRetry: Swift.Bool, _ timeDelay: Foundation.TimeInterval) -> Swift.Void
+public protocol MDARequestRetrier {
+  func should(_ manager: MeetingDoctorsRemote.MDASessionManager, retry request: MeetingDoctorsRemote.MDARequest, with error: any Swift.Error, completion: @escaping MeetingDoctorsRemote.MDARequestRetryCompletion)
+}
+public typealias MDAHTTPHeaders = [Swift.String : Swift.String]
+@_hasMissingDesignatedInitializers open class MDARequest {
+  public typealias ProgressHandler = (Foundation.Progress) -> Swift.Void
+  open var delegate: MeetingDoctorsRemote.MDATaskDelegate {
+    get
+  }
+  open var task: Foundation.URLSessionTask? {
+    get
+  }
+  final public let session: Foundation.URLSession
+  open var request: Foundation.URLRequest? {
+    get
+  }
+  open var response: Foundation.HTTPURLResponse? {
+    get
+  }
+  open var retryCount: Swift.UInt {
+    get
+  }
+  @discardableResult
+  open func authenticate(user: Swift.String, password: Swift.String, persistence: Foundation.URLCredential.Persistence = .forSession) -> Self
+  @discardableResult
+  open func authenticate(usingCredential credential: Foundation.URLCredential) -> Self
+  open class func authorizationHeader(user: Swift.String, password: Swift.String) -> (key: Swift.String, value: Swift.String)?
+  open func resume()
+  open func suspend()
+  open func cancel()
+  @objc deinit
+}
+extension MeetingDoctorsRemote.MDARequest : Swift.CustomStringConvertible {
+  open var description: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsRemote.MDARequest : Swift.CustomDebugStringConvertible {
+  open var debugDescription: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class MDADataRequest : MeetingDoctorsRemote.MDARequest {
+  override open var request: Foundation.URLRequest? {
+    get
+  }
+  open var progress: Foundation.Progress {
+    get
+  }
+  @discardableResult
+  open func stream(closure: ((Foundation.Data) -> Swift.Void)? = nil) -> Self
+  @discardableResult
+  open func downloadProgress(queue: Dispatch.DispatchQueue = DispatchQueue.main, closure: @escaping MeetingDoctorsRemote.MDADataRequest.ProgressHandler) -> Self
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class MDADownloadRequest : MeetingDoctorsRemote.MDARequest {
+  public struct DownloadOptions : Swift.OptionSet {
+    public let rawValue: Swift.UInt
+    public static let createIntermediateDirectories: MeetingDoctorsRemote.MDADownloadRequest.DownloadOptions
+    public static let removePreviousFile: MeetingDoctorsRemote.MDADownloadRequest.DownloadOptions
+    public init(rawValue: Swift.UInt)
+    public typealias ArrayLiteralElement = MeetingDoctorsRemote.MDADownloadRequest.DownloadOptions
+    public typealias Element = MeetingDoctorsRemote.MDADownloadRequest.DownloadOptions
+    public typealias RawValue = Swift.UInt
+  }
+  public typealias DownloadFileDestination = (_ temporaryURL: Foundation.URL, _ response: Foundation.HTTPURLResponse) -> (destinationURL: Foundation.URL, options: MeetingDoctorsRemote.MDADownloadRequest.DownloadOptions)
+  override open var request: Foundation.URLRequest? {
+    get
+  }
+  open var resumeData: Foundation.Data? {
+    get
+  }
+  open var progress: Foundation.Progress {
+    get
+  }
+  override open func cancel()
+  open func cancel(createResumeData: Swift.Bool)
+  @discardableResult
+  open func downloadProgress(queue: Dispatch.DispatchQueue = DispatchQueue.main, closure: @escaping MeetingDoctorsRemote.MDADownloadRequest.ProgressHandler) -> Self
+  open class func suggestedDownloadDestination(for directory: Foundation.FileManager.SearchPathDirectory = .documentDirectory, in domain: Foundation.FileManager.SearchPathDomainMask = .userDomainMask) -> MeetingDoctorsRemote.MDADownloadRequest.DownloadFileDestination
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class MDAUploadRequest : MeetingDoctorsRemote.MDADataRequest {
+  override open var request: Foundation.URLRequest? {
+    get
+  }
+  open var uploadProgress: Foundation.Progress {
+    get
+  }
+  @discardableResult
+  open func uploadProgress(queue: Dispatch.DispatchQueue = DispatchQueue.main, closure: @escaping MeetingDoctorsRemote.MDAUploadRequest.ProgressHandler) -> Self
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+open class MDAStreamRequest : MeetingDoctorsRemote.MDARequest {
+  @objc deinit
+}
+public protocol Routable : MeetingDoctorsRemote.MDAURLConvertible {
+  var baseURL: Foundation.URL? { get }
+  var path: Swift.String? { get }
+  var method: MeetingDoctorsRemote.MDHTTPMethod { get }
+  var encoding: any MeetingDoctorsRemote.MDAParameterEncoding { get }
+  func with(path parameters: [Swift.String : Swift.String]) -> any MeetingDoctorsRemote.Routable
+}
+extension MeetingDoctorsRemote.Routable {
+  public var encoding: any MeetingDoctorsRemote.MDAParameterEncoding {
+    get
+  }
+}
+public struct Router : MeetingDoctorsRemote.Routable {
+  public let endpoint: MeetingDoctorsCore.Endpoint
+  public let path: Swift.String?
+  public let method: MeetingDoctorsRemote.MDHTTPMethod
+  public var baseURL: Foundation.URL? {
+    get
+  }
+  public init(_ endpoint: MeetingDoctorsCore.Endpoint, path: Swift.String, method: MeetingDoctorsRemote.MDHTTPMethod = .get)
+  public func with(path parameters: [Swift.String : Swift.String]) -> any MeetingDoctorsRemote.Routable
+  public func asURL() throws -> Foundation.URL
+  public init(endpoint: MeetingDoctorsCore.Endpoint, path: Swift.String?, method: MeetingDoctorsRemote.MDHTTPMethod)
+}
+extension MeetingDoctorsRemote.Router {
+  public static let pathLens: MeetingDoctorsRemote.Lens<MeetingDoctorsRemote.Router, Swift.String?>
+}
+extension Foundation.NSNotification.Name {
+  public struct MDATask {
+    public static let DidResume: Foundation.Notification.Name
+    public static let DidSuspend: Foundation.Notification.Name
+    public static let DidCancel: Foundation.Notification.Name
+    public static let DidComplete: Foundation.Notification.Name
+  }
+}
+extension Foundation.Notification {
+  public struct MDAKey {
+    public static let Task: Swift.String
+    public static let ResponseData: Swift.String
+  }
+}
+public struct AlamofireDerivationReportAdapter : MeetingDoctorsController.DerivationReportAdapter {
+  public init(session: any MeetingDoctorsRemote.SessionAdapter)
+  public func fetch() -> RxSwift.Single<[MeetingDoctorsSchema.DerivationReportSchema]>
+  public func fetch(completion: @escaping (Swift.Result<[MeetingDoctorsSchema.DerivationReportSchema], any Swift.Error>) -> Swift.Void)
+}
+public enum MDDataTransferError : Swift.Error, Foundation.LocalizedError, Foundation.CustomNSError {
+  case noResponse
+  case parsing(any Swift.Error)
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+public protocol MDDataTransferServiceProtocol {
+  typealias CompletionHandler<T> = (Swift.Result<T, any Swift.Error>) -> Swift.Void
+  @discardableResult
+  func request<T, E>(endpoint: E, completion: @escaping Self.CompletionHandler<T>) -> (any MeetingDoctorsRemote.MDNetworkCancellableProtocol)? where T : Swift.Decodable, T : Swift.Encodable, T == E.Response, E : MeetingDoctorsRemote.MDRequestableProtocol, E : MeetingDoctorsRemote.MDResponseDecoderProtocol
+}
+public struct MDADefaultDataResponse {
+  public let request: Foundation.URLRequest?
+  public let response: Foundation.HTTPURLResponse?
+  public let data: Foundation.Data?
+  public let error: (any Swift.Error)?
+  public let timeline: MeetingDoctorsRemote.MDATimeline
+  public init(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: (any Swift.Error)?, timeline: MeetingDoctorsRemote.MDATimeline = MDATimeline(), metrics _: Swift.AnyObject? = nil)
+}
+public struct MDADataResponse<Value> {
+  public let request: Foundation.URLRequest?
+  public let response: Foundation.HTTPURLResponse?
+  public let data: Foundation.Data?
+  public let result: MeetingDoctorsRemote.MDAResult<Value>
+  public let timeline: MeetingDoctorsRemote.MDATimeline
+  public var value: Value? {
+    get
+  }
+  public var error: (any Swift.Error)? {
+    get
+  }
+  public init(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, result: MeetingDoctorsRemote.MDAResult<Value>, timeline: MeetingDoctorsRemote.MDATimeline = MDATimeline())
+}
+extension MeetingDoctorsRemote.MDADataResponse : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsRemote.MDADataResponse {
+  public func map<T>(_ transform: (Value) -> T) -> MeetingDoctorsRemote.MDADataResponse<T>
+  public func flatMap<T>(_ transform: (Value) throws -> T) -> MeetingDoctorsRemote.MDADataResponse<T>
+  public func mapError<E>(_ transform: (any Swift.Error) -> E) -> MeetingDoctorsRemote.MDADataResponse<Value> where E : Swift.Error
+  public func flatMapError<E>(_ transform: (any Swift.Error) throws -> E) -> MeetingDoctorsRemote.MDADataResponse<Value> where E : Swift.Error
+}
+public struct MDADefaultDownloadResponse {
+  public let request: Foundation.URLRequest?
+  public let response: Foundation.HTTPURLResponse?
+  public let temporaryURL: Foundation.URL?
+  public let destinationURL: Foundation.URL?
+  public let resumeData: Foundation.Data?
+  public let error: (any Swift.Error)?
+  public let timeline: MeetingDoctorsRemote.MDATimeline
+  public init(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, temporaryURL: Foundation.URL?, destinationURL: Foundation.URL?, resumeData: Foundation.Data?, error: (any Swift.Error)?, timeline: MeetingDoctorsRemote.MDATimeline = MDATimeline(), metrics _: Swift.AnyObject? = nil)
+}
+public struct MDADownloadResponse<Value> {
+  public let request: Foundation.URLRequest?
+  public let response: Foundation.HTTPURLResponse?
+  public let temporaryURL: Foundation.URL?
+  public let destinationURL: Foundation.URL?
+  public let resumeData: Foundation.Data?
+  public let result: MeetingDoctorsRemote.MDAResult<Value>
+  public let timeline: MeetingDoctorsRemote.MDATimeline
+  public var value: Value? {
+    get
+  }
+  public var error: (any Swift.Error)? {
+    get
+  }
+  public init(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, temporaryURL: Foundation.URL?, destinationURL: Foundation.URL?, resumeData: Foundation.Data?, result: MeetingDoctorsRemote.MDAResult<Value>, timeline: MeetingDoctorsRemote.MDATimeline = MDATimeline())
+}
+extension MeetingDoctorsRemote.MDADownloadResponse : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsRemote.MDADownloadResponse {
+  public func map<T>(_ transform: (Value) -> T) -> MeetingDoctorsRemote.MDADownloadResponse<T>
+  public func flatMap<T>(_ transform: (Value) throws -> T) -> MeetingDoctorsRemote.MDADownloadResponse<T>
+  public func mapError<E>(_ transform: (any Swift.Error) -> E) -> MeetingDoctorsRemote.MDADownloadResponse<Value> where E : Swift.Error
+  public func flatMapError<E>(_ transform: (any Swift.Error) throws -> E) -> MeetingDoctorsRemote.MDADownloadResponse<Value> where E : Swift.Error
+}
+@available(iOS 10.0, macOS 10.12, tvOS 10.0, *)
+extension MeetingDoctorsRemote.MDADefaultDataResponse {
+  public var metrics: Foundation.URLSessionTaskMetrics? {
+    get
+  }
+}
+@available(iOS 10.0, macOS 10.12, tvOS 10.0, *)
+extension MeetingDoctorsRemote.MDADataResponse {
+  public var metrics: Foundation.URLSessionTaskMetrics? {
+    get
+  }
+}
+@available(iOS 10.0, macOS 10.12, tvOS 10.0, *)
+extension MeetingDoctorsRemote.MDADefaultDownloadResponse {
+  public var metrics: Foundation.URLSessionTaskMetrics? {
+    get
+  }
+}
+@available(iOS 10.0, macOS 10.12, tvOS 10.0, *)
+extension MeetingDoctorsRemote.MDADownloadResponse {
+  public var metrics: Foundation.URLSessionTaskMetrics? {
+    get
+  }
+}
+@objc @_hasMissingDesignatedInitializers open class MDATaskDelegate : ObjectiveC.NSObject {
+  final public let queue: Foundation.OperationQueue
+  public var data: Foundation.Data? {
+    get
+  }
+  public var error: (any Swift.Error)?
+  @objc deinit
+}
+public enum NetworkType {
+  case notReachable
+  case unknown
+  case ethernetOrWiFi
+  case wwan
+  public static func == (a: MeetingDoctorsRemote.NetworkType, b: MeetingDoctorsRemote.NetworkType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol NetworkMonitorType : AnyObject {
+  var isReachable: Swift.Bool? { get }
+  func startMonitoring()
+  func stopMonitoring()
+  func updateMonitor(completion: @escaping (MeetingDoctorsRemote.NetworkType) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers final public class NetworkMonitor : MeetingDoctorsRemote.NetworkMonitorType {
+  public static let sharedInstance: MeetingDoctorsRemote.NetworkMonitor
+  @objc deinit
+  final public var isReachable: Swift.Bool? {
+    get
+  }
+  final public func startMonitoring()
+  final public func stopMonitoring()
+  final public func updateMonitor(completion: @escaping (MeetingDoctorsRemote.NetworkType) -> Swift.Void)
+}
+extension MeetingDoctorsRemote.MDHTTP {
+  public enum Header {
+    public enum Key : Swift.String {
+      case accept
+      case contentType
+      case origin
+      case apiKey
+      case cacheControl
+      case authorization
+      case acceptLanguage
+      case sessionToken
+      public func callAsFunction() -> Swift.String
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public enum Value : Swift.String {
+      public enum Application : Swift.String {
+        case json
+        case xWWWFormUrlEncoded
+        public func callAsFunction() -> Swift.String
+        public init?(rawValue: Swift.String)
+        public typealias RawValue = Swift.String
+        public var rawValue: Swift.String {
+          get
+        }
+      }
+      public enum ContentType : Swift.String {
+        case binary
+        case svg
+        public func callAsFunction() -> Swift.String
+        public init?(rawValue: Swift.String)
+        public typealias RawValue = Swift.String
+        public var rawValue: Swift.String {
+          get
+        }
+      }
+      case noCache
+      case bearer
+      public func callAsFunction() -> Swift.String
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+  }
+}
+public enum DelayOptions {
+  case immediate
+  case constant(time: Swift.Double)
+  case exponential(initial: Swift.Double, multiplier: Swift.Double, maxDelay: Swift.Double)
+  case custom(closure: (Swift.UInt) -> Swift.Double)
+}
+extension MeetingDoctorsRemote.DelayOptions {
+  public func make(_ attempt: Swift.UInt) -> Swift.Double
+}
+public class PatientHashRequestInterceptor : MeetingDoctorsRemote.MDARequestAdapter {
+  public init(hash: Swift.String)
+  public func adapt(_ urlRequest: Foundation.URLRequest) throws -> Foundation.URLRequest
+  @objc deinit
+}
+extension Foundation.DateFormatter {
+  public static let yyyyMMddTHHmmss: Foundation.DateFormatter
+  public static let yyyyMMddHHmmss: Foundation.DateFormatter
+  public static let yyyyMMdd: Foundation.DateFormatter
+  public static let yyyyMMddTHHmmssSSSZ: Foundation.DateFormatter
+  public static let yyyyMMddTHHmmssZ: Foundation.DateFormatter
+  public static let yyyyMMddTHHmmssSSSZZZZ: Foundation.DateFormatter
+}
+public protocol SessionAdapterAssembly {
+  func resolve(with mapper: any MeetingDoctorsCore.CodableMapper) -> (any MeetingDoctorsRemote.SessionAdapter)?
+}
+public class AlamofireSessionAssembler : MeetingDoctorsRemote.SessionAdapterAssembly {
+  final public let environment: MeetingDoctorsCore.Environment
+  final public let type: MeetingDoctorsCore.EndpointType
+  final public let bundle: Foundation.Bundle
+  public init(in bundle: Foundation.Bundle, environment: MeetingDoctorsCore.Environment, type: MeetingDoctorsCore.EndpointType)
+  public func resolve(with mapper: any MeetingDoctorsCore.CodableMapper) -> (any MeetingDoctorsRemote.SessionAdapter)?
+  @objc deinit
+}
+public enum AuthType {
+  case other([Swift.String : Swift.String])
+  case none
+}
+public struct VoidResponse : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public typealias RemoteCompletionTypeAlias<Result> = (Swift.Result<Result, Foundation.NSError>) -> Swift.Void where Result : Swift.Decodable, Result : Swift.Encodable
+public protocol RemoteManagerProtocol : AnyObject {
+  func post<Result>(_ endpoint: Swift.String, headers: MeetingDoctorsRemote.MDAHTTPHeaders, parameters: (any Swift.Decodable & Swift.Encodable)?, authType: MeetingDoctorsRemote.AuthType, completion: @escaping MeetingDoctorsRemote.RemoteCompletionTypeAlias<Result>) where Result : Swift.Decodable, Result : Swift.Encodable
+  func get<Result>(_ endpoint: Swift.String, headers: MeetingDoctorsRemote.MDAHTTPHeaders, parameters: (any Swift.Decodable & Swift.Encodable)?, authType: MeetingDoctorsRemote.AuthType, completion: @escaping MeetingDoctorsRemote.RemoteCompletionTypeAlias<Result>) where Result : Swift.Decodable, Result : Swift.Encodable
+  func put<Result>(_ endpoint: Swift.String, headers: MeetingDoctorsRemote.MDAHTTPHeaders, parameters: (any Swift.Decodable & Swift.Encodable)?, authType: MeetingDoctorsRemote.AuthType, completion: @escaping MeetingDoctorsRemote.RemoteCompletionTypeAlias<Result>) where Result : Swift.Decodable, Result : Swift.Encodable
+  func delete<Result>(_ endpoint: Swift.String, headers: MeetingDoctorsRemote.MDAHTTPHeaders, parameters: (any Swift.Decodable & Swift.Encodable)?, authType: MeetingDoctorsRemote.AuthType, completion: @escaping MeetingDoctorsRemote.RemoteCompletionTypeAlias<Result>) where Result : Swift.Decodable, Result : Swift.Encodable
+}
+public class RemoteManager : MeetingDoctorsRemote.RemoteManagerProtocol {
+  public init(_ configuration: MeetingDoctorsRemote.RemoteConfiguration)
+  @objc deinit
+  public func post<Result>(_ endpoint: Swift.String, headers: MeetingDoctorsRemote.MDAHTTPHeaders = [:], parameters: (any Swift.Decodable & Swift.Encodable)?, authType: MeetingDoctorsRemote.AuthType = .none, completion: @escaping MeetingDoctorsRemote.RemoteCompletionTypeAlias<Result>) where Result : Swift.Decodable, Result : Swift.Encodable
+  public func get<Result>(_ endpoint: Swift.String, headers: MeetingDoctorsRemote.MDAHTTPHeaders = [:], parameters: (any Swift.Decodable & Swift.Encodable)?, authType: MeetingDoctorsRemote.AuthType = .none, completion: @escaping MeetingDoctorsRemote.RemoteCompletionTypeAlias<Result>) where Result : Swift.Decodable, Result : Swift.Encodable
+  public func put<Result>(_ endpoint: Swift.String, headers: MeetingDoctorsRemote.MDAHTTPHeaders = [:], parameters: (any Swift.Decodable & Swift.Encodable)?, authType: MeetingDoctorsRemote.AuthType = .none, completion: @escaping MeetingDoctorsRemote.RemoteCompletionTypeAlias<Result>) where Result : Swift.Decodable, Result : Swift.Encodable
+  public func delete<Result>(_ endpoint: Swift.String, headers: MeetingDoctorsRemote.MDAHTTPHeaders = [:], parameters: (any Swift.Decodable & Swift.Encodable)?, authType: MeetingDoctorsRemote.AuthType = .none, completion: @escaping MeetingDoctorsRemote.RemoteCompletionTypeAlias<Result>) where Result : Swift.Decodable, Result : Swift.Encodable
+  public func requestDocument(withName name: Swift.String, _ endpoint: Swift.String, method: MeetingDoctorsRemote.MDHTTPMethod, parameters: (any Swift.Decodable & Swift.Encodable)?, encoding: any MeetingDoctorsRemote.MDAParameterEncoding = MDAJSONEncoding.default, headers: MeetingDoctorsRemote.MDAHTTPHeaders = [:], authType: MeetingDoctorsRemote.AuthType = .none, completion: @escaping MeetingDoctorsRemote.RemoteCompletionTypeAlias<Foundation.URL>)
+  public func request(_ endpoint: Swift.String, method: MeetingDoctorsRemote.MDHTTPMethod, parameters: (any Swift.Decodable & Swift.Encodable)?, encoding: any MeetingDoctorsRemote.MDAParameterEncoding = MDAURLEncoding.default, headers: MeetingDoctorsRemote.MDAHTTPHeaders = [:], authType: MeetingDoctorsRemote.AuthType = .none, completion: @escaping (MeetingDoctorsRemote.MDADataResponse<Foundation.Data>) -> Swift.Void)
+}
+public protocol ErrorDataResponseSerializerProtocol : MeetingDoctorsRemote.MDADataResponseSerializerProtocol {
+  associatedtype ErrorType
+  var serializeError: (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.Data?, (any Swift.Error)?) -> MeetingDoctorsRemote.MDAResult<Self.ErrorType> { get }
+}
+public class AlamofireRemoteController : MeetingDoctorsController.RemoteController {
+  public var installation: any MeetingDoctorsController.InstallationAdapter {
+    get
+  }
+  public var customerInstallation: any MeetingDoctorsController.CustomerInstallationAdapter {
+    get
+  }
+  public var customerAuth: any MeetingDoctorsController.CustomerAuthAdapter {
+    get
+  }
+  public var customerNotifications: any MeetingDoctorsController.CustomerNotificationsAdapter {
+    get
+  }
+  public var professionalList: any MeetingDoctorsController.ProfessionalListAdapter {
+    get
+  }
+  public var authentication: any MeetingDoctorsController.AuthenticationAdapter {
+    get
+  }
+  public var notification: any MeetingDoctorsController.NotificationAdapter {
+    get
+  }
+  public var allergy: MeetingDoctorsController.AnyMedicalHistoryAdapter<MeetingDoctorsSchema.AllergySchema> {
+    get
+  }
+  public var disease: MeetingDoctorsController.AnyMedicalHistoryAdapter<MeetingDoctorsSchema.DiseaseSchema> {
+    get
+  }
+  public var medication: MeetingDoctorsController.AnyMedicalHistoryAdapter<MeetingDoctorsSchema.MedicationSchema> {
+    get
+  }
+  public var imc: MeetingDoctorsController.AnyIdentifiableAdapter<MeetingDoctorsSchema.IMCSchema> {
+    get
+  }
+  public var videoCallReport: MeetingDoctorsController.AnyMedicalHistoryAdapter<MeetingDoctorsSchema.VideoCallReportSchema> {
+    get
+  }
+  public var derivation: any MeetingDoctorsController.DerivationReportAdapter {
+    get
+  }
+  public var coverage: MeetingDoctorsController.AnyMedicalDirectoryAdapter<MeetingDoctorsSchema.MedicalCoverageSchema> {
+    get
+  }
+  public var speciality: MeetingDoctorsController.AnyMedicalDirectoryAdapter<MeetingDoctorsSchema.MedicalSpecialitySchema> {
+    get
+  }
+  public var professional: MeetingDoctorsController.AnyMedicalDirectoryAdapter<MeetingDoctorsSchema.MedicalProfessionalSchema> {
+    get
+  }
+  public var address: MeetingDoctorsController.AnyMedicalDirectoryAdapter<MeetingDoctorsSchema.MedicalAddressSchema> {
+    get
+  }
+  public init(apiKey: Swift.String, core: any MeetingDoctorsRemote.SessionAdapter, session: any MeetingDoctorsRemote.SessionAdapter, console: any MeetingDoctorsRemote.SessionAdapter, directory: any MeetingDoctorsRemote.SessionAdapter, customer: any MeetingDoctorsRemote.SessionAdapter, notifications: any MeetingDoctorsRemote.SessionAdapter, consultations: any MeetingDoctorsRemote.SessionAdapter, consultationsCustomer: any MeetingDoctorsRemote.SessionAdapter)
+  public func join(account: MeetingDoctorsController.AccountModel)
+  public func joinCustomer(auth: MeetingDoctorsController.CustomerAuthModel)
+  public func joinProfessional(by token: Swift.String)
+  @objc deinit
+}
+public protocol MDAURLConvertible {
+  func asURL() throws -> Foundation.URL
+}
+extension Swift.String : MeetingDoctorsRemote.MDAURLConvertible {
+  public func asURL() throws -> Foundation.URL
+}
+extension Foundation.URL : MeetingDoctorsRemote.MDAURLConvertible {
+  public func asURL() throws -> Foundation.URL
+}
+extension Foundation.URLComponents : MeetingDoctorsRemote.MDAURLConvertible {
+  public func asURL() throws -> Foundation.URL
+}
+public protocol MDAURLRequestConvertible {
+  func asURLRequest() throws -> Foundation.URLRequest
+}
+extension MeetingDoctorsRemote.MDAURLRequestConvertible {
+  public var urlRequest: Foundation.URLRequest? {
+    get
+  }
+}
+extension Foundation.URLRequest : MeetingDoctorsRemote.MDAURLRequestConvertible {
+  public func asURLRequest() throws -> Foundation.URLRequest
+}
+extension Foundation.URLRequest {
+  public init(url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod, headers: MeetingDoctorsRemote.MDAHTTPHeaders? = nil) throws
+}
+@discardableResult
+public func request(_ url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod = .get, parameters: MeetingDoctorsRemote.MDAParameters? = nil, encoding: any MeetingDoctorsRemote.MDAParameterEncoding = MDAURLEncoding.default, headers: MeetingDoctorsRemote.MDAHTTPHeaders? = nil) -> MeetingDoctorsRemote.MDADataRequest
+@discardableResult
+public func request(_ urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible) -> MeetingDoctorsRemote.MDADataRequest
+@discardableResult
+public func download(_ url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod = .get, parameters: MeetingDoctorsRemote.MDAParameters? = nil, encoding: any MeetingDoctorsRemote.MDAParameterEncoding = MDAURLEncoding.default, headers: MeetingDoctorsRemote.MDAHTTPHeaders? = nil, to destination: MeetingDoctorsRemote.MDADownloadRequest.DownloadFileDestination? = nil) -> MeetingDoctorsRemote.MDADownloadRequest
+@discardableResult
+public func download(_ urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible, to destination: MeetingDoctorsRemote.MDADownloadRequest.DownloadFileDestination? = nil) -> MeetingDoctorsRemote.MDADownloadRequest
+@discardableResult
+public func download(resumingWith resumeData: Foundation.Data, to destination: MeetingDoctorsRemote.MDADownloadRequest.DownloadFileDestination? = nil) -> MeetingDoctorsRemote.MDADownloadRequest
+@discardableResult
+public func upload(_ fileURL: Foundation.URL, to url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod = .post, headers: MeetingDoctorsRemote.MDAHTTPHeaders? = nil) -> MeetingDoctorsRemote.MDAUploadRequest
+@discardableResult
+public func upload(_ fileURL: Foundation.URL, with urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible) -> MeetingDoctorsRemote.MDAUploadRequest
+@discardableResult
+public func upload(_ data: Foundation.Data, to url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod = .post, headers: MeetingDoctorsRemote.MDAHTTPHeaders? = nil) -> MeetingDoctorsRemote.MDAUploadRequest
+@discardableResult
+public func upload(_ data: Foundation.Data, with urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible) -> MeetingDoctorsRemote.MDAUploadRequest
+@discardableResult
+public func upload(_ stream: Foundation.InputStream, to url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod = .post, headers: MeetingDoctorsRemote.MDAHTTPHeaders? = nil) -> MeetingDoctorsRemote.MDAUploadRequest
+@discardableResult
+public func upload(_ stream: Foundation.InputStream, with urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible) -> MeetingDoctorsRemote.MDAUploadRequest
+public func upload(multipartFormData: @escaping (MeetingDoctorsRemote.MDAMultipartFormData) -> Swift.Void, usingThreshold encodingMemoryThreshold: Swift.UInt64 = MDASessionManager.multipartFormDataEncodingMemoryThreshold, to url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod = .post, headers: MeetingDoctorsRemote.MDAHTTPHeaders? = nil, encodingCompletion: ((MeetingDoctorsRemote.MDASessionManager.MultipartFormDataEncodingResult) -> Swift.Void)?)
+public func upload(multipartFormData: @escaping (MeetingDoctorsRemote.MDAMultipartFormData) -> Swift.Void, usingThreshold encodingMemoryThreshold: Swift.UInt64 = MDASessionManager.multipartFormDataEncodingMemoryThreshold, with urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible, encodingCompletion: ((MeetingDoctorsRemote.MDASessionManager.MultipartFormDataEncodingResult) -> Swift.Void)?)
+@available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+@discardableResult
+public func stream(withHostName hostName: Swift.String, port: Swift.Int) -> MeetingDoctorsRemote.MDAStreamRequest
+@available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+@discardableResult
+public func stream(with netService: Foundation.NetService) -> MeetingDoctorsRemote.MDAStreamRequest
+public struct MDHTTP {
+}
+public class AuthorizationRequestInterceptor : MeetingDoctorsRemote.MDARequestAdapter {
+  final public let sessionToken: Swift.String
+  public init(_ token: Swift.String)
+  public func adapt(_ urlRequest: Foundation.URLRequest) throws -> Foundation.URLRequest
+  @objc deinit
+}
+public enum MDAResult<Value> {
+  case success(Value)
+  case failure(any Swift.Error)
+  public var isSuccess: Swift.Bool {
+    get
+  }
+  public var isFailure: Swift.Bool {
+    get
+  }
+  public var value: Value? {
+    get
+  }
+  public var error: (any Swift.Error)? {
+    get
+  }
+}
+extension MeetingDoctorsRemote.MDAResult : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsRemote.MDAResult : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsRemote.MDAResult {
+  public init(value: () throws -> Value)
+  public func unwrap() throws -> Value
+  public func map<T>(_ transform: (Value) -> T) -> MeetingDoctorsRemote.MDAResult<T>
+  public func flatMap<T>(_ transform: (Value) throws -> T) -> MeetingDoctorsRemote.MDAResult<T>
+  public func mapError<T>(_ transform: (any Swift.Error) -> T) -> MeetingDoctorsRemote.MDAResult<Value> where T : Swift.Error
+  public func flatMapError<T>(_ transform: (any Swift.Error) throws -> T) -> MeetingDoctorsRemote.MDAResult<Value> where T : Swift.Error
+  @discardableResult
+  public func withValue(_ closure: (Value) throws -> Swift.Void) rethrows -> MeetingDoctorsRemote.MDAResult<Value>
+  @discardableResult
+  public func withError(_ closure: (any Swift.Error) throws -> Swift.Void) rethrows -> MeetingDoctorsRemote.MDAResult<Value>
+  @discardableResult
+  public func ifSuccess(_ closure: () throws -> Swift.Void) rethrows -> MeetingDoctorsRemote.MDAResult<Value>
+  @discardableResult
+  public func ifFailure(_ closure: () throws -> Swift.Void) rethrows -> MeetingDoctorsRemote.MDAResult<Value>
+}
+extension MeetingDoctorsRemote.MDHTTP {
+  public enum StatusCode : Swift.Int, Swift.Error {
+    public enum ResponseType {
+      case informational
+      case success
+      case redirection
+      case clientError
+      case serverError
+      case undefined
+      public static func == (a: MeetingDoctorsRemote.MDHTTP.StatusCode.ResponseType, b: MeetingDoctorsRemote.MDHTTP.StatusCode.ResponseType) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    case `continue`
+    case switchingProtocols
+    case processing
+    case ok
+    case created
+    case accepted
+    case nonAuthoritativeInformation
+    case noContent
+    case resetContent
+    case partialContent
+    case multiStatus
+    case alreadyReported
+    case IMUsed
+    case multipleChoices
+    case movedPermanently
+    case found
+    case seeOther
+    case notModified
+    case useProxy
+    case switchProxy
+    case temporaryRedirect
+    case permenantRedirect
+    case badRequest
+    case unauthorized
+    case paymentRequired
+    case forbidden
+    case notFound
+    case methodNotAllowed
+    case notAcceptable
+    case proxyAuthenticationRequired
+    case requestTimeout
+    case conflict
+    case gone
+    case lengthRequired
+    case preconditionFailed
+    case payloadTooLarge
+    case URITooLong
+    case unsupportedMediaType
+    case rangeNotSatisfiable
+    case expectationFailed
+    case teapot
+    case misdirectedRequest
+    case unprocessableEntity
+    case locked
+    case failedDependency
+    case upgradeRequired
+    case preconditionRequired
+    case tooManyRequests
+    case requestHeaderFieldsTooLarge
+    case noResponse
+    case unavailableForLegalReasons
+    case SSLCertificateError
+    case SSLCertificateRequired
+    case HTTPRequestSentToHTTPSPort
+    case clientClosedRequest
+    case internalServerError
+    case notImplemented
+    case badGateway
+    case serviceUnavailable
+    case gatewayTimeout
+    case HTTPVersionNotSupported
+    case variantAlsoNegotiates
+    case insufficientStorage
+    case loopDetected
+    case notExtended
+    case networkAuthenticationRequired
+    public var responseType: MeetingDoctorsRemote.MDHTTP.StatusCode.ResponseType {
+      get
+    }
+    public func callAsFunction() -> Swift.Int
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+}
+extension Foundation.HTTPURLResponse {
+  public var status: MeetingDoctorsRemote.MDHTTP.StatusCode? {
+    get
+  }
+}
+public class AlamofireCustomerInstallationAdapter : MeetingDoctorsController.CustomerInstallationAdapter {
+  public init(apiKey: Swift.String, session: any MeetingDoctorsRemote.SessionAdapter, dataTransferService: any MeetingDoctorsRemote.MDDataTransferServiceProtocol = MDDefaultDataTransferService())
+  public func installation(_ request: MeetingDoctorsSchema.CustomerInstallationRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.CustomerInstallationSchema, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public struct AlamofireProfessionalListAdapter : MeetingDoctorsController.ProfessionalListAdapter {
+  public func requestProfessionalDetail(_ professionalHash: Swift.String, completion: @escaping (Swift.Result<MeetingDoctorsSchema.ContactSchema, any Swift.Error>) -> Swift.Void)
+}
+public struct RemoteConfiguration {
+  public typealias AuthRequest = () -> MeetingDoctorsRemote.AuthType
+  public let defaultHeaders: MeetingDoctorsRemote.MDAHTTPHeaders
+  public let timeout: Swift.Int
+  public let retryAttempts: Swift.Int
+  public let authAttempt: MeetingDoctorsRemote.RemoteConfiguration.AuthRequest
+  public init(baseUrl: Swift.String, defaultHeaders: MeetingDoctorsRemote.MDAHTTPHeaders = [:], timeout: Swift.Int = 30, retryAttempts: Swift.Int = 1, authAttempt: @escaping MeetingDoctorsRemote.RemoteConfiguration.AuthRequest = { return .none })
+  public var session: MeetingDoctorsRemote.MDASessionManager {
+    mutating get
+    set
+  }
+}
+public class AlamofireNotificationAdapter : MeetingDoctorsController.NotificationAdapter {
+  public init(session: any MeetingDoctorsRemote.SessionAdapter, dataTransferService: any MeetingDoctorsRemote.MDDataTransferServiceProtocol = MDDefaultDataTransferService())
+  public func unread(_ request: MeetingDoctorsSchema.MessageCountRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.CountSchema, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public class AlamofireSessionAdapter : MeetingDoctorsRemote.SessionAdapter {
+  final public let adapters: (any MeetingDoctorsRemote.CompositeRequestAdapter)?
+  final public let mapper: any MeetingDoctorsCore.CodableMapper
+  final public let endpoint: MeetingDoctorsCore.Endpoint
+  public init(_ session: any MeetingDoctorsRemote.AlamofireSession, endpoint: MeetingDoctorsCore.Endpoint, mapper: any MeetingDoctorsCore.CodableMapper = JsonMapper())
+  public func request<R, S, E>(_ route: any MeetingDoctorsRemote.Routable, parameter: R?, error _: E.Type) -> RxSwift.Single<S> where R : Swift.Encodable, S : Swift.Decodable, E : Swift.Decodable, E : Swift.Error
+  public func request<R, S, E>(_ route: any MeetingDoctorsRemote.Routable, parameter: R?, error _: E.Type, completion: @escaping (Swift.Result<S, any Swift.Error>) -> Swift.Void) where R : Swift.Encodable, S : Swift.Decodable, E : Swift.Decodable, E : Swift.Error
+  public func append(adapter: (any MeetingDoctorsRemote.MDARequestAdapter)?)
+  public func clear()
+  @objc deinit
+}
+open class MDASessionManager {
+  public enum MultipartFormDataEncodingResult {
+    case success(request: MeetingDoctorsRemote.MDAUploadRequest, streamingFromDisk: Swift.Bool, streamFileURL: Foundation.URL?)
+    case failure(any Swift.Error)
+  }
+  public static let `default`: MeetingDoctorsRemote.MDASessionManager
+  public static let defaultHTTPHeaders: MeetingDoctorsRemote.MDAHTTPHeaders
+  public static let multipartFormDataEncodingMemoryThreshold: Swift.UInt64
+  final public let session: Foundation.URLSession
+  final public let delegate: MeetingDoctorsRemote.MDASessionDelegate
+  open var startRequestsImmediately: Swift.Bool
+  open var adapter: (any MeetingDoctorsRemote.MDARequestAdapter)?
+  open var retrier: (any MeetingDoctorsRemote.MDARequestRetrier)? {
+    get
+    set
+  }
+  open var backgroundCompletionHandler: (() -> Swift.Void)?
+  public init(configuration: Foundation.URLSessionConfiguration = URLSessionConfiguration.default, delegate: MeetingDoctorsRemote.MDASessionDelegate = MDASessionDelegate(), mdaserverTrustPolicyManager: MeetingDoctorsRemote.MDAServerTrustPolicyManager? = nil)
+  public init?(session: Foundation.URLSession, delegate: MeetingDoctorsRemote.MDASessionDelegate, mdaserverTrustPolicyManager: MeetingDoctorsRemote.MDAServerTrustPolicyManager? = nil)
+  @objc deinit
+  @discardableResult
+  open func request(_ url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod = .get, parameters: MeetingDoctorsRemote.MDAParameters? = nil, encoding: any MeetingDoctorsRemote.MDAParameterEncoding = MDAURLEncoding.default, headers: MeetingDoctorsRemote.MDAHTTPHeaders? = nil) -> MeetingDoctorsRemote.MDADataRequest
+  @discardableResult
+  open func request(_ urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible) -> MeetingDoctorsRemote.MDADataRequest
+  @discardableResult
+  open func download(_ url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod = .get, parameters: MeetingDoctorsRemote.MDAParameters? = nil, encoding: any MeetingDoctorsRemote.MDAParameterEncoding = MDAURLEncoding.default, headers: MeetingDoctorsRemote.MDAHTTPHeaders? = nil, to destination: MeetingDoctorsRemote.MDADownloadRequest.DownloadFileDestination? = nil) -> MeetingDoctorsRemote.MDADownloadRequest
+  @discardableResult
+  open func download(_ urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible, to destination: MeetingDoctorsRemote.MDADownloadRequest.DownloadFileDestination? = nil) -> MeetingDoctorsRemote.MDADownloadRequest
+  @discardableResult
+  open func download(resumingWith resumeData: Foundation.Data, to destination: MeetingDoctorsRemote.MDADownloadRequest.DownloadFileDestination? = nil) -> MeetingDoctorsRemote.MDADownloadRequest
+  @discardableResult
+  open func upload(_ fileURL: Foundation.URL, to url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod = .post, headers: MeetingDoctorsRemote.MDAHTTPHeaders? = nil) -> MeetingDoctorsRemote.MDAUploadRequest
+  @discardableResult
+  open func upload(_ fileURL: Foundation.URL, with urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible) -> MeetingDoctorsRemote.MDAUploadRequest
+  @discardableResult
+  open func upload(_ data: Foundation.Data, to url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod = .post, headers: MeetingDoctorsRemote.MDAHTTPHeaders? = nil) -> MeetingDoctorsRemote.MDAUploadRequest
+  @discardableResult
+  open func upload(_ data: Foundation.Data, with urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible) -> MeetingDoctorsRemote.MDAUploadRequest
+  @discardableResult
+  open func upload(_ stream: Foundation.InputStream, to url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod = .post, headers: MeetingDoctorsRemote.MDAHTTPHeaders? = nil) -> MeetingDoctorsRemote.MDAUploadRequest
+  @discardableResult
+  open func upload(_ stream: Foundation.InputStream, with urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible) -> MeetingDoctorsRemote.MDAUploadRequest
+  open func upload(multipartFormData: @escaping (MeetingDoctorsRemote.MDAMultipartFormData) -> Swift.Void, usingThreshold encodingMemoryThreshold: Swift.UInt64 = MDASessionManager.multipartFormDataEncodingMemoryThreshold, to url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod = .post, headers: MeetingDoctorsRemote.MDAHTTPHeaders? = nil, queue: Dispatch.DispatchQueue? = nil, encodingCompletion: ((MeetingDoctorsRemote.MDASessionManager.MultipartFormDataEncodingResult) -> Swift.Void)?)
+  open func upload(multipartFormData: @escaping (MeetingDoctorsRemote.MDAMultipartFormData) -> Swift.Void, usingThreshold encodingMemoryThreshold: Swift.UInt64 = MDASessionManager.multipartFormDataEncodingMemoryThreshold, with urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible, queue: Dispatch.DispatchQueue? = nil, encodingCompletion: ((MeetingDoctorsRemote.MDASessionManager.MultipartFormDataEncodingResult) -> Swift.Void)?)
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+  @discardableResult
+  open func stream(withHostName hostName: Swift.String, port: Swift.Int) -> MeetingDoctorsRemote.MDAStreamRequest
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+  @discardableResult
+  open func stream(with netService: Foundation.NetService) -> MeetingDoctorsRemote.MDAStreamRequest
+}
+open class MDAMultipartFormData {
+  open var contentType: Swift.String {
+    get
+    set
+  }
+  public var contentLength: Swift.UInt64 {
+    get
+  }
+  public var boundary: Swift.String
+  public init()
+  public func append(_ data: Foundation.Data, withName name: Swift.String)
+  public func append(_ data: Foundation.Data, withName name: Swift.String, mimeType: Swift.String)
+  public func append(_ data: Foundation.Data, withName name: Swift.String, fileName: Swift.String, mimeType: Swift.String)
+  public func append(_ fileURL: Foundation.URL, withName name: Swift.String)
+  public func append(_ fileURL: Foundation.URL, withName name: Swift.String, fileName: Swift.String, mimeType: Swift.String)
+  public func append(_ stream: Foundation.InputStream, withLength length: Swift.UInt64, name: Swift.String, fileName: Swift.String, mimeType: Swift.String)
+  public func append(_ stream: Foundation.InputStream, withLength length: Swift.UInt64, headers: MeetingDoctorsRemote.MDAHTTPHeaders)
+  public func encode() throws -> Foundation.Data
+  public func writeEncodedData(to fileURL: Foundation.URL) throws
+  @objc deinit
+}
+extension MeetingDoctorsRemote.MDHTTP {
+  public enum Method : Swift.String {
+    case options
+    case get
+    case head
+    case post
+    case put
+    case patch
+    case delete
+    case trace
+    case connect
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+public struct RemoteHeaderTags {
+  public static let Authorization: Swift.String
+  public static let SessionToken: Swift.String
+  public static let ApiKey: Swift.String
+}
+public struct RemoteDefaultHeaders {
+  public static let SecurityHeaders: [Swift.String : Swift.String]
+}
+@objc @_inheritsConvenienceInitializers public class NotSecuredNetworkSessionManager : ObjectiveC.NSObject, MeetingDoctorsRemote.MDNetworkSessionManagerProtocol {
+  public func request(_ request: Foundation.URLRequest, completion: @escaping MeetingDoctorsRemote.NotSecuredNetworkSessionManager.CompletionHandler) -> any MeetingDoctorsRemote.MDNetworkCancellableProtocol
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class MDRemoteManager : ObjectiveC.NSObject {
+  public static var sharedInstance: MeetingDoctorsRemote.MDRemoteManager
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func request<T>(_ request: Foundation.URLRequest) async throws -> T where T : Swift.Decodable
+  #endif
+  final public func request<T>(_ request: Foundation.URLRequest, completion: @escaping (Swift.Result<T, any Swift.Error>) -> Swift.Void) where T : Swift.Decodable
+  @objc deinit
+}
+extension MeetingDoctorsRemote.MDRemoteManager : Foundation.URLSessionDelegate {
+  @objc final public func urlSession(_: Foundation.URLSession, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
+}
+public protocol MDNetworkCancellableProtocol {
+  func cancel()
+}
+extension Foundation.URLSessionTask : MeetingDoctorsRemote.MDNetworkCancellableProtocol {
+}
+public class AlamofireCustomerAuthAdapter : MeetingDoctorsController.CustomerAuthAdapter {
+  public init(apiKey: Swift.String, session: any MeetingDoctorsRemote.SessionAdapter, dataTransferService: any MeetingDoctorsRemote.MDDataTransferServiceProtocol = MDDefaultDataTransferService())
+  public func login(_ request: MeetingDoctorsSchema.CustomerLoginRequest) -> RxSwift.Single<MeetingDoctorsSchema.CustomerAuthSchema>
+  public func login(_ request: MeetingDoctorsSchema.CustomerLoginRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.CustomerAuthSchema, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+final public class MDDefaultDataTransferService {
+  public init(networkService: any MeetingDoctorsRemote.MDNetworkServiceProtocol = MDDefaultNetworkService())
+  @objc deinit
+}
+extension MeetingDoctorsRemote.MDDefaultDataTransferService : MeetingDoctorsRemote.MDDataTransferServiceProtocol {
+  final public func request<T, E>(endpoint: E, completion: @escaping MeetingDoctorsRemote.MDDefaultDataTransferService.CompletionHandler<T>) -> (any MeetingDoctorsRemote.MDNetworkCancellableProtocol)? where T : Swift.Decodable, T : Swift.Encodable, T == E.Response, E : MeetingDoctorsRemote.MDRequestableProtocol, E : MeetingDoctorsRemote.MDResponseDecoderProtocol
+}
+@objc @_inheritsConvenienceInitializers open class MDASessionDelegate : ObjectiveC.NSObject {
+  open var sessionDidBecomeInvalidWithError: ((Foundation.URLSession, (any Swift.Error)?) -> Swift.Void)?
+  open var sessionDidReceiveChallenge: ((Foundation.URLSession, Foundation.URLAuthenticationChallenge) -> (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?))?
+  open var sessionDidReceiveChallengeWithCompletion: ((Foundation.URLSession, Foundation.URLAuthenticationChallenge, @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void) -> Swift.Void)?
+  open var sessionDidFinishEventsForBackgroundURLSession: ((Foundation.URLSession) -> Swift.Void)?
+  open var taskWillPerformHTTPRedirection: ((Foundation.URLSession, Foundation.URLSessionTask, Foundation.HTTPURLResponse, Foundation.URLRequest) -> Foundation.URLRequest?)?
+  open var taskWillPerformHTTPRedirectionWithCompletion: ((Foundation.URLSession, Foundation.URLSessionTask, Foundation.HTTPURLResponse, Foundation.URLRequest, @escaping (Foundation.URLRequest?) -> Swift.Void) -> Swift.Void)?
+  open var taskDidReceiveChallenge: ((Foundation.URLSession, Foundation.URLSessionTask, Foundation.URLAuthenticationChallenge) -> (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?))?
+  open var taskDidReceiveChallengeWithCompletion: ((Foundation.URLSession, Foundation.URLSessionTask, Foundation.URLAuthenticationChallenge, @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void) -> Swift.Void)?
+  open var taskNeedNewBodyStream: ((Foundation.URLSession, Foundation.URLSessionTask) -> Foundation.InputStream?)?
+  open var taskNeedNewBodyStreamWithCompletion: ((Foundation.URLSession, Foundation.URLSessionTask, @escaping (Foundation.InputStream?) -> Swift.Void) -> Swift.Void)?
+  open var taskDidSendBodyData: ((Foundation.URLSession, Foundation.URLSessionTask, Swift.Int64, Swift.Int64, Swift.Int64) -> Swift.Void)?
+  open var taskDidComplete: ((Foundation.URLSession, Foundation.URLSessionTask, (any Swift.Error)?) -> Swift.Void)?
+  open var dataTaskDidReceiveResponse: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.URLResponse) -> Foundation.URLSession.ResponseDisposition)?
+  open var dataTaskDidReceiveResponseWithCompletion: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.URLResponse, @escaping (Foundation.URLSession.ResponseDisposition) -> Swift.Void) -> Swift.Void)?
+  open var dataTaskDidBecomeDownloadTask: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.URLSessionDownloadTask) -> Swift.Void)?
+  open var dataTaskDidReceiveData: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.Data) -> Swift.Void)?
+  open var dataTaskWillCacheResponse: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.CachedURLResponse) -> Foundation.CachedURLResponse?)?
+  open var dataTaskWillCacheResponseWithCompletion: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.CachedURLResponse, @escaping (Foundation.CachedURLResponse?) -> Swift.Void) -> Swift.Void)?
+  open var downloadTaskDidFinishDownloadingToURL: ((Foundation.URLSession, Foundation.URLSessionDownloadTask, Foundation.URL) -> Swift.Void)?
+  open var downloadTaskDidWriteData: ((Foundation.URLSession, Foundation.URLSessionDownloadTask, Swift.Int64, Swift.Int64, Swift.Int64) -> Swift.Void)?
+  open var downloadTaskDidResumeAtOffset: ((Foundation.URLSession, Foundation.URLSessionDownloadTask, Swift.Int64, Swift.Int64) -> Swift.Void)?
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+  open var streamTaskReadClosed: ((Foundation.URLSession, Foundation.URLSessionStreamTask) -> Swift.Void)? {
+    get
+    set
+  }
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+  open var streamTaskWriteClosed: ((Foundation.URLSession, Foundation.URLSessionStreamTask) -> Swift.Void)? {
+    get
+    set
+  }
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+  open var streamTaskBetterRouteDiscovered: ((Foundation.URLSession, Foundation.URLSessionStreamTask) -> Swift.Void)? {
+    get
+    set
+  }
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+  open var streamTaskDidBecomeInputAndOutputStreams: ((Foundation.URLSession, Foundation.URLSessionStreamTask, Foundation.InputStream, Foundation.OutputStream) -> Swift.Void)? {
+    get
+    set
+  }
+  open subscript(task: Foundation.URLSessionTask) -> MeetingDoctorsRemote.MDARequest? {
+    get
+    set
+  }
+  @objc override dynamic public init()
+  @objc override dynamic open func responds(to selector: ObjectiveC.Selector) -> Swift.Bool
+  @objc deinit
+}
+extension MeetingDoctorsRemote.MDASessionDelegate : Foundation.URLSessionDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, didBecomeInvalidWithError error: (any Swift.Error)?)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
+  @objc dynamic open func urlSessionDidFinishEvents(forBackgroundURLSession session: Foundation.URLSession)
+}
+extension MeetingDoctorsRemote.MDASessionDelegate : Foundation.URLSessionTaskDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, willPerformHTTPRedirection response: Foundation.HTTPURLResponse, newRequest request: Foundation.URLRequest, completionHandler: @escaping (Foundation.URLRequest?) -> Swift.Void)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, needNewBodyStream completionHandler: @escaping (Foundation.InputStream?) -> Swift.Void)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didSendBodyData bytesSent: Swift.Int64, totalBytesSent: Swift.Int64, totalBytesExpectedToSend: Swift.Int64)
+  @available(iOS 10.0, macOS 10.12, tvOS 10.0, *)
+  @objc(URLSession:task:didFinishCollectingMetrics:) dynamic open func urlSession(_: Foundation.URLSession, task: Foundation.URLSessionTask, didFinishCollecting metrics: Foundation.URLSessionTaskMetrics)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didCompleteWithError error: (any Swift.Error)?)
+}
+extension MeetingDoctorsRemote.MDASessionDelegate : Foundation.URLSessionDataDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive response: Foundation.URLResponse, completionHandler: @escaping (Foundation.URLSession.ResponseDisposition) -> Swift.Void)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didBecome downloadTask: Foundation.URLSessionDownloadTask)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive data: Foundation.Data)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, willCacheResponse proposedResponse: Foundation.CachedURLResponse, completionHandler: @escaping (Foundation.CachedURLResponse?) -> Swift.Void)
+}
+extension MeetingDoctorsRemote.MDASessionDelegate : Foundation.URLSessionDownloadDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didFinishDownloadingTo location: Foundation.URL)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didWriteData bytesWritten: Swift.Int64, totalBytesWritten: Swift.Int64, totalBytesExpectedToWrite: Swift.Int64)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didResumeAtOffset fileOffset: Swift.Int64, expectedTotalBytes: Swift.Int64)
+}
+@available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+extension MeetingDoctorsRemote.MDASessionDelegate : Foundation.URLSessionStreamDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, readClosedFor streamTask: Foundation.URLSessionStreamTask)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, writeClosedFor streamTask: Foundation.URLSessionStreamTask)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, betterRouteDiscoveredFor streamTask: Foundation.URLSessionStreamTask)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, streamTask: Foundation.URLSessionStreamTask, didBecome inputStream: Foundation.InputStream, outputStream: Foundation.OutputStream)
+}
+public class AlamofireInstallationAdapter : MeetingDoctorsController.InstallationAdapter {
+  public init(apiKey: Swift.String, session: any MeetingDoctorsRemote.SessionAdapter, dataTransferService: any MeetingDoctorsRemote.MDDataTransferServiceProtocol = MDDefaultDataTransferService())
+  public func setup(_ request: MeetingDoctorsSchema.SetupRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.SetupSchema, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public enum RequestGenerationError : Swift.Error {
+  case components
+  public static func == (a: MeetingDoctorsRemote.RequestGenerationError, b: MeetingDoctorsRemote.RequestGenerationError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension MeetingDoctorsRemote.MDRequestableProtocol {
+  public var path: Swift.String {
+    get
+  }
+  public var method: MeetingDoctorsRemote.MDHTTP.Method {
+    get
+  }
+  public var headers: [MeetingDoctorsRemote.MDHTTP.Header.Key : Swift.String]? {
+    get
+  }
+  public var body: Foundation.Data? {
+    get
+  }
+  public var queryItems: [Swift.String : Swift.String]? {
+    get
+  }
+  public var maxRetries: Swift.Int {
+    get
+  }
+  public func getURLRequest() -> Foundation.URLRequest?
+}
+public class SessionTokenRequestInterceptor : MeetingDoctorsRemote.MDARequestAdapter {
+  public init(_ token: Swift.String)
+  public func adapt(_ urlRequest: Foundation.URLRequest) throws -> Foundation.URLRequest
+  @objc deinit
+}
+public struct MDRequest : MeetingDoctorsRemote.MDRequestableProtocol {
+  public var url: Swift.String
+  public var path: Swift.String
+  public var method: MeetingDoctorsRemote.MDHTTP.Method
+  public var headers: [MeetingDoctorsRemote.MDHTTP.Header.Key : Swift.String]?
+  public var body: Foundation.Data?
+  public var queryItems: [Swift.String : Swift.String]?
+  public init(url: Swift.String, path: Swift.String, method: MeetingDoctorsRemote.MDHTTP.Method, headers: [MeetingDoctorsRemote.MDHTTP.Header.Key : Swift.String]?, body: Foundation.Data?, queryItems: [Swift.String : Swift.String]?)
+  public func getURLRequest() throws -> Foundation.URLRequest
+}
+public protocol MDResponseDecoderProtocol {
+  associatedtype Response
+  func decode(_ data: Foundation.Data) throws -> Self.Response
+}
+public enum MDHTTPMethod : Swift.String {
+  case options
+  case get
+  case head
+  case post
+  case put
+  case patch
+  case delete
+  case trace
+  case connect
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public typealias MDAParameters = [Swift.String : Any]
+public protocol MDAParameterEncoding {
+  func encode(_ urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible, with parameters: MeetingDoctorsRemote.MDAParameters?) throws -> Foundation.URLRequest
+}
+public struct MDAURLEncoding : MeetingDoctorsRemote.MDAParameterEncoding {
+  public enum Destination {
+    case methodDependent, queryString, httpBody
+    public static func == (a: MeetingDoctorsRemote.MDAURLEncoding.Destination, b: MeetingDoctorsRemote.MDAURLEncoding.Destination) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum ArrayEncoding {
+    case brackets, noBrackets
+    public static func == (a: MeetingDoctorsRemote.MDAURLEncoding.ArrayEncoding, b: MeetingDoctorsRemote.MDAURLEncoding.ArrayEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum BoolEncoding {
+    case numeric, literal
+    public static func == (a: MeetingDoctorsRemote.MDAURLEncoding.BoolEncoding, b: MeetingDoctorsRemote.MDAURLEncoding.BoolEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static var `default`: MeetingDoctorsRemote.MDAURLEncoding {
+    get
+  }
+  public static var methodDependent: MeetingDoctorsRemote.MDAURLEncoding {
+    get
+  }
+  public static var queryString: MeetingDoctorsRemote.MDAURLEncoding {
+    get
+  }
+  public static var httpBody: MeetingDoctorsRemote.MDAURLEncoding {
+    get
+  }
+  public let destination: MeetingDoctorsRemote.MDAURLEncoding.Destination
+  public let arrayEncoding: MeetingDoctorsRemote.MDAURLEncoding.ArrayEncoding
+  public let boolEncoding: MeetingDoctorsRemote.MDAURLEncoding.BoolEncoding
+  public init(destination: MeetingDoctorsRemote.MDAURLEncoding.Destination = .methodDependent, arrayEncoding: MeetingDoctorsRemote.MDAURLEncoding.ArrayEncoding = .brackets, boolEncoding: MeetingDoctorsRemote.MDAURLEncoding.BoolEncoding = .numeric)
+  public func encode(_ urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible, with parameters: MeetingDoctorsRemote.MDAParameters?) throws -> Foundation.URLRequest
+  public func queryComponents(fromKey key: Swift.String, value: Any) -> [(Swift.String, Swift.String)]
+  public func escape(_ string: Swift.String) -> Swift.String
+}
+public struct MDAJSONEncoding : MeetingDoctorsRemote.MDAParameterEncoding {
+  public static var `default`: MeetingDoctorsRemote.MDAJSONEncoding {
+    get
+  }
+  public static var prettyPrinted: MeetingDoctorsRemote.MDAJSONEncoding {
+    get
+  }
+  public let options: Foundation.JSONSerialization.WritingOptions
+  public init(options: Foundation.JSONSerialization.WritingOptions = [])
+  public func encode(_ urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible, with parameters: MeetingDoctorsRemote.MDAParameters?) throws -> Foundation.URLRequest
+  public func encode(_ urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible, withJSONObject jsonObject: Any? = nil) throws -> Foundation.URLRequest
+}
+public struct MDAPropertyListEncoding : MeetingDoctorsRemote.MDAParameterEncoding {
+  public static var `default`: MeetingDoctorsRemote.MDAPropertyListEncoding {
+    get
+  }
+  public static var xml: MeetingDoctorsRemote.MDAPropertyListEncoding {
+    get
+  }
+  public static var binary: MeetingDoctorsRemote.MDAPropertyListEncoding {
+    get
+  }
+  public let format: Foundation.PropertyListSerialization.PropertyListFormat
+  public let options: Foundation.PropertyListSerialization.WriteOptions
+  public init(format: Foundation.PropertyListSerialization.PropertyListFormat = .xml, options: Foundation.PropertyListSerialization.WriteOptions = 0)
+  public func encode(_ urlRequest: any MeetingDoctorsRemote.MDAURLRequestConvertible, with parameters: MeetingDoctorsRemote.MDAParameters?) throws -> Foundation.URLRequest
+}
+public struct AlamofireMedicalDirectoryAdapter<E> : MeetingDoctorsController.MedicalDirectoryAdapter where E : MeetingDoctorsSchema.MedicalDirectorySchema {
+  public init(session: any MeetingDoctorsRemote.SessionAdapter, router: any MeetingDoctorsRemote.Routable)
+  public func fetch<ParameterType>(_ request: ParameterType? = nil, type: ParameterType.Type = ParameterType.self, completion: @escaping (Swift.Result<[E], any Swift.Error>) -> Swift.Void) where ParameterType : MeetingDoctorsSchema.PaginableRequest
+  public typealias SchemaType = E
+}
+extension MeetingDoctorsRemote.AlamofireMedicalDirectoryAdapter where E == MeetingDoctorsSchema.MedicalCoverageSchema {
+  public init(session: any MeetingDoctorsRemote.SessionAdapter)
+}
+extension MeetingDoctorsRemote.AlamofireMedicalDirectoryAdapter where E == MeetingDoctorsSchema.MedicalSpecialitySchema {
+  public init(session: any MeetingDoctorsRemote.SessionAdapter)
+}
+extension MeetingDoctorsRemote.AlamofireMedicalDirectoryAdapter where E == MeetingDoctorsSchema.MedicalProfessionalSchema {
+  public init(session: any MeetingDoctorsRemote.SessionAdapter)
+}
+extension MeetingDoctorsRemote.AlamofireMedicalDirectoryAdapter where E == MeetingDoctorsSchema.MedicalAddressSchema {
+  public init(session: any MeetingDoctorsRemote.SessionAdapter)
+}
+public protocol MDNetworkSessionManagerProtocol {
+  typealias CompletionHandler = (Foundation.Data?, Foundation.URLResponse?, (any Swift.Error)?) -> Swift.Void
+  func request(_ request: Foundation.URLRequest, completion: @escaping Self.CompletionHandler) -> any MeetingDoctorsRemote.MDNetworkCancellableProtocol
+}
+open class MDAServerTrustPolicyManager {
+  final public let policies: [Swift.String : MeetingDoctorsRemote.MDAServerTrustPolicy]
+  public init(policies: [Swift.String : MeetingDoctorsRemote.MDAServerTrustPolicy])
+  open func serverTrustPolicy(forHost host: Swift.String) -> MeetingDoctorsRemote.MDAServerTrustPolicy?
+  @objc deinit
+}
+public enum MDAServerTrustPolicy {
+  case performDefaultEvaluation(validateHost: Swift.Bool)
+  case performRevokedEvaluation(validateHost: Swift.Bool, revocationFlags: CoreFoundation.CFOptionFlags)
+  case pinCertificates(certificates: [Security.SecCertificate], validateCertificateChain: Swift.Bool, validateHost: Swift.Bool)
+  case pinPublicKeys(publicKeys: [Security.SecKey], validateCertificateChain: Swift.Bool, validateHost: Swift.Bool)
+  case disableEvaluation
+  case customEvaluation((_ serverTrust: Security.SecTrust, _ host: Swift.String) -> Swift.Bool)
+  public static func certificates(in bundle: Foundation.Bundle = Bundle.main) -> [Security.SecCertificate]
+  public static func publicKeys(in bundle: Foundation.Bundle = Bundle.main) -> [Security.SecKey]
+  public func evaluate(_ serverTrust: Security.SecTrust, forHost host: Swift.String) -> Swift.Bool
+}
+public enum MDAFError : Swift.Error {
+  public enum MDAParameterEncodingFailureReason {
+    case missingURL
+    case jsonEncodingFailed(error: any Swift.Error)
+    case propertyListEncodingFailed(error: any Swift.Error)
+  }
+  public enum MDAMultipartEncodingFailureReason {
+    case bodyPartURLInvalid(url: Foundation.URL)
+    case bodyPartFilenameInvalid(in: Foundation.URL)
+    case bodyPartFileNotReachable(at: Foundation.URL)
+    case bodyPartFileNotReachableWithError(atURL: Foundation.URL, error: any Swift.Error)
+    case bodyPartFileIsDirectory(at: Foundation.URL)
+    case bodyPartFileSizeNotAvailable(at: Foundation.URL)
+    case bodyPartFileSizeQueryFailedWithError(forURL: Foundation.URL, error: any Swift.Error)
+    case bodyPartInputStreamCreationFailed(for: Foundation.URL)
+    case outputStreamCreationFailed(for: Foundation.URL)
+    case outputStreamFileAlreadyExists(at: Foundation.URL)
+    case outputStreamURLInvalid(url: Foundation.URL)
+    case outputStreamWriteFailed(error: any Swift.Error)
+    case inputStreamReadFailed(error: any Swift.Error)
+  }
+  public enum MDAResponseValidationFailureReason {
+    case dataFileNil
+    case dataFileReadFailed(at: Foundation.URL)
+    case missingContentType(acceptableContentTypes: [Swift.String])
+    case unacceptableContentType(acceptableContentTypes: [Swift.String], responseContentType: Swift.String)
+    case unacceptableStatusCode(code: Swift.Int)
+  }
+  public enum MDAResponseSerializationFailureReason {
+    case inputDataNil
+    case inputDataNilOrZeroLength
+    case inputFileNil
+    case inputFileReadFailed(at: Foundation.URL)
+    case stringSerializationFailed(encoding: Swift.String.Encoding)
+    case jsonSerializationFailed(error: any Swift.Error)
+    case propertyListSerializationFailed(error: any Swift.Error)
+  }
+  case invalidURL(url: any MeetingDoctorsRemote.MDAURLConvertible)
+  case parameterEncodingFailed(reason: MeetingDoctorsRemote.MDAFError.MDAParameterEncodingFailureReason)
+  case multipartEncodingFailed(reason: MeetingDoctorsRemote.MDAFError.MDAMultipartEncodingFailureReason)
+  case responseValidationFailed(reason: MeetingDoctorsRemote.MDAFError.MDAResponseValidationFailureReason)
+  case responseSerializationFailed(reason: MeetingDoctorsRemote.MDAFError.MDAResponseSerializationFailureReason)
+}
+extension MeetingDoctorsRemote.MDAFError {
+  public var isInvalidURLError: Swift.Bool {
+    get
+  }
+  public var isParameterEncodingError: Swift.Bool {
+    get
+  }
+  public var isMultipartEncodingError: Swift.Bool {
+    get
+  }
+  public var isResponseValidationError: Swift.Bool {
+    get
+  }
+  public var isResponseSerializationError: Swift.Bool {
+    get
+  }
+}
+extension MeetingDoctorsRemote.MDAFError {
+  public var urlConvertible: (any MeetingDoctorsRemote.MDAURLConvertible)? {
+    get
+  }
+  public var url: Foundation.URL? {
+    get
+  }
+  public var underlyingError: (any Swift.Error)? {
+    get
+  }
+  public var acceptableContentTypes: [Swift.String]? {
+    get
+  }
+  public var responseContentType: Swift.String? {
+    get
+  }
+  public var responseCode: Swift.Int? {
+    get
+  }
+  public var failedStringEncoding: Swift.String.Encoding? {
+    get
+  }
+}
+extension MeetingDoctorsRemote.MDAFError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public struct DecodableResponseSerializer<R, E> : MeetingDoctorsRemote.ErrorDataResponseSerializerProtocol where R : Swift.Decodable, E : Swift.Decodable, E : Swift.Error {
+  public init(mapper: any MeetingDoctorsCore.CodableMapper)
+  public var serializeResponse: (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.Data?, (any Swift.Error)?) -> MeetingDoctorsRemote.MDAResult<R> {
+    get
+  }
+  public var serializeError: (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.Data?, (any Swift.Error)?) -> MeetingDoctorsRemote.MDAResult<E> {
+    get
+  }
+  public typealias ErrorType = E
+  public typealias MDASerializedObject = R
+}
+@_hasMissingDesignatedInitializers open class MDANetworkReachabilityManager {
+  public enum MDANetworkReachabilityStatus {
+    case unknown
+    case notReachable
+    case reachable(MeetingDoctorsRemote.MDANetworkReachabilityManager.MDConnectionType)
+  }
+  public enum MDConnectionType {
+    case ethernetOrWiFi
+    case wwan
+    public static func == (a: MeetingDoctorsRemote.MDANetworkReachabilityManager.MDConnectionType, b: MeetingDoctorsRemote.MDANetworkReachabilityManager.MDConnectionType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public typealias Listener = (MeetingDoctorsRemote.MDANetworkReachabilityManager.MDANetworkReachabilityStatus) -> Swift.Void
+  open var isReachable: Swift.Bool {
+    get
+  }
+  open var isReachableOnWWAN: Swift.Bool {
+    get
+  }
+  open var isReachableOnEthernetOrWiFi: Swift.Bool {
+    get
+  }
+  open var networkReachabilityStatus: MeetingDoctorsRemote.MDANetworkReachabilityManager.MDANetworkReachabilityStatus {
+    get
+  }
+  open var listenerQueue: Dispatch.DispatchQueue
+  open var listener: MeetingDoctorsRemote.MDANetworkReachabilityManager.Listener?
+  open var flags: SystemConfiguration.SCNetworkReachabilityFlags? {
+    get
+  }
+  open var previousFlags: SystemConfiguration.SCNetworkReachabilityFlags
+  convenience public init?(host: Swift.String)
+  convenience public init?()
+  @objc deinit
+  @discardableResult
+  open func startListening() -> Swift.Bool
+  open func stopListening()
+}
+extension MeetingDoctorsRemote.MDANetworkReachabilityManager.MDANetworkReachabilityStatus : Swift.Equatable {
+}
+public func == (lhs: MeetingDoctorsRemote.MDANetworkReachabilityManager.MDANetworkReachabilityStatus, rhs: MeetingDoctorsRemote.MDANetworkReachabilityManager.MDANetworkReachabilityStatus) -> Swift.Bool
+public struct AlamofireMedicalHistoryAdapter<E> : MeetingDoctorsController.MedicalHistoryAdapter where E : MeetingDoctorsSchema.MedicalHistorySchema {
+  public init(session: any MeetingDoctorsRemote.SessionAdapter, operation: any MeetingDoctorsRemote.MedicalHistoryOperation)
+  public func fetch(by id: Swift.String) -> RxSwift.Single<E?>
+  public func fetch() -> RxSwift.Single<[E]>
+  public func save(entity: E, update: Swift.Bool = false) -> RxSwift.Single<E>
+  public func delete(entity: E) -> RxSwift.Completable
+  public typealias SchemaType = E
+}
+public struct AlamofireIdentifiableAdapter<E> : MeetingDoctorsController.IdentifiableAdapter where E : MeetingDoctorsSchema.IdentifiableSchema {
+  public init(session: any MeetingDoctorsRemote.SessionAdapter, operation: any MeetingDoctorsRemote.MedicalHistoryOperation)
+  public func fetch(by id: Swift.String) -> RxSwift.Single<E?>
+  public func fetch() -> RxSwift.Single<[E]>
+  public func save(entity: E, update: Swift.Bool = false) -> RxSwift.Single<E>
+  public func delete(entity: E) -> RxSwift.Completable
+  public typealias SchemaType = E
+}
+public struct MDATimeline {
+  public let requestStartTime: CoreFoundation.CFAbsoluteTime
+  public let initialResponseTime: CoreFoundation.CFAbsoluteTime
+  public let requestCompletedTime: CoreFoundation.CFAbsoluteTime
+  public let serializationCompletedTime: CoreFoundation.CFAbsoluteTime
+  public let latency: Foundation.TimeInterval
+  public let requestDuration: Foundation.TimeInterval
+  public let serializationDuration: Foundation.TimeInterval
+  public let totalDuration: Foundation.TimeInterval
+  public init(requestStartTime: CoreFoundation.CFAbsoluteTime = 0.0, initialResponseTime: CoreFoundation.CFAbsoluteTime = 0.0, requestCompletedTime: CoreFoundation.CFAbsoluteTime = 0.0, serializationCompletedTime: CoreFoundation.CFAbsoluteTime = 0.0)
+}
+extension MeetingDoctorsRemote.MDATimeline : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsRemote.MDATimeline : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+public protocol MDADataResponseSerializerProtocol {
+  associatedtype MDASerializedObject
+  var serializeResponse: (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.Data?, (any Swift.Error)?) -> MeetingDoctorsRemote.MDAResult<Self.MDASerializedObject> { get }
+}
+public struct MDADataResponseSerializer<Value> : MeetingDoctorsRemote.MDADataResponseSerializerProtocol {
+  public typealias MDASerializedObject = Value
+  public var serializeResponse: (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.Data?, (any Swift.Error)?) -> MeetingDoctorsRemote.MDAResult<Value>
+  public init(serializeResponse: @escaping (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.Data?, (any Swift.Error)?) -> MeetingDoctorsRemote.MDAResult<Value>)
+}
+public protocol MDADownloadResponseSerializerProtocol {
+  associatedtype MDASerializedObject
+  var serializeResponse: (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.URL?, (any Swift.Error)?) -> MeetingDoctorsRemote.MDAResult<Self.MDASerializedObject> { get }
+}
+public struct MDADownloadResponseSerializer<Value> : MeetingDoctorsRemote.MDADownloadResponseSerializerProtocol {
+  public typealias MDASerializedObject = Value
+  public var serializeResponse: (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.URL?, (any Swift.Error)?) -> MeetingDoctorsRemote.MDAResult<Value>
+  public init(serializeResponse: @escaping (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.URL?, (any Swift.Error)?) -> MeetingDoctorsRemote.MDAResult<Value>)
+}
+extension MeetingDoctorsRemote.MDADataRequest {
+  @discardableResult
+  public func response(queue: Dispatch.DispatchQueue? = nil, completionHandler: @escaping (MeetingDoctorsRemote.MDADefaultDataResponse) -> Swift.Void) -> Self
+  @discardableResult
+  public func response<T>(queue: Dispatch.DispatchQueue? = nil, responseSerializer: T, completionHandler: @escaping (MeetingDoctorsRemote.MDADataResponse<T.MDASerializedObject>) -> Swift.Void) -> Self where T : MeetingDoctorsRemote.MDADataResponseSerializerProtocol
+}
+extension MeetingDoctorsRemote.MDADownloadRequest {
+  @discardableResult
+  public func response(queue: Dispatch.DispatchQueue? = nil, completionHandler: @escaping (MeetingDoctorsRemote.MDADefaultDownloadResponse) -> Swift.Void) -> Self
+  @discardableResult
+  public func response<T>(queue: Dispatch.DispatchQueue? = nil, responseSerializer: T, completionHandler: @escaping (MeetingDoctorsRemote.MDADownloadResponse<T.MDASerializedObject>) -> Swift.Void) -> Self where T : MeetingDoctorsRemote.MDADownloadResponseSerializerProtocol
+}
+extension MeetingDoctorsRemote.MDARequest {
+  public static func serializeResponseData(response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: (any Swift.Error)?) -> MeetingDoctorsRemote.MDAResult<Foundation.Data>
+}
+extension MeetingDoctorsRemote.MDADataRequest {
+  public static func dataResponseSerializer() -> MeetingDoctorsRemote.MDADataResponseSerializer<Foundation.Data>
+  @discardableResult
+  public func responseData(queue: Dispatch.DispatchQueue? = nil, completionHandler: @escaping (MeetingDoctorsRemote.MDADataResponse<Foundation.Data>) -> Swift.Void) -> Self
+}
+extension MeetingDoctorsRemote.MDADownloadRequest {
+  public static func dataResponseSerializer() -> MeetingDoctorsRemote.MDADownloadResponseSerializer<Foundation.Data>
+  @discardableResult
+  public func responseData(queue: Dispatch.DispatchQueue? = nil, completionHandler: @escaping (MeetingDoctorsRemote.MDADownloadResponse<Foundation.Data>) -> Swift.Void) -> Self
+}
+extension MeetingDoctorsRemote.MDARequest {
+  public static func serializeResponseString(encoding: Swift.String.Encoding?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: (any Swift.Error)?) -> MeetingDoctorsRemote.MDAResult<Swift.String>
+}
+extension MeetingDoctorsRemote.MDADataRequest {
+  public static func stringResponseSerializer(encoding: Swift.String.Encoding? = nil) -> MeetingDoctorsRemote.MDADataResponseSerializer<Swift.String>
+  @discardableResult
+  public func responseString(queue: Dispatch.DispatchQueue? = nil, encoding: Swift.String.Encoding? = nil, completionHandler: @escaping (MeetingDoctorsRemote.MDADataResponse<Swift.String>) -> Swift.Void) -> Self
+}
+extension MeetingDoctorsRemote.MDADownloadRequest {
+  public static func stringResponseSerializer(encoding: Swift.String.Encoding? = nil) -> MeetingDoctorsRemote.MDADownloadResponseSerializer<Swift.String>
+  @discardableResult
+  public func responseString(queue: Dispatch.DispatchQueue? = nil, encoding: Swift.String.Encoding? = nil, completionHandler: @escaping (MeetingDoctorsRemote.MDADownloadResponse<Swift.String>) -> Swift.Void) -> Self
+}
+extension MeetingDoctorsRemote.MDARequest {
+  public static func serializeResponseJSON(options: Foundation.JSONSerialization.ReadingOptions, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: (any Swift.Error)?) -> MeetingDoctorsRemote.MDAResult<Any>
+}
+extension MeetingDoctorsRemote.MDADataRequest {
+  public static func jsonResponseSerializer(options: Foundation.JSONSerialization.ReadingOptions = .allowFragments) -> MeetingDoctorsRemote.MDADataResponseSerializer<Any>
+  @discardableResult
+  public func responseJSON(queue: Dispatch.DispatchQueue? = nil, options: Foundation.JSONSerialization.ReadingOptions = .allowFragments, completionHandler: @escaping (MeetingDoctorsRemote.MDADataResponse<Any>) -> Swift.Void) -> Self
+}
+extension MeetingDoctorsRemote.MDADownloadRequest {
+  public static func jsonResponseSerializer(options: Foundation.JSONSerialization.ReadingOptions = .allowFragments) -> MeetingDoctorsRemote.MDADownloadResponseSerializer<Any>
+  @discardableResult
+  public func responseJSON(queue: Dispatch.DispatchQueue? = nil, options: Foundation.JSONSerialization.ReadingOptions = .allowFragments, completionHandler: @escaping (MeetingDoctorsRemote.MDADownloadResponse<Any>) -> Swift.Void) -> Self
+}
+extension MeetingDoctorsRemote.MDARequest {
+  public static func serializeResponsePropertyList(options: Foundation.PropertyListSerialization.ReadOptions, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: (any Swift.Error)?) -> MeetingDoctorsRemote.MDAResult<Any>
+}
+extension MeetingDoctorsRemote.MDADataRequest {
+  public static func propertyListResponseSerializer(options: Foundation.PropertyListSerialization.ReadOptions = []) -> MeetingDoctorsRemote.MDADataResponseSerializer<Any>
+  @discardableResult
+  public func responsePropertyList(queue: Dispatch.DispatchQueue? = nil, options: Foundation.PropertyListSerialization.ReadOptions = [], completionHandler: @escaping (MeetingDoctorsRemote.MDADataResponse<Any>) -> Swift.Void) -> Self
+}
+extension MeetingDoctorsRemote.MDADownloadRequest {
+  public static func propertyListResponseSerializer(options: Foundation.PropertyListSerialization.ReadOptions = []) -> MeetingDoctorsRemote.MDADownloadResponseSerializer<Any>
+  @discardableResult
+  public func responsePropertyList(queue: Dispatch.DispatchQueue? = nil, options: Foundation.PropertyListSerialization.ReadOptions = [], completionHandler: @escaping (MeetingDoctorsRemote.MDADownloadResponse<Any>) -> Swift.Void) -> Self
+}
+public protocol AlamofireSession {
+  var adapter: (any MeetingDoctorsRemote.MDARequestAdapter)? { get set }
+  @discardableResult
+  func request(_ url: any MeetingDoctorsRemote.MDAURLConvertible, method: MeetingDoctorsRemote.MDHTTPMethod, parameters: MeetingDoctorsRemote.MDAParameters?, encoding: any MeetingDoctorsRemote.MDAParameterEncoding, headers: MeetingDoctorsRemote.MDAHTTPHeaders?) -> MeetingDoctorsRemote.MDADataRequest
+}
+extension MeetingDoctorsRemote.MDASessionManager : MeetingDoctorsRemote.AlamofireSession {
+}
+public protocol AutoLenses {
+}
+infix operator *~ : MultiplicationPrecedence
+infix operator |> : AdditionPrecedence
+public struct Lens<Whole, Part> {
+}
+public func * <A, B, C>(lhs: MeetingDoctorsRemote.Lens<A, B>, rhs: MeetingDoctorsRemote.Lens<B, C>) -> MeetingDoctorsRemote.Lens<A, C>
+public func *~ <A, B>(lhs: MeetingDoctorsRemote.Lens<A, B>, rhs: B) -> (A) -> A
+public func |> <A, B>(x: A, f: (A) -> B) -> B
+public func |> <A, B, C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> (A) -> C
+public struct ResponseError<T> : Swift.Error, Foundation.LocalizedError where T : Swift.Error {
+  public let underlying: (any Swift.Error)?
+  public var schema: T?
+  public init(_ error: (any Swift.Error)?, schema: T?)
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public class AcceptJSONRequestInterceptor : MeetingDoctorsRemote.MDARequestAdapter {
+  public init()
+  public func adapt(_ urlRequest: Foundation.URLRequest) throws -> Foundation.URLRequest
+  @objc deinit
+}
+extension MeetingDoctorsRemote.NetworkType : Swift.Equatable {}
+extension MeetingDoctorsRemote.NetworkType : Swift.Hashable {}
+extension MeetingDoctorsRemote.MDHTTP.Header.Key : Swift.Equatable {}
+extension MeetingDoctorsRemote.MDHTTP.Header.Key : Swift.Hashable {}
+extension MeetingDoctorsRemote.MDHTTP.Header.Key : Swift.RawRepresentable {}
+extension MeetingDoctorsRemote.MDHTTP.Header.Value : Swift.Equatable {}
+extension MeetingDoctorsRemote.MDHTTP.Header.Value : Swift.Hashable {}
+extension MeetingDoctorsRemote.MDHTTP.Header.Value : Swift.RawRepresentable {}
+extension MeetingDoctorsRemote.MDHTTP.Header.Value.Application : Swift.Equatable {}
+extension MeetingDoctorsRemote.MDHTTP.Header.Value.Application : Swift.Hashable {}
+extension MeetingDoctorsRemote.MDHTTP.Header.Value.Application : Swift.RawRepresentable {}
+extension MeetingDoctorsRemote.MDHTTP.Header.Value.ContentType : Swift.Equatable {}
+extension MeetingDoctorsRemote.MDHTTP.Header.Value.ContentType : Swift.Hashable {}
+extension MeetingDoctorsRemote.MDHTTP.Header.Value.ContentType : Swift.RawRepresentable {}
+extension MeetingDoctorsRemote.MDHTTP.StatusCode : Swift.Equatable {}
+extension MeetingDoctorsRemote.MDHTTP.StatusCode : Swift.Hashable {}
+extension MeetingDoctorsRemote.MDHTTP.StatusCode : Swift.RawRepresentable {}
+extension MeetingDoctorsRemote.MDHTTP.StatusCode.ResponseType : Swift.Equatable {}
+extension MeetingDoctorsRemote.MDHTTP.StatusCode.ResponseType : Swift.Hashable {}
+extension MeetingDoctorsRemote.MDHTTP.Method : Swift.Equatable {}
+extension MeetingDoctorsRemote.MDHTTP.Method : Swift.Hashable {}
+extension MeetingDoctorsRemote.MDHTTP.Method : Swift.RawRepresentable {}
+extension MeetingDoctorsRemote.RequestGenerationError : Swift.Equatable {}
+extension MeetingDoctorsRemote.RequestGenerationError : Swift.Hashable {}
+extension MeetingDoctorsRemote.MDHTTPMethod : Swift.Equatable {}
+extension MeetingDoctorsRemote.MDHTTPMethod : Swift.Hashable {}
+extension MeetingDoctorsRemote.MDHTTPMethod : Swift.RawRepresentable {}
+extension MeetingDoctorsRemote.MDAURLEncoding.Destination : Swift.Equatable {}
+extension MeetingDoctorsRemote.MDAURLEncoding.Destination : Swift.Hashable {}
+extension MeetingDoctorsRemote.MDAURLEncoding.ArrayEncoding : Swift.Equatable {}
+extension MeetingDoctorsRemote.MDAURLEncoding.ArrayEncoding : Swift.Hashable {}
+extension MeetingDoctorsRemote.MDAURLEncoding.BoolEncoding : Swift.Equatable {}
+extension MeetingDoctorsRemote.MDAURLEncoding.BoolEncoding : Swift.Hashable {}
+extension MeetingDoctorsRemote.MDANetworkReachabilityManager.MDConnectionType : Swift.Equatable {}
+extension MeetingDoctorsRemote.MDANetworkReachabilityManager.MDConnectionType : Swift.Hashable {}

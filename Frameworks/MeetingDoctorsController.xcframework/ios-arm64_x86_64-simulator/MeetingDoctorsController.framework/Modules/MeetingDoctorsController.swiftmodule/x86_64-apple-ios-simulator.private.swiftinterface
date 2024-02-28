@@ -1,0 +1,2235 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MeetingDoctorsController
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import CoreLocation
+import Foundation
+import MeetingDoctorsCore
+import MeetingDoctorsSchema
+import Photos
+import RxSwift
+import Security
+import Swift
+import UIKit
+import UserNotifications
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public class AuthenticationController {
+  public init(_ installation: MeetingDoctorsController.InstallationController, repository: any MeetingDoctorsController.RepositoryController, remote: any MeetingDoctorsController.RemoteController, scheduler: any RxSwift.ImmediateSchedulerType, auth: any MeetingDoctorsController.CustomerAuthControllerProtocol)
+  public func current(_ id: Swift.String) -> RxSwift.Observable<MeetingDoctorsController.AccountModel?>
+  public func updateUserInfo(_ account: MeetingDoctorsController.AccountModel, notifier: Foundation.NotificationCenter = NotificationCenter.default, completion: @escaping (Swift.Result<MeetingDoctorsController.AccountModel, any Swift.Error>) -> Swift.Void)
+  public func deauthenticate(notifier: Foundation.NotificationCenter = NotificationCenter.default) -> RxSwift.Observable<Swift.Void>
+  public func authenticate(_ id: Swift.String, notifier: Foundation.NotificationCenter = NotificationCenter.default, completion: @escaping (Swift.Result<MeetingDoctorsController.AccountModel, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+extension Foundation.NSNotification.Name {
+  public struct MeetingDoctors {
+    public struct Authentication {
+      public static let Succeed: Foundation.Notification.Name
+      public static let Failed: Foundation.Notification.Name
+      public static let UserStatusChanged: Foundation.Notification.Name
+      public static let UserBannedChanged: Foundation.Notification.Name
+      public static let UserUpdated: Foundation.Notification.Name
+    }
+    public struct CustomerAuthentication {
+      public static let Succeed: Foundation.Notification.Name
+    }
+    public struct Deauthentication {
+      public static let Succeed: Foundation.Notification.Name
+      public static let Failed: Foundation.Notification.Name
+    }
+    public struct Socket {
+      public static let StatusChanged: Foundation.Notification.Name
+      public static let MessageReceived: Foundation.Notification.Name
+      public static let UpdateStatus: Foundation.Notification.Name
+      public static let MessageRead: Foundation.Notification.Name
+      public static let WatchDogAct: Foundation.Notification.Name
+    }
+    public struct Style {
+      public static let StyleChanged: Foundation.Notification.Name
+    }
+    public struct Message {
+      public static let UnreadChanged: Foundation.Notification.Name
+      public static let Sent: Foundation.Notification.Name
+      public static let Read: Foundation.Notification.Name
+    }
+    public struct Messenger {
+      public static let ChatEntered: Foundation.Notification.Name
+      public static let ChatLeft: Foundation.Notification.Name
+      public static let Update: Foundation.Notification.Name
+    }
+    public struct NPS {
+      public static let NPSSendSucceed: Foundation.Notification.Name
+    }
+    public struct HtmlBanner {
+      public static let loaded: Foundation.Notification.Name
+    }
+    public struct TermsAndConditions {
+      public static let Declined: Foundation.Notification.Name
+      public static let Accepted: Foundation.Notification.Name
+    }
+    public struct VideoCall {
+      public static let videocall_requested: Foundation.Notification.Name
+      public static let videocall_cancelled_user: Foundation.Notification.Name
+      public static let videocall_professional_ready: Foundation.Notification.Name
+      public static let videocall_cancelled_time_expired: Foundation.Notification.Name
+      public static let videocall_user_joined: Foundation.Notification.Name
+      public static let videocall_finished: Foundation.Notification.Name
+      public static let videocall_cancelled_professional_busy: Foundation.Notification.Name
+      public static let videocall_error_network: Foundation.Notification.Name
+      public static let videocall_error_system: Foundation.Notification.Name
+      public static let videocall_cancelled_user_requested_new: Foundation.Notification.Name
+      public static let PickedUp: Foundation.Notification.Name
+      public static let Finished: Foundation.Notification.Name
+      public static let Cancelled: Foundation.Notification.Name
+      public struct Process {
+        public struct Searching {
+          public static let Retry: Foundation.Notification.Name
+        }
+        public struct Canceled {
+          public static let Error: Foundation.Notification.Name
+          public static let Dismiss: Foundation.Notification.Name
+          public static let Alert: Foundation.Notification.Name
+          public static let Timeout: Foundation.Notification.Name
+          public static let Reinit: Foundation.Notification.Name
+        }
+        public static let Init: Foundation.Notification.Name
+        public static let Reinit: Foundation.Notification.Name
+        public struct OneToOne {
+          public static let RequestVideocall: Foundation.Notification.Name
+          public static let SendMessage: Foundation.Notification.Name
+        }
+      }
+    }
+  }
+  public struct MeetingDoctorsGroups {
+    public static let Error: Foundation.Notification.Name
+  }
+  public struct MeetingDoctorsVideoCall {
+    public static let Push: Foundation.Notification.Name
+  }
+}
+extension Foundation.Notification {
+  public struct Key {
+    public struct MeetingDoctors {
+      public static let Authentication: Swift.String
+      public static let CustomerAuthentication: Swift.String
+      public static let Deauthentication: Swift.String
+      public struct Message {
+        public static let UnreadChanged: Foundation.Notification.Name
+        public static let Sent: Foundation.Notification.Name
+        public static let Read: Foundation.Notification.Name
+      }
+      public struct Socket {
+        public static let StatusChanged: Foundation.Notification.Name
+        public static let MessageReceived: Foundation.Notification.Name
+        public static let UpdateStatus: Foundation.Notification.Name
+        public static let MessageRead: Foundation.Notification.Name
+      }
+      public static let Style: Swift.String
+      public struct TermsAndConditions {
+        public static let Declined: Foundation.Notification.Name
+      }
+    }
+    public struct MeetingDoctorsGroups {
+      public static let Error: Swift.String
+    }
+    public struct MeetingDoctorsVideoCall {
+      public static let Push: Foundation.Notification.Name
+    }
+    public struct MeetingDoctorsProfessional {
+      public struct Login {
+        public static let View: Swift.String
+      }
+    }
+    public struct VideoCall {
+      public static let videoCallId: Swift.String
+      public static let Item: Swift.String
+      public struct Process {
+        public static let Status: Foundation.Notification.Name
+        public struct OneToOne {
+          public struct RequestVideocall {
+            public static let Moderator: Foundation.Notification.Name
+            public static let SpecialityCode: Foundation.Notification.Name
+          }
+          public static let SendMessage: Foundation.Notification.Name
+        }
+      }
+    }
+  }
+}
+public enum MedicalHistoryModel {
+  case unknown
+  case allergy(MeetingDoctorsController.AllergyModel?)
+  case disease(MeetingDoctorsController.DiseaseModel?)
+  case medication(MeetingDoctorsController.MedicationModel?)
+  case imc(MeetingDoctorsController.IMCModel?)
+  case videoCallReport(MeetingDoctorsController.VideoCallReportModel?)
+  case derivation
+  case myDocuments
+  case prescription
+}
+extension MeetingDoctorsController.MedicalHistoryModel : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsController.MedicalHistoryModel, rhs: MeetingDoctorsController.MedicalHistoryModel) -> Swift.Bool
+}
+extension MeetingDoctorsController.MedicalHistoryModel : MeetingDoctorsCore.Transmittable {
+  public typealias SchemaObject = MeetingDoctorsSchema.MedicalHistoryGenericSchema
+  public var schemaObject: MeetingDoctorsSchema.MedicalHistoryGenericSchema {
+    get
+  }
+  public init(schemaObject _: MeetingDoctorsSchema.MedicalHistoryGenericSchema) throws
+}
+public protocol RepositoryController {
+  var installation: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.InstallationModel> { get }
+  var customerInstallation: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.CustomerInstallationModel> { get }
+  var customerAuth: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.CustomerAuthModel> { get }
+  var authentication: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.AccountModel> { get }
+  var user: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.UserModel> { get }
+  var inbox: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.InboxContactModel> { get }
+  var conversations: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.ConversationModel> { get }
+  var messages: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.MessageModel> { get }
+  var schedules: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.ScheduleModel> { get }
+  var allergy: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.AllergyModel> { get }
+  var disease: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.DiseaseModel> { get }
+  var medication: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.MedicationModel> { get }
+  var imc: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.IMCModel> { get }
+  var videoCallReport: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.VideoCallReportModel> { get }
+  var derivationReport: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.DerivationReportModel> { get }
+  var coverage: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.MedicalCoverageModel> { get }
+  var speciality: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.MedicalSpecialityModel> { get }
+  var professional: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.MedicalProfessionalModel> { get }
+  func clear() -> RxSwift.Observable<Swift.Void>
+}
+public enum MessageDataModel {
+  case text(Swift.String)
+  case image(UIKit.UIImage?, url: Foundation.URL, thumb: Foundation.URL, width: Swift.Int, height: Swift.Int)
+  case file(Foundation.Data?, name: Swift.String, url: Foundation.URL, size: Swift.Int)
+  case note(Swift.String)
+  case none
+}
+extension MeetingDoctorsController.MessageDataModel : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsController.MessageDataModel, rhs: MeetingDoctorsController.MessageDataModel) -> Swift.Bool
+}
+extension MeetingDoctorsController.MessageDataModel {
+  public var isImage: Swift.Bool {
+    get
+  }
+  public var image: UIKit.UIImage? {
+    get
+  }
+}
+extension MeetingDoctorsController.MessageDataModel {
+  public var attachmentURL: Foundation.URL? {
+    get
+  }
+}
+extension MeetingDoctorsController.MessageDataModel {
+  public var name: Swift.String? {
+    get
+  }
+}
+extension MeetingDoctorsController.MessageDataModel {
+  public var thumbnailURL: Foundation.URL? {
+    get
+  }
+}
+extension MeetingDoctorsController.MessageDataModel {
+  public var size: CoreFoundation.CGSize? {
+    get
+  }
+}
+extension MeetingDoctorsController.MessageDataModel {
+  public var isFile: Swift.Bool {
+    get
+  }
+  public var count: Swift.Int? {
+    get
+  }
+}
+public class InstallationController {
+  public var current: RxSwift.Observable<MeetingDoctorsController.InstallationModel?> {
+    get
+  }
+  public func current(completion: @escaping (Swift.Result<MeetingDoctorsController.InstallationModel?, any Swift.Error>) -> Swift.Void)
+  public var medicalHistoryActiveAndOptions: MeetingDoctorsController.MedicalHistoryActiveAndOptionsModel?
+  public var setup: MeetingDoctorsSchema.SetupSchema?
+  public init(_ id: MeetingDoctorsCore.NamedProperty<Foundation.UUID>, keystore: MeetingDoctorsCore.Keystore, repository: any MeetingDoctorsController.RepositoryController, remote: any MeetingDoctorsController.RemoteController, scheduler: any RxSwift.ImmediateSchedulerType)
+  public func fetch() -> RxSwift.Observable<MeetingDoctorsController.InstallationModel?>
+  public func update(model: MeetingDoctorsController.InstallationModel, deviceToken: Swift.String) -> RxSwift.Observable<MeetingDoctorsController.InstallationModel>
+  public func fetch(completion: @escaping (Swift.Result<MeetingDoctorsController.InstallationModel?, any Swift.Error>) -> Swift.Void)
+  public func setup(in bundle: Foundation.Bundle, completion: @escaping (Swift.Result<MeetingDoctorsController.InstallationModel?, any Swift.Error>) -> Swift.Void)
+  public func ping(in bundle: Foundation.Bundle, completion: @escaping (Swift.Result<MeetingDoctorsSchema.SetupSchema, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public protocol EncryptionProviderAssembly {
+  func resolve() -> (any MeetingDoctorsController.EncryptionProvider)?
+}
+public class EncryptionProviderAssembler : MeetingDoctorsController.EncryptionProviderAssembly {
+  public init(_ tag: Swift.String, configuration: MeetingDoctorsCore.BuildConfigurationType)
+  public func resolve() -> (any MeetingDoctorsController.EncryptionProvider)?
+  @objc deinit
+}
+extension MeetingDoctorsController.EncryptionProviderAssembler : MeetingDoctorsCore.Assembler {
+  public typealias Component = any MeetingDoctorsController.EncryptionProvider
+}
+public enum MessengerRemoteNotificationModel {
+  case message(professionalHash: Swift.String, specialityID: Swift.Int?)
+  case link(Foundation.URL)
+  case rating
+  case silent
+  case unknown
+}
+extension MeetingDoctorsController.MessengerRemoteNotificationModel : Swift.Equatable {
+  public static func == (a: MeetingDoctorsController.MessengerRemoteNotificationModel, b: MeetingDoctorsController.MessengerRemoteNotificationModel) -> Swift.Bool
+}
+extension MeetingDoctorsController.MessengerRemoteNotificationModel {
+  public init(schema: MeetingDoctorsSchema.MessengerRemoteNotificationSchema)
+}
+public enum MessageTypeModel : Swift.String {
+  case text
+  case image
+  case file
+  case note
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsController.MessageTypeModel {
+  public var schema: MeetingDoctorsSchema.MessageSchema.Kind {
+    get
+  }
+}
+public enum UserRegistrationStatusModel : Swift.String {
+  case unknown
+  case freemium
+  case processing
+  case formalized
+  case canceled
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsSchema.UserSchema.RegistrationStatus {
+  public var model: MeetingDoctorsController.UserRegistrationStatusModel {
+    get
+  }
+}
+public struct DefaultEncryptionProvider : MeetingDoctorsController.EncryptionProvider {
+}
+public struct ProfessionalReportModel {
+  public let id: Swift.Int?
+  public let token: Swift.String?
+  public let name: Swift.String?
+  public let connected: Swift.Bool?
+  public let hash: Swift.String?
+  public init(id: Swift.Int?, token: Swift.String?, name: Swift.String?, connected: Swift.Bool?, hash: Swift.String?)
+}
+public protocol UserPreferencesType {
+  var uuid: MeetingDoctorsCore.NamedProperty<Foundation.UUID> { get }
+  var keystore: MeetingDoctorsCore.NamedProperty<MeetingDoctorsCore.Keystore> { get }
+  var lastInboxUpdate: MeetingDoctorsCore.NamedProperty<Foundation.Date> { get }
+  var isVideoCallStarted: MeetingDoctorsCore.NamedProperty<Swift.Bool> { get }
+  var lastSocketUpdate: MeetingDoctorsCore.NamedProperty<Foundation.Date> { get }
+  func clear(_ bundle: Foundation.Bundle)
+}
+public struct UserPreferences : MeetingDoctorsController.UserPreferencesType {
+  public var uuid: MeetingDoctorsCore.NamedProperty<Foundation.UUID> {
+    get
+  }
+  public var keystore: MeetingDoctorsCore.NamedProperty<MeetingDoctorsCore.Keystore> {
+    get
+  }
+  public var lastInboxUpdate: MeetingDoctorsCore.NamedProperty<Foundation.Date> {
+    get
+  }
+  public var isVideoCallStarted: MeetingDoctorsCore.NamedProperty<Swift.Bool> {
+    get
+  }
+  public var lastSocketUpdate: MeetingDoctorsCore.NamedProperty<Foundation.Date> {
+    get
+  }
+  public init(_ defaults: Foundation.UserDefaults)
+  public func clear(_ bundle: Foundation.Bundle)
+}
+public protocol MessagesControllerType {
+  func fetch(contact id: Swift.String) -> RxSwift.Observable<MeetingDoctorsController.InboxContactModel?>
+  func fetch(room id: Swift.Int) -> RxSwift.Observable<([MeetingDoctorsController.MessageModel], MeetingDoctorsController.Changeset?)>
+  func join(channel: Swift.String) -> RxSwift.Observable<MeetingDoctorsSchema.SocketClientSchema.Input>
+  func leave(room id: Swift.Int)
+  func delete(room id: Swift.Int) -> RxSwift.Observable<Swift.Void>
+  func send(message: MeetingDoctorsController.MessageModel) -> RxSwift.Observable<Swift.Void>
+  func update(message: MeetingDoctorsController.MessageModel, status: MeetingDoctorsController.MessageStatusModel)
+  func metadata(for image: UIKit.UIImage?, at url: Foundation.URL?, photoLibrary: Photos.PHPhotoLibrary) -> RxSwift.Observable<MeetingDoctorsController.MessageDataModel>
+  func metadata(for data: Foundation.Data, at url: Foundation.URL) -> RxSwift.Observable<MeetingDoctorsController.MessageDataModel>
+  func unreadMessages(account: MeetingDoctorsController.AccountModel) -> RxSwift.Observable<Swift.Int>
+}
+public class MessagesController : MeetingDoctorsController.MessagesControllerType {
+  public init(_ repository: any MeetingDoctorsController.RepositoryController, _ socket: MeetingDoctorsController.AnySocketControllerStream, _ scheduler: any RxSwift.ImmediateSchedulerType)
+  public func fetch(contact id: Swift.String) -> RxSwift.Observable<MeetingDoctorsController.InboxContactModel?>
+  public func fetch(room id: Swift.Int) -> RxSwift.Observable<([MeetingDoctorsController.MessageModel], MeetingDoctorsController.Changeset?)>
+  public func join(channel: Swift.String) -> RxSwift.Observable<MeetingDoctorsSchema.SocketClientSchema.Input>
+  public func leave(room id: Swift.Int)
+  @discardableResult
+  public func delete(room id: Swift.Int) -> RxSwift.Observable<Swift.Void>
+  public func send(message: MeetingDoctorsController.MessageModel) -> RxSwift.Observable<Swift.Void>
+  public func update(message: MeetingDoctorsController.MessageModel, status: MeetingDoctorsController.MessageStatusModel)
+  public func metadata(for image: UIKit.UIImage?, at url: Foundation.URL?, photoLibrary: Photos.PHPhotoLibrary = PHPhotoLibrary.shared()) -> RxSwift.Observable<MeetingDoctorsController.MessageDataModel>
+  public func metadata(for data: Foundation.Data, at url: Foundation.URL) -> RxSwift.Observable<MeetingDoctorsController.MessageDataModel>
+  public func unreadMessages(account: MeetingDoctorsController.AccountModel) -> RxSwift.Observable<Swift.Int>
+  @objc deinit
+}
+extension Foundation.Date {
+  public var isToday: Swift.Bool {
+    get
+  }
+}
+public protocol CustomerAuthModelProtocol {
+  var id: Swift.String { get }
+  var accessToken: Swift.String { get }
+  var tokenType: Swift.String { get }
+  var user: MeetingDoctorsController.CustomerUserModel { get }
+  var expiresIn: Swift.Double? { get }
+  var updatedAt: Foundation.Date { get }
+}
+public struct CustomerAuthModel : Swift.Codable, MeetingDoctorsController.CustomerAuthModelProtocol {
+  public let id: Swift.String
+  public let accessToken: Swift.String
+  public let tokenType: Swift.String
+  public let user: MeetingDoctorsController.CustomerUserModel
+  public let expiresIn: Swift.Double?
+  public let updatedAt: Foundation.Date
+  public init(id: Swift.String, accessToken: Swift.String, tokenType: Swift.String, user: MeetingDoctorsController.CustomerUserModel, expiresIn: Swift.Double?, updatedAt: Foundation.Date)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension MeetingDoctorsController.CustomerAuthModel {
+  public init(schema: MeetingDoctorsSchema.CustomerAuthSchema)
+  public var expiresInSeconds: Swift.Double {
+    get
+  }
+}
+extension MeetingDoctorsController.CustomerAuthModel {
+  public static let idLens: MeetingDoctorsController.Lens<MeetingDoctorsController.CustomerAuthModel, Swift.String>
+  public static let accessTokenLens: MeetingDoctorsController.Lens<MeetingDoctorsController.CustomerAuthModel, Swift.String>
+  public static let tokenTypeLens: MeetingDoctorsController.Lens<MeetingDoctorsController.CustomerAuthModel, Swift.String>
+  public static let userLens: MeetingDoctorsController.Lens<MeetingDoctorsController.CustomerAuthModel, MeetingDoctorsController.CustomerUserModel>
+  public static let expiresInLens: MeetingDoctorsController.Lens<MeetingDoctorsController.CustomerAuthModel, Swift.Double?>
+  public static let updatedAtLens: MeetingDoctorsController.Lens<MeetingDoctorsController.CustomerAuthModel, Foundation.Date>
+}
+extension MeetingDoctorsController.CustomerAuthModel : Swift.Equatable {
+  public static func == (a: MeetingDoctorsController.CustomerAuthModel, b: MeetingDoctorsController.CustomerAuthModel) -> Swift.Bool
+}
+public struct KeychainEncryptionProvider : MeetingDoctorsController.EncryptionProvider {
+  public var key: Foundation.Data? {
+    get
+  }
+  public init?(_ id: Swift.String)
+  public init(_ tag: Foundation.Data)
+  public func randomData(ofLength length: Swift.Int) -> Foundation.Data
+}
+public typealias MedicalQueryBuildable = MeetingDoctorsController.RemoteRequestBuildable & MeetingDoctorsController.StorePredicateBuildable
+public protocol StorePredicateBuildable {
+  func build() -> Foundation.NSPredicate
+}
+public protocol RemoteRequestBuildable {
+  func build() -> any MeetingDoctorsSchema.PaginableRequest
+}
+public class MedicalQueryBuilder {
+  public enum Kind {
+    case coverage
+    case speciality
+    case professional
+    case address
+    public static func == (a: MeetingDoctorsController.MedicalQueryBuilder.Kind, b: MeetingDoctorsController.MedicalQueryBuilder.Kind) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var keywords: Swift.String? {
+    get
+  }
+  public var coverageId: Swift.String? {
+    get
+  }
+  public var specialityId: Swift.String? {
+    get
+  }
+  public var location: CoreLocation.CLLocationCoordinate2D? {
+    get
+  }
+  public var page: MeetingDoctorsSchema.PageRequest? {
+    get
+  }
+  public init(type: MeetingDoctorsController.MedicalQueryBuilder.Kind)
+  public func with(keywords: Swift.String) -> Self
+  public func with(coverageId: Swift.String) -> Self
+  public func with(specialityId: Swift.String) -> Self
+  public func with(location: CoreLocation.CLLocationCoordinate2D) -> Self
+  public func with(page: MeetingDoctorsSchema.PageRequest) -> Self
+  @objc deinit
+}
+extension MeetingDoctorsController.MedicalQueryBuilder : MeetingDoctorsController.StorePredicateBuildable {
+  public func build() -> Foundation.NSPredicate
+}
+extension MeetingDoctorsController.MedicalQueryBuilder : MeetingDoctorsController.RemoteRequestBuildable {
+  public func build() -> any MeetingDoctorsSchema.PaginableRequest
+}
+public enum ControllerError : Swift.Error, Foundation.LocalizedError, Foundation.CustomNSError {
+  public enum InstallationFailureReason {
+    case nilValueFound
+    case pingFailed
+    public static func == (a: MeetingDoctorsController.ControllerError.InstallationFailureReason, b: MeetingDoctorsController.ControllerError.InstallationFailureReason) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum AuthenticationFailureReason {
+    case invalidSessionToken(id: Swift.String)
+  }
+  public enum ImageLoaderFailureReason {
+    case invalidURL(Foundation.URL)
+  }
+  public enum PhotoLibraryFailureReason {
+    case placeholderForCreatedAssetFailed(Photos.PHAssetChangeRequest)
+    case assetLocalIdentifierNotFound(Swift.String)
+    case performChangesCompletion(any Swift.Error)
+  }
+  public enum TransmittableFailureReason {
+    case invalidTransmittableState
+    case invalidTransmittableMapping
+    public static func == (a: MeetingDoctorsController.ControllerError.TransmittableFailureReason, b: MeetingDoctorsController.ControllerError.TransmittableFailureReason) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  case installationFailed(reason: MeetingDoctorsController.ControllerError.InstallationFailureReason)
+  case authenticationFailed(reason: MeetingDoctorsController.ControllerError.AuthenticationFailureReason)
+  case imageLoaderFailed(reason: MeetingDoctorsController.ControllerError.ImageLoaderFailureReason)
+  case photoLibraryFailed(reason: MeetingDoctorsController.ControllerError.PhotoLibraryFailureReason)
+  case transmittableFailed(reason: MeetingDoctorsController.ControllerError.TransmittableFailureReason)
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+public protocol MedicalDirectoryDetailControllerType {
+  func fetch(by id: Swift.String, completion: @escaping ((Swift.Result<(MeetingDoctorsController.MedicalProfessionalModel?, [MeetingDoctorsController.MedicalSpecialityModel]), any Swift.Error>) -> Swift.Void))
+}
+public struct MedicalDirectoryDetailController : MeetingDoctorsController.MedicalDirectoryDetailControllerType {
+  public init(_ professional: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.MedicalProfessionalModel>, speciality: MeetingDoctorsController.AnyRepository<MeetingDoctorsController.MedicalSpecialityModel>, auth: any MeetingDoctorsController.CustomerAuthControllerProtocol)
+  public func fetch(by id: Swift.String, completion: @escaping ((Swift.Result<(MeetingDoctorsController.MedicalProfessionalModel?, [MeetingDoctorsController.MedicalSpecialityModel]), any Swift.Error>) -> Swift.Void))
+}
+public protocol InstallationModelType {
+  var id: Swift.String { get }
+  var uuid: Foundation.UUID { get }
+  var system: MeetingDoctorsController.SystemModel { get }
+  var systemVersion: Swift.String { get }
+  var libVersion: Swift.String { get }
+  var model: Swift.String { get }
+  var deviceToken: Swift.String? { get }
+  var locale: Foundation.Locale? { get }
+  var timeZone: Foundation.TimeZone? { get }
+  var referrer: MeetingDoctorsController.ReferrerModel? { get }
+  var location: MeetingDoctorsController.LocationModel? { get }
+  var createdAt: Foundation.Date { get }
+  var updatedAt: Foundation.Date { get }
+}
+public struct InstallationModel : MeetingDoctorsController.InstallationModelType {
+  public let id: Swift.String
+  public let uuid: Foundation.UUID
+  public let system: MeetingDoctorsController.SystemModel
+  public let systemVersion: Swift.String
+  public let libVersion: Swift.String
+  public let model: Swift.String
+  public var deviceToken: Swift.String?
+  public var locale: Foundation.Locale?
+  public var timeZone: Foundation.TimeZone?
+  public var referrer: MeetingDoctorsController.ReferrerModel?
+  public var location: MeetingDoctorsController.LocationModel?
+  public var createdAt: Foundation.Date
+  public var updatedAt: Foundation.Date
+  public init(id: Swift.String, uuid: Foundation.UUID, system: MeetingDoctorsController.SystemModel, systemVersion: Swift.String, libVersion: Swift.String, model: Swift.String, deviceToken: Swift.String?, locale: Foundation.Locale?, timeZone: Foundation.TimeZone?, referrer: MeetingDoctorsController.ReferrerModel?, location: MeetingDoctorsController.LocationModel?, createdAt: Foundation.Date, updatedAt: Foundation.Date)
+}
+extension MeetingDoctorsController.InstallationModel {
+  public init(_ keystore: MeetingDoctorsCore.Keystore, uuid: Foundation.UUID, bundle: Foundation.Bundle, device: UIKit.UIDevice = UIDevice.current, locale: Foundation.Locale = Locale.autoupdatingCurrent, timeZone: Foundation.TimeZone = TimeZone.current, referrer: MeetingDoctorsController.ReferrerModel? = nil, location: MeetingDoctorsController.LocationModel? = nil, date: Foundation.Date = Date())
+}
+extension MeetingDoctorsController.InstallationModel {
+  public static let idLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InstallationModel, Swift.String>
+  public static let uuidLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InstallationModel, Foundation.UUID>
+  public static let systemLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InstallationModel, MeetingDoctorsController.SystemModel>
+  public static let systemVersionLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InstallationModel, Swift.String>
+  public static let libVersionLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InstallationModel, Swift.String>
+  public static let modelLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InstallationModel, Swift.String>
+  public static let deviceTokenLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InstallationModel, Swift.String?>
+  public static let localeLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InstallationModel, Foundation.Locale?>
+  public static let timeZoneLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InstallationModel, Foundation.TimeZone?>
+  public static let referrerLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InstallationModel, MeetingDoctorsController.ReferrerModel?>
+  public static let locationLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InstallationModel, MeetingDoctorsController.LocationModel?>
+  public static let createdAtLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InstallationModel, Foundation.Date>
+  public static let updatedAtLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InstallationModel, Foundation.Date>
+}
+public protocol MedicalDirectoryListControllerType {
+  associatedtype ElementModel : MeetingDoctorsCore.Transmittable
+  func fetch(query: MeetingDoctorsController.MedicalQueryBuilder, completion: @escaping (Swift.Result<[Self.ElementModel], any Swift.Error>) -> Swift.Void)
+  func get(query: MeetingDoctorsController.MedicalQueryBuilder, completion: @escaping (Swift.Result<[Self.ElementModel], any Swift.Error>) -> Swift.Void)
+}
+extension MeetingDoctorsController.MedicalDirectoryListControllerType {
+  public func get(query _: MeetingDoctorsController.MedicalQueryBuilder, completion _: @escaping (Swift.Result<[Self.ElementModel], any Swift.Error>) -> Swift.Void)
+  public func fetch(query _: MeetingDoctorsController.MedicalQueryBuilder, completion _: @escaping (Swift.Result<[Self.ElementModel], any Swift.Error>) -> Swift.Void)
+}
+public struct MedicalDirectoryListController<Model> : MeetingDoctorsController.MedicalDirectoryListControllerType where Model : MeetingDoctorsCore.Transmittable, Model.SchemaObject : MeetingDoctorsSchema.MedicalDirectorySchema {
+  public typealias ElementModel = Model
+  public init(_ repository: MeetingDoctorsController.AnyRepository<Model>, _ adapter: MeetingDoctorsController.AnyMedicalDirectoryAdapter<Model.SchemaObject>, scheduler: any RxSwift.ImmediateSchedulerType, auth: any MeetingDoctorsController.CustomerAuthControllerProtocol)
+  public func fetch(query: MeetingDoctorsController.MedicalQueryBuilder, completion: @escaping (Swift.Result<[Model], any Swift.Error>) -> Swift.Void)
+}
+extension MeetingDoctorsController.MedicalDirectoryListController where Model == MeetingDoctorsController.MedicalCoverageModel {
+  public func get(query: MeetingDoctorsController.MedicalQueryBuilder, completion: @escaping (Swift.Result<[Model], any Swift.Error>) -> Swift.Void)
+}
+extension MeetingDoctorsController.MedicalDirectoryListController where Model == MeetingDoctorsController.MedicalSpecialityModel {
+  public func get(query: MeetingDoctorsController.MedicalQueryBuilder, completion: @escaping (Swift.Result<[Model], any Swift.Error>) -> Swift.Void)
+}
+extension MeetingDoctorsController.MedicalDirectoryListController where Model == MeetingDoctorsController.MedicalProfessionalModel {
+  public func fetch(query: MeetingDoctorsController.MedicalQueryBuilder, completion: @escaping (Swift.Result<[Model], any Swift.Error>) -> Swift.Void)
+  public func get(query: MeetingDoctorsController.MedicalQueryBuilder, completion: @escaping (Swift.Result<[Model], any Swift.Error>) -> Swift.Void)
+}
+extension MeetingDoctorsController.MedicalDirectoryListController where Model == MeetingDoctorsController.MedicalAddressModel {
+  #warning("SimpleRepository applies on non-persistable models")
+  public init(_ adapter: MeetingDoctorsController.AnyMedicalDirectoryAdapter<MeetingDoctorsSchema.MedicalAddressSchema>, auth: any MeetingDoctorsController.CustomerAuthControllerProtocol)
+  public func get(query: MeetingDoctorsController.MedicalQueryBuilder, completion: @escaping (Swift.Result<[Model], any Swift.Error>) -> Swift.Void)
+}
+public protocol ProfessionalListAdapter {
+  func requestProfessionalDetail(_ professionalHash: Swift.String, completion: @escaping (Swift.Result<MeetingDoctorsSchema.ContactSchema, any Swift.Error>) -> Swift.Void)
+}
+public protocol RemoteControllerAssembly {
+  func resolve() -> (any MeetingDoctorsController.RemoteController)?
+}
+extension Foundation.Date {
+  public var isYesterday: Swift.Bool {
+    get
+  }
+}
+public protocol AutoLenses {
+}
+infix operator *~ : MultiplicationPrecedence
+infix operator |> : AdditionPrecedence
+public struct Lens<Whole, Part> {
+  public let get: (Whole) -> Part
+  public let set: (Part, Whole) -> Whole
+}
+public func * <A, B, C>(lhs: MeetingDoctorsController.Lens<A, B>, rhs: MeetingDoctorsController.Lens<B, C>) -> MeetingDoctorsController.Lens<A, C>
+public func *~ <A, B>(lhs: MeetingDoctorsController.Lens<A, B>, rhs: B) -> (A) -> A
+public func |> <A, B>(x: A, f: (A) -> B) -> B
+public func |> <A, B, C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> (A) -> C
+public protocol CustomerNotificationsControllerProtocol {
+  func register(_ token: Swift.String) -> RxSwift.Observable<MeetingDoctorsController.CustomerInstallationModel>
+  func unregister() -> RxSwift.Observable<MeetingDoctorsController.CustomerInstallationModel>
+}
+public class CustomerNotificationsController : MeetingDoctorsController.CustomerNotificationsControllerProtocol {
+  public init(installation: any MeetingDoctorsController.CustomerInstallationControllerProtocol, auth: any MeetingDoctorsController.CustomerAuthControllerProtocol, remote: any MeetingDoctorsController.RemoteController, scheduler: any RxSwift.ImmediateSchedulerType)
+  public func register(_ token: Swift.String) -> RxSwift.Observable<MeetingDoctorsController.CustomerInstallationModel>
+  public func unregister() -> RxSwift.Observable<MeetingDoctorsController.CustomerInstallationModel>
+  @objc deinit
+}
+public protocol CustomerAuthAdapter {
+  func login(_ request: MeetingDoctorsSchema.CustomerLoginRequest) -> RxSwift.Single<MeetingDoctorsSchema.CustomerAuthSchema>
+  func login(_ request: MeetingDoctorsSchema.CustomerLoginRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.CustomerAuthSchema, any Swift.Error>) -> Swift.Void)
+}
+public protocol NotificationAdapter {
+  func unread(_ request: MeetingDoctorsSchema.MessageCountRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.CountSchema, any Swift.Error>) -> Swift.Void)
+}
+public protocol MedicalHistoryAdapter {
+  associatedtype SchemaType : MeetingDoctorsSchema.MedicalHistorySchema
+  func fetch(by id: Swift.String) -> RxSwift.Single<Self.SchemaType?>
+  func fetch() -> RxSwift.Single<[Self.SchemaType]>
+  func save(entity: Self.SchemaType, update: Swift.Bool) -> RxSwift.Single<Self.SchemaType>
+  func delete(entity: Self.SchemaType) -> RxSwift.Completable
+}
+public protocol IdentifiableAdapter {
+  associatedtype SchemaType : MeetingDoctorsSchema.IdentifiableSchema
+  func fetch(by id: Swift.String) -> RxSwift.Single<Self.SchemaType?>
+  func fetch() -> RxSwift.Single<[Self.SchemaType]>
+  func save(entity: Self.SchemaType, update: Swift.Bool) -> RxSwift.Single<Self.SchemaType>
+  func delete(entity: Self.SchemaType) -> RxSwift.Completable
+}
+public enum ContactRoleModel : Swift.String {
+  case unknown
+  case commercial
+  case administrative
+  case doctor
+  case support
+  case free
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ConnectionStatusModel : Swift.Int {
+  case notConnected
+  case disconnected
+  case connecting
+  case connected
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension MeetingDoctorsController.ConnectionStatusModel {
+  public var isConnected: Swift.Bool {
+    get
+  }
+}
+extension MeetingDoctorsController.ConnectionStatusModel : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+public protocol CustomerAuthControllerProtocol {
+  func current() -> RxSwift.Observable<MeetingDoctorsController.CustomerAuthModel?>
+  func login(_ id: Swift.String) -> RxSwift.Observable<MeetingDoctorsController.CustomerAuthModel>
+  func refresh() -> RxSwift.Observable<MeetingDoctorsController.CustomerAuthModel>
+  func current(completion: @escaping (Swift.Result<MeetingDoctorsController.CustomerAuthModel?, any Swift.Error>) -> Swift.Void)
+  func login(_ id: Swift.String, completion: @escaping (Swift.Result<MeetingDoctorsController.CustomerAuthModel?, any Swift.Error>) -> Swift.Void)
+  func refresh(completion: @escaping (Swift.Result<MeetingDoctorsController.CustomerAuthModel?, any Swift.Error>) -> Swift.Void)
+}
+public class CustomerAuthController : MeetingDoctorsController.CustomerAuthControllerProtocol {
+  public init(installation: any MeetingDoctorsController.CustomerInstallationControllerProtocol, repository: any MeetingDoctorsController.RepositoryController, remote: any MeetingDoctorsController.RemoteController, scheduler: any RxSwift.ImmediateSchedulerType)
+  public func current() -> RxSwift.Observable<MeetingDoctorsController.CustomerAuthModel?>
+  public func login(_ id: Swift.String) -> RxSwift.Observable<MeetingDoctorsController.CustomerAuthModel>
+  public func refresh() -> RxSwift.Observable<MeetingDoctorsController.CustomerAuthModel>
+  public func current(completion: @escaping (Swift.Result<MeetingDoctorsController.CustomerAuthModel?, any Swift.Error>) -> Swift.Void)
+  public func login(_ id: Swift.String, completion: @escaping (Swift.Result<MeetingDoctorsController.CustomerAuthModel?, any Swift.Error>) -> Swift.Void)
+  public func refresh(completion: @escaping (Swift.Result<MeetingDoctorsController.CustomerAuthModel?, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public struct SimpleRepository<E> : MeetingDoctorsController.Repository {
+  public init()
+  public func fetch(by _: Swift.String) -> RxSwift.Observable<E?>
+  public func fetch() -> RxSwift.Observable<([E], MeetingDoctorsController.Changeset?)>
+  public func query(with _: Foundation.NSPredicate, sorted _: [Foundation.NSSortDescriptor], offset _: Swift.Int, limit _: Swift.Int) -> RxSwift.Observable<([E], MeetingDoctorsController.Changeset?)>
+  public func save(entity _: E, update _: Swift.Bool) -> RxSwift.Observable<Swift.Void>
+  public func save<S>(collection _: S, update _: Swift.Bool, clear _: Swift.Bool) -> RxSwift.Observable<Swift.Void> where E == S.Element, S : Swift.Sequence
+  public func update(properties _: [any MeetingDoctorsController.AttributeValueType]) -> RxSwift.Observable<Swift.Void>
+  public func delete(entity _: E) -> RxSwift.Observable<Swift.Void>
+  public func delete<S>(collection _: S) -> RxSwift.Observable<Swift.Void> where E == S.Element, S : Swift.Sequence
+  public func delete(with _: Foundation.NSPredicate) -> RxSwift.Observable<Swift.Void>
+  public func clear(cascading _: Swift.Bool) -> RxSwift.Observable<Swift.Void>
+  public func fetch(by _: Swift.String, completion: @escaping (Swift.Result<E?, any Swift.Error>) -> Swift.Void)
+  public func fetch(completion: @escaping (Swift.Result<[E], any Swift.Error>) -> Swift.Void)
+  public func query(with _: Foundation.NSPredicate, sorted _: [Foundation.NSSortDescriptor], offset _: Swift.Int, limit _: Swift.Int, completion: @escaping (Swift.Result<[E], any Swift.Error>) -> Swift.Void)
+  public func save(entity _: E, update _: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func save<S>(collection _: S, update _: Swift.Bool, clear _: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) where E == S.Element, S : Swift.Sequence
+  public func update(properties _: [any MeetingDoctorsController.AttributeValueType], completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func delete(entity _: E, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func delete<S>(collection _: S, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) where E == S.Element, S : Swift.Sequence
+  public func delete(with _: Foundation.NSPredicate, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func clear(cascading _: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public typealias EntityType = E
+}
+public protocol MedicalHistoryDetailControllerType {
+  associatedtype ElementModel : MeetingDoctorsCore.Transmittable
+  func fetch(by id: Swift.String) -> RxSwift.Observable<Self.ElementModel?>
+  func save(_ element: Self.ElementModel, update: Swift.Bool) -> RxSwift.Observable<Self.ElementModel>
+  func delete(_ element: Self.ElementModel) -> RxSwift.Observable<Swift.Void>
+}
+public class MedicalHistoryDetailController<Model> : MeetingDoctorsController.MedicalHistoryDetailControllerType where Model : MeetingDoctorsCore.Transmittable, Model.SchemaObject : MeetingDoctorsSchema.MedicalHistorySchema {
+  public init(_ repository: MeetingDoctorsController.AnyRepository<Model>, _ adapter: MeetingDoctorsController.AnyMedicalHistoryAdapter<Model.SchemaObject>, scheduler: any RxSwift.ImmediateSchedulerType, auth: any MeetingDoctorsController.CustomerAuthControllerProtocol)
+  public func fetch(by id: Swift.String) -> RxSwift.Observable<Model?>
+  public func save(_ element: Model, update: Swift.Bool) -> RxSwift.Observable<Model>
+  public func delete(_ element: Model) -> RxSwift.Observable<Swift.Void>
+  public typealias ElementModel = Model
+  @objc deinit
+}
+public class MedicalHistoryDetailIdentifiableController<Model> : MeetingDoctorsController.MedicalHistoryDetailControllerType where Model : MeetingDoctorsCore.Transmittable, Model.SchemaObject : MeetingDoctorsSchema.IdentifiableSchema {
+  public init(_ repository: MeetingDoctorsController.AnyRepository<Model>, _ adapter: MeetingDoctorsController.AnyIdentifiableAdapter<Model.SchemaObject>, scheduler: any RxSwift.ImmediateSchedulerType, auth: any MeetingDoctorsController.CustomerAuthControllerProtocol)
+  public func fetch(by id: Swift.String) -> RxSwift.Observable<Model?>
+  public func save(_ element: Model, update: Swift.Bool) -> RxSwift.Observable<Model>
+  public func delete(_ element: Model) -> RxSwift.Observable<Swift.Void>
+  public typealias ElementModel = Model
+  @objc deinit
+}
+public enum DerivationType : Swift.String {
+  case interconsultation
+  case diagnosticProcedures
+  case therapeuticProcedures
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct DerivationReportModel {
+  public let id: Swift.Int?
+  public let type: MeetingDoctorsController.DerivationType?
+  public let payload: Swift.String?
+  public let filename: Swift.String?
+  public let url: Swift.String?
+  public let company: MeetingDoctorsController.CompanyReportModel?
+  public let professional: MeetingDoctorsController.ProfessionalReportModel?
+  public let createdAt: Swift.String?
+  public let customerHash: Swift.String?
+  public let friendlyName: Swift.String?
+  public init(id: Swift.Int?, type: Swift.String?, payload: Swift.String?, filename: Swift.String?, url: Swift.String?, company: MeetingDoctorsController.CompanyReportModel?, professional: MeetingDoctorsController.ProfessionalReportModel?, createdAt: Swift.String?, customerHash: Swift.String?, friendlyName: Swift.String?)
+  public init(schemaObject: MeetingDoctorsSchema.DerivationReportSchema) throws
+}
+public protocol RepositoryControllerAssembly {
+  func resolve() -> (any MeetingDoctorsController.RepositoryController)?
+}
+public protocol DerivationReportAdapter {
+  func fetch() -> RxSwift.Single<[MeetingDoctorsSchema.DerivationReportSchema]>
+  func fetch(completion: @escaping (Swift.Result<[MeetingDoctorsSchema.DerivationReportSchema], any Swift.Error>) -> Swift.Void)
+}
+public protocol ReferrerModelType : Swift.CustomStringConvertible {
+  var source: Swift.String { get }
+  var medium: Swift.String? { get }
+  var campaign: Swift.String? { get }
+  var content: Swift.String? { get }
+  var term: Swift.String? { get }
+  var data: [Swift.String : Swift.String] { get }
+}
+public struct ReferrerModel : MeetingDoctorsController.ReferrerModelType {
+  public let source: Swift.String
+  public let medium: Swift.String?
+  public let campaign: Swift.String?
+  public let content: Swift.String?
+  public let term: Swift.String?
+  public let data: [Swift.String : Swift.String]
+  public init(source: Swift.String, medium: Swift.String?, campaign: Swift.String?, content: Swift.String?, term: Swift.String?, data: [Swift.String : Swift.String])
+}
+extension MeetingDoctorsController.ReferrerModel {
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case source
+    case medium
+    case campaign
+    case content
+    case term
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public init?(from campaign: Swift.String)
+  public init?(with data: [Swift.String : Swift.String])
+  public var description: Swift.String {
+    get
+  }
+}
+extension Foundation.Date {
+  public var isInFuture: Swift.Bool {
+    get
+  }
+}
+public struct AnySocketInputStream<EventType> : MeetingDoctorsController.SocketInputStream {
+  public var name: Swift.String {
+    get
+  }
+  public init<Concrete>(_ concrete: Concrete) where EventType == Concrete.EventType, Concrete : MeetingDoctorsController.SocketInputStream
+  public func on() -> RxSwift.Observable<EventType>
+}
+public struct AnySocketOutputStream<EventType> : MeetingDoctorsController.SocketOutputStream {
+  public var name: Swift.String {
+    get
+  }
+  public init<Concrete>(_ concrete: Concrete) where EventType == Concrete.EventType, Concrete : MeetingDoctorsController.SocketOutputStream
+  public func emit(event: EventType) throws
+  public func acknowledge(event: EventType) throws -> RxSwift.Single<MeetingDoctorsSchema.SocketClientSchema.Input>
+}
+public struct AnySocketStream<NativeType, InputType, OutputType> : MeetingDoctorsController.SocketStream {
+  public typealias SocketNativeType = NativeType
+  public typealias SocketInputType = InputType
+  public typealias SocketOutputType = OutputType
+  public init<Concrete>(_ concrete: Concrete) where NativeType == Concrete.SocketNativeType, InputType == Concrete.SocketInputType, OutputType == Concrete.SocketOutputType, Concrete : MeetingDoctorsController.SocketStream
+  public func connect<Credentials>(credentials: Credentials?) -> RxSwift.Observable<MeetingDoctorsController.AnySocketStream<NativeType, InputType, OutputType>.SocketNativeType> where Credentials : MeetingDoctorsSchema.SocketCredentials
+  @discardableResult
+  public func disconnect() -> RxSwift.Observable<MeetingDoctorsController.AnySocketStream<NativeType, InputType, OutputType>.SocketNativeType>
+  public func input(stream event: MeetingDoctorsSchema.SocketListenerType) throws -> MeetingDoctorsController.AnySocketInputStream<MeetingDoctorsController.AnySocketStream<NativeType, InputType, OutputType>.SocketInputType>
+  public func output(stream event: MeetingDoctorsSchema.SocketEmissionType) throws -> MeetingDoctorsController.AnySocketOutputStream<MeetingDoctorsController.AnySocketStream<NativeType, InputType, OutputType>.SocketOutputType>
+  public func join(namespace: Swift.String)
+  public func leave()
+  public func clear()
+  public var error: RxSwift.Observable<MeetingDoctorsController.AnySocketStream<NativeType, InputType, OutputType>.SocketNativeType> {
+    get
+  }
+  public var status: RxSwift.Observable<MeetingDoctorsController.AnySocketStream<NativeType, InputType, OutputType>.SocketNativeType> {
+    get
+  }
+}
+public protocol MedicalSpecialityModelType {
+  var id: Swift.String { get }
+  var name: Swift.String { get }
+  var coverageId: Swift.String? { get }
+  var details: Swift.String? { get }
+}
+public struct MedicalSpecialityModel : MeetingDoctorsController.MedicalSpecialityModelType {
+  public let id: Swift.String
+  public let name: Swift.String
+  public let coverageId: Swift.String?
+  public let details: Swift.String?
+  public init(id: Swift.String, name: Swift.String, coverageId: Swift.String?, details: Swift.String?)
+}
+extension MeetingDoctorsController.MedicalSpecialityModel {
+  public static let idLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MedicalSpecialityModel, Swift.String>
+  public static let nameLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MedicalSpecialityModel, Swift.String>
+  public static let coverageIdLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MedicalSpecialityModel, Swift.String?>
+  public static let detailsLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MedicalSpecialityModel, Swift.String?>
+}
+extension MeetingDoctorsController.MedicalSpecialityModel : MeetingDoctorsCore.Transmittable {
+  public typealias SchemaObject = MeetingDoctorsSchema.MedicalSpecialitySchema
+  public var schemaObject: MeetingDoctorsSchema.MedicalSpecialitySchema {
+    get
+  }
+  public init(schemaObject: MeetingDoctorsSchema.MedicalSpecialitySchema) throws
+}
+public struct UserFeedModel {
+  public let hasFeed: Swift.Bool?
+  public let homepage: Swift.String?
+  public init(hasFeed: Swift.Bool? = nil, homepage: Swift.String? = nil)
+}
+extension MeetingDoctorsController.UserFeedModel {
+  public init(schema: MeetingDoctorsSchema.UserFeedSchema)
+}
+public enum KeychainAccessOption {
+  case accessibleWhenUnlocked
+  case accessibleWhenUnlockedThisDeviceOnly
+  case accessibleAfterFirstUnlock
+  case accessibleAfterFirstUnlockThisDeviceOnly
+  case accessibleAlways
+  case accessibleWhenPasscodeSetThisDeviceOnly
+  case accessibleAlwaysThisDeviceOnly
+  public var value: Swift.String {
+    get
+  }
+  public static func == (a: MeetingDoctorsController.KeychainAccessOption, b: MeetingDoctorsController.KeychainAccessOption) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension MeetingDoctorsSchema.ScheduleSchema.WeekDay : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsSchema.ScheduleSchema.WeekDay {
+  public static let allValues: [MeetingDoctorsSchema.ScheduleSchema.WeekDay]
+  public static let workDaysValues: [MeetingDoctorsSchema.ScheduleSchema.WeekDay]
+}
+public struct Changeset {
+  public let deleted: [Swift.Int]
+  public let inserted: [Swift.Int]
+  public let updated: [Swift.Int]
+  public init(deleted: [Swift.Int], inserted: [Swift.Int], updated: [Swift.Int], offset: Swift.Int = 0, limit: Swift.Int = 0)
+}
+public protocol DiseaseModelType {
+  var id: Swift.String { get }
+  var name: Swift.String { get }
+  var details: Swift.String? { get }
+  var diagnosis: Foundation.Date? { get }
+  var resolution: Foundation.Date? { get }
+  var patientHash: Swift.String { get }
+}
+public struct DiseaseModel : MeetingDoctorsController.DiseaseModelType {
+  public static let Stub: MeetingDoctorsController.DiseaseModel
+  public let id: Swift.String
+  public let name: Swift.String
+  public let details: Swift.String?
+  public let diagnosis: Foundation.Date?
+  public let resolution: Foundation.Date?
+  public let patientHash: Swift.String
+  public init(id: Swift.String, name: Swift.String, details: Swift.String?, diagnosis: Foundation.Date?, resolution: Foundation.Date?, patientHash: Swift.String)
+}
+extension MeetingDoctorsController.DiseaseModel : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsController.DiseaseModel, rhs: MeetingDoctorsController.DiseaseModel) -> Swift.Bool
+}
+extension MeetingDoctorsController.DiseaseModel : MeetingDoctorsCore.Transmittable {
+  public typealias SchemaObject = MeetingDoctorsSchema.DiseaseSchema
+  public var schemaObject: MeetingDoctorsSchema.DiseaseSchema {
+    get
+  }
+  public init(schemaObject: MeetingDoctorsSchema.DiseaseSchema) throws
+}
+extension MeetingDoctorsController.DiseaseModel {
+  public static let idLens: MeetingDoctorsController.Lens<MeetingDoctorsController.DiseaseModel, Swift.String>
+  public static let nameLens: MeetingDoctorsController.Lens<MeetingDoctorsController.DiseaseModel, Swift.String>
+  public static let detailsLens: MeetingDoctorsController.Lens<MeetingDoctorsController.DiseaseModel, Swift.String?>
+  public static let diagnosisLens: MeetingDoctorsController.Lens<MeetingDoctorsController.DiseaseModel, Foundation.Date?>
+  public static let resolutionLens: MeetingDoctorsController.Lens<MeetingDoctorsController.DiseaseModel, Foundation.Date?>
+  public static let patientHashLens: MeetingDoctorsController.Lens<MeetingDoctorsController.DiseaseModel, Swift.String>
+}
+public protocol CustomerInstallationControllerProtocol {
+  func fetch() -> RxSwift.Observable<MeetingDoctorsController.CustomerInstallationModel?>
+  func update(pushToken: Swift.String?) -> RxSwift.Observable<MeetingDoctorsController.CustomerInstallationModel>
+  func fetch(completion: @escaping (Swift.Result<MeetingDoctorsController.CustomerInstallationModel?, any Swift.Error>) -> Swift.Void)
+  func update(pushToken: Swift.String?, completion: @escaping (Swift.Result<MeetingDoctorsController.CustomerInstallationModel?, any Swift.Error>) -> Swift.Void)
+  func installation(in _: Foundation.Bundle, id _: Foundation.UUID, completion: @escaping (Swift.Result<MeetingDoctorsController.CustomerInstallationModel?, any Swift.Error>) -> Swift.Void)
+}
+public class CustomerInstallationController : MeetingDoctorsController.CustomerInstallationControllerProtocol {
+  public init(keystore: MeetingDoctorsCore.Keystore, repository: any MeetingDoctorsController.RepositoryController, remote: any MeetingDoctorsController.RemoteController, scheduler: any RxSwift.ImmediateSchedulerType)
+  public func fetch() -> RxSwift.Observable<MeetingDoctorsController.CustomerInstallationModel?>
+  public func update(pushToken: Swift.String?) -> RxSwift.Observable<MeetingDoctorsController.CustomerInstallationModel>
+  public func fetch(completion: @escaping (Swift.Result<MeetingDoctorsController.CustomerInstallationModel?, any Swift.Error>) -> Swift.Void)
+  public func update(pushToken: Swift.String?, completion: @escaping (Swift.Result<MeetingDoctorsController.CustomerInstallationModel?, any Swift.Error>) -> Swift.Void)
+  public func installation(in bundle: Foundation.Bundle, id chatId: Foundation.UUID, completion: @escaping (Swift.Result<MeetingDoctorsController.CustomerInstallationModel?, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+extension Foundation.Date {
+  public var isTomorrow: Swift.Bool {
+    get
+  }
+}
+public struct AnyMedicalHistoryListControllerType<ElementModel> : MeetingDoctorsController.MedicalHistoryListControllerType where ElementModel : MeetingDoctorsCore.Transmittable {
+  public init<Concrete>(_ concrete: Concrete) where ElementModel == Concrete.ElementModel, Concrete : MeetingDoctorsController.MedicalHistoryListControllerType
+  public func fetch(patient hash: Swift.String) -> RxSwift.Observable<([ElementModel], MeetingDoctorsController.Changeset?)>
+}
+public protocol EncryptionProvider {
+  var key: Foundation.Data? { get }
+}
+extension MeetingDoctorsController.EncryptionProvider {
+  public var key: Foundation.Data? {
+    get
+  }
+}
+public struct AnyMedicalHistoryDetailControllerType<ElementModel> : MeetingDoctorsController.MedicalHistoryDetailControllerType where ElementModel : MeetingDoctorsCore.Transmittable {
+  public init<Concrete>(_ concrete: Concrete) where ElementModel == Concrete.ElementModel, Concrete : MeetingDoctorsController.MedicalHistoryDetailControllerType
+  public func fetch(by id: Swift.String) -> RxSwift.Observable<ElementModel?>
+  public func save(_ element: ElementModel, update: Swift.Bool) -> RxSwift.Observable<ElementModel>
+  public func delete(_ element: ElementModel) -> RxSwift.Observable<Swift.Void>
+}
+extension RxSwift.PrimitiveSequence where Trait == RxSwift.SingleTrait {
+  public func asMaybe() -> RxSwift.PrimitiveSequence<RxSwift.MaybeTrait, Element>
+  public func asCompletable() -> RxSwift.PrimitiveSequence<RxSwift.CompletableTrait, Swift.Never>
+}
+extension RxSwift.PrimitiveSequence where Trait == RxSwift.CompletableTrait, Element == Swift.Never {
+  public func asMaybe() -> RxSwift.PrimitiveSequence<RxSwift.MaybeTrait, Element>
+}
+public enum VideoStatusModel : Swift.String, Swift.Codable {
+  case invisible
+  case videoAvailable
+  case busy
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension Foundation.Date {
+  public var isInPast: Swift.Bool {
+    get
+  }
+}
+public protocol CustomerNotificationsAdapter {
+  func register(_ request: MeetingDoctorsSchema.CustomerRegisterNotificationRequest) -> RxSwift.Single<MeetingDoctorsSchema.CustomerNotificationSchema>
+  func unregister(_ request: MeetingDoctorsSchema.CustomerRegisterNotificationRequest) -> RxSwift.Single<MeetingDoctorsSchema.CustomerErrorSchema>
+  func register(_ request: MeetingDoctorsSchema.CustomerRegisterNotificationRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.CustomerNotificationSchema, any Swift.Error>) -> Swift.Void)
+}
+public protocol InboxControllerType {
+  func fetch(user: MeetingDoctorsController.UserModel, filter: MeetingDoctorsController.InboxController.Filter) -> RxSwift.Observable<([MeetingDoctorsController.InboxContactModel], MeetingDoctorsController.Changeset?)>
+  func refresh()
+  func user(_ model: MeetingDoctorsController.UserModel) -> RxSwift.Observable<MeetingDoctorsController.UserModel?>
+}
+public class InboxController : MeetingDoctorsController.InboxControllerType {
+  public struct Filter {
+    public let roles: [MeetingDoctorsController.SpecialityTypeModel]
+    public let status: [MeetingDoctorsController.ContactStatusModel]
+    public let ids: [Swift.String]
+    public let roomIds: [Swift.String]
+    public let professionalHashes: [Swift.String]
+    public let limit: Swift.Int
+    public let excludeRoles: Swift.Bool
+    public init(roles: [MeetingDoctorsController.SpecialityTypeModel], status: [MeetingDoctorsController.ContactStatusModel] = ContactStatusModel.allCases, ids: [Swift.String] = [], roomIds: [Swift.String] = [], professionalHashes: [Swift.String] = [], limit: Swift.Int = 0, excludeRoles: Swift.Bool = false)
+  }
+  public init(_ repository: any MeetingDoctorsController.RepositoryController, _ socket: MeetingDoctorsController.AnySocketControllerStream, scheduler: any RxSwift.ImmediateSchedulerType)
+  public func fetch(user: MeetingDoctorsController.UserModel, filter: MeetingDoctorsController.InboxController.Filter) -> RxSwift.Observable<([MeetingDoctorsController.InboxContactModel], MeetingDoctorsController.Changeset?)>
+  public func refresh()
+  public func user(_ model: MeetingDoctorsController.UserModel) -> RxSwift.Observable<MeetingDoctorsController.UserModel?>
+  @objc deinit
+}
+extension MeetingDoctorsController.InboxController.Filter {
+  public var predicate: Foundation.NSPredicate {
+    get
+  }
+}
+public struct UserFeaturesModel {
+  public let videoCall: Swift.Bool?
+  public let videoCall1to1: Swift.Bool?
+  public init(videoCall: Swift.Bool? = nil, videoCall1to1: Swift.Bool? = nil)
+}
+extension MeetingDoctorsController.UserFeaturesModel {
+  public init(schema: MeetingDoctorsSchema.UserFeaturesSchema)
+}
+public enum SystemModel : Swift.String {
+  case iOS
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public typealias AnySocketControllerStream = MeetingDoctorsController.AnySocketStream<MeetingDoctorsController.SocketControllerModel, MeetingDoctorsSchema.SocketClientSchema.Input, MeetingDoctorsSchema.SocketClientSchema.Output>
+public protocol SocketController : MeetingDoctorsController.SocketStream where Self.SocketInputType == MeetingDoctorsSchema.SocketClientSchema.Input, Self.SocketNativeType == MeetingDoctorsController.SocketControllerModel, Self.SocketOutputType == MeetingDoctorsSchema.SocketClientSchema.Output {
+}
+public struct AnyMedicalHistoryAdapter<SchemaType> : MeetingDoctorsController.MedicalHistoryAdapter where SchemaType : MeetingDoctorsSchema.MedicalHistorySchema {
+  public init<Concrete>(_ concrete: Concrete) where SchemaType == Concrete.SchemaType, Concrete : MeetingDoctorsController.MedicalHistoryAdapter
+  public func fetch(by id: Swift.String) -> RxSwift.Single<SchemaType?>
+  public func fetch() -> RxSwift.Single<[SchemaType]>
+  public func save(entity: SchemaType, update: Swift.Bool) -> RxSwift.Single<SchemaType>
+  public func delete(entity: SchemaType) -> RxSwift.Completable
+}
+public struct AnyIdentifiableAdapter<SchemaType> : MeetingDoctorsController.IdentifiableAdapter where SchemaType : MeetingDoctorsSchema.IdentifiableSchema {
+  public init<Concrete>(_ concrete: Concrete) where SchemaType == Concrete.SchemaType, Concrete : MeetingDoctorsController.IdentifiableAdapter
+  public func fetch(by id: Swift.String) -> RxSwift.Single<SchemaType?>
+  public func fetch() -> RxSwift.Single<[SchemaType]>
+  public func save(entity: SchemaType, update: Swift.Bool) -> RxSwift.Single<SchemaType>
+  public func delete(entity: SchemaType) -> RxSwift.Completable
+}
+public struct AnyMedicalDirectoryAdapter<SchemaType> : MeetingDoctorsController.MedicalDirectoryAdapter where SchemaType : MeetingDoctorsSchema.MedicalDirectorySchema {
+  public init<Concrete>(_ concrete: Concrete) where SchemaType == Concrete.SchemaType, Concrete : MeetingDoctorsController.MedicalDirectoryAdapter
+  public func fetch<ParameterType>(_ request: ParameterType? = nil, type: ParameterType.Type = ParameterType.self, completion: @escaping (Swift.Result<[SchemaType], any Swift.Error>) -> Swift.Void) where ParameterType : MeetingDoctorsSchema.PaginableRequest
+}
+public struct AnyRepository<E> : MeetingDoctorsController.Repository {
+  public init<Base>(_ base: Base) where E == Base.EntityType, Base : MeetingDoctorsController.Repository
+  public func fetch(by id: Swift.String) -> RxSwift.Observable<E?>
+  public func fetch() -> RxSwift.Observable<([E], MeetingDoctorsController.Changeset?)>
+  public func query(with predicate: Foundation.NSPredicate, sorted descriptors: [Foundation.NSSortDescriptor] = [], offset: Swift.Int = 0, limit: Swift.Int = 0) -> RxSwift.Observable<([E], MeetingDoctorsController.Changeset?)>
+  public func save(entity: E, update: Swift.Bool = true) -> RxSwift.Observable<Swift.Void>
+  public func save<S>(collection: S, update: Swift.Bool, clear: Swift.Bool) -> RxSwift.Observable<Swift.Void> where E == S.Element, S : Swift.Sequence
+  public func update(properties: [any MeetingDoctorsController.AttributeValueType]) -> RxSwift.Observable<Swift.Void>
+  public func delete(entity: E) -> RxSwift.Observable<Swift.Void>
+  public func delete<S>(collection: S) -> RxSwift.Observable<Swift.Void> where E == S.Element, S : Swift.Sequence
+  public func delete(with predicate: Foundation.NSPredicate) -> RxSwift.Observable<Swift.Void>
+  public func clear(cascading: Swift.Bool = true) -> RxSwift.Observable<Swift.Void>
+  public func fetch(by id: Swift.String, completion: @escaping (Swift.Result<E?, any Swift.Error>) -> Swift.Void)
+  public func fetch(completion: @escaping (Swift.Result<[E], any Swift.Error>) -> Swift.Void)
+  public func query(with predicate: Foundation.NSPredicate, sorted descriptors: [Foundation.NSSortDescriptor] = [], offset: Swift.Int = 0, limit: Swift.Int = 0, completion: @escaping (Swift.Result<[E], any Swift.Error>) -> Swift.Void)
+  public func save(entity: E, update: Swift.Bool = true, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func save<S>(collection: S, update: Swift.Bool, clear: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) where E == S.Element, S : Swift.Sequence
+  public func update(properties: [any MeetingDoctorsController.AttributeValueType], completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func delete(entity: E, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func delete<S>(collection: S, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) where E == S.Element, S : Swift.Sequence
+  public func delete(with predicate: Foundation.NSPredicate, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func clear(cascading: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public typealias EntityType = E
+}
+public enum SocketControllerModel {
+  case connect(Swift.String)
+  case disconnect(Swift.String)
+  case status(MeetingDoctorsController.ConnectionStatusModel)
+  case error(any Swift.Error)
+  case reconnect
+  case reconnectAttempt
+}
+extension MeetingDoctorsController.SocketControllerModel {
+  public var status: MeetingDoctorsController.ConnectionStatusModel? {
+    get
+  }
+}
+public enum SpecialityTypeModel : Swift.String, Swift.CaseIterable {
+  case unknown
+  case generalMedicine
+  case pediatrics
+  case psychology
+  case sportsMedicine
+  case customerCare
+  case medicalSupport
+  case personalTraining
+  case commercial
+  case medicalAppointment
+  case cardiology
+  case gynecology
+  case pharmacy
+  case sexology
+  case doctorOnDuty
+  case nutrition
+  case fertilityConsultant
+  case nursing
+  case medicalAdvisor
+  case dermatology
+  case ophthalmology
+  case allergology
+  case anesthesiologyResuscitation
+  case angiologyVascularSurgery
+  case digestiveSystem
+  case cardiovascularSurgery
+  case generalSurgeryDigestiveSystem
+  case orthopedicSurgeryTraumatology
+  case plasticSurgery
+  case geriatrics
+  case hematologyHemotherapy
+  case familyCommunityMedicine
+  case physicalMedicineRehabilitation
+  case internalMedicine
+  case nephrology
+  case pulmonology
+  case neurology
+  case oncology
+  case otolaryngology
+  case psychiatry
+  case rheumatology
+  case urology
+  case odontology
+  case podology
+  case logopedics
+  case nursingAssistant
+  case physiotherapist
+  case dieteticTechnician
+  case biology
+  case endocrinology
+  case nutritionProgram
+  case generalPartitioner
+  case customerCareIsaludColectivos
+  case veterinary
+  case ethology
+  case doctorGoHealthAdvisor
+  case fitnessCoaching
+  case nutritionalCoaching
+  case initialAssessmentVC
+  case animalNutrition
+  case medicalManager
+  case coachMental
+  case nutricionClinica
+  public static var all: [MeetingDoctorsController.SpecialityTypeModel] {
+    get
+  }
+  public static var none: [MeetingDoctorsController.SpecialityTypeModel] {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [MeetingDoctorsController.SpecialityTypeModel]
+  public typealias RawValue = Swift.String
+  public static var allCases: [MeetingDoctorsController.SpecialityTypeModel] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsController.SpecialityTypeModel {
+  public var id: Swift.String {
+    get
+  }
+}
+extension Swift.Int {
+  public var nanoseconds: Foundation.DateComponents {
+    get
+  }
+  public var seconds: Foundation.DateComponents {
+    get
+  }
+  public var minutes: Foundation.DateComponents {
+    get
+  }
+  public var hours: Foundation.DateComponents {
+    get
+  }
+  public var days: Foundation.DateComponents {
+    get
+  }
+  public var weeks: Foundation.DateComponents {
+    get
+  }
+  public var months: Foundation.DateComponents {
+    get
+  }
+  public var years: Foundation.DateComponents {
+    get
+  }
+}
+extension Foundation.Date {
+  public struct Options {
+    public var allowedComponents: Swift.Set<Foundation.Calendar.Component>
+    public var imminentRange: Foundation.DateComponents?
+    public var distantRange: Foundation.DateComponents?
+  }
+  public func colloquialSinceNow(options fOptions: Foundation.Date.Options? = nil) -> Swift.String
+  public func colloquial(to date: Foundation.Date, options fOptions: Foundation.Date.Options? = nil) -> Swift.String
+  public static func colloquial(from fDate: Foundation.Date, to tDate: Foundation.Date, options fOptions: Foundation.Date.Options? = nil) -> Swift.String
+  public var second: Swift.Int {
+    get
+  }
+  public var minute: Swift.Int {
+    get
+  }
+  public var hour: Swift.Int {
+    get
+  }
+  public func add(hour: Swift.Int) -> Foundation.Date?
+  public func add(minute: Swift.Int) -> Foundation.Date?
+  public var year: Swift.Int {
+    get
+  }
+  public var month: Swift.Int {
+    get
+  }
+  public var day: Swift.Int {
+    get
+  }
+  public var weekday: Swift.String {
+    get
+  }
+  public func add(components: Foundation.DateComponents) -> Foundation.Date?
+}
+extension Foundation.DateComponents {
+  public func `in`(_ component: Foundation.Calendar.Component) -> Swift.Int?
+}
+public struct AnyMedicalDirectoryListControllerType<ElementModel> : MeetingDoctorsController.MedicalDirectoryListControllerType where ElementModel : MeetingDoctorsCore.Transmittable {
+  public init<Concrete>(_ concrete: Concrete) where ElementModel == Concrete.ElementModel, Concrete : MeetingDoctorsController.MedicalDirectoryListControllerType
+  public func fetch(query: MeetingDoctorsController.MedicalQueryBuilder, completion: @escaping (Swift.Result<[ElementModel], any Swift.Error>) -> Swift.Void)
+  public func get(query: MeetingDoctorsController.MedicalQueryBuilder, completion: @escaping (Swift.Result<[ElementModel], any Swift.Error>) -> Swift.Void)
+}
+final public class RunLoopThreadScheduler : RxSwift.ImmediateSchedulerType {
+  public init(thread: MeetingDoctorsController.RunLoopThread)
+  final public func schedule<StateType>(_ state: StateType, action: @escaping (StateType) -> any RxSwift.Disposable) -> any RxSwift.Disposable
+  @objc deinit
+}
+@objc final public class RunLoopThread : Foundation.Thread {
+  final public var runLoop: Foundation.RunLoop!
+  public init(name: Swift.String)
+  @objc override final public func main()
+  @objc deinit
+}
+public protocol MedicalProfessionalModelType {
+  var id: Swift.String { get }
+  var name: Swift.String { get }
+  var phone: Swift.String { get }
+  var address: Swift.String { get }
+  var zip: Swift.String { get }
+  var coordinates: CoreLocation.CLLocationCoordinate2D? { get }
+  var coverages: [Swift.String]? { get }
+  var specialities: [Swift.String]? { get }
+}
+public struct MedicalProfessionalModel : MeetingDoctorsController.MedicalProfessionalModelType {
+  public enum Kind : Swift.String {
+    case unknown
+    case professional
+    case center
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let id: Swift.String
+  public let name: Swift.String
+  public let type: MeetingDoctorsController.MedicalProfessionalModel.Kind
+  public let phone: Swift.String
+  public let address: Swift.String
+  public let zip: Swift.String
+  public let coordinates: CoreLocation.CLLocationCoordinate2D?
+  public let coverages: [Swift.String]?
+  public let specialities: [Swift.String]?
+  public init(id: Swift.String, name: Swift.String, type: MeetingDoctorsController.MedicalProfessionalModel.Kind, phone: Swift.String, address: Swift.String, zip: Swift.String)
+  public init(id: Swift.String, name: Swift.String, type: MeetingDoctorsController.MedicalProfessionalModel.Kind, phone: Swift.String, address: Swift.String, zip: Swift.String, coordinates: CoreLocation.CLLocationCoordinate2D?, coverages: [Swift.String]?, specialities: [Swift.String]?)
+}
+extension MeetingDoctorsController.MedicalProfessionalModel {
+  public var location: CoreLocation.CLLocation? {
+    get
+  }
+  public func distance(from location: CoreLocation.CLLocation) -> CoreLocation.CLLocationDistance
+}
+extension MeetingDoctorsController.MedicalProfessionalModel : MeetingDoctorsCore.Transmittable {
+  public typealias SchemaObject = MeetingDoctorsSchema.MedicalProfessionalSchema
+  public var schemaObject: MeetingDoctorsSchema.MedicalProfessionalSchema {
+    get
+  }
+  public init(schemaObject: MeetingDoctorsSchema.MedicalProfessionalSchema) throws
+}
+extension MeetingDoctorsController.MedicalProfessionalModel.Kind : MeetingDoctorsCore.Transmittable {
+  public typealias SchemaObject = MeetingDoctorsSchema.MedicalProfessionalSchema.Kind
+  public var schemaObject: MeetingDoctorsSchema.MedicalProfessionalSchema.Kind {
+    get
+  }
+  public init(schemaObject: MeetingDoctorsSchema.MedicalProfessionalSchema.Kind) throws
+}
+public protocol AuthenticationAdapter {
+  func authenticate(_ request: MeetingDoctorsSchema.AuthenticateRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.SessionSchema, any Swift.Error>) -> Swift.Void)
+  func user(_ request: MeetingDoctorsSchema.UserRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.UserSchema, any Swift.Error>) -> Swift.Void)
+}
+public enum ScheduleStateModel : Swift.String {
+  case unknown
+  case disabled
+  case enabled
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol MedicalHistoryListControllerType {
+  associatedtype ElementModel : MeetingDoctorsCore.Transmittable
+  func fetch(patient hash: Swift.String) -> RxSwift.Observable<([Self.ElementModel], MeetingDoctorsController.Changeset?)>
+}
+public class MedicalHistoryMainController : MeetingDoctorsController.MedicalHistoryListControllerType {
+  public typealias ElementModel = MeetingDoctorsController.MedicalHistoryModel
+  public init(_ hasVideoCall: Swift.Bool, allowedOptions: [MeetingDoctorsController.MedicalHistoryModel])
+  public func fetch(patient _: Swift.String) -> RxSwift.Observable<([MeetingDoctorsController.MedicalHistoryModel], MeetingDoctorsController.Changeset?)>
+  @objc deinit
+}
+public class MedicalHistoryListController<Model> : MeetingDoctorsController.MedicalHistoryListControllerType where Model : MeetingDoctorsCore.Transmittable, Model.SchemaObject : MeetingDoctorsSchema.MedicalHistorySchema {
+  public init(_ repository: MeetingDoctorsController.AnyRepository<Model>, _ adapter: MeetingDoctorsController.AnyMedicalHistoryAdapter<Model.SchemaObject>, scheduler: any RxSwift.ImmediateSchedulerType, auth: any MeetingDoctorsController.CustomerAuthControllerProtocol)
+  public func fetch(patient hash: Swift.String) -> RxSwift.Observable<([Model], MeetingDoctorsController.Changeset?)>
+  public typealias ElementModel = Model
+  @objc deinit
+}
+public class MedicalHistoryIdentifiableListController<Model> : MeetingDoctorsController.MedicalHistoryListControllerType where Model : MeetingDoctorsCore.Transmittable, Model.SchemaObject : MeetingDoctorsSchema.IdentifiableSchema {
+  public init(_ repository: MeetingDoctorsController.AnyRepository<Model>, _ adapter: MeetingDoctorsController.AnyIdentifiableAdapter<Model.SchemaObject>, scheduler: any RxSwift.ImmediateSchedulerType, auth: any MeetingDoctorsController.CustomerAuthControllerProtocol)
+  public func fetch(patient hash: Swift.String) -> RxSwift.Observable<([Model], MeetingDoctorsController.Changeset?)>
+  public typealias ElementModel = Model
+  @objc deinit
+}
+public enum ScheduleAvailabilityModel : Swift.Int, Swift.CustomStringConvertible {
+  case unknown
+  case holidays
+  case now
+  case soon
+  case tomorrow
+  case forthcoming
+  public func next() -> MeetingDoctorsController.ScheduleAvailabilityModel
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol CustomerUserModelProtocol {
+  var hash: Swift.String { get }
+  var token: Swift.String { get }
+}
+public struct CustomerUserModel : Swift.Codable, MeetingDoctorsController.CustomerUserModelProtocol {
+  public let hash: Swift.String
+  public let token: Swift.String
+  public init(hash: Swift.String, token: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension MeetingDoctorsController.CustomerUserModel {
+  public init(schema: MeetingDoctorsSchema.CustomerUserSchema)
+}
+extension MeetingDoctorsController.CustomerUserModel : Swift.Equatable {
+  public static func == (a: MeetingDoctorsController.CustomerUserModel, b: MeetingDoctorsController.CustomerUserModel) -> Swift.Bool
+}
+public typealias AttributeValue = (name: Swift.String, value: Any)
+public protocol AttributeValueType {
+  var parameter: MeetingDoctorsController.AttributeValue { get }
+}
+public protocol QueryType {
+  var predicate: Foundation.NSPredicate? { get }
+  var descriptors: [Foundation.NSSortDescriptor] { get }
+  var offset: Swift.Int { get }
+  var limit: Swift.Int { get }
+}
+public protocol InstallationAdapter {
+  func setup(_ request: MeetingDoctorsSchema.SetupRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.SetupSchema, any Swift.Error>) -> Swift.Void)
+}
+public protocol MessageModelType : Swift.CustomStringConvertible {
+  var id: Swift.String { get }
+  var room: Swift.String { get }
+  var sender: Swift.String { get }
+  var metadata: MeetingDoctorsController.MessageDataModel { get }
+  var kind: MeetingDoctorsController.MessageTypeModel { get }
+  var status: MeetingDoctorsController.MessageStatusModel { get }
+  var timestamp: Foundation.TimeInterval { get }
+}
+public struct MessageModel : MeetingDoctorsController.MessageModelType {
+  public let id: Swift.String
+  public let room: Swift.String
+  public let sender: Swift.String
+  public let metadata: MeetingDoctorsController.MessageDataModel
+  public let status: MeetingDoctorsController.MessageStatusModel
+  public let timestamp: Foundation.TimeInterval
+  public var kind: MeetingDoctorsController.MessageTypeModel {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+  public init(id: Foundation.UUID, room: Swift.Int, sender: MeetingDoctorsController.UserModel, metadata: MeetingDoctorsController.MessageDataModel, date: Foundation.Date = Date())
+  public init(id: Swift.String, room: Swift.String, sender: Swift.String, metadata: MeetingDoctorsController.MessageDataModel, status: MeetingDoctorsController.MessageStatusModel, timestamp: Foundation.TimeInterval)
+}
+extension MeetingDoctorsController.MessageModel {
+  public static let idLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MessageModel, Swift.String>
+  public static let roomLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MessageModel, Swift.String>
+  public static let senderLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MessageModel, Swift.String>
+  public static let metadataLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MessageModel, MeetingDoctorsController.MessageDataModel>
+  public static let statusLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MessageModel, MeetingDoctorsController.MessageStatusModel>
+  public static let timestampLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MessageModel, Foundation.TimeInterval>
+}
+public protocol NotificationControllerType {
+  func authorize(_ application: UIKit.UIApplication)
+  @available(iOS 10.0, *)
+  func authorize(_ application: UIKit.UIApplication, notification center: UserNotifications.UNUserNotificationCenter)
+  func unreadMessageCount(for user: MeetingDoctorsController.UserModel, completion: @escaping (Swift.Result<Swift.Int, any Swift.Error>) -> Swift.Void)
+}
+public class NotificationController : MeetingDoctorsController.NotificationControllerType {
+  public init(_ installation: MeetingDoctorsController.InstallationController, remote: any MeetingDoctorsController.RemoteController)
+  public func authorize(_ application: UIKit.UIApplication)
+  @available(iOS 10.0, *)
+  public func authorize(_ application: UIKit.UIApplication, notification _: UserNotifications.UNUserNotificationCenter)
+  public func unreadMessageCount(for user: MeetingDoctorsController.UserModel, completion: @escaping (Swift.Result<Swift.Int, any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public protocol InboxContactModelType {
+  var id: Swift.String { get }
+  var channel: Swift.String { get }
+  var name: Swift.String { get }
+  var avatarURL: Foundation.URL { get }
+  var overview: Swift.String { get }
+  var speciality: Swift.String { get }
+  var specialityCode: Swift.String { get }
+  var specialityType: MeetingDoctorsController.SpecialityTypeModel { get }
+  var role: MeetingDoctorsController.ContactRoleModel { get }
+  var status: MeetingDoctorsController.ContactStatusModel { get set }
+  var videoStatus: MeetingDoctorsController.VideoStatusModel? { get set }
+  var unread: [MeetingDoctorsController.MessageModel] { get }
+  var lastMessageTimestamp: Foundation.TimeInterval? { get }
+  var pending: Swift.Int { get }
+  var timezone: Foundation.TimeZone { get }
+  var onHolidays: Swift.Bool { get }
+  var schedules: [MeetingDoctorsController.ScheduleModel] { get }
+  var saturated: Swift.String { get }
+  var collegiateNumber: Swift.String { get }
+  var conversationId: Swift.String? { get }
+  var isAccessible: Swift.Bool { get }
+}
+public struct InboxContactModel : MeetingDoctorsController.InboxContactModelType {
+  public let id: Swift.String
+  public let channel: Swift.String
+  public let name: Swift.String
+  public let avatarURL: Foundation.URL
+  public let overview: Swift.String
+  public let speciality: Swift.String
+  public let specialityCode: Swift.String
+  public let specialityType: MeetingDoctorsController.SpecialityTypeModel
+  public let role: MeetingDoctorsController.ContactRoleModel
+  public var status: MeetingDoctorsController.ContactStatusModel
+  public var videoStatus: MeetingDoctorsController.VideoStatusModel?
+  public let unread: [MeetingDoctorsController.MessageModel]
+  public let lastMessageTimestamp: Foundation.TimeInterval?
+  public let pending: Swift.Int
+  public let timezone: Foundation.TimeZone
+  public let timeZoneOffset: Swift.Int
+  public let nextOnlineAt: Foundation.Date?
+  public let nextOfflineAt: Foundation.Date?
+  public let onHolidays: Swift.Bool
+  public let schedules: [MeetingDoctorsController.ScheduleModel]
+  public let updatedAt: Foundation.Date
+  public let saturated: Swift.String
+  public let collegiateNumber: Swift.String
+  public let conversationId: Swift.String?
+  public let isVcAvailable: Swift.Bool?
+  public let isAccessible: Swift.Bool
+  public init(id: Swift.String, channel: Swift.String, name: Swift.String, avatarURL: Foundation.URL, overview: Swift.String, speciality: Swift.String, specialityCode: Swift.String, specialityType: MeetingDoctorsController.SpecialityTypeModel, role: MeetingDoctorsController.ContactRoleModel, status: MeetingDoctorsController.ContactStatusModel, videoStatus: MeetingDoctorsController.VideoStatusModel?, unread: [MeetingDoctorsController.MessageModel], lastMessageTimestamp: Foundation.TimeInterval?, pending: Swift.Int, timezone: Foundation.TimeZone, timeZoneOffset: Swift.Int, nextOnlineAt: Foundation.Date?, nextOfflineAt: Foundation.Date?, onHolidays: Swift.Bool, schedules: [MeetingDoctorsController.ScheduleModel], updatedAt: Foundation.Date, saturated: Swift.String, collegiateNumber: Swift.String, conversationId: Swift.String?, isVcAvailable: Swift.Bool?, isAccessible: Swift.Bool)
+}
+extension MeetingDoctorsController.InboxContactModel {
+  public typealias ScheduleAvailability = (schedule: Foundation.Date?, availability: MeetingDoctorsController.ScheduleAvailabilityModel)
+  public func findNextSchedule() -> (schedule: Foundation.Date?, availability: MeetingDoctorsController.ScheduleAvailabilityModel)
+  public func mapWeekDaySchedule(for date: Foundation.Date) -> [MeetingDoctorsSchema.ScheduleSchema.WeekDay : [Foundation.DateInterval?]]
+}
+extension MeetingDoctorsController.InboxContactModel {
+  public var lastMessageDate: Foundation.Date? {
+    get
+  }
+}
+extension MeetingDoctorsController.InboxContactModel {
+  public static let idLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.String>
+  public static let channelLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.String>
+  public static let nameLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.String>
+  public static let avatarURLLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Foundation.URL>
+  public static let overviewLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.String>
+  public static let specialityLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.String>
+  public static let specialityCodeLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.String>
+  public static let specialityTypeLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, MeetingDoctorsController.SpecialityTypeModel>
+  public static let roleLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, MeetingDoctorsController.ContactRoleModel>
+  public static let statusLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, MeetingDoctorsController.ContactStatusModel>
+  public static let videoStatusLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, MeetingDoctorsController.VideoStatusModel?>
+  public static let unreadLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, [MeetingDoctorsController.MessageModel]>
+  public static let lastMessageTimestampLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Foundation.TimeInterval?>
+  public static let pendingLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.Int>
+  public static let timezoneLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Foundation.TimeZone>
+  public static let timeZoneOffsetLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.Int>
+  public static let nextOnlineAtLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Foundation.Date?>
+  public static let nextOfflineAtLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Foundation.Date?>
+  public static let onHolidaysLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.Bool>
+  public static let schedulesLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, [MeetingDoctorsController.ScheduleModel]>
+  public static let updatedAtLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Foundation.Date>
+  public static let saturatedLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.String>
+  public static let collegiateNumberLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.String>
+  public static let conversationIdLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.String?>
+  public static let isVcAvailableLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.Bool?>
+  public static let isAccessibleLens: MeetingDoctorsController.Lens<MeetingDoctorsController.InboxContactModel, Swift.Bool>
+}
+public protocol Repository {
+  associatedtype EntityType
+  func fetch(by id: Swift.String) -> RxSwift.Observable<Self.EntityType?>
+  func fetch() -> RxSwift.Observable<([Self.EntityType], MeetingDoctorsController.Changeset?)>
+  func query(with predicate: Foundation.NSPredicate, sorted descriptors: [Foundation.NSSortDescriptor], offset: Swift.Int, limit: Swift.Int) -> RxSwift.Observable<([Self.EntityType], MeetingDoctorsController.Changeset?)>
+  func save(entity: Self.EntityType, update: Swift.Bool) -> RxSwift.Observable<Swift.Void>
+  func save<S>(collection: S, update: Swift.Bool, clear: Swift.Bool) -> RxSwift.Observable<Swift.Void> where S : Swift.Sequence, Self.EntityType == S.Element
+  func update(properties: [any MeetingDoctorsController.AttributeValueType]) -> RxSwift.Observable<Swift.Void>
+  func delete(entity: Self.EntityType) -> RxSwift.Observable<Swift.Void>
+  func delete<S>(collection: S) -> RxSwift.Observable<Swift.Void> where S : Swift.Sequence, Self.EntityType == S.Element
+  func delete(with predicate: Foundation.NSPredicate) -> RxSwift.Observable<Swift.Void>
+  func clear(cascading: Swift.Bool) -> RxSwift.Observable<Swift.Void>
+  func fetch(by id: Swift.String, completion: @escaping (Swift.Result<Self.EntityType?, any Swift.Error>) -> Swift.Void)
+  func fetch(completion: @escaping (Swift.Result<[Self.EntityType], any Swift.Error>) -> Swift.Void)
+  func query(with predicate: Foundation.NSPredicate, sorted descriptors: [Foundation.NSSortDescriptor], offset: Swift.Int, limit: Swift.Int, completion: @escaping (Swift.Result<[Self.EntityType], any Swift.Error>) -> Swift.Void)
+  func save(entity: Self.EntityType, update: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  func save<S>(collection: S, update: Swift.Bool, clear: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) where S : Swift.Sequence, Self.EntityType == S.Element
+  func update(properties: [any MeetingDoctorsController.AttributeValueType], completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  func delete(entity: Self.EntityType, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  func delete<S>(collection: S, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) where S : Swift.Sequence, Self.EntityType == S.Element
+  func delete(with predicate: Foundation.NSPredicate, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  func clear(cascading: Swift.Bool, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+}
+extension MeetingDoctorsController.Repository {
+  public func fetch(by _: Swift.String) -> RxSwift.Observable<Self.EntityType?>
+  public func fetch() -> RxSwift.Observable<([Self.EntityType], MeetingDoctorsController.Changeset?)>
+  public func query(with _: Foundation.NSPredicate, sorted _: [Foundation.NSSortDescriptor] = [], offset: Swift.Int = 0, limit: Swift.Int = 0) -> RxSwift.Observable<([Self.EntityType], MeetingDoctorsController.Changeset?)>
+  public func save(entity _: Self.EntityType, update _: Swift.Bool = true) -> RxSwift.Observable<Swift.Void>
+  public func save<S>(collection _: S, update _: Swift.Bool, clear _: Swift.Bool) -> RxSwift.Observable<Swift.Void> where S : Swift.Sequence, Self.EntityType == S.Element
+  public func update(properties _: [any MeetingDoctorsController.AttributeValueType]) -> RxSwift.Observable<Swift.Void>
+  public func delete(entity _: Self.EntityType) -> RxSwift.Observable<Swift.Void>
+  public func delete<S>(collection _: S) -> RxSwift.Observable<Swift.Void> where S : Swift.Sequence, Self.EntityType == S.Element
+  public func clear(cascading _: Swift.Bool = true) -> RxSwift.Observable<Swift.Void>
+  public func fetch(by _: Swift.String, completion _: @escaping (Swift.Result<Self.EntityType?, any Swift.Error>) -> Swift.Void)
+  public func fetch(completion _: @escaping (Swift.Result<[Self.EntityType], any Swift.Error>) -> Swift.Void)
+  public func query(with _: Foundation.NSPredicate, sorted _: [Foundation.NSSortDescriptor], offset _: Swift.Int, limit _: Swift.Int, completion _: @escaping (Swift.Result<[Self.EntityType], any Swift.Error>) -> Swift.Void)
+  public func save(entity _: Self.EntityType, update _: Swift.Bool, completion _: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func save<S>(collection _: S, update _: Swift.Bool, clear _: Swift.Bool, completion _: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) where S : Swift.Sequence, Self.EntityType == S.Element
+  public func update(properties _: [any MeetingDoctorsController.AttributeValueType], completion _: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func delete(entity _: Self.EntityType, completion _: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func delete<S>(collection _: S, completion _: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) where S : Swift.Sequence, Self.EntityType == S.Element
+  public func delete(with _: Foundation.NSPredicate, completion _: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func clear(cascading _: Swift.Bool, completion _: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+}
+public enum RepositoryError : Swift.Error, Foundation.LocalizedError, Foundation.CustomNSError {
+  public enum StoreFailureReason {
+    case nilConfigurationFileURL
+    case providerFailed(error: any Swift.Error)
+    case writeOperationFailed(error: any Swift.Error)
+    case collectionObserverFailed(error: any Swift.Error)
+    case objectObserverFailed(error: any Swift.Error)
+    case objectDeleted
+    case storeNotInitialized
+  }
+  case storeFailed(reason: MeetingDoctorsController.RepositoryError.StoreFailureReason)
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+extension MeetingDoctorsController.RepositoryError {
+  public var underlyingError: (any Swift.Error)? {
+    get
+  }
+}
+public protocol MedicalDirectoryAdapter {
+  associatedtype SchemaType : MeetingDoctorsSchema.MedicalDirectorySchema
+  func fetch<ParameterType>(_ request: ParameterType?, type: ParameterType.Type, completion: @escaping (Swift.Result<[Self.SchemaType], any Swift.Error>) -> Swift.Void) where ParameterType : MeetingDoctorsSchema.PaginableRequest
+}
+@objc @_inheritsConvenienceInitializers final public class LocationModel : CoreLocation.CLLocation {
+  convenience public init(_ location: CoreLocation.CLLocation)
+  @objc override dynamic public init(latitude: CoreLocation.CLLocationDegrees, longitude: CoreLocation.CLLocationDegrees)
+  @objc override dynamic public init(coordinate: CoreLocation.CLLocationCoordinate2D, altitude: CoreLocation.CLLocationDistance, horizontalAccuracy hAccuracy: CoreLocation.CLLocationAccuracy, verticalAccuracy vAccuracy: CoreLocation.CLLocationAccuracy, timestamp: Foundation.Date)
+  @available(iOS 4.2, *)
+  @objc override dynamic public init(coordinate: CoreLocation.CLLocationCoordinate2D, altitude: CoreLocation.CLLocationDistance, horizontalAccuracy hAccuracy: CoreLocation.CLLocationAccuracy, verticalAccuracy vAccuracy: CoreLocation.CLLocationAccuracy, course: CoreLocation.CLLocationDirection, speed: CoreLocation.CLLocationSpeed, timestamp: Foundation.Date)
+  @available(iOS 13.4, *)
+  @objc override dynamic public init(coordinate: CoreLocation.CLLocationCoordinate2D, altitude: CoreLocation.CLLocationDistance, horizontalAccuracy hAccuracy: CoreLocation.CLLocationAccuracy, verticalAccuracy vAccuracy: CoreLocation.CLLocationAccuracy, course: CoreLocation.CLLocationDirection, courseAccuracy: CoreLocation.CLLocationDirectionAccuracy, speed: CoreLocation.CLLocationSpeed, speedAccuracy: CoreLocation.CLLocationSpeedAccuracy, timestamp: Foundation.Date)
+  @available(iOS 15.0, *)
+  @objc override dynamic public init(coordinate: CoreLocation.CLLocationCoordinate2D, altitude: CoreLocation.CLLocationDistance, horizontalAccuracy hAccuracy: CoreLocation.CLLocationAccuracy, verticalAccuracy vAccuracy: CoreLocation.CLLocationAccuracy, course: CoreLocation.CLLocationDirection, courseAccuracy: CoreLocation.CLLocationDirectionAccuracy, speed: CoreLocation.CLLocationSpeed, speedAccuracy: CoreLocation.CLLocationSpeedAccuracy, timestamp: Foundation.Date, sourceInfo: CoreLocation.CLLocationSourceInformation)
+  @objc override dynamic public init()
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol SocketOutputStream : MeetingDoctorsSchema.SocketEventType {
+  associatedtype EventType
+  func emit(event: Self.EventType) throws
+  func acknowledge(event: Self.EventType) throws -> RxSwift.Single<MeetingDoctorsSchema.SocketClientSchema.Input>
+}
+public protocol SocketInputStream : MeetingDoctorsSchema.SocketEventType {
+  associatedtype EventType
+  func on() -> RxSwift.Observable<Self.EventType>
+}
+public protocol SocketStream {
+  associatedtype SocketNativeType
+  associatedtype SocketInputType
+  associatedtype SocketOutputType
+  var error: RxSwift.Observable<Self.SocketNativeType> { get }
+  var status: RxSwift.Observable<Self.SocketNativeType> { get }
+  func connect<Credentials>(credentials: Credentials?) -> RxSwift.Observable<Self.SocketNativeType> where Credentials : MeetingDoctorsSchema.SocketCredentials
+  func disconnect() -> RxSwift.Observable<Self.SocketNativeType>
+  func input(stream event: MeetingDoctorsSchema.SocketListenerType) throws -> MeetingDoctorsController.AnySocketInputStream<Self.SocketInputType>
+  func output(stream event: MeetingDoctorsSchema.SocketEmissionType) throws -> MeetingDoctorsController.AnySocketOutputStream<Self.SocketOutputType>
+  func join(namespace: Swift.String)
+  func leave()
+  func clear()
+}
+public protocol IMCModelType {
+  var id: Swift.String { get }
+  var weight: Swift.Int? { get }
+  var height: Swift.Int? { get }
+  var value: Swift.Float? { get }
+  var patientHash: Swift.String { get }
+  var updatedAt: Foundation.Date? { get }
+  var createdAt: Foundation.Date? { get }
+}
+public struct IMCModel : MeetingDoctorsController.IMCModelType {
+  public static let Stub: MeetingDoctorsController.IMCModel
+  public let id: Swift.String
+  public let weight: Swift.Int?
+  public let height: Swift.Int?
+  public let value: Swift.Float?
+  public let patientHash: Swift.String
+  public let updatedAt: Foundation.Date?
+  public let createdAt: Foundation.Date?
+  public init(id: Swift.String, weight: Swift.Int?, height: Swift.Int?, value: Swift.Float?, patientHash: Swift.String, updatedAt: Foundation.Date?, createdAt: Foundation.Date?)
+}
+extension MeetingDoctorsController.IMCModel : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsController.IMCModel, rhs: MeetingDoctorsController.IMCModel) -> Swift.Bool
+}
+extension MeetingDoctorsController.IMCModel : MeetingDoctorsCore.Transmittable {
+  public typealias SchemaObject = MeetingDoctorsSchema.IMCSchema
+  public var schemaObject: MeetingDoctorsSchema.IMCSchema {
+    get
+  }
+  public init(schemaObject: MeetingDoctorsSchema.IMCSchema) throws
+}
+extension MeetingDoctorsController.IMCModel {
+  public static let idLens: MeetingDoctorsController.Lens<MeetingDoctorsController.IMCModel, Swift.String>
+  public static let weightLens: MeetingDoctorsController.Lens<MeetingDoctorsController.IMCModel, Swift.Int?>
+  public static let heightLens: MeetingDoctorsController.Lens<MeetingDoctorsController.IMCModel, Swift.Int?>
+  public static let valueLens: MeetingDoctorsController.Lens<MeetingDoctorsController.IMCModel, Swift.Float?>
+  public static let patientHashLens: MeetingDoctorsController.Lens<MeetingDoctorsController.IMCModel, Swift.String>
+  public static let updatedAtLens: MeetingDoctorsController.Lens<MeetingDoctorsController.IMCModel, Foundation.Date?>
+  public static let createdAtLens: MeetingDoctorsController.Lens<MeetingDoctorsController.IMCModel, Foundation.Date?>
+}
+extension Swift.PartialKeyPath where Root == MeetingDoctorsController.IMCModel {
+  public var stringValue: Swift.String {
+    get
+  }
+}
+public enum UserGenderModel : Swift.String {
+  case unknown
+  case male
+  case female
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsSchema.UserSchema.Gender {
+  public var model: MeetingDoctorsController.UserGenderModel {
+    get
+  }
+}
+public enum MessageStatusModel : Swift.String {
+  case pending
+  case sent
+  case delivered
+  case received
+  case read
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsSchema.MessageSchema.Status {
+  public init(model: MeetingDoctorsController.MessageStatusModel)
+}
+public enum ScheduleWeekDayModel : Swift.String {
+  case unknown
+  case sunday
+  case monday
+  case tuesday
+  case wednesday
+  case thursday
+  case friday
+  case saturday
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc public class DerivationsListController : ObjectiveC.NSObject {
+  public init(repository: any MeetingDoctorsController.RepositoryController, remote: any MeetingDoctorsController.RemoteController, scheduler: any RxSwift.ImmediateSchedulerType, auth: any MeetingDoctorsController.CustomerAuthControllerProtocol)
+  public func fetch(patient hash: Swift.String) -> RxSwift.Observable<([MeetingDoctorsController.DerivationReportModel], MeetingDoctorsController.Changeset?)>
+  public func refresh() -> RxSwift.Observable<([MeetingDoctorsController.DerivationReportModel], MeetingDoctorsController.Changeset?)>
+  public func refresh(completion: @escaping (Swift.Result<([MeetingDoctorsController.DerivationReportModel], MeetingDoctorsController.Changeset?), any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public protocol AllergyModelType {
+  var id: Swift.String { get }
+  var name: Swift.String { get }
+  var severity: Swift.Int { get }
+  var details: Swift.String { get }
+  var patientHash: Swift.String { get }
+}
+public struct AllergyModel : MeetingDoctorsController.AllergyModelType {
+  public static let Stub: MeetingDoctorsController.AllergyModel
+  public let id: Swift.String
+  public let name: Swift.String
+  public let severity: Swift.Int
+  public let details: Swift.String
+  public let patientHash: Swift.String
+  public init(id: Swift.String, name: Swift.String, severity: Swift.Int, details: Swift.String, patientHash: Swift.String)
+}
+extension MeetingDoctorsController.AllergyModel : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsController.AllergyModel, rhs: MeetingDoctorsController.AllergyModel) -> Swift.Bool
+}
+extension MeetingDoctorsController.AllergyModel : MeetingDoctorsCore.Transmittable {
+  public typealias SchemaObject = MeetingDoctorsSchema.AllergySchema
+  public var schemaObject: MeetingDoctorsSchema.AllergySchema {
+    get
+  }
+  public init(schemaObject: MeetingDoctorsSchema.AllergySchema) throws
+}
+extension MeetingDoctorsController.AllergyModel {
+  public static let idLens: MeetingDoctorsController.Lens<MeetingDoctorsController.AllergyModel, Swift.String>
+  public static let nameLens: MeetingDoctorsController.Lens<MeetingDoctorsController.AllergyModel, Swift.String>
+  public static let severityLens: MeetingDoctorsController.Lens<MeetingDoctorsController.AllergyModel, Swift.Int>
+  public static let detailsLens: MeetingDoctorsController.Lens<MeetingDoctorsController.AllergyModel, Swift.String>
+  public static let patientHashLens: MeetingDoctorsController.Lens<MeetingDoctorsController.AllergyModel, Swift.String>
+}
+extension Swift.PartialKeyPath where Root == MeetingDoctorsController.AllergyModel {
+  public var stringValue: Swift.String {
+    get
+  }
+}
+public protocol MedicalAddressModelType {
+  var address: Swift.String? { get }
+  var location: CoreLocation.CLLocationCoordinate2D? { get }
+}
+public struct MedicalAddressModel : MeetingDoctorsController.MedicalAddressModelType {
+  public let address: Swift.String?
+  public let location: CoreLocation.CLLocationCoordinate2D?
+  public init(address: Swift.String?, location: CoreLocation.CLLocationCoordinate2D?)
+}
+extension MeetingDoctorsController.MedicalAddressModel : MeetingDoctorsCore.Transmittable {
+  public typealias SchemaObject = MeetingDoctorsSchema.MedicalAddressSchema
+  public var schemaObject: MeetingDoctorsSchema.MedicalAddressSchema {
+    get
+  }
+  public init(schemaObject: MeetingDoctorsSchema.MedicalAddressSchema) throws
+}
+public protocol ScheduleModelType {
+  var id: Swift.String { get }
+  var userId: Swift.String { get }
+  var state: MeetingDoctorsController.ScheduleStateModel { get }
+  var weekDay: MeetingDoctorsController.ScheduleWeekDayModel { get }
+  var firstPeriodStart: Swift.Int { get }
+  var firstPeriodEnd: Swift.Int { get }
+  var secondPeriodStart: Swift.Int { get }
+  var secondPeriodEnd: Swift.Int { get }
+}
+public struct ScheduleModel : MeetingDoctorsController.ScheduleModelType {
+  public let id: Swift.String
+  public let userId: Swift.String
+  public let state: MeetingDoctorsController.ScheduleStateModel
+  public let weekDay: MeetingDoctorsController.ScheduleWeekDayModel
+  public let firstPeriodStart: Swift.Int
+  public let firstPeriodEnd: Swift.Int
+  public let secondPeriodStart: Swift.Int
+  public let secondPeriodEnd: Swift.Int
+  public init(id: Swift.String, userId: Swift.String, state: MeetingDoctorsController.ScheduleStateModel, weekDay: MeetingDoctorsController.ScheduleWeekDayModel, firstPeriodStart: Swift.Int, firstPeriodEnd: Swift.Int, secondPeriodStart: Swift.Int, secondPeriodEnd: Swift.Int)
+}
+extension MeetingDoctorsController.ScheduleModel {
+  public var firstPeriodTimeInterval: Foundation.TimeInterval {
+    get
+  }
+  public var secondPeriodTimeInterval: Foundation.TimeInterval {
+    get
+  }
+  public var dayOfWeek: MeetingDoctorsSchema.ScheduleSchema.WeekDay? {
+    get
+  }
+  public func firstPeriodDateTimeInterval(_ date: Foundation.Date) -> Foundation.DateInterval?
+  public func secondPeriodDateTimeInterval(_ date: Foundation.Date) -> Foundation.DateInterval?
+}
+public protocol AccountModelType : Swift.Encodable {
+  var id: Swift.String { get }
+  var token: Swift.String { get }
+  var installation: MeetingDoctorsController.InstallationModel { get }
+}
+public struct AccountModel : MeetingDoctorsController.AccountModelType {
+  public let id: Swift.String
+  public let token: Swift.String
+  public var user: MeetingDoctorsController.UserModel
+  public let installation: MeetingDoctorsController.InstallationModel
+  public init(id: Swift.String, token: Swift.String, user: MeetingDoctorsController.UserModel, installation: MeetingDoctorsController.InstallationModel)
+}
+extension MeetingDoctorsController.AccountModel : MeetingDoctorsSchema.ChatSocketCredentials {
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case clientSecret
+    case sessionId
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public var clientSecret: Swift.String {
+    get
+  }
+  public var sessionId: Swift.String {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension MeetingDoctorsController.AccountModel {
+  public static let userLens: MeetingDoctorsController.Lens<MeetingDoctorsController.AccountModel, MeetingDoctorsController.UserModel>
+}
+public enum ContactStatusModel : Swift.String {
+  case unknown
+  case offline
+  case online
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension MeetingDoctorsController.ContactStatusModel {
+  public static let count: Swift.Int
+  public static let allCases: [MeetingDoctorsController.ContactStatusModel]
+}
+public protocol ConversationModelType {
+  var id: Swift.String { get }
+  var messages: [MeetingDoctorsController.MessageModel] { get }
+  var lastMessageTimestamp: Foundation.TimeInterval? { get }
+}
+public struct ConversationModel : MeetingDoctorsController.ConversationModelType {
+  public let id: Swift.String
+  public let messages: [MeetingDoctorsController.MessageModel]
+  public let lastMessageTimestamp: Foundation.TimeInterval?
+  public init(id: Swift.String, messages: [MeetingDoctorsController.MessageModel], lastMessageTimestamp: Foundation.TimeInterval?)
+}
+public struct MedicalHistoryActiveAndOptionsModel {
+  public let active: Swift.Bool
+  public let medicalHistory: [MeetingDoctorsController.MedicalHistoryModel]
+  public init(active: Swift.Bool, medicalHistory: [MeetingDoctorsController.MedicalHistoryModel])
+}
+@_hasMissingDesignatedInitializers public class MedicalHistoryActiveAndOptionConverter {
+  @objc deinit
+}
+public protocol MedicationModelType {
+  var id: Swift.String { get }
+  var name: Swift.String { get }
+  var posology: Swift.String? { get }
+  var details: Swift.String? { get }
+  var patientHash: Swift.String { get }
+}
+public struct MedicationModel : MeetingDoctorsController.MedicationModelType {
+  public static let Stub: MeetingDoctorsController.MedicationModel
+  public let id: Swift.String
+  public let name: Swift.String
+  public let posology: Swift.String?
+  public let details: Swift.String?
+  public let patientHash: Swift.String
+  public init(id: Swift.String, name: Swift.String, posology: Swift.String?, details: Swift.String?, patientHash: Swift.String)
+}
+extension MeetingDoctorsController.MedicationModel : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsController.MedicationModel, rhs: MeetingDoctorsController.MedicationModel) -> Swift.Bool
+}
+extension MeetingDoctorsController.MedicationModel : MeetingDoctorsCore.Transmittable {
+  public typealias SchemaObject = MeetingDoctorsSchema.MedicationSchema
+  public var schemaObject: MeetingDoctorsSchema.MedicationSchema {
+    get
+  }
+  public init(schemaObject: MeetingDoctorsSchema.MedicationSchema) throws
+}
+extension MeetingDoctorsController.MedicationModel {
+  public static let idLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MedicationModel, Swift.String>
+  public static let nameLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MedicationModel, Swift.String>
+  public static let posologyLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MedicationModel, Swift.String?>
+  public static let detailsLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MedicationModel, Swift.String?>
+  public static let patientHashLens: MeetingDoctorsController.Lens<MeetingDoctorsController.MedicationModel, Swift.String>
+}
+public struct EnvironmentVariables {
+  public struct Inbox {
+    public static let RetrieveAll: MeetingDoctorsCore.NamedProperty<Swift.Bool>
+  }
+  public struct Security {
+    public static let Log: MeetingDoctorsCore.NamedProperty<Swift.Bool>
+  }
+}
+public protocol CustomerInstallationModelProtocol {
+  var id: Swift.String { get }
+  var installationGuid: Swift.String { get }
+  var pushToken: Swift.String? { get }
+}
+public struct CustomerInstallationModel : MeetingDoctorsController.CustomerInstallationModelProtocol {
+  public let id: Swift.String
+  public let installationGuid: Swift.String
+  public var pushToken: Swift.String?
+  public init(id: Swift.String, installationGuid: Swift.String, pushToken: Swift.String?)
+}
+extension MeetingDoctorsController.CustomerInstallationModel {
+  public init(id: Swift.String, schema: MeetingDoctorsSchema.CustomerInstallationSchema)
+}
+extension MeetingDoctorsController.CustomerInstallationModel {
+  public static let idLens: MeetingDoctorsController.Lens<MeetingDoctorsController.CustomerInstallationModel, Swift.String>
+  public static let installationGuidLens: MeetingDoctorsController.Lens<MeetingDoctorsController.CustomerInstallationModel, Swift.String>
+  public static let pushTokenLens: MeetingDoctorsController.Lens<MeetingDoctorsController.CustomerInstallationModel, Swift.String?>
+}
+extension MeetingDoctorsController.CustomerInstallationModel : Swift.Equatable {
+  public static func == (a: MeetingDoctorsController.CustomerInstallationModel, b: MeetingDoctorsController.CustomerInstallationModel) -> Swift.Bool
+}
+public struct CompanyReportModel {
+  public let id: Swift.Int?
+  public let name: Swift.String?
+  public let logo: Swift.String?
+  public init(id: Swift.Int?, name: Swift.String?, logo: Swift.String?)
+}
+public protocol VideoCallUserModelType {
+  var hash: Swift.String { get }
+  var name: Swift.String? { get }
+  var avatar: Swift.String? { get }
+  var description: Swift.String? { get }
+}
+public struct VideoCallUserModel : MeetingDoctorsController.VideoCallUserModelType {
+  public static let Stub: MeetingDoctorsController.VideoCallUserModel
+  public let hash: Swift.String
+  public let name: Swift.String?
+  public let avatar: Swift.String?
+  public let description: Swift.String?
+  public init(hash: Swift.String, name: Swift.String?, avatar: Swift.String?, description: Swift.String?)
+}
+extension MeetingDoctorsController.VideoCallUserModel : MeetingDoctorsCore.Transmittable {
+  public typealias SchemaObject = MeetingDoctorsSchema.VideoCallUserSchema
+  public var schemaObject: MeetingDoctorsSchema.VideoCallUserSchema {
+    get
+  }
+  public init(schemaObject: MeetingDoctorsSchema.VideoCallUserSchema) throws
+}
+extension MeetingDoctorsController.VideoCallUserModel : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsController.VideoCallUserModel, rhs: MeetingDoctorsController.VideoCallUserModel) -> Swift.Bool
+}
+extension MeetingDoctorsController.VideoCallUserModel {
+  public static let hashLens: MeetingDoctorsController.Lens<MeetingDoctorsController.VideoCallUserModel, Swift.String>
+  public static let nameLens: MeetingDoctorsController.Lens<MeetingDoctorsController.VideoCallUserModel, Swift.String?>
+  public static let avatarLens: MeetingDoctorsController.Lens<MeetingDoctorsController.VideoCallUserModel, Swift.String?>
+  public static let descriptionLens: MeetingDoctorsController.Lens<MeetingDoctorsController.VideoCallUserModel, Swift.String?>
+}
+public protocol MedicalCoverageModelType {
+  var id: Swift.String { get }
+  var name: Swift.String { get }
+}
+public struct MedicalCoverageModel : MeetingDoctorsController.MedicalCoverageModelType {
+  public let id: Swift.String
+  public let name: Swift.String
+  public init(id: Swift.String, name: Swift.String)
+}
+extension MeetingDoctorsController.MedicalCoverageModel : MeetingDoctorsCore.Transmittable {
+  public typealias SchemaObject = MeetingDoctorsSchema.MedicalCoverageSchema
+  public var schemaObject: MeetingDoctorsSchema.MedicalCoverageSchema {
+    get
+  }
+  public init(schemaObject: MeetingDoctorsSchema.MedicalCoverageSchema) throws
+}
+public protocol UserModelType {
+  var id: Swift.String { get }
+  var firstName: Swift.String? { get }
+  var lastName: Swift.String? { get }
+  var email: Swift.String? { get }
+  var phone: Swift.String? { get }
+  var documentId: Swift.String? { get }
+  var gender: MeetingDoctorsController.UserGenderModel? { get }
+  var status: MeetingDoctorsController.UserRegistrationStatusModel? { get }
+  var birthday: Foundation.Date? { get }
+  var cardNumber: Swift.String? { get }
+  var contract: Swift.String? { get }
+  var coverage: Swift.String? { get }
+  var company: Swift.String? { get }
+  var isBanned: Swift.Bool { get }
+  var features: MeetingDoctorsController.UserFeaturesModel? { get }
+  var termsAcceptedAt: Foundation.Date? { get set }
+  var companyGroupCode: Swift.String? { get }
+  var feed: MeetingDoctorsController.UserFeedModel? { get }
+  func hasAccess(to contact: MeetingDoctorsController.InboxContactModel) -> Swift.Bool
+}
+public struct UserModel : MeetingDoctorsController.UserModelType {
+  public let id: Swift.String
+  public let firstName: Swift.String?
+  public let lastName: Swift.String?
+  public let email: Swift.String?
+  public let phone: Swift.String?
+  public let documentId: Swift.String?
+  public let gender: MeetingDoctorsController.UserGenderModel?
+  public let status: MeetingDoctorsController.UserRegistrationStatusModel?
+  public let birthday: Foundation.Date?
+  public let cardNumber: Swift.String?
+  public let contract: Swift.String?
+  public let coverage: Swift.String?
+  public let company: Swift.String?
+  public let isBanned: Swift.Bool
+  public let features: MeetingDoctorsController.UserFeaturesModel?
+  public var termsAcceptedAt: Foundation.Date?
+  public let companyGroupCode: Swift.String?
+  public let feed: MeetingDoctorsController.UserFeedModel?
+  public var displayName: Swift.String {
+    get
+  }
+  public var isClient: Swift.Bool {
+    get
+  }
+  public init(id: Swift.String, firstName: Swift.String?, lastName: Swift.String?, email: Swift.String?, phone: Swift.String?, documentId: Swift.String?, gender: MeetingDoctorsController.UserGenderModel?, status: MeetingDoctorsController.UserRegistrationStatusModel?, birthday: Foundation.Date?, cardNumber: Swift.String?, contract: Swift.String?, coverage: Swift.String?, company: Swift.String?, isBanned: Swift.Bool, features: MeetingDoctorsController.UserFeaturesModel?, termsAcceptedAt: Foundation.Date?, companyGroupCode: Swift.String?, feed: MeetingDoctorsController.UserFeedModel?)
+  public func hasAccess(to contact: MeetingDoctorsController.InboxContactModel) -> Swift.Bool
+}
+extension MeetingDoctorsController.UserModel {
+  public init(id: Swift.String, schema: MeetingDoctorsSchema.UserSchema)
+}
+public protocol CustomerInstallationAdapter {
+  func installation(_ request: MeetingDoctorsSchema.CustomerInstallationRequest, completion: @escaping (Swift.Result<MeetingDoctorsSchema.CustomerInstallationSchema, any Swift.Error>) -> Swift.Void)
+}
+public protocol RemoteController {
+  var installation: any MeetingDoctorsController.InstallationAdapter { get }
+  var customerInstallation: any MeetingDoctorsController.CustomerInstallationAdapter { get }
+  var customerAuth: any MeetingDoctorsController.CustomerAuthAdapter { get }
+  var customerNotifications: any MeetingDoctorsController.CustomerNotificationsAdapter { get }
+  var authentication: any MeetingDoctorsController.AuthenticationAdapter { get }
+  var notification: any MeetingDoctorsController.NotificationAdapter { get }
+  var allergy: MeetingDoctorsController.AnyMedicalHistoryAdapter<MeetingDoctorsSchema.AllergySchema> { get }
+  var disease: MeetingDoctorsController.AnyMedicalHistoryAdapter<MeetingDoctorsSchema.DiseaseSchema> { get }
+  var medication: MeetingDoctorsController.AnyMedicalHistoryAdapter<MeetingDoctorsSchema.MedicationSchema> { get }
+  var imc: MeetingDoctorsController.AnyIdentifiableAdapter<MeetingDoctorsSchema.IMCSchema> { get }
+  var coverage: MeetingDoctorsController.AnyMedicalDirectoryAdapter<MeetingDoctorsSchema.MedicalCoverageSchema> { get }
+  var speciality: MeetingDoctorsController.AnyMedicalDirectoryAdapter<MeetingDoctorsSchema.MedicalSpecialitySchema> { get }
+  var professional: MeetingDoctorsController.AnyMedicalDirectoryAdapter<MeetingDoctorsSchema.MedicalProfessionalSchema> { get }
+  var address: MeetingDoctorsController.AnyMedicalDirectoryAdapter<MeetingDoctorsSchema.MedicalAddressSchema> { get }
+  var videoCallReport: MeetingDoctorsController.AnyMedicalHistoryAdapter<MeetingDoctorsSchema.VideoCallReportSchema> { get }
+  var derivation: any MeetingDoctorsController.DerivationReportAdapter { get }
+  var professionalList: any MeetingDoctorsController.ProfessionalListAdapter { get }
+  func join(account: MeetingDoctorsController.AccountModel)
+  func joinCustomer(auth: MeetingDoctorsController.CustomerAuthModel)
+  func joinProfessional(by token: Swift.String)
+}
+public protocol VideoCallReportModelType {
+  var id: Swift.Int { get }
+  var pdfUrl: Swift.String? { get }
+  var owner: MeetingDoctorsController.VideoCallUserModel? { get }
+  var maker: MeetingDoctorsController.VideoCallUserModel? { get }
+  var createdAt: Foundation.Date? { get }
+  var updatedAt: Foundation.Date? { get }
+}
+public struct VideoCallReportModel : MeetingDoctorsController.VideoCallReportModelType {
+  public let id: Swift.Int
+  public let pdfUrl: Swift.String?
+  public let owner: MeetingDoctorsController.VideoCallUserModel?
+  public let maker: MeetingDoctorsController.VideoCallUserModel?
+  public let createdAt: Foundation.Date?
+  public let updatedAt: Foundation.Date?
+  public init(id: Swift.Int, pdfUrl: Swift.String?, owner: MeetingDoctorsController.VideoCallUserModel?, maker: MeetingDoctorsController.VideoCallUserModel?, createdAt: Foundation.Date?, updatedAt: Foundation.Date?)
+}
+extension MeetingDoctorsController.VideoCallReportModel : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsController.VideoCallReportModel, rhs: MeetingDoctorsController.VideoCallReportModel) -> Swift.Bool
+}
+extension MeetingDoctorsController.VideoCallReportModel : MeetingDoctorsCore.Transmittable {
+  public typealias SchemaObject = MeetingDoctorsSchema.VideoCallReportSchema
+  public var schemaObject: MeetingDoctorsSchema.VideoCallReportSchema {
+    get
+  }
+  public init(schemaObject: MeetingDoctorsSchema.VideoCallReportSchema) throws
+}
+extension MeetingDoctorsController.VideoCallReportModel {
+  public static let idLens: MeetingDoctorsController.Lens<MeetingDoctorsController.VideoCallReportModel, Swift.Int>
+  public static let pdfUrlLens: MeetingDoctorsController.Lens<MeetingDoctorsController.VideoCallReportModel, Swift.String?>
+  public static let ownerLens: MeetingDoctorsController.Lens<MeetingDoctorsController.VideoCallReportModel, MeetingDoctorsController.VideoCallUserModel?>
+  public static let makerLens: MeetingDoctorsController.Lens<MeetingDoctorsController.VideoCallReportModel, MeetingDoctorsController.VideoCallUserModel?>
+  public static let createdAtLens: MeetingDoctorsController.Lens<MeetingDoctorsController.VideoCallReportModel, Foundation.Date?>
+  public static let updatedAtLens: MeetingDoctorsController.Lens<MeetingDoctorsController.VideoCallReportModel, Foundation.Date?>
+}
+extension MeetingDoctorsController.MessageTypeModel : Swift.Equatable {}
+extension MeetingDoctorsController.MessageTypeModel : Swift.Hashable {}
+extension MeetingDoctorsController.MessageTypeModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.UserRegistrationStatusModel : Swift.Equatable {}
+extension MeetingDoctorsController.UserRegistrationStatusModel : Swift.Hashable {}
+extension MeetingDoctorsController.UserRegistrationStatusModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.MedicalQueryBuilder.Kind : Swift.Equatable {}
+extension MeetingDoctorsController.MedicalQueryBuilder.Kind : Swift.Hashable {}
+extension MeetingDoctorsController.ControllerError.InstallationFailureReason : Swift.Equatable {}
+extension MeetingDoctorsController.ControllerError.InstallationFailureReason : Swift.Hashable {}
+extension MeetingDoctorsController.ControllerError.TransmittableFailureReason : Swift.Equatable {}
+extension MeetingDoctorsController.ControllerError.TransmittableFailureReason : Swift.Hashable {}
+extension MeetingDoctorsController.ContactRoleModel : Swift.Equatable {}
+extension MeetingDoctorsController.ContactRoleModel : Swift.Hashable {}
+extension MeetingDoctorsController.ContactRoleModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.ConnectionStatusModel : Swift.Equatable {}
+extension MeetingDoctorsController.ConnectionStatusModel : Swift.Hashable {}
+extension MeetingDoctorsController.ConnectionStatusModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.DerivationType : Swift.Equatable {}
+extension MeetingDoctorsController.DerivationType : Swift.Hashable {}
+extension MeetingDoctorsController.DerivationType : Swift.RawRepresentable {}
+extension MeetingDoctorsController.ReferrerModel.CodingKeys : Swift.Equatable {}
+extension MeetingDoctorsController.ReferrerModel.CodingKeys : Swift.Hashable {}
+extension MeetingDoctorsController.ReferrerModel.CodingKeys : Swift.RawRepresentable {}
+extension MeetingDoctorsController.KeychainAccessOption : Swift.Equatable {}
+extension MeetingDoctorsController.KeychainAccessOption : Swift.Hashable {}
+extension MeetingDoctorsController.VideoStatusModel : Swift.Equatable {}
+extension MeetingDoctorsController.VideoStatusModel : Swift.Hashable {}
+extension MeetingDoctorsController.VideoStatusModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.SystemModel : Swift.Equatable {}
+extension MeetingDoctorsController.SystemModel : Swift.Hashable {}
+extension MeetingDoctorsController.SystemModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.SpecialityTypeModel : Swift.Equatable {}
+extension MeetingDoctorsController.SpecialityTypeModel : Swift.Hashable {}
+extension MeetingDoctorsController.SpecialityTypeModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.MedicalProfessionalModel.Kind : Swift.Equatable {}
+extension MeetingDoctorsController.MedicalProfessionalModel.Kind : Swift.Hashable {}
+extension MeetingDoctorsController.MedicalProfessionalModel.Kind : Swift.RawRepresentable {}
+extension MeetingDoctorsController.ScheduleStateModel : Swift.Equatable {}
+extension MeetingDoctorsController.ScheduleStateModel : Swift.Hashable {}
+extension MeetingDoctorsController.ScheduleStateModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.ScheduleAvailabilityModel : Swift.Equatable {}
+extension MeetingDoctorsController.ScheduleAvailabilityModel : Swift.Hashable {}
+extension MeetingDoctorsController.ScheduleAvailabilityModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.UserGenderModel : Swift.Equatable {}
+extension MeetingDoctorsController.UserGenderModel : Swift.Hashable {}
+extension MeetingDoctorsController.UserGenderModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.MessageStatusModel : Swift.Equatable {}
+extension MeetingDoctorsController.MessageStatusModel : Swift.Hashable {}
+extension MeetingDoctorsController.MessageStatusModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.ScheduleWeekDayModel : Swift.Equatable {}
+extension MeetingDoctorsController.ScheduleWeekDayModel : Swift.Hashable {}
+extension MeetingDoctorsController.ScheduleWeekDayModel : Swift.RawRepresentable {}
+extension MeetingDoctorsController.AccountModel.CodingKeys : Swift.Equatable {}
+extension MeetingDoctorsController.AccountModel.CodingKeys : Swift.Hashable {}
+extension MeetingDoctorsController.AccountModel.CodingKeys : Swift.RawRepresentable {}
+extension MeetingDoctorsController.ContactStatusModel : Swift.Equatable {}
+extension MeetingDoctorsController.ContactStatusModel : Swift.Hashable {}
+extension MeetingDoctorsController.ContactStatusModel : Swift.RawRepresentable {}

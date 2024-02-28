@@ -1,10 +1,10 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
 // swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MeetingDoctorsCore
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
+import CommonCrypto
 import CoreLocation
-import FirebaseAnalytics
 import Foundation
 import Photos
 import Security
@@ -13,15 +13,7 @@ import UIKit
 import UserNotifications
 import _Concurrency
 import _StringProcessing
-extension MeetingDoctorsCore.Endpoint : Swift.Equatable {
-}
-public func == (lhs: MeetingDoctorsCore.Endpoint, rhs: MeetingDoctorsCore.Endpoint) -> Swift.Bool
-extension MeetingDoctorsCore.Environment : Swift.Equatable {
-}
-public func == (lhs: MeetingDoctorsCore.Environment, rhs: MeetingDoctorsCore.Environment) -> Swift.Bool
-extension MeetingDoctorsCore.Keystore : Swift.Equatable {
-}
-public func == (lhs: MeetingDoctorsCore.Keystore, rhs: MeetingDoctorsCore.Keystore) -> Swift.Bool
+import _SwiftConcurrencyShims
 @_inheritsConvenienceInitializers public class DataLoader : MeetingDoctorsCore.Loader<Foundation.URL, Foundation.Data> {
   override public init()
   @_semantics("optimize.sil.never") override public func load(_ source: Foundation.URL) -> Foundation.Data?
@@ -59,12 +51,6 @@ public class JsonLoader : MeetingDoctorsCore.Loader<Foundation.URL, [Swift.Strin
   @_semantics("optimize.sil.never") override public func load(_ source: Foundation.URL) -> [Swift.String : Any]?
   @objc deinit
 }
-public struct AnyAssembler<Component> : MeetingDoctorsCore.Assembler {
-  public init<Concrete>(_ concrete: Concrete) where Component == Concrete.Component, Concrete : MeetingDoctorsCore.Assembler
-  public func resolve() -> Component?
-}
-public protocol AutoMockable {
-}
 public protocol Navigatable {
   associatedtype Destination
   func navigate(to destination: Self.Destination)
@@ -80,12 +66,12 @@ extension MeetingDoctorsCore.Navigator where T : UIKit.UIViewController {
   public func navigate(to destination: T)
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CryptoManager : ObjectiveC.NSObject {
-  public static func decrypt(_ data: Foundation.Data?) -> Swift.Result<Foundation.Data, Swift.Error>
+  public static func decrypt(_ data: Foundation.Data?) -> Swift.Result<Foundation.Data, any Swift.Error>
   public static func decrypt(_ data: Foundation.Data?) -> Foundation.Data?
-  public static func encrypt(_: Foundation.Data?) -> Swift.Result<Foundation.Data, Swift.Error>
+  public static func encrypt(_ data: Foundation.Data?) -> Swift.Result<Foundation.Data, any Swift.Error>
   public static func encrypt(_ data: Foundation.Data?) -> Foundation.Data?
-  public static func decryptString(_ data: Foundation.Data) -> Swift.Result<Swift.String, Swift.Error>
-  public static func encrypt(_ string: Swift.String) -> Swift.Result<Foundation.Data, Swift.Error>
+  public static func decryptString(_ data: Foundation.Data) -> Swift.Result<Swift.String, any Swift.Error>
+  public static func encrypt(_ string: Swift.String) -> Swift.Result<Foundation.Data, any Swift.Error>
   @objc deinit
 }
 public enum CryptoManagerError : Swift.Error {
@@ -103,8 +89,8 @@ public enum CryptoManagerError : Swift.Error {
   }
 }
 public protocol MDLoggingServiceProtocol {
-  func log(_ format: Swift.String, _ args: Swift.CVarArg...)
-  func log(_ error: Swift.Error)
+  func log(_ format: Swift.String, _ args: any Swift.CVarArg...)
+  func log(_ error: any Swift.Error)
   func log(_ string: Swift.String)
 }
 public class MDLoggingService {
@@ -112,8 +98,8 @@ public class MDLoggingService {
   @objc deinit
 }
 extension MeetingDoctorsCore.MDLoggingService : MeetingDoctorsCore.MDLoggingServiceProtocol {
-  public func log(_ format: Swift.String, _ args: Swift.CVarArg...)
-  public func log(_ error: Swift.Error)
+  public func log(_ format: Swift.String, _ args: any Swift.CVarArg...)
+  public func log(_ error: any Swift.Error)
   public func log(_ string: Swift.String)
 }
 public struct JsonMapper : MeetingDoctorsCore.CodableMapper {
@@ -144,17 +130,17 @@ extension MeetingDoctorsCore.MDPermission {
 }
 public protocol MDEventProviderProtocol {
   func logEvent()
-  func logEvent(_ event: MeetingDoctorsCore.MDEventProtocol)
+  func logEvent(_ event: any MeetingDoctorsCore.MDEventProtocol)
 }
 extension MeetingDoctorsCore.MDEventProviderProtocol {
   public func logEvent()
-  public func logEvent(_: MeetingDoctorsCore.MDEventProtocol)
+  public func logEvent(_: any MeetingDoctorsCore.MDEventProtocol)
 }
 open class MDEventProvider : MeetingDoctorsCore.MDEventProviderProtocol {
-  public var event: MeetingDoctorsCore.MDEventProtocol?
-  public init(event: MeetingDoctorsCore.MDEventProtocol? = nil)
+  public var event: (any MeetingDoctorsCore.MDEventProtocol)?
+  public init(event: (any MeetingDoctorsCore.MDEventProtocol)? = nil)
   public func logEvent()
-  public func logEvent(_ event: MeetingDoctorsCore.MDEventProtocol)
+  public func logEvent(_: any MeetingDoctorsCore.MDEventProtocol)
   @objc deinit
 }
 extension Foundation.NSAttributedString {
@@ -168,22 +154,22 @@ extension Swift.Collection {
 }
 extension Swift.Decodable {
   public static func decode(_ decoder: Foundation.JSONDecoder, data: Foundation.Data) throws -> Self
-  public static func decode(_ decoder: MeetingDoctorsCore.CodableMapper, data: Foundation.Data) throws -> Self
+  public static func decode(_ decoder: any MeetingDoctorsCore.CodableMapper, data: Foundation.Data) throws -> Self
 }
 extension Swift.Encodable {
   public func encode(_ encoder: Foundation.JSONEncoder) throws -> Foundation.Data
-  public func encode(_ encoder: MeetingDoctorsCore.CodableMapper) throws -> Foundation.Data
+  public func encode(_ encoder: any MeetingDoctorsCore.CodableMapper) throws -> Foundation.Data
   public var dictionary: [Swift.String : Any]? {
     get
   }
 }
 public struct MeetingDoctorsDateDecodingStrategy : MeetingDoctorsCore.DateDecodingStrategy {
   public init()
-  public func date(_ decoder: Swift.Decoder) throws -> Foundation.Date
+  public func date(_ decoder: any Swift.Decoder) throws -> Foundation.Date
 }
 public struct MeetingDoctorsDateEncodingStrategy : MeetingDoctorsCore.DateEncodingStrategy {
   public init()
-  public func value(_ date: Foundation.Date, _ encoder: Swift.Encoder) throws
+  public func value(_ date: Foundation.Date, _ encoder: any Swift.Encoder) throws
 }
 extension Foundation.DateFormatter {
   public static let iso8601: Foundation.DateFormatter
@@ -191,8 +177,6 @@ extension Foundation.DateFormatter {
   public static let ddMMyyy: Foundation.DateFormatter
   public static let dd_MM_yyyy: Foundation.DateFormatter
   public static let HHmm: Foundation.DateFormatter
-}
-public protocol AutoDiffable {
 }
 public typealias Decoration<T> = (T) -> Swift.Void
 public struct ViewStyle<T> where T : UIKit.UIView {
@@ -212,10 +196,10 @@ extension UIKit.UIAlertAction {
   }
 }
 public protocol DateDecodingStrategy {
-  func date(_ decoder: Swift.Decoder) throws -> Foundation.Date
+  func date(_ decoder: any Swift.Decoder) throws -> Foundation.Date
 }
 extension MeetingDoctorsCore.DateDecodingStrategy {
-  public func date(_: Swift.Decoder) throws -> Foundation.Date
+  public func date(_: any Swift.Decoder) throws -> Foundation.Date
 }
 open class MDPermission {
   open var authorized: Swift.Bool {
@@ -287,13 +271,13 @@ open class MDEvent : MeetingDoctorsCore.MDEventProtocol {
   @objc deinit
 }
 public struct Keystore : Swift.Codable {
-  public let clientId: Swift.String
   public let clientSecret: Swift.String
-  public init(clientId: Swift.String, clientSecret: Swift.String)
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public init(clientSecret: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
-extension MeetingDoctorsCore.Keystore : MeetingDoctorsCore.AutoEquatable {
+extension MeetingDoctorsCore.Keystore : Swift.Equatable {
+  public static func == (a: MeetingDoctorsCore.Keystore, b: MeetingDoctorsCore.Keystore) -> Swift.Bool
 }
 public struct PropertyListMapper : MeetingDoctorsCore.CodableMapper {
   public let encoder: Foundation.PropertyListEncoder
@@ -316,7 +300,7 @@ open class Loader<S, T> : MeetingDoctorsCore.Loadable {
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ApplicationServiceDelegate : UIKit.UIResponder, UIKit.UIApplicationDelegate {
   @_Concurrency.MainActor(unsafe) @objc public var window: UIKit.UIWindow?
-  @_Concurrency.MainActor(unsafe) open var services: [MeetingDoctorsCore.ApplicationServicePlugin] {
+  @_Concurrency.MainActor(unsafe) open var services: [any MeetingDoctorsCore.ApplicationServicePlugin] {
     get
   }
   @available(iOS 2.0, *)
@@ -350,7 +334,7 @@ open class Loader<S, T> : MeetingDoctorsCore.Loadable {
   @available(iOS 3.0, *)
   @_Concurrency.MainActor(unsafe) @objc open func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
   @available(iOS 3.0, *)
-  @_Concurrency.MainActor(unsafe) @objc open func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
+  @_Concurrency.MainActor(unsafe) @objc open func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: any Swift.Error)
   @available(iOS, introduced: 3.0, deprecated: 10.0, message: "Use UserNotifications Framework's -[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] or -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:] for user visible notifications and -[UIApplicationDelegate application:didReceiveRemoteNotification:fetchCompletionHandler:] for silent remote notifications")
   @_Concurrency.MainActor(unsafe) @objc open func application(_ application: UIKit.UIApplication, didReceiveRemoteNotification userInfo: [Swift.AnyHashable : Any])
   @available(iOS, introduced: 4.0, deprecated: 10.0, message: "Use UserNotifications Framework's -[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] or -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]")
@@ -398,9 +382,9 @@ open class Loader<S, T> : MeetingDoctorsCore.Loadable {
   @available(iOS 8.0, *)
   @_Concurrency.MainActor(unsafe) @objc open func application(_ application: UIKit.UIApplication, willContinueUserActivityWithType userActivityType: Swift.String) -> Swift.Bool
   @available(iOS 8.0, *)
-  @_Concurrency.MainActor(unsafe) @objc open func application(_ application: UIKit.UIApplication, continue userActivity: Foundation.NSUserActivity, restorationHandler: @escaping ([UIKit.UIUserActivityRestoring]?) -> Swift.Void) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc open func application(_ application: UIKit.UIApplication, continue userActivity: Foundation.NSUserActivity, restorationHandler: @escaping ([any UIKit.UIUserActivityRestoring]?) -> Swift.Void) -> Swift.Bool
   @available(iOS 8.0, *)
-  @_Concurrency.MainActor(unsafe) @objc open func application(_ application: UIKit.UIApplication, didFailToContinueUserActivityWithType userActivityType: Swift.String, error: Swift.Error)
+  @_Concurrency.MainActor(unsafe) @objc open func application(_ application: UIKit.UIApplication, didFailToContinueUserActivityWithType userActivityType: Swift.String, error: any Swift.Error)
   @available(iOS 8.0, *)
   @_Concurrency.MainActor(unsafe) @objc open func application(_ application: UIKit.UIApplication, didUpdate userActivity: Foundation.NSUserActivity)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
@@ -433,8 +417,6 @@ public protocol CodableMapper {
     set
   }
   @objc deinit
-}
-public protocol AutoHashable {
 }
 public protocol ApplicationServicePlugin : UIKit.UIApplicationDelegate {
 }
@@ -471,6 +453,8 @@ extension CoreLocation.CLLocationCoordinate2D {
 @_inheritsConvenienceInitializers public class UserDefaultsProperty<T> : MeetingDoctorsCore.NamedProperty<T> where T : Swift.Decodable, T : Swift.Encodable {
   public enum Keys : Swift.String {
     case jwt
+    case event
+    case pushPermissionRequested
     public init?(rawValue: Swift.String)
     public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
@@ -479,14 +463,12 @@ extension CoreLocation.CLLocationCoordinate2D {
   }
   convenience public init(_ key: MeetingDoctorsCore.UserDefaultsProperty<T>.Keys, default value: T? = nil)
   convenience override public init(_ name: Swift.String, default value: T? = nil)
-  public init(_ name: Swift.String, store: Foundation.UserDefaults = UserDefaults.standard, mapper: MeetingDoctorsCore.CodableMapper = PropertyListMapper(), default value: T? = nil)
+  public init(_ name: Swift.String, store: Foundation.UserDefaults = UserDefaults.standard, mapper: any MeetingDoctorsCore.CodableMapper = PropertyListMapper(), default value: T? = nil)
   override public var value: T? {
     get
     set
   }
   @objc deinit
-}
-public protocol AutoCases {
 }
 @_hasMissingDesignatedInitializers public class DateFormatterManager {
   @_hasMissingDesignatedInitializers public class Formats {
@@ -511,7 +493,7 @@ public protocol AutoCases {
   @objc deinit
 }
 public protocol CodableMapperAssembly {
-  func resolve() -> MeetingDoctorsCore.CodableMapper?
+  func resolve() -> (any MeetingDoctorsCore.CodableMapper)?
 }
 public class JsonMapperAssembler : MeetingDoctorsCore.CodableMapperAssembly {
   public var encoder: Foundation.JSONEncoder? {
@@ -521,11 +503,11 @@ public class JsonMapperAssembler : MeetingDoctorsCore.CodableMapperAssembly {
     get
   }
   public init()
-  public func resolve() -> MeetingDoctorsCore.CodableMapper?
+  public func resolve() -> (any MeetingDoctorsCore.CodableMapper)?
   @objc deinit
 }
 extension MeetingDoctorsCore.JsonMapperAssembler : MeetingDoctorsCore.Assembler {
-  public typealias Component = MeetingDoctorsCore.CodableMapper
+  public typealias Component = any MeetingDoctorsCore.CodableMapper
 }
 public class PropertyListLoader : MeetingDoctorsCore.Loader<Foundation.URL, [Swift.String : Any]> {
   public init(_ loader: MeetingDoctorsCore.Loader<Foundation.URL, Foundation.Data>, format: Foundation.PropertyListSerialization.PropertyListFormat = .xml)
@@ -559,34 +541,28 @@ extension Foundation.NSLocale {
     get
   }
 }
-public protocol AutoLenses {
-}
-infix operator *~ : MultiplicationPrecedence
-infix operator |> : AdditionPrecedence
-public struct Lens<Whole, Part> {
-}
-public func * <A, B, C>(lhs: MeetingDoctorsCore.Lens<A, B>, rhs: MeetingDoctorsCore.Lens<B, C>) -> MeetingDoctorsCore.Lens<A, C>
-public func *~ <A, B>(lhs: MeetingDoctorsCore.Lens<A, B>, rhs: B) -> (A) -> A
-public func |> <A, B>(x: A, f: (A) -> B) -> B
-public func |> <A, B, C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> (A) -> C
-public protocol AutoEquatable {
-}
 public func abstractMethod(file: Swift.StaticString = #file, line: Swift.UInt = #line, function: Swift.StaticString = #function) -> Swift.Never
-public enum CoreError : Swift.Error {
+public enum CoreError : Swift.Error, Foundation.LocalizedError, Foundation.CustomNSError {
   public enum MapperFailureReason {
     case unexpectedFormat(event: Swift.String, data: [Any])
-    case decoderFailed(error: Swift.Error)
-    case encoderFailed(error: Swift.Error)
+    case decoderFailed(error: any Swift.Error)
+    case encoderFailed(error: any Swift.Error)
   }
   case mapperFailed(reason: MeetingDoctorsCore.CoreError.MapperFailureReason)
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
 }
 extension MeetingDoctorsCore.CoreError {
-  public var underlyingError: Swift.Error? {
+  public var underlyingError: (any Swift.Error)? {
     get
   }
 }
 public class EnvironmentLoader : MeetingDoctorsCore.Loader<MeetingDoctorsCore.BuildConfigurationType, MeetingDoctorsCore.Environment> {
-  public init(loader: MeetingDoctorsCore.Loader<Swift.String, Foundation.Data>, mapper: MeetingDoctorsCore.CodableMapper = PropertyListMapper())
+  public init(loader: MeetingDoctorsCore.Loader<Swift.String, Foundation.Data>, mapper: any MeetingDoctorsCore.CodableMapper = PropertyListMapper())
   @_semantics("optimize.sil.never") override public func load(_ source: MeetingDoctorsCore.BuildConfigurationType) -> MeetingDoctorsCore.Environment?
   @objc deinit
 }
@@ -594,9 +570,9 @@ public enum BuildConfigurationType : Swift.String, Swift.Codable, Swift.CodingKe
   case debug
   case release
   case staging
-  public init?(rawValue: Swift.String)
   public init?(stringValue: Swift.String)
   public init?(intValue: Swift.Int)
+  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var intValue: Swift.Int? {
     get
@@ -622,6 +598,7 @@ public enum EndpointType : Swift.String, Swift.CodingKey, Swift.CaseIterable {
   case coreV2
   case videocall
   case consultationsV2
+  case marketing
   public init?(rawValue: Swift.String)
   public init?(stringValue: Swift.String)
   public init?(intValue: Swift.Int)
@@ -640,6 +617,16 @@ public enum EndpointType : Swift.String, Swift.CodingKey, Swift.CaseIterable {
     get
   }
 }
+public protocol AutoLenses {
+}
+infix operator *~ : MultiplicationPrecedence
+infix operator |> : AdditionPrecedence
+public struct Lens<Whole, Part> {
+}
+public func * <A, B, C>(lhs: MeetingDoctorsCore.Lens<A, B>, rhs: MeetingDoctorsCore.Lens<B, C>) -> MeetingDoctorsCore.Lens<A, C>
+public func *~ <A, B>(lhs: MeetingDoctorsCore.Lens<A, B>, rhs: B) -> (A) -> A
+public func |> <A, B>(x: A, f: (A) -> B) -> B
+public func |> <A, B, C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> (A) -> C
 public enum EnvironmentType : Swift.String, Swift.Codable, Swift.CodingKey {
   case development
   case production
@@ -695,7 +682,7 @@ public enum MDPermissionStatusEnum : Swift.Int {
   }
 }
 @_hasMissingDesignatedInitializers public class FileManagerWrapper {
-  public static func download(url: Foundation.URL, completion: @escaping (Foundation.URL?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)
+  public static func download(url: Foundation.URL, completion: @escaping (Foundation.URL?, Foundation.URLResponse?, (any Swift.Error)?) -> Swift.Void)
   @objc deinit
 }
 public struct Endpoint : Swift.Codable {
@@ -706,13 +693,14 @@ public struct Endpoint : Swift.Codable {
   public let host: Swift.String?
   public let port: Swift.Int?
   public let path: Swift.String?
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 extension MeetingDoctorsCore.Endpoint {
   public init(url: Foundation.URL)
 }
-extension MeetingDoctorsCore.Endpoint : MeetingDoctorsCore.AutoEquatable {
+extension MeetingDoctorsCore.Endpoint : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsCore.Endpoint, rhs: MeetingDoctorsCore.Endpoint) -> Swift.Bool
 }
 extension UIKit.UIImage {
   public func croppedImage(bounds: CoreFoundation.CGRect) -> UIKit.UIImage
@@ -746,9 +734,10 @@ public struct Environment : Swift.Decodable {
   public let requestTimeout: Swift.Int?
   public let logLevel: MeetingDoctorsCore.LogLevel?
   public let reportCrashes: Swift.Bool?
-  public init(from decoder: Swift.Decoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
-extension MeetingDoctorsCore.Environment : MeetingDoctorsCore.AutoEquatable {
+extension MeetingDoctorsCore.Environment : Swift.Equatable {
+  public static func == (lhs: MeetingDoctorsCore.Environment, rhs: MeetingDoctorsCore.Environment) -> Swift.Bool
 }
 public struct AnyNavigatable<Destination> : MeetingDoctorsCore.Navigatable {
   public init<Concrete>(_ concrete: Concrete) where Destination == Concrete.Destination, Concrete : MeetingDoctorsCore.Navigatable
@@ -820,10 +809,10 @@ extension UIKit.UIDevice {
   }
 }
 public protocol DateEncodingStrategy {
-  func value(_ date: Foundation.Date, _ encoder: Swift.Encoder) throws
+  func value(_ date: Foundation.Date, _ encoder: any Swift.Encoder) throws
 }
 extension MeetingDoctorsCore.DateEncodingStrategy {
-  public func value(_: Foundation.Date, _: Swift.Encoder) throws
+  public func value(_: Foundation.Date, _: any Swift.Encoder) throws
 }
 extension MeetingDoctorsCore.MDPermissionTypeEnum : Swift.Equatable {}
 extension MeetingDoctorsCore.MDPermissionTypeEnum : Swift.Hashable {}
