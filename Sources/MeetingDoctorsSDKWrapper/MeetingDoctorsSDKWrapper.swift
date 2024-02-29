@@ -1,0 +1,2 @@
+struct MeetingDoctorsSDKWrapper {
+}

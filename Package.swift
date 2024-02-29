@@ -11,32 +11,8 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "MeetingDoctorsCore",
-            targets: ["MeetingDoctorsCore"]
-        ),
-        .library(
-            name: "MeetingDoctorsSchema",
-            targets: ["MeetingDoctorsSchema"]
-        ),
-        .library(
-            name: "MeetingDoctorsController",
-            targets: ["MeetingDoctorsController"]
-        ),
-        .library(
-            name: "MeetingDoctorsSocket",
-            targets: ["MeetingDoctorsSocket"]
-        ),
-        .library(
-            name: "MeetingDoctorsStorage",
-            targets: ["MeetingDoctorsStorage"]
-        ),
-        .library(
-            name: "MeetingDoctorsRemote",
-            targets: ["MeetingDoctorsRemote"]
-        ),
-        .library(
-            name: "MeetingDoctorsSDK",
-            targets: ["MeetingDoctorsSDK"]
+            name: "MeetingDoctorsSDKWrapper",
+            targets: ["MeetingDoctorsSDKWrapper"]
         ),
     ],
     dependencies: [
@@ -81,6 +57,27 @@ let package = Package(
         .binaryTarget(
             name: "MeetingDoctorsSDK",
             path: "Frameworks/MeetingDoctorsSDK.xcframework"
-        )
+        ),
+        .target(
+            name: "MeetingDoctorsSDKWrapper",
+            dependencies: [
+                "MeetingDoctorsCore",
+                "MeetingDoctorsSchema",
+                "MeetingDoctorsController",
+                "MeetingDoctorsSocket",
+                "MeetingDoctorsStorage",
+                "MeetingDoctorsRemote",
+                "MeetingDoctorsSDK",
+                // Agrega aquí más dependencias si son necesarias.
+                .product(name: "RxSwift", package: "RxSwift"),
+                .product(name: "RxCocoa", package: "RxSwift"),
+                .product(name: "SocketIO", package: "socket.io-client-swift"),
+                .product(name: "Realm", package: "realm-swift"),
+                .product(name: "RealmSwift", package: "realm-swift"),
+                .product(name: "Lottie", package: "lottie-spm"),
+                .product(name: "VonageClientSDKVideo", package: "vonage-client-sdk-video"),
+            ],
+            path: "Sources/MeetingDoctorsSDKWrapper"
+        ),
     ]
 )
