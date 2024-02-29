@@ -43,8 +43,8 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/ReactiveX/RxSwift.git", from: "6.5.0"),
         .package(url: "https://github.com/socketio/socket.io-client-swift.git", from: "15.2.0"),
-        .package(url: "https://github.com/realm/realm-cocoa.git", from: "10.17.0"),
-        .package(url: "https://github.com/airbnb/lottie-ios.git", from: "4.3.0"),
+        .package(url: "https://github.com/realm/realm-swift.git", from: "10.17.0"),
+        .package(url: "https://github.com/airbnb/lottie-spm.git", from: "4.3.0"),
         .package(url: "https://github.com/opentok/vonage-client-sdk-video", from: "2.26.0"),
         
     ],
