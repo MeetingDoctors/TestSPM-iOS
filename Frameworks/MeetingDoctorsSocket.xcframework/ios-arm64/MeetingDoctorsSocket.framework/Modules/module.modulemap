@@ -1,4 +1,0 @@
-framework module MeetingDoctorsSocket {
-  header "MeetingDoctorsSocket-Swift.h"
-  requires objc
-}

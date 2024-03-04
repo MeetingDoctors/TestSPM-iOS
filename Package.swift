@@ -29,40 +29,40 @@ let package = Package(
         // MARK: - MDCore
         .binaryTarget(
             name: "MeetingDoctorsCore",
-            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/MeetingDoctorsCore.xcframework.zip",
-            checksum: "72be1441a76fb13d06620e583a69b4fb8c53d691c212dc56bc65d386db917d85"
+            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/5.5.6-beta.9/MeetingDoctorsCore.xcframework.zip",
+            checksum: "39018c0e068fed63578e78e8813c4d6f2bb106de52770008d934200965b20866"
         ),
         // MARK: - MDSchema
         .binaryTarget(
             name: "MeetingDoctorsSchema",
-            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/MeetingDoctorsSchema.xcframework.zip",
-            checksum: "f8b620d6ea978ec07809f5e71faf4d16f096667b52700840fcd97362484a7087"
+            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/5.5.6-beta.9/MeetingDoctorsSchema.xcframework.zip",
+            checksum: "222810b7ecd7fe824465d213a0f169f4957126e7acdf0f2338f87015f9308fc5"
         ),
         // MARK: - MDController
         .binaryTarget(
             name: "MeetingDoctorsController",
-            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/MeetingDoctorsController.xcframework.zip",
-            checksum: "5425bb1d8ed18383ddc65e392e765ef7cfcbb960e92fdf7c29b03b2370171fa9"
+            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/5.5.6-beta.9/MeetingDoctorsController.xcframework.zip",
+            checksum: "49acb84dd5564878007ce163faaa8ff2d30e9ba4600f3c227ac009f36814ff21"
         ),
         .binaryTarget(
             name: "MeetingDoctorsSocket",
-            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/MeetingDoctorsSocket.xcframework.zip",
-            checksum: "0f592bd1e4ad89edb654ce4846f162e51c576727b63a78467f0ad901c7c7ebe1"
+            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/5.5.6-beta.9/MeetingDoctorsSocket.xcframework.zip",
+            checksum: "dfab6d49eecd1cd8d7b6a7b9fa56bbf29027533dd27fde55c3e28baa150b24c3"
         ),
         .binaryTarget(
             name: "MeetingDoctorsStorage",
-            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/MeetingDoctorsStorage.xcframework.zip",
-            checksum: "94e0cbc7bcc34620c3cd08ff56e93fb307e4db0dcac3bacda653dc2d48c9d48f"
+            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/5.5.6-beta.9/MeetingDoctorsStorage.xcframework.zip",
+            checksum: "794453e29d55b430dda394bbd3c890809dd40ebb6ba6a21ee1f7f72de971fae0"
         ),
         .binaryTarget(
             name: "MeetingDoctorsRemote",
-            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/MeetingDoctorsRemote.xcframework.zip",
-            checksum: "8f5d940b12547b975dea86c03574c14d64da9ac4d969408858f4646b6592b6f3"
+            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/5.5.6-beta.9/MeetingDoctorsRemote.xcframework.zip",
+            checksum: "43be88f99cf495e62ddb61fac18f027aa2e5eca51e554e346da5dc557f415824"
         ),
         .binaryTarget(
             name: "MeetingDoctorsSDK",
-            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/MeetingDoctorsSDK.xcframework.zip",
-            checksum: "51a870af56a7b95f34ebdda2566c97e6d5d03c23ae2f22686d5b4d4085a069f5"
+            url: "https://sdk-download-meetingdoctors.s3.eu-central-1.amazonaws.com/iOS/MeetingDoctorsSDK/test/5.5.6-beta.9/MeetingDoctorsSDK.xcframework.zip",
+            checksum: "709dc658fe10621b3dfd1b1dbe2accd577cbeeec5b18b009c6efcfd480e9bcfa"
         ),
         .binaryTarget(
             name: "Realm",
